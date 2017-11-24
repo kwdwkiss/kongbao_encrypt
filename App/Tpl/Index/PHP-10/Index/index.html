@@ -1,0 +1,305 @@
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><!--IE优先使用chrome内核-->
+	<meta name="renderer" content="webkit" /> <!--360优先使用chrome内核-->
+	<meta http-equiv="Cache-Control" content="no-siteapp" /><!-- 禁止手机百度转码 -->
+	<title>{$seo_title} </title>
+	<meta name="Keywords" content="{$seo_keyword}">
+	<meta name="Description" content="{$seo_desc}">
+	<if condition="$qq_setting['qq_isuse']==1">
+	<meta property="qc:admins" content="{$qq_setting['qq_appcode']}" />
+	</if>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="/Public/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/Public/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="/Public/css/top.css" />
+	<script type="text/javascript" src="/Public/css/jquery.min.js"></script>
+	<script type="text/javascript" src="/Public/css/myself.js"></script>
+	<script type="text/javascript" src="/Public/css/jquery.form.js"></script>
+	<script type="text/javascript" src="/Public/css/pan_jquery.js"></script>
+	<script type="text/javascript" src="/Public/css/selectCss.js"></script>
+	<script type="text/javascript" src="/Public/js/jquery_js.js"></script>
+	<script type="text/javascript" src="/Public/css/myfrom/artDialog4.1.7/artDialog.js?skin=green"></script>
+</head>
+<body>
+<script type="text/javascript">
+    layer.load();
+    $(window).load(function(){
+        layer.closeAll('loading');
+    })
+</script>
+<div class="HeadBox">
+	<ul class="slider-bg">
+	  <volist name="slide_list" id="slide" offset="0" length="1">
+                <li class="curr"><a href="{$slide['pic_url']}" style="background:url({$slide['pic']}) no-repeat center;">&nbsp;</a></li>		
+				 </volist> 
+	<volist name="slide_list" id="slide" offset="0" length="4">
+	 <if condition="$i egt 2"> 
+    <li><a href="{$slide['pic_url']}" style="background:url({$slide['pic']}) no-repeat center;">&nbsp;</a></li>	
+	</if> 	
+	</volist> 
+	
+		</ul>
+<div id="J-home-topbar-menu" class="topbar-menu ">
+<!-- top -->
+<?php $logo2="__ROOT__/$config[site_logo]"; ?>
+<?php $logo3="__ROOT__/$config[site_logoo]"; ?>
+<div class="top_nav">
+    <div class="cont">
+        <div class="left_cont">
+           <if condition="session('IS_LOGIN')==0">
+            <span>我已有{$config['sitename']}账户&nbsp;&nbsp;</span>
+                <a href="{:U('User/uslogin')}">快速登录</a>
+                <a href="{:U('User/reg')}">注册</a>
+				</if>
+                  <if condition="session('IS_LOGIN')==1">
+					<div class="danhao-user">
+                    <div class="lnk-user">
+                        <a href="{:U('User/home')}" class="user-uid">[&nbsp;{$user['username']}&nbsp;]</a>
+                        <i class="icon iconfont">&#xe604;</i>
+                    </div>
+                    <div class="user-list" style="left:-500px; width:168px; height:0px;">
+                        <div class="user-list-info">
+                            <div class="info-pic">
+                               <a href="{:U('User/home')}"><img src="{$user['head_img']}" data-original="/Public/images/tx_images.jpg" width="38" height="38" /></a>                             
+                            </div>
+                            <div class="info-txt">
+                                <span>
+                                    <a>￥{$user['money']}</a>
+                                </span>
+                                <br>
+                                <a href="{:U('Cash/recharge')}" class="c_skyBlue">充值</a>
+                                <span style="margin:0.3%; color:#ccc;">|</span>
+                                <a href="{:U('Cash/tixian')}" class="c_skyBlue">提现</a>
+                            </div>
+                        </div>
+                        <ul class="list_info">
+                           <li><a href="{:U('Order/kb')}">空包下单</a></li>
+                                <li><a href="{:U('User/mingxi')}">全部资金明细<!--<small class="color_orange">(1)</small>--></a></li>
+                                <li><a href="{:U('User/repass')}">修改密码</a></li>
+                                <li><a href="{:U('Tg/uplevel')}">会员升级</a></li>
+                                <li><a href="{:U('Log/refer_log')}">我的下线</a></li>
+								<li><a href="{:U('System/index')}" >消息中心<span style="font-family:'Microsoft 宋体';font-size:12px;color:#fc9a03;" >&nbsp;({$allnoread})</span></a></li>
+                                <li><a href="{:U('User/logout')}">退出</a></li>
+                        </ul>
+                    </div>
+                </div>
+				<script type="text/javascript">
+                    $(function(){
+                        //触摸会员头显示像下滑框
+                        $(".top_nav .cont .left_cont .danhao-user").mouseover(function(){
+                            $(this).find(".lnk-user").addClass("user-list-select");
+                            $(this).find(".user-list").css({
+                                left:"0px",
+                                height:"auto",
+                            });
+                        }).mouseleave(function(){
+                            $(this).find(".lnk-user").removeClass("user-list-select");
+                            $(this).find(".user-list").css({
+                                left:"-500px",
+                                height:"0px",
+                            });
+                        });
+                    })
+                </script> 
+				</if>       </div>
+        <div class="right_cont">
+		 <a class="qq" href="http://wpa.qq.com/msgrd?v=3&uin={$config['qq1']}&site=qq&menu=yes" target="_blank">在线客服</a>
+            <style type="text/css">
+                .qq{
+                    display: block;
+                    height: 28px;
+                    margin-top: 0px !important;
+                    line-height: 28px;
+                    padding: 0px 10px;
+                }
+                .qq:hover{
+                    background: #00a2ca;
+                    color: #fff!important;
+                }
+            </style>
+           
+            <a href="javascript:alert('Ctrl+D快捷加入收藏');">加入收藏</a>
+			<if condition="session('IS_LOGIN')==1">
+            <span class="message_box">
+               
+                    <a href="{:U('System/index')}" class="notice"><i class="icon iconfont">&#xe617;</i> <span >{$allnoread}</span></a>
+                  
+			 <else/>
+			<a href="{:U('User/home')}">管理控制台</a>
+			</if>
+          
+                        <div class="freshman_box">
+                <div class="freshman">
+                    <a href="javascript:void(0);">新手视频</a>
+                </div>
+                <div class="freshman_list" style="width: 175px;">
+                    <a href="javascript:video(0)" class="first video_obj" >站长介绍</a>
+                            <a href="javascript:video(0)" class="first video_obj1">新手教程</a>
+                            <a href="javascript:video(0)" class="first video_obj2" class="last" > 推广教程</a>
+                </div>
+                <a href="{:U('User/reg')}">
+                       注册送豪华&大礼                  <span class="angle"></span>
+                    </a>
+            </div>
+            <script type="text/javascript">
+              
+                $(".top_nav .cont .right_cont .freshman_box .freshman , .top_nav .cont .right_cont .freshman_list").mouseover(function(){
+                    $(".top_nav .cont .right_cont .freshman_box .freshman > i").css("color","#000").css("-webkit-transform","rotate(180deg)");
+                    $(".top_nav .cont .right_cont .freshman_box .freshman").addClass("curr").find("a").css("color","#000!important").find("i").css("color","#ffcc00");
+                    $(".top_nav .cont .right_cont .freshman_box .freshman_list").show();
+                }).mouseout(function(){
+                    $(".top_nav .cont .right_cont .freshman_box .freshman > i").css("color","#fff").css("-webkit-transform","rotate(0deg)");
+                    $(".top_nav .cont .right_cont .freshman_box .freshman").removeClass("curr").find("a").css("color","#fff").find("i").css("color","#ffcc00");
+                    $(".top_nav .cont .right_cont .freshman_box .freshman_list").hide();
+                });
+            </script>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+.curr-topbar-menu2 .logo_box .logo_cont .logo{background:url(<?php echo $logo3;?>) no-repeat;}
+.curr-topbar-menu3 .logo_box .logo_cont .logo{background:url(<?php echo $logo3;?>) no-repeat;}
+.curr-topbar-menu1 .logo_box .logo_cont .logo{background:url(<?php echo $logo2;?>) no-repeat;}
+.logo_box .logo_cont .logo{display:inline-block; margin-top:6px; width:140px; height:50px;background:url(<?php echo $logo2;?>) no-repeat; float:left;}
+.curr-topbar-menu:hover .logo_box .logo_cont .logo{background:url(<?php echo $logo3;?>) no-repeat;}
+</style>
+<include file="User:mi" />
+<link rel="stylesheet" type="text/css" href="/Public/css/shouye.css" />
+<!-- top -->
+<div class="logo_box">
+    <div class="logo_cont">
+        <a href="/" class="logo"> &nbsp;	
+        </a>
+			<if condition="$config['tuiguang_dtswf']==1">
+{$config['dtswf_javascript']}
+</if>
+          <if condition="session('IS_LOGIN')==1">
+		  {$kongbao_page['tuiguang_dlh']}
+		  <else />
+		{$kongbao_page['tuiguang_dlq']} 
+		</if>
+<ul id="menu">
+<li><a href="__APP__" title="首页" class="tit">首页</a></li>
+<volist name="daohang" id="daohang" offset="0" length='6' >
+  <li>
+<a href="{$daohang.url}"  title="{$daohang.name}"  class="tit">{$daohang.name}<if condition="$daohang['sort_bz']==1"><img src="{$daohang['image_url']}" width="26" style="margin-left:5px;" alt="{$daohang.name}"/></if></a>
+  </li>
+</volist>
+        </ul>
+    </div>
+</div>
+</div>
+<include file="Public:kefua" />
+<script type="text/javascript">
+$(function(){
+    $('.hhh').click(function(){
+        $('.helper-wrap').show();
+    })
+    $('.closehhh').click(function(){
+        $('.helper-wrap').hide();
+    })
+	if($(".banner .index1").length > 0){
+		$("#J-home-topbar-menu").mousemove(function(){
+			$(this).addClass("curr-topbar-menu");
+		}).mouseleave(function(){
+			$(this).removeClass("curr-topbar-menu");
+		})		
+	}else{
+	}
+})	
+</script>
+  
+    <div class="banner">
+        <div class="index1">
+            <ul>
+	<volist name="slide_list" id="slide" offset="0" length="1">
+    <li class="curr">  <a href="{$slide['pic_url']}" >&nbsp;</a></li>		
+	</volist> 
+	
+	<volist name="slide_list" id="slide" offset="0" length="5">
+	<if condition="$i egt 2"> 
+    <li><a href="{$slide['pic_url']}" >&nbsp;</a></li>		
+	</if> 	
+	</volist> 
+	
+              </ul>
+            <dl>
+        <dd class="curr" data-class="curr-topbar-menu1"></dd>
+		<dd  data-class="curr-topbar-menu2"></dd>  <dd  data-class="curr-topbar-menu3"></dd> <dd  data-class="curr-topbar-menu4"></dd>           </dl>
+        </div>
+		<if condition="session('IS_LOGIN')==0">
+        <div class="login_box" style="text-align:left;">
+            	<h3>登录</h3>
+                <div class="login_err_panel" style="" id="err"><i class="icon18_common error"></i><span class="err_tips"></span></div>
+               <form action="{:U('User/login')}" id="js-login_form" method="post">
+                	<div class="login_input_panel" id="js_mainContent">
+                        <div class="login_input">
+                            <i class="icon_login un"> </i>
+                            <input type="text" name="username" class="user_name" value="" placeholder="会员名" />
+                        </div>
+                        <div class="login_input">
+                            <i class="icon_login pwd"> </i>
+                            <input type="password" name="password" class="user_pswd" placeholder="登录密码" />
+                        </div>
+                    </div>
+                    <div class="login_help_panel">
+                        <label class="frm_checkbox_label" for="rememberCheck">
+                            <i class="icon_checkbox"></i>
+                             <p>
+						<a style="float:right;" href="{:U('User/reg')}" class="c_skyBluc">免费注册</a>
+					<if condition="$qq_setting['qq_isuse']==1">
+				 <a style="float:right; margin-right:20px;" href="{:U('Qlogin/index')}" class="c_skyBluc">使用QQ登录<img src="/Public/images/Connect_qq_1.png" /></a>
+				 </if>  
+                        </p>
+                        </label>
+						<a style="float:right; margin-right:10px;" href="javascript:void(0)"  onclick="art.dialog({title:'找回密码',content:document.getElementById('get_pass'),lock:true})" class="login_forget_pwd">忘记登录密码？</a>
+                    </div>
+                    <div class="login_btn_panel">
+					<input type="submit" name="Submit" class="submit bgc_skyBlue" value="登录" />
+                    </div>
+                </form>
+               
+            </div>
+			<!--<dl class="qrcode_panel">
+            <dt>
+            <img src="">
+            </dt>
+            <dd>
+                扫描并关注<br>微信公众平台                        
+            </dd>
+        </dl> -->
+		</if> 
+    </div>
+   
+    <div id="ann">
+    	<div class="y-row">
+        	<div class="y-span1" style="text-align: right;"><span class="icon iconfont icon-bullhorn"></span></div>
+            <volist name="gonggao_list" id="gonggao" offset="0" length='4'>
+			<a href="{:U('Gonggao/gonggao',array('id'=>$gonggao['id']))}" title="{$gonggao["title"]}"  class="y-span3"><span class="title"><span>·&nbsp;</span>[<?php echo date("n-j",strtotime($gonggao["time"])); ?>]{$gonggao["title"]|cut_str=###,15}</span></a><span></span>
+			 </volist>
+			 <a href="{:U('Gonggao/index')}" class="y-span2"><span class="title">更多&gt;&gt;</span></a> 						
+        </div>
+    </div>
+   
+	</div>
+<if condition="$config['tuiguang_dongtai']==1">
+<br />
+<div class="content"><iframe align=center border="0" noresize=noresize marginWidth=0 marginHeight=0 src="{:U('About/leds')}"  frameBorder=0 width=100%  height=32px scrolling=no></iframe></div>
+</if>
+<include file="Index:type" />
+<include file="Public:sp" />
+<div class="content">
+<div class="model_box">
+<div class="title2">
+<h1>新闻资讯中心</h1>
+</div>
+</div>
+<include file="Public:new" />
+</div>       
+</div>
+</div>
+<include file="Public:footer" />
+<script type="text/javascript" src="/Public/js/shouy.js"></script>

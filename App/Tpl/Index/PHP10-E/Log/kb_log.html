@@ -1,0 +1,163 @@
+<include file="Public:header" />
+<script type="text/javascript" src="/Public/js/lhgcalendar/lhgcalendar.min.js"></script>
+<script type="text/javascript">
+ $(function(){   
+    $('#starttime').calendar({ format:'yyyy-MM-dd HH:mm:ss' });
+    $('#endtime').calendar({ format:'yyyy-MM-dd HH:mm:ss' });
+ 
+});
+function export_today()
+	{
+ 	   var count = $("#count").val(); 
+	    if(count<=0) 
+	    {
+	    	alert('无数据可导出！'); 	
+	    	return false;
+	    }
+	   $("#today_export").submit();
+	}
+function export_log()
+	{
+ 	   var count = $("#count").val(); 
+	    if(count<=0) 
+	    {
+	    	alert('无数据可导出！'); 	
+	    	return false;
+	    }
+	var starttime = $('#starttime').val();
+	 if(starttime=='')
+	 {
+	 	alert('请填写开始时间后【点查询】');
+	 	return false;	 	
+	 } 
+	 var endtime = $('#endtime').val();
+	 if(endtime=='')
+	 {
+	 	alert('请填写终止时间【点查询】');
+	 	return false;	 	
+	 }
+	   $("#export_form").submit();
+	}
+</script>
+    </td>
+  <td valign="top" class="r">	
+      <div class="title02">空包单号管理<a href="{:U('Cash/recharge')}" class="Annkela"><img src="/Public/xincss/images/22.png"/>在线充值</a></div>
+      <div class="block04">
+	   <form class="search" action="{:U('kb_log')}" method="post" id="query_form"> 
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+		<td width="45">来源：</td>
+		<td width="86"><select name="ftype" class="select classid" style="margin-top:0px;width:90px;">
+		<option value="order_no" <eq name="_POST.ftype" value="order_no">selected</eq>>订单编号</option>
+		<option value="note_no" <eq name="_POST.ftype" value="note_no">selected</eq>>空包单号</option>  			
+		</select></td><td width="5">&nbsp;</td>
+		<td width="110"><input type="text" name="keyword" value="{:I('keyword')}" class="Index_Search" style="width:100px;"/></td><td width="5">&nbsp;</td>
+		<td width="80"><select name="type_id"  class="select classid" style="width:90px;"> 
+		<option value="">空包类型</option>
+		<foreach name="type_list" item="type">
+		<option value="{$type['id']}"  <if condition="I('type_id','')==$type['id']" >selected</if> >{$type['name']}</option>
+		</foreach>
+		</select>
+		</td><td width="5">&nbsp;</td>
+		<td width="45">按时间</td>
+		<td width="80">
+		<input class="Index_Search" id="starttime" readonly="true"  name="starttime" value="{:I('starttime')}"  style="width:80px;" />
+		</td><td width="5">&nbsp;</td><td width="10">至</td>
+		</td><td width="5">&nbsp;</td>
+		<td width="80"> 
+		<input class="Index_Search" id="endtime" readonly="true" name="endtime"  value="{:I('endtime')}" style="width:80px;"/> 
+		</td><td width="5">&nbsp;</td>
+		<td width="30"><input name="submit" type="submit" class="Annkelb_1" value="查询" />
+		<input type="hidden" id="count" value="{$count}"/></td>
+		<td width="5">&nbsp;</td>
+		<td><input type="button"  class="Annkelb kel1" value="导出数据" onclick="return export_log()"/>
+		<input type="button"  class="Annkelb_1" value="导出当天单号" onclick="return export_today()"/></td>
+		</tr>
+		</table>
+		</form>
+		<form id="export_form" action="{:U('log_export')}" method="post" > 
+		<input type="hidden" name="ftype" value="{:I('ftype')}" /> 
+		<input type="hidden" name="keyword" value="{:I('keyword')}" /> 
+		<input type="hidden" name="type_id" value="{:I('type_id')}" /> 	
+		<input type="hidden" name="start" value="{:I('starttime')}" /> 
+		<input type="hidden" name="end" value="{:I('endtime')}" />                                  	
+		</form>
+		<form id="today_export" action="{:U('Log/today_export')}" method="post"> 
+		<input type="hidden" name="ftype" value="{:I('ftype')}" /> 
+		<input type="hidden" name="keyword" value="{:I('keyword')}" /> 
+		<input type="hidden" name="type_id" value="{:I('type_id')}" /> 	                                 	
+		</form> 
+		<br/> 
+      	<table class="ipList" width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="title">
+            <td width="20" class="icon">&nbsp;</td>
+            <td>快递公司</td>
+            <td>快递单号</td>
+			<td>发货人</td>
+			<td>发货人电话</td>
+			<td>发货地址</td>
+			<td>收货人</td>
+			<td>收货人电话</td>
+            <td>收货地址</td>
+			<if condition="$kongbao_config['refer_zhongname']==1">
+			<td>商品名称</td>
+			<td>商品重量</td>
+			</if>
+			<td>下单时间</td>
+			<td>状态 </td>
+          </tr>
+          <!-- 隔行变色 -->
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+          })
+          </SCRIPT>
+		<foreach name="log_list" key="key" item='log'>
+          <tr class="td1">
+            <td>&nbsp;</td>
+            <td>{$kb_type[$log['type_id']]}</td>
+            <td><if condition="$log['note_no']==''"><span id="no_{$log['id']}"><a href="{:U('Order/get_budannote')}">获取单号</a></span><else />{$log['note_no']}</if></td>
+			<td>{$log['send_name']}</td>
+			<td>{$log['send_shouji']}</td>
+			<td>{$log['send_province']}&nbsp;{$log['send_city']}&nbsp;{$log['send_district']}</td>
+			<td>{$log['rec_name']}</td>
+			<td>{$log['rec_shouji']}</td>
+			<td><p>{$log['rec_address']}</p></td>
+			<if condition="$kongbao_config['refer_zhongname']==1">
+			<td><p>{$log['goods_name']}</p></td>
+			<td><p>{$log['zhongliang']}</p></td>
+			</if>
+			<td>{$log['order_time']}</td>
+			<td><if condition="$log['exp_status']==0 && $log['order_status']==1">
+			<a href= "{:U('log_update',array('id'=>$log['id']))}">
+			<span class="ipa">修改</span></a>
+			<elseif condition="$log['order_status']==2"/>
+			<span class="ipb">已取消</span>
+			<else /><span class="ip">已扫描</span>
+			</if></td>
+          </tr>
+		</foreach>      
+        </table>
+      </div>
+      
+      <div class="pageList">
+			<table width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="left"></td>
+					<td class="center">&nbsp;</td>
+					<td class="right" align="right">
+						<div class="pagebreak">
+							<table cellspacing="0" cellpadding="0"><tr><td class="page_no"><a class='current'>{$show}</a></td></tr></table>
+						</div>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+      
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+

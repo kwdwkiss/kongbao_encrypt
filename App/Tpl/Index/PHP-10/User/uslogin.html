@@ -1,0 +1,51 @@
+<if condition="session('IS_LOGIN')==0">
+<include file="Public:header" />
+<style>
+.btn_jc{padding:3px 15px;border:1px solid #00a1cc;border-radius:4px;color:#00a1cc;margin:5px 0;}.tag_select{display:block;height:24px;line-height:24px;background:url("/Public/images/xlico.gif") right center no-repeat;border:1px solid #CFCFCF;border-radius:5px;padding:3px 48px 3px 8px;color:#7D7D7D;font-size:12px;cursor:pointer}ul.tag_options{position:absolute;margin:0;list-style:none;border:solid 1px #CFCFCF;background:#fff;overflow:hidden;font-size:12px;z-index:1000;}ul.tag_options li{background:#fff;display:block;padding:0px 8px 0px 8px;height:25px;text-decoration:none;line-height:30px;color:#7D7D7D;font-weight:normal;font-size:12px;cursor:pointer}ul.tag_options li.open_hover{background:#00a2ca;color:#000;color:#fff;width:auto;font-weight:normal;font-size:12px}ul.tag_options li.open_selected{background:#00a2ca;color:#fff;font-size:12px;}.kongbao_kuaidiInfos{position:relative;}.moban{float:right;left:380px;top:1px;position:absolute;z-index:9999;}.label_sele{float:right;padding-right:291px;padding-bottom:2px;}.pCont{width:300px;float:right;height:230px;overflow:hidden;background:url(/Public/images/p_cont.jpg) center top no-repeat;}.pCont .p_nr{width:190px;padding-top:56px;padding-left:60px;}.pCont .p_nr p{font-size:14px;color:#666;line-height:26px;}
+.content_body{width:1200px;height:580px;overflow:hidden;margin:0 auto}.content_body .symbol_img{float:left;margin-top:65px;margin-left:130px;width:420px;height:325px}.index1_8{width:260px;overflow:hidden;float:right;margin-right:0;margin-top:65px;margin-right:150px;padding:20px;border:1px solid #ddd}.index1_9{margin-top:10px;display:block;width:100%;line-height:28px;font-family:微软雅黑}.index1_9 span{color:#4d4d4d;font-weight:600}.index1_9 a{float:right;color:#00a2ca;font-family:微软雅黑}.index1_8>input{width:248px;height:38px;line-height:38px;border-radius:3px;color:#666;border:1px solid #ddd;padding:0 5px}.index1_8>input:hover{border:1px solid #999}.index1_10{width:260px;height:35px;line-height:35px;font-family:微软雅黑;background:#00a2ca;border-radius:3px;display:block;text-align:center;margin-top:18px;color:#fff;font-size:14px}.index1_10:hover{color:#fff!important;text-decoration:none!important;background:#33b5d4}.content_body .index1_8 .title{border-bottom:1px solid #ddd;line-height:25px;color:#4d4d4d;font-size:12px;margin-top:8px;font-family:'宋体'}.content_body .index1_8 .agreement{width:100%;line-height:25px;margin-top:50px}.content_body .index1_8 .agreement input{vertical-align:middle}.content_body .index1_8 .agreement a{color:#00a2ca}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){ 
+$("select").selectCss(); 
+});
+</script>
+<include file="User:mi" />
+<div class="content_body">
+ <a href="{$loging_adv['pic_url']}" target="_blank" class="symbol_img"><img src="{$loging_adv['pic']}" width="420px" height="325px" original-title="{$loging_adv['ad_brief']}"></a>
+    <form action="__URL__/login" id="register_form" method="post" >
+		
+        <div class="index1_8">
+            <div class="title"> <a href="/">{$config['sitename']}首页</a></div>
+            <div class="index1_9">
+                <span>登录名：</span>
+            </div>
+            <input id="username" name="username" type="text"  style="color:#999999" placeholder="手机/邮箱/会员名" />
+            <div class="index1_9" >
+ <span>登录密码：</span><a style="float:right; margin-right:10px;" href="javascript:void(0)"  onclick="art.dialog({title:'找回密码',content:document.getElementById('get_pass'),lock:true})">忘记登录密码？</a>
+            </div>
+            <input type="password" id="password" name="password" placeholder="登录密码" />
+            <div class="agreement" style="margin-top: 10px">
+                <input checked type="checkbox" />我同意并已阅读
+                <a href="javascript:;">《{$config['sitename']}服务协议》</a>
+            </div>
+			 
+			 <input id="button_search" type="submit" value="" name="button_search">
+            <div class="index1_9">
+                <a style="float:right; margin-right:10px;" href="{:U('User/reg')}">免费注册</a>
+				<if condition="$qq_setting['qq_isuse']==1">
+				 <a style="float:right; margin-right:20px;" href="{:U('Qlogin/index')}">使用QQ登录<img src="/Public/images/Connect_qq_1.png" /></a>
+				 </if> 
+            </div>
+
+        </div>
+    </form>
+</div>
+<include file="Public:footer" />
+<else />
+<script type="text/javascript">
+if (window == top) 
+{
+ location.href='__APP__'; 
+  }
+</script>
+</if>

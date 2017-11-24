@@ -1,0 +1,67 @@
+<include file="Public:header" />
+    </td>
+  <td valign="top" class="r">
+    	
+      <div class="title02">历史充值记录<a href="{:U('Cash/recharge')}" class="Annkela"><img src="/Public/xincss/images/22.png"/>在线充值</a></div>
+      <div class="block04">
+      	<table class="ipList" width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="title">
+            <td width="20" class="icon">&nbsp;</td>
+            <td>充值金额</td>
+            <td>充值方式</td>
+			<td>订单编号</td>
+            <td>充值时间 </td>
+			<td>状态 </td>
+          </tr>
+          <!-- 隔行变色 -->
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+          })
+          </SCRIPT>
+		<foreach name="order_cz" key="key" item='order'> 
+          <tr class="td1">
+            <td>&nbsp;</td>
+            <td><span class="ip">{$order['pay_money']}</span></td>
+            <td><switch name="order.order_type">
+			<case value="1"  >财付通</case>
+			<case value="0">支付宝</case>
+			<case value="2" ><font style="color:#00a2c9">充值赠送</font></case>
+			<default />支付宝
+			</switch> </td>
+			<td>{$order['outer_order_no']}</td>
+			<td> <p>{$order['addtime']}</p></td>
+			<td><switch name="order.status">
+			<case value="1"  >成功</case>
+			<case value="0">待审核</case>
+			<default />成功
+			</switch></td>
+          </tr>
+		</foreach> 
+            
+        </table>
+      </div>
+      
+      <div class="pageList">
+			<table width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="left"></td>
+					<td class="center">&nbsp;</td>
+					<td class="right" align="right">
+						<div class="pagebreak">
+							<table cellspacing="0" cellpadding="0"><tr><td class="page_no"><a class='current'>{$show}</a></td></tr></table>
+						</div>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+      
+    </td>
+  </tr>
+</table>
+
+
+</body>
+</html>
+

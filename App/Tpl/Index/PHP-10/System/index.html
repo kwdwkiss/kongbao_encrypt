@@ -1,0 +1,89 @@
+<include file="Public:top" />
+<!-- top -->
+<style type="text/css">
+.contenter .resize .left_cont dl{padding:10px 0;border-bottom:1px dashed #ddd}.contenter .resize .left_cont dl dt{height:32px;line-height:32px;color:#000;position:relative;z-index:100}.contenter .resize .left_cont dl dt a{display:block;font-size:12px;font-weight:400;line-height:32px;height:32px;color:#999}.contenter .resize .left_cont dl dt a i{display:inline-block;float:right;margin-right:20px;overflow:hidden;font-size:18px}.contenter .resize .left_cont dl dd a{color:#666;height:32px;line-height:32px;padding-left:15px;width:165px;display:inline-block}.contenter .resize .left_cont dl dd a.curr{background:#fff}.contenter .resize .left_cont dl dd a:hover{background:#ddd;color:#000}.contenter .resize .right_cont{background-color:#fff;position:relative;padding-bottom:120px;width:960px;float:right;background:#fff;padding-left:30px;min-height:750px;padding-top:20px}.contenter .resize .right_cont .table_box{display:block;margin-top:20px}.contenter .resize .right_cont .table_box .tab_nav{height:30px;line-height:30px;border-bottom:2px solid #00a2ca;overflow:hidden}.contenter .resize .right_cont .table_box .tab_nav>a{display:inline-block;float:left;margin-right:2px;background:#d9dee4;text-align:center;width:113px;color:#666}.contenter .resize .right_cont .table_box .tab_nav>a.curr{background:#00a2ca;color:#fff}.contenter .resize .right_cont .table_box .tab_nav>a:hover{background:#00a2ca;color:#fff}.contenter .resize .right_cont .table_box .tab_cont{display:block;width:100%}.contenter .resize .right_cont .table_box .tab_obj{width:100%;height:auto;border:1px solid #ddd;margin-top:7px}.contenter .resize .right_cont .table_box .tab_obj tr:hover{background:#ddd;cursor:pointer}.contenter .resize .right_cont .table_box .tab_obj tr th{height:35px;line-height:35px;text-align:center;font-weight:500;color:#999;background:#f7f7f7}.contenter .resize .right_cont .table_box .tab_obj tr th i{color:#ccc;font-size:16px;cursor:pointer;margin-left:5px}.contenter .resize .right_cont .table_box .tab_obj tr td{height:auto;line-height:25px;word-break:break-all;padding:10px 5px;text-align:center;color:#666;border-top:1px solid #ddd;overflow:hidden}.contenter .resize .right_cont .table_box .search_box{display:block;color:#666;height:30px;line-height:30px;padding:20px 0}.contenter .resize .right_cont .table_box .search_box .text_obj{width:120px;padding:0 5px;height:30px;line-height:30px;overflow:hidden;border:1px solid #ddd}.contenter .resize .right_cont .table_box .search_box .select_obj{width:130px;height:30px;line-height:30px;overflow:hidden;border:1px solid #ddd}.contenter .resize .right_cont .table_box .search_box .submit{height:30px;line-height:30px;overflow:hidden;border:1px solid #ddd;text-align:center;width:60px;background:#f7f7f7;vertical-align:bottom;cursor:pointer}.contenter .resize .right_cont .info_wrapp .introduce .intro_list .option .y-btn-blue{display:inline-block;min-width:78px;height:33px;padding:0 30px 1px;background:#00a2ca;line-height:33px;font-size:14px;color:#fff;text-align:center;outline:0;border-radius:0}.contenter .resize .right_cont .info_wrapp .introduce .intro_list .option .y-btn-white{background:#fff;border:1px solid #00a2ca;color:#00a2ca;display:inline-block;min-width:78px;height:33px;padding:0 30px 1px;line-height:33px;font-size:14px;text-align:center;outline:0;border-radius:0}.contenter .resize .right_cont .info_wrapp .introduce .intro_list .option .y-btn-white:hover{background:#00a2ca;color:#fff}.contenter .resize .right_cont .table_box .tab_nav .add_addr_btn{display:inline-block;cursor:pointer;float:left;margin-right:2px;background:#f60;text-align:center;width:113px;color:#fff}.contenter .resize .right_cont .table_box .tab_cont tr td .add_option{overflow:hidden}.contenter .resize .right_cont .table_box .tab_cont tr td .add_option a{color:#f60}.contenter .resize .right_cont .table_box .tab_cont tr td .add_option em{color:#ddd;margin:0 3px}.contenter .resize .right_cont .table_box .tab_cont tr td .add_option a:hover{text-decoration:underline}
+/**/ .btn_xd{background:#ff6000;padding:3px 15px;border:1px solid #ff6000;border-radius:4px;color:#fff;margin:5px 0}.sh_box .sh_cont .sh_cont_right .btn_xd:hover{background:#fff;color:#ff6000;border:1px solid #ff6000}
+.infolist{position:relative;width:600px}.infolist .tx{float:left;height:32px;font-size:14px;line-height:32px}.infolist .liststyle{float:left}.infolist lable{position:absolute;top:0;left:0;overflow:hidden;padding:8px 0;width:5em;height:22px;vertical-align:middle;line-height:22px}.infolist .liststyle p{padding:8px 0;line-height:22px}.infolist .sex a{float:left;display:inline-block;margin-right:15px;padding-left:20px;height:38px;background-image:url(../images/sex.png);background-position:2px 12px;background-size:13px auto;background-repeat:no-repeat;color:#494949;line-height:38px}.citys,.countys,.privinces{position:absolute;padding:10px 15px;width:295px;border:1px #d9d9d9 solid;background-color:#f8f8f8;box-shadow:3px 3px 5px rgba(128,128,128,.2)}.citys .a,.countys .a,.privinces .a{float:left;display:block;padding:3px 5px;color:#333;text-decoration:none;font-size:12px;font-family:"微软雅黑";zoom:1}.citys .a:hover,.countys .a:hover,.privinces a:hover{background-color:#00a2ca;color:#fff}
+</style>
+<script type="text/javascript"> 
+$(function()
+{
+     $('.checkall').click(function(){
+		$('.checkall').attr('checked',$(this).attr('checked'));
+		$('.checkitem').each(function(){
+			$(this).attr('checked',$('.checkall').attr('checked'));
+		});
+	});
+
+});  
+</script>
+<div class="contenter">
+<div class="container cont_bg">
+    <div class="resize">
+        <div class="c_leftBox">
+		<div class="left_cont">
+    <div style="font-size: 16px;
+font-weight: normal;
+padding-bottom: 10px;">{$config['sitename']}</div>
+    <include file="Public:left_nav" />
+</div>
+<!-- top -->
+</div>
+<div class="right_cont">
+<div style="overflow: hidden;background: #EEEEEE" id="scrollDiv" >
+<div>
+</div></div>
+<div class="table_box">
+                    <div class="tab_nav">
+					<a  <if condition="$cur eq index">class="curr"</if> href="{:U('System/index')}">全部消息({$all})</a>
+                    <a href="{:U('System/weidu')}" <if condition="$cur eq weidu">class="curr"</if>>未读消息({$allnoread})</a>  
+					<a href="{:U('System/yidu')}" <if condition="$cur eq yidu">class="curr"</if>>已读消息({$allread})</a>
+                    </div>
+                    <div class="tab_cont">
+                     <form method="post" id="form" action="{:U('System/excute')}"><input name="type" id="type" type="hidden" value="del" />
+                        <table cellpadding="0" cellspacing="0" class="tab_obj">
+                            <tr>
+                                 <th width="5%"><input type="checkbox" class="checkall" id="checkallBottom"></th>
+								<th width="10%">信息类型</th>
+                                <th width="20%">收件时间</th>
+                                <th width="10%">发件人</th>
+                                <th width="">标题</th>
+                                <th width="10%">状态</th>
+                                <th width="10%">操作</th>
+                            </tr>
+                            <tr>
+                           <foreach name="system_list" key="key" item="user"> 
+									<td><input type="checkbox" name="id[]" value="{$user['mid']}" class="checkitem"></td>
+									<td>{$user['type']}</td>
+                                    <td>{$user['addtime']|date="Y-m-d H:i:s",###}</td>
+                                    <td>{$user['username']}</td>
+                                    <td>{$user['title']}</td>
+                                    <td class="status">
+									 <if condition="$cur eq yidu"><font color="#00a2c9">已查阅</font>
+                                        <elseif condition="$cur eq weidu" /><font style="color:#090">未查阅</font>
+                                        <else />{$user['read']}
+                                        </if>
+									</td>
+                                    <td>
+                                        <a href="__URL__/view/id/{$user['mid']}" class="delete c_skyBlue">查看</a>
+                                       
+                                    </td>
+                                </tr>
+								 </foreach>
+							 <tr>
+                       		<th><input type="checkbox" class="checkall" id="checkallBottom"></th>
+                       		<th><a href="JavaScript:void(0);" class="btn_xd" onclick="if(confirm('确定标记已读吗？')){$('#type').val('read');$('#form').submit();}"><span>标记已读</span></a></th>
+                       		</table>
+							</form>
+                        <div class="pages">
+                                {$show} </div>
+                            <div class="page">
+                                <ul  class="am-pagination"></ul></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- footer -->
+<include file="Public:foote" />

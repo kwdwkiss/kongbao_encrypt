@@ -1,0 +1,29 @@
+
+<include file="Public:top" />
+<div class="container cont_bg">
+    <div class="resize">
+        <div class="c_leftBox">
+            <div style="font-size: 16px;
+font-weight: normal;
+padding-bottom: 10px;">{$config['sitename']}-新闻中心</div>
+            <dl>
+                <dt><a href="#">{$config['sitename']}</a></dt>
+                <dd><a class="curr" href="{:U('Gonggao/index')}">通知公告</a></dd><dd><a href="{:U('Help/index')}">帮助中心</a></dd><dd><a href="{:U('Article/index')}">网店经验</a></dd><dd><a href="{:U('About/index')}">关于我们</a></dd><dd><a href="{:U('Gonggao/fenzhan')}">分站加盟<img style="margin-top:-2px; margin-left:5px;" src="/Public/images/hot.png"/></a></dd></dl>
+        </div>
+        <div class="c_rightBox">
+            <div class="change_code news_List">
+                <div class="c_tit">
+                    <h2>通知公告</h2>
+                </div>
+                <div class="list_cont">
+                    <ul>
+                        <foreach name="gonggao_list" item="gonggao"><li><span>【通知公告】</span><a href="{:U('gonggao',array('id'=>$gonggao['id']))}">{$gonggao["title"]}</a></li></foreach></ul>
+                </div>
+                <!--翻页-->
+                <div class="pages">
+                  {$show}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:foote" /> 

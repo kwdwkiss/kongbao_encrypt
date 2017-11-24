@@ -1,0 +1,20 @@
+<!-- footer -->
+<div class="footText">
+  <div class="content">
+    <span>{$config['sitename']}24小时在线自助下单、安全、稳定、有保障。</span>
+    <a href="{:U('Order/kb')}" target="_blank" class="but03">立即体验</a> </div>
+</div>
+<div class="footer">
+<div class="content">
+<span class="fc1">友情链接：</span>
+<foreach name="flink_list" item="flink">
+<a href="{$flink.siteurl}"  title="{$flink.sitebrief}" target="_blank"><span class="fc1">{$flink.sitename}</span>&nbsp;&nbsp;</a>
+</foreach>
+<div class="copyRight">{$config['copy_right']}&nbsp;&nbsp;&nbsp;{$config['beian']}{$config['tongji']}
+</body>
+</html>
+<script type="text/javascript">
+function chinaz(){this.init();}
+chinaz.prototype={constructor:chinaz,init:function(){this._initBackTop();},_initBackTop:function(){var $backTop=this.$backTop=$('<div class="cbbfixed">'+'<a class="gotop cbbtn">'+'<span class="up-icon"></span>'+'</a>'+'</div>');$('body').append($backTop);$backTop.click(function(){$("html, body").animate({scrollTop:0},100);});var timmer=null;$(window).bind("scroll",function(){var d=$(document).scrollTop(),e=$(window).height();0<d?$backTop.css("bottom","340px"):$backTop.css("bottom","-90px");clearTimeout(timmer);timmer=setTimeout(function(){clearTimeout(timmer)},100);});}}
+var chinaz=new chinaz();
+</script>

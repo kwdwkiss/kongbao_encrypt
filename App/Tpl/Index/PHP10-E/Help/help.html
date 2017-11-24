@@ -1,0 +1,59 @@
+<include file="Public:new" />
+<link rel="stylesheet" href="__PUBLIC__/xincss/css/news.css"/>
+
+<div class="news-content-main">
+	<div class="auto">
+		<div class="news-content-title">
+			<ul class="news-crumbs">
+				<li><a href="/" class="news-crumbs-link news-crumbs-home">首页</a><span
+					class="news-crumbs-arrow">&gt;</span></li>
+				<li><a href="{:U('Help/index')}" class="news-crumbs-link">帮助中心</a><span
+					class="news-crumbs-arrow">&gt;</span>
+				</li>
+				<li class="news-title-abbr text-overflow">{$help["title"]}</li>
+			</ul>
+		</div>
+		<div class="news-article">
+			<h1 class="news-article-title">{$help["title"]}</h1>
+
+			<div class="news-article-subtitle">
+				<div class="news-article-time">发布时间：{$help["time"]}</div>
+				<div class="news-article-share">
+					<div class="bdsharebuttonbox">
+					<a href="#" class="bds_qzone" data-cmd="qzone"
+					title="分享到QQ空间"></a><a href="#"
+					class="bds_tsina"
+					data-cmd="tsina"
+					title="分享到新浪微博"></a><a
+					href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#"
+					class="bds_renren"
+					data-cmd="renren"
+					title="分享到人人网"></a><a
+					href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a
+					href="#" class="bds_more" data-cmd="more"></a></div>
+					<script>window._bd_share_config = {
+						"common": {
+							"bdSnsKey": {},
+							"bdText": "",
+							"bdMini": "2",
+							"bdPic": "",
+							"bdStyle": "0",
+							"bdSize": "16"
+						}, "share": {}
+					};
+					with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+				</div>
+			</div>
+			<div class="news-article-main">
+				{$help["content"]}
+
+			</div>
+			
+				<if condition="$config['tuiguang_pinlun']==1">
+		{$config['pinlun_javascript']}
+		</if>
+			
+		</div>
+	</div>
+</div>
+<include file="Public:newfoot" />

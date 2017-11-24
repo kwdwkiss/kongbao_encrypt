@@ -1,0 +1,24 @@
+<style type="text/css">
+#newFooter{margin-top:0px;padding:35px 0;border-top:1px solid #ccc;text-align:center}#newFooter p{text-align:center;color:#999;line-height:24px}#newFooter p a{margin:0 10px;font-size:14px;color:#666}#newFooter p a:hover{text-decoration:underline}#newFooter p .f_icon{display:inline-block;width:22px;height:23px}#newFooter p .f_icon.f_icon1{background:url(/Public/images/footer_icon.gif) 0 0 no-repeat}#newFooter p .f_icon.f_icon2{background:url(/Public/images/footer_icon.gif) 0 -23px no-repeat}#newFooter .cop{text-align:center;color:#999;line-height:24px}.cbbfixed{position:fixed;right:1px;transition:bottom ease .3s;bottom:-85px;z-index:3;cursor:pointer}.cbbfixed .cbbtn{width:38px;height:38px;display:block;background-color:#ff9c00}.cbbfixed .gotop{transition:background-color ease .3s;margin-top:1px}.cbbfixed .gotop .up-icon{float:left;margin:14px 0 0 9px;width:23px;height:12px;background:url(/Public/images/side-icon02.png)}.cbbfixed .gotop:hover{background-color:#00a3cc}
+</style>
+<div id="newFooter">
+<div class="resize"><p>
+<foreach name="flink_list" item="flink">
+<a href="{$flink.siteurl}"  title="{$flink.sitebrief}" target="_blank">{$flink.sitename}</a>
+</foreach>
+<p class="link2">{$config['copy_right']}&nbsp;&nbsp;&nbsp;{$config['beian']}{$config['tongji']}</p>
+<p><img src="/Public/images/Nindex15.jpg" width="25" height="25" /> <img src="/Public/images/Nindex16.jpg" width="25" height="25" /></p>
+</div>
+<div>
+<i class="f_icon f_icon1"></i>
+<i class="f_icon f_icon2"></i>
+</p>
+</div>    
+</div>
+</body>
+</html>
+<script type="text/javascript">
+function chinaz(){this.init();}
+chinaz.prototype={constructor:chinaz,init:function(){this._initBackTop();},_initBackTop:function(){var $backTop=this.$backTop=$('<div class="cbbfixed">'+'<a class="gotop cbbtn">'+'<span class="up-icon"></span>'+'</a>'+'</div>');$('body').append($backTop);$backTop.click(function(){$("html, body").animate({scrollTop:0},100);});var timmer=null;$(window).bind("scroll",function(){var d=$(document).scrollTop(),e=$(window).height();0<d?$backTop.css("bottom","340px"):$backTop.css("bottom","-90px");clearTimeout(timmer);timmer=setTimeout(function(){clearTimeout(timmer)},100);});}}
+var chinaz=new chinaz();
+</script>

@@ -1,0 +1,29 @@
+<include file="Public:header" />
+    </td>
+  <td valign="top" class="r">
+<div class="title02">分站代理价格表&nbsp;&nbsp;&nbsp;<a href="{:U('Cash/recharge')}" class="Annkela"><img src="/Public/xincss/images/22.png"/>在线充值</a></div>
+      <foreach name="level_list" item="level">
+<span style="display:none"><input type="radio" level_id="{$level['id']}" name='id[]' value="{$level['id']}" onclick="radioclick($(this))"></span>
+</foreach> 
+	  <div class="block04">
+		<div class="right_cont">
+		<div class="table_box" style="margin-top: 0px">
+			<div class="tab_cont">
+			<div id="goumai" style="display: none"> 
+                </div>
+              <br />
+		 <div class="V_con1">
+    	<p>请严格按照快递类型对应的接口ID配置,否则出现错误自行负责；<br />接口API地址:<b class="fc2">{$config['siteurl']}/index.php/Apipay/api_pay.html</b>；<br />您的对接api ID:<b class="fc2" >{$user['id']}</b>;api密码为您在本站的会员账号密码；<br />如果您有意见和建议，或者进行投诉请点击<b><a href="#" class="fc2">投诉建议</a></b>。</p>
+    </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+$(function()
+	{
+	      var current_type_id="{$current_type_id}";
+	      var obj =  $("input[type=radio][level_id="+current_type_id+"]");	
+	       obj.click();
+	       radioclick(obj);
+	 });
+</script>

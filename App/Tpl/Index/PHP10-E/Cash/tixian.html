@@ -1,0 +1,67 @@
+<include file="Public:header" />
+</td><td valign="top" class="r">
+<div class="title02">提现申请
+<a href="{:U('User/complaint')}" class="Annkela"><img src="/Public/xincss/images/19.png"/>返回列表</a></div>
+	 <form action="{:U('deal_tixian')}" method="POST" >
+	 <input type="hidden" name="user_id" value="{$userInfo['id']}" /> 
+	<input type="hidden" name="status" value="1" />
+    <table class="V_tb2">
+	
+  <SCRIPT LANGUAGE="JavaScript">
+  $(function(){
+   $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+  })
+  </SCRIPT>
+	<tr class="td1">
+	<th><font style="color:#F00">*</font>可提现额度</th>
+	<td>
+	<strong><b class="fc2">{$userInfo['refer_money']}</b></strong> 元 
+	</td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>最低提现</th>
+        <td><strong><b class="fc2">{$tixian_setting['min_money']}</b></strong> 元 </td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>提现支付宝</th>
+        <td><if condition="$cwsz_config['account_no']">{$cwsz_config['account_no']}&nbsp;&nbsp;<span class="fc1">账号错误将提现失败</span><else/><a href="{:U('User/cwsz')}" >添加</a>&nbsp;<span class="fc2">请添加提现支付宝账号</span></if></td>
+      </tr>
+       <tr class="td1">
+        <th><font style="color:#F00">*</font>支付宝姓名</th>
+        <td><if condition="$cwsz_config['account_name']">{$cwsz_config['account_name']}&nbsp;&nbsp;<span class="fc1">姓名错误将提现失败</span><else/><a href="{:U('User/cwsz')}" >添加</a>&nbsp;<span class="fc2">请添加提现支付宝姓名</span></if></td>
+      </tr>
+	   <tr class="td1">
+        <th><font style="color:#F00">*</font>提现金额</th>
+        <td><input id="money" name="money"  class="V_input2" style="width:250px" value="" type="text" /></td>
+      </tr>
+	   <tr class="td1">
+        <th><font style="color:#F00">*</font>提现方式</th>
+        <td><img src="__PUBLIC__/xincss/images/User/recharge_img3.jpg" width="134" height="38" /></td>
+      </tr>
+      <tr class="td1">
+        <th></th>
+        <td><button onclick="return tixian_submit();" type="submit" class="V_btn4 submit">确定提交</button>
+		</td>
+      </tr>
+    </table>
+    </form>
+    <div class="V_con1">
+    	<p>请填写完整的支付宝地址及收款人姓名，以便客服人员能够快速帮您解决问题；<br />如果您有意见和建议，或者进行投诉请点击<b><a href="#" class="fc2">投诉建议</a></b>。</p>
+    </div>
+    </td>
+  </tr>
+</table>
+<script type="text/javascript">
+function tixian_submit()
+{var num=/^[0-9]+(.[0-9]{1,2})?$/;var money=$('#money').val();var valid_money=$("#valid_money").val();if(money=='')
+{alert('请填写提现金额!');return false;}
+if(!money.match(num))
+{alert('提现金额格式不对!(XXX.XX)');$('#money').focus();return false;}
+if(money<=0)
+{alert('提现金额必须大于0');return false;}
+if(parseFloat(money)>parseFloat(valid_money))
+{alert('提现金额不能大于账户可用金额！');return false;}} 
+</script>
+</body>
+</html>
+

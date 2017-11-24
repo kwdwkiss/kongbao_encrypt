@@ -1,0 +1,112 @@
+<include file="Public:top" />
+<script type="text/javascript">
+		//点击升级代理会隐藏
+		$("#LnkNewUserTip").click(function(){
+			$(this).hide();
+		});
+</script>
+<div class="container cont_bg">
+<div class="resize">
+<div class="c_leftBox">
+<div style="font-size: 16px;font-weight: normal;padding-bottom: 10px;">{$config['sitename']}</div>
+<include file="Public:left_nav" />
+</div>
+<style type="text/css">
+*{font-family:"微软雅黑";}a{font-family:"微软雅黑";}.upgrade1{border:1px solid #ddd;position:relative;margin-bottom:28px;}.upgrade1_1{margin-top:35px;margin-left:30px;color:#00a2c9;display:block;line-height:18px;}.upgrade1_2{display:inline-block;margin:20px 50px 30px 110px;overflow:hidden;}.upgrade1_2 ul{display:inline-block;margin-right:-2px;width:100.5%;}.upgrade1_2 li{float:left;display:block;height:105px;overflow:hidden;width:242.5px;margin-bottom:15px;padding-left:30px;border-right:1px solid #ddd;}.upgrade1_2 li p{line-height:20px;color:#666;height:20px;overflow:hidden;}.upgrade1_2 li p em{color:#ff6500;margin-right:3px;}.upgrade1_2 li a{width:100px;height:25px;text-align:center;line-height:25px;overflow:hidden;border:1px solid #01a2c9;border-radius:3px;display:inline-block;margin-top:15px;color:#01a2c9;}.upgrade1_2 li a:hover{background:#01a2c9;color:#fff;}.upgrade1_3{position:absolute;}.upgrade1_4{margin-top:10px;display:block;width:100%;border-bottom:1px solid #ddd;}.upgrade1_4 dt{height:40px;line-height:40px;overflow:hidden;background:#eeeeee;}.upgrade1_4 dd{height:40px;line-height:40px;color:#666;overflow:hidden;}.upgrade1_4 dt span,.upgrade1_4 dd span{float:left;display:inline-block;}.upgrade1_5{width:10%;text-align:center}.upgrade1_6{width:45%;margin-left:29px;}.upgrade1_7{width:25%;}.upgrade1_8{width:17%;}.upgrade1_8 a{padding:5px 10px;background:#01a2c9;color:#fff;border-radius:3px;}.upgrade1_8 a:hover{color:#fff;text-decoration:none!important;background:#33b5d4;}.upgrade1_9{background:#f9f9f9;}.upgrade1_9 .upgrade1_6{color:#ff6500;}.upgrade1_10{margin-top:50px;}.upgrade1_11{width:100%;height:40px;line-height:40px;overflow:hidden;}.upgrade1_12{width:11%;height:40px;float:left;line-height:40px;overflow:hidden;display:inline-block;font-size:24px;}.upgrade1_13{width:89%;height:20px;line-height:20px;border-bottom:1px solid #ddd;display:inline-block;float:left;}.upgrade1_14{margin-top:35px;}.upgrade1_14 ul{width:100%;height:auto;display:inline-block;overflow:hidden;}.upgrade1_14 ul li{width:240px;height:auto;overflow:hidden;float:left;margin-right:5px;}.upgrade1_14 ul li h2{font-size:14px;color:#000;font-weight:500;margin-bottom:10px;}.upgrade1_14 ul li a{display:block;height:auto;overflow:hidden;line-height:22px;overflow:hidden;width:100%;color:#666;}
+</style>
+<div class="c_rightBox">
+<div class="tariff1" style="margin-bottom: 20px">
+<div class="escalate_box">
+<div class="escalate_cont">
+<div class="escalate_list">
+当前会员级别：<font color=#ff6600><img src="/{$user['user_type_img']}"></font>
+<foreach name="level_list" item="level">
+<div style="display: none">{$k1++}</div>
+<if condition="$k1%2==0">
+<else/> 
+</if>
+<input type="radio" level_id="{$level['id']}" title="" name='id[]' value="{$level['id']}" onClick="radioclick($(this))"> 
+<span class=""><img src="/{$level['image_url']}" align="absmiddle"></span></td>
+<if condition="$level['config']['money'] gt 0 && $level['up_enabled']">
+<a u="{$level['id']}" level_id="{$level['id']}" onclick="uplevel($(this))" class="sj_btn">升级</a>
+</if>
+</td>
+</tr>
+</foreach> 
+<span class="warm_cont">说明：本次升级费用不可用于买单</span>
+</div>
+</div>
+</div>
+</div>
+<table class="tariff1_1" cellpadding="0" cellspacing="0" > 
+<tbody> 
+<tr> 
+<th> 级别名称 </th> 
+<th> 允许推广 </th> 
+<th> 允许批发 </th> 
+<th> 允许提现 </th> 
+<th> 购买佣金 </th> 
+<th> 升级佣金 </th>
+<th > 升级佣金设置 </th> 
+<th> 升级费用 </th> 
+</tr>
+<foreach name="level_list" item="level"> 
+    <tr class="kuaidi_0"> 
+     <td ><img src="/{$level['image_url']}" align="absmiddle"></td> 
+     <td> <if condition="$level['config']['refer']==1">是<else/>否</if> </td> 
+     <td> <if condition="$level['config']['pifa']==1">是<else/>否</if> </td> 
+     <td> <if condition="$level['config']['tixian']==1">是<else/>否</if> </td> 
+	 <td> <if condition="$level['config']['refer_buy']==1">是<else/>否</if> </td> 
+	 <td> <if condition="$level['config']['refer_daili']==1">是<else/>否</if> </td> 
+	<td > <if condition="$level['config']['refer_daili']==1">
+	 <foreach name="dali_refer_mode" item="v" key="k" > 作为<font color="#ff6600" ><b>{$k}</b></font>级上线，获取升级费用的<font color="#ff6600"><b>{$level['config']['refer_daili_money'][$v]}</b></font>%佣金 <br/>
+	 </foreach></if> </td> 
+	  <td> <font size=3 color=#ff6600>{$level['config']['money']}</font>元 </td> 
+    </tr> 
+ </foreach>    
+   </tbody> 
+  </table>
+<div id="goumai" style="display: none"> 
+</div>   
+<script type="text/javascript">
+   $(function()
+	{
+	      var current_type_id="{$current_type_id}";
+	      var obj =  $("input[type=radio][level_id="+current_type_id+"]");	
+	       obj.click();
+	       radioclick(obj);
+	 });
+   function radioclick(obj)
+   {
+   	   var id = obj.val();
+   	    $.post("{:U('getLevelDetail')}",{type_id:id},
+   	    function(data,status)
+   	    {
+   	    	if(data.status==1)
+   	    	{
+   	    		$('#goumai').css('display','block');
+   	    		$('#goumai').html(data.data); 
+   	    	}
+   	    	else
+   	    	{
+    	         $('#goumai').css('display','none');
+   	    		$('#goumai').html('');  	
+   	    	    		
+   	    		alert(data.info);
+   	    	}
+   	    },'json');
+   } 
+   function uplevel(obj) //升级操作
+   {
+   	  var level_id = obj.attr('level_id'); 
+   	    $.post("{:U('deal_uplevel')}",{id:level_id},function(data,status)
+   	    { 
+   	         alert(data.info);location.href="uplevel" 
+   	    },'json');
+   }
+</script>
+</div>
+</div>
+<include file="Public:foote" />
+<script src="/Public/moive_play/fzjs/jquery.zclip.min.js"></script>
+<script src="/Public/moive_play/fzjs/default.js"></script>

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../Public/css/common.css" type="text/css" />
+<script charset="utf-8" src="__PUBLIC__/js/jquery.js"></script>
+<title>管理区域</title>
+<style type="text/css">
+<!--
+#man_zone .table_style tr .search {
+	margin-left: 10px;
+}
+-->
+</style>
+
+</head>
+<body>
+ <div class="fixed-bar">
+    <div class="item-title"> 
+      <h3>管理员信息</h3>
+      <ul class="tab-base">   
+         <li><a href="{:U('repass')}" ><span>管理员密码修改</span></a></li> 
+         <li><a href="javascript:void(0)" class="current"><span>管理员列表</span></a></li>   
+         <li><a href="{:U('gladd')}" ><span>添加管理员</span></a></li> 
+      </ul>
+    </div>
+  </div>
+<div id="man_zone">
+  <table width="97%" border="0" align="center" cellpadding="3" cellspacing="1" class="table_style">
+
+    <tr>
+      <td width="5%" class="left_title_1"><div align="center">ID</div></td>
+      <td width="20%" class="left_title_1"><div align="center">用户名</div></td> 
+      <td width="20%" class="left_title_1"><div align="center">用户级别</div></td> 
+      <td width="30%" class="left_title_1"> 
+          <div align="center">最近登录</div>
+     </td>     
+      <td width="25%" class="left_title_1"><div align="center">操作</div></td>
+    </tr>
+    <foreach name="user_list" item='user'>
+      <tr> 
+        <td><div align="center">{$user['id']}</div></td>
+        <td><div align="left">{$user['username']}</div></td> 
+         <td><div align="center"> <?php if($user['groupid']==1){ ?>管理员 <?php } ?><?php if($user['groupid']==2){ ?>主管 <?php } ?><?php if($user['groupid']==3){ ?>财务 <?php } ?><?php if($user['groupid']==4){ ?>客服 <?php } ?></div></td> 
+        <td><div align="left">{$user['last_login_time']}</div></td> 
+        <td align="center">
+                
+        	<div style="margin:0 10px 0 5px;float:left"><a title="用户信息修改" href="__URL__/aedit/id/{$user['id']}"><img src="../Public/images/set2.gif" alt="编辑" /></a></div>
+<div style="margin:0 10px 0 5px;float:left"> 
+<if condition="$anquan_setting['anquan_guanliyisuse']==1">
+<a title="删除该用户信息"   href="__URL__/adel/id/{$user['id']}"  onclick="return confirm('确定要删除这个用户吗？\\r 删除后不能恢复，请谨慎操作！')" ><img src="../Public/images/pic12.gif" alt="删除" /></a>
+<else />
+<img src="../Public/images/pic12.gif" alt="删除" />
+</if>
+</div>  
+         </td>
+      </tr>
+    </foreach>
+  </table>
+</div>
+</body>
+</html>
+<!-- <?php if($user['id']!=1){ ?> -->
+<!--<?php } ?>-->

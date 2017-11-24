@@ -1,0 +1,104 @@
+/* 
+* @Author: Administrator
+* @Date:   2015-01-16 13:31:55
+* @Last Modified by:   Administrator
+* @Last Modified time: 2015-01-17 15:37:07
+*/
+ div#category_tree{
+        font-size:12px;
+    }
+    div#tree_title a {
+        color: #333;
+    }
+
+    /*左侧栏目*/
+    div#category_tree {
+        width: 190px;
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        border-right: solid 1px #DDDDDD;
+    }
+
+    div#move {
+        width: 5px;
+        background: #EEEEEE;
+        position: fixed;
+        left: 191px;
+        top: 0px;
+        bottom: 0px;
+        border-right: solid 1px #DDDDDD;
+        cursor: pointer;
+    }
+
+    div#move span {
+        font-size: 16px;
+        color: #999;
+        display: block;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        top: 50%;
+        margin-top: -15px;
+        z-index: 1000;
+    }
+
+    div#move span.left {
+        background: url("../images/ico_left.gif") no-repeat;
+        left: -10px;
+    }
+
+    div#move span.right {
+        background: url("../images/ico_right.gif") no-repeat;
+        left: 5px;
+    }
+    div.wrap{margin-bottom: 0px;}
+    /*右侧内容显示区*/
+    div#content {
+        position: fixed;
+        left: 197px;
+        right: 0px;
+        bottom: 0px;
+        top: 0px;
+        padding:0px;
+    }
+    #tree_title {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+
+#pic ul.one_pic {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+#pic ul.one_pic li{
+    float: left;
+    margin-right: 10px;
+    width:100px;
+    height:120px;
+    position: relative;
+}
+#pic ul.one_pic li img{
+    width:100px;
+    height:100px;
+
+}
+#pic ul.one_pic li span{
+    display: block;
+    position:absolute;
+    font-size: 20px;
+    width: 20px;
+    height:20px;
+    line-height: 20px;
+    background: #c00;
+    color:#fff;
+    top: 5px;
+    right:5px;
+    text-align: center;
+    cursor: pointer;
+}

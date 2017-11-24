@@ -1,0 +1,66 @@
+<include file="Public:top" />
+<!--中间-->
+<div class="container cont_bg">
+    <div class="resize">
+        <div class="c_leftBox">
+    <div style="font-size: 16px;
+font-weight: normal;
+padding-bottom: 10px;">{$config['sitename']}</div>
+<include file="Public:left_nav" />
+</div>
+        <div class="c_rightBox">
+            <div class="change_code">
+                <div class="c_tit">
+                    <h2>修改密码</h2>
+                </div>
+               <form  name="reg" id="reg" action="{:U('User/savepass')}" method="POST">
+                    <div class="c_form">
+                        <div class="f_left">
+                            <ul>
+                                <li><label>用户名称：</label><i>{$user['username']}</i></li>
+								 <li><label>原密码：</label><input class="input_text" style="width:200px" type="password" name="oldpwd" id="oldpwd" /><span class="check_code">输入原密码</span></li>
+                                <li><label>新密码：</label><input class="input_text" style="width:200px" type="password" name="password" id="password" /><span class="check_code">输入新密码</span></li>
+                                <li><label>确认密码：</label><input class="input_text" style="width:200px" type="password" name="repassword" id="repassword"  /><span class="check_code">再次输入新密码</span></li>
+                                <li><label>&nbsp;</label><input class="form_sub" type="submit"  onclick="return chk_submit()" value="确认修改" /></li>
+                            </ul>
+                        </div>
+                        <div class="f_right">
+                            <p>
+                                <span class="span1">验证身份</span>
+                                <span class="span2">修改密码</span>
+                                <span class="span3">完成</span>
+                            </p>
+                        </div>
+                    </div>
+                <input type="hidden" name="id" value="{$user['id']}">
+	</form>
+				{$kongbao_page['tuiguang_glzx']}
+            </div>
+        </div>
+    </div>
+</div>
+<script  type="text/javascript"> 
+function chk_submit()
+{  
+var password = $("#password").val();
+var oldpwd = $("#oldpwd").val();
+var repassword = $("#repassword").val();
+if (oldpwd==""){ //没有再次输入密码的时候
+alert('原密码不能为空！');
+return false;
+}
+if (password==""){ //没有再次输入密码的时候
+alert('密码不能为空！');
+return false;
+}
+if (repassword==""){ //没有再次输入密码的时候
+alert('请再输入一次密码！');
+return false;
+}     
+if(repassword!=password){   //再次输入密码不正确的时候
+alert('两次输入的密码不一致！');
+return false;
+}    
+}
+</script>
+<include file="Public:foote" />

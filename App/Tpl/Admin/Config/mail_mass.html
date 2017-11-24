@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../Public/css/common.css" type="text/css" />
+<title>管理区域</title>
+</head>
+
+<body>
+ <div class="fixed-bar">
+    <div class="item-title"> 
+      <h3>网站设置</h3>
+      <ul class="tab-base">  
+         <li><a href="../Config/mail_setting" ><span>邮箱配置</span></a></li>
+		 <li><a href="../Config/user_setting" ><span>会员配置</span></a></li>
+		<li><a href="../Config/user_mass" ><span>群发配置</span></a></li> 
+		<li><a href="javascript:void(0)" class="current" ><span>邮件群发</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="man_zone">
+
+  <h3>发送成功列表</h3>
+    <volist name="succss" id="vo" key="k" >
+		<p>{$k}.{$vo}<br></P>
+	</volist>
+
+  <h3>发送失败列表</h3>
+	<volist name="error" id="ve" key="ke" >
+		<p>{$ke}.<span style="color:red;">{$ve}</span></P>
+	</volist>
+	<h5>共发送{$sum}条数据，成功{$k}条，失败{$ke}条。</h5>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<style type="text/css">
+.kefu_img .kefu_head{display:block; width:38px; height:36px; background:url(/Public/images/kefu_head.png) center top no-repeat; padding-bottom:5px; cursor:pointer;}
+.kefu_img .kefu_cont{display:block; width:38px; height:91px; background:url(/Public/images/kefu_cont.gif) 0px -202px no-repeat;  cursor:pointer;}
+.kefu h4{width:100%; line-height:30px; overflow:hidden; font-weight:500; margin-top:5px; color:#000;}
+.kefu a{color:#9cddf5; width:100%; display:block;}
+.kefu a:hover{ text-decoration:underline;}
+.kefu a img{margin-right:10px;}
+.right_contacts{padding:10px; color:#333;}
+.right_contacts p{padding-top:10px;}
+#ann{background:#e5e5e5; height:30px; line-height:30px; width:100%; overflow:hidden;}
+#ann ul{width:1160px; padding-left:20px; background:url(/Public/images/ann_bg.png) left center no-repeat; height:30px;}
+#ann ul li{float:left; width:265px;  overflow:hidden; height:30px; padding:0 10px;}
+#ann ul li a{color:#666;}
+#ann ul li a:hover{color:#00a2ca; text-decoration:underline;}
+</style>
+<div class="kefu_img" style="position: fixed;_position: absolute; top: 430px;right: 1px;z-index: 10000;width: 38px;height: 128px;">
+	<span class="kefu_head"></span>
+    <span class="kefu_cont"></span>
+</div>
+<div class="kefu" style="width:158px; min-height:174px; display:none; background:#fff; border:3px solid #9cddf5;position: fixed;_position: absolute;top: 380px;right: 50px;z-index: 10000;">
+	<div class="right_contacts">
+	<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$config['qq1']}&site=qq&menu=yes"><img src="/Public/images/qq1.gif" width="92" height="22" /></a>
+    	<p>
+        	客服；{$config['qq1']}  <br />
+            电话；{$config['phone']}<br /> 
+            7×12小时在线服务 <br /> （早9点-晚11点）<br />
+
+        <p>
+    </div>
+</div>
+<script type="text/javascript">
+    
+	$(".kefu_img").click(function(){
+		$(".kefu").toggle();
+	});
+	$(".kefu").mouseover(function(){
+		$(this).show();
+	});
+	$(".kefu").mouseleave(function(){
+		$(this).hide();
+	});
+</script>
+</div>

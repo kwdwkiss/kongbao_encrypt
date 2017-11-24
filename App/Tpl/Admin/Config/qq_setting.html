@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../Public/css/common.css" type="text/css" />
+<title>管理区域</title>
+</head>
+
+<body>
+ <div class="fixed-bar">
+    <div class="item-title"> 
+      <h3>网站设置</h3>
+      <ul class="tab-base">  
+         <li><a href="{:U('config')}" ><span>基本设置</span></a></li> 
+         <li><a href="{:U('payonline_setting')}" ><span>支付设置</span></a></li>
+		  <li><a href="{:U('api_name')}" ><span>接口设置</span></a></li>
+         <li><a href="{:U('bindip')}" ><span>IP绑定设置</span></a></li> 
+        <li><a href="{:U('anquan_setting')}" ><span>全局开关设置</span></a></li> 
+          <li><a href="javascript:void(0)" class="current" ><span>QQ互联设置</span></a></li>
+      </ul>
+    </div>
+  </div>
+<div id="man_zone">
+<form action="__URL__/qq_save" method="post">
+  <table width="97%" border="0" align="center"  cellpadding="3" cellspacing="1" class="table_style">
+   	<tr>
+    	<td class="left_title_2">是否启用QQ互联</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="qq_setting[qq_isuse]"  value="1"  <eq name="config['qq_setting']['qq_isuse']" value='1'>checked</eq> />是
+       	<input type="radio" name="qq_setting[qq_isuse]"  value="0"  <eq name="config['qq_setting']['qq_isuse']" value='0'>checked</eq> />否  	
+      			<font color='red'>(如果选"是"则在前台登陆时显示 QQ登陆)</font>
+    	</td> 
+    </tr>  
+    <tr>
+      <td class="left_title_1">域名验证信息</td> 
+      <td><input type="text" name="qq_setting[qq_appcode]" size="40" value="{$config['qq_setting']['qq_appcode']}"></td>
+    </tr> 
+    <tr>
+      <td class="left_title_2">应用标识</td> 
+      <td><input type="text" name="qq_setting[qq_appid]" size="40" value="{$config['qq_setting']['qq_appid']}"></td>
+    </tr> 
+    <tr>
+      <td class="left_title_1">应用密钥</td> 
+      <td><input type="text" name="qq_setting[qq_appkey]" size="40" value="{$config['qq_setting']['qq_appkey']}"></td>
+    </tr>     
+    <tr>
+		<td colspan="2" class="left_title_1">
+		<div align="center"> 
+		 <input type="submit" value="保存" />  
+		</td>
+	</tr> 
+  </table>
+  </form>
+</div>
+</body>
+</html>

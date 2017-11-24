@@ -1,0 +1,84 @@
+<include file="Public:header" />
+    </td>
+  <td valign="top" class="r">
+<div class="title02">升级金账户&nbsp;&nbsp;&nbsp;<img src="/Public/images/overbook_4.png"/> <a href="{:U('Cash/recharge')}" class="Annkela"><img src="/Public/xincss/images/22.png"/>在线充值</a></div>
+      <div class="block04">
+		<div class="right_cont">
+		<div class="table_box" style="margin-top: 0px">
+			<div class="tab_cont">
+				<table cellpadding="0" cellspacing="0" class="tab_obj">
+					<tr>
+						<th width="30%" class="bgc_skyBlue" style="color: #fff;border-right: 1px solid #ddd">套餐名称</th>
+						<th width="30%" class="bgc_skyBlue" style="color: #fff;border-right: 1px solid #ddd">详细内容</th>
+						<th width="30%" class="bgc_skyBlue" style="color: #fff;">操作</th>
+					</tr>
+					<tr>
+					<foreach name="level_list" item="level">
+					<div style="display: none">{$k1++}</div>
+					<if condition="$k1%2==0">
+					<else/> 
+					</if>
+					 <td style="border-right: 1px solid #ddd"><em class="c_chen fw_600"><input type="radio" level_id="{$level['id']}" title="" name='id[]' value="{$level['id']}" onClick="radioclick($(this))"> <img src="/{$level['image_url']}"/></em></td>
+					  <td style="border-right: 1px solid #ddd">直接付款<em class="c_chen fw_600">{$level['config']['money']}</em>元，直接成为<em class="c_chen fw_600">{$level['title']}</em></td>
+						<td><if condition="$level['config']['money'] gt 0 && $level['up_enabled']">
+							<a u="{$level['id']}" level_id="{$level['id']}" onclick="uplevel($(this))" class="prestore b1_skyBlue c_skyBlue">升级</a></if></td>
+						</tr>
+						<tr>
+						   </foreach>                          
+						</table>
+			</div>
+		</div>
+					<p style="line-height: 45px;height: 45px;font-size: 16px">快递价格</p>
+                <div class="table_box" style="margin-top: 0px">
+				<table cellpadding="0" cellspacing="0" class="tab_obj">
+				<tr>
+				<th width="10%" class="bgc_skyBlue" style="color: #fff;border-right: 1px solid #ddd">详细介绍</th>
+				 <div class="table_box" style="margin-top: 10px">
+				</tr>                    
+				</table>
+                </div>
+                    </div>
+                </div>
+<div id="goumai" style="display: none"> 
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+$(function()
+	{
+	      var current_type_id="{$current_type_id}";
+	      var obj =  $("input[type=radio][level_id="+current_type_id+"]");	
+	       obj.click();
+	       radioclick(obj);
+	 });
+   function radioclick(obj)
+   {
+   	   var id = obj.val();
+   	    $.post("{:U('getLevelDetail')}",{type_id:id},
+   	    function(data,status)
+   	    {
+   	    	if(data.status==1)
+   	    	{
+   	    		$('#goumai').css('display','block');
+   	    		$('#goumai').html(data.data); 
+   	    	}
+   	    	else
+   	    	{
+    	         $('#goumai').css('display','none');
+   	    		$('#goumai').html('');  	
+   	    	    		
+   	    		alert(data.info);
+   	    	}
+   	    },'json');
+   } 
+   function uplevel(obj) //升级操作
+   {
+   	  var level_id = obj.attr('level_id'); 
+   	    $.post("{:U('deal_uplevel')}",{id:level_id},function(data,status)
+   	    { 
+   	         alert(data.info);location.href="uplevel" 
+   	    },'json');
+   }
+</script>

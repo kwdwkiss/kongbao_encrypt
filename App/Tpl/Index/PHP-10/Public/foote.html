@@ -1,0 +1,33 @@
+<div id="change_head" style="display:none">
+    <div id="altContent" style="width:660px;height:442px">
+    </div>
+</div>
+    </div>       
+</div>  
+</div>
+<!--新底部-->
+<style type="text/css">
+#nFooter{background:#fff;padding:10px 0;border-top:1px solid #ccc;margin-top:30px}#nFooter p{line-height:28px;text-align:center;color:#999}#nFooter p a{color:#999;margin:0 10px}#nFooter p a:hover{text-decoration:underline}#nFooter p.link1 a{color:#666}.cbbfixed{position:fixed;right:1px;bottom:-85px;z-index:3;cursor:pointer;transition:bottom ease .3s}.cbbfixed .cbbtn{display:block;width:38px;height:38px;background-color:#ff9c00}.cbbfixed .gotop{margin-top:1px;transition:background-color ease .3s}.cbbfixed .gotop .up-icon{float:left;margin:14px 0 0 9px;width:23px;height:9pt;background:url(/Public/images/side-icon02.png)}.cbbfixed .gotop:hover{background-color:#00a3cc}
+</style>
+<div id="nFooter">
+<div class="resize">
+<p class="link1"> 
+<foreach name="flink_list" item="flink">
+<a href="{$flink.siteurl}"  title="{$flink.sitebrief}" target="_blank">{$flink.sitename}</a>
+</foreach>
+</p>
+<p class="link2">{$config['copy_right']}&nbsp;&nbsp;&nbsp;{$config['beian']}</p>
+<p><img src="/Public/images/Nindex15.jpg" width="25" height="25" /> <img src="/Public/images/Nindex16.jpg" width="25" height="25" /></p>
+</div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="/Public/moive_play/xjs/layer.js"></script>
+<script type="text/javascript">   
+$(".content .model_box .model_cont .express").mouseover(function(){$(this).addClass("curr");$(this).siblings().removeClass("curr");});$('.video_obj').click(function(){var TheId=$(this).attr('value');layer.open({type:2,title:false,area:['800px','411px'],content:"/index.php/Gonggao/Index-zzjs.html"});})
+$('.video_obj1').click(function(){var TheId=$(this).attr('value');layer.open({type:2,title:false,area:['800px','411px'],content:"/index.php/Gonggao/Index-xsjc.html"});})
+$('.video_obj2').click(function(){var TheId=$(this).attr('value');layer.open({type:2,title:false,area:['800px','411px'],content:"/index.php/Gonggao/Index-tgsp.html"});})
+function chinaz(){this.init();}
+chinaz.prototype={constructor:chinaz,init:function(){this._initBackTop();},_initBackTop:function(){var $backTop=this.$backTop=$('<div class="cbbfixed">'+'<a class="gotop cbbtn">'+'<span class="up-icon"></span>'+'</a>'+'</div>');$('body').append($backTop);$backTop.click(function(){$("html, body").animate({scrollTop:0},100);});var timmer=null;$(window).bind("scroll",function(){var d=$(document).scrollTop(),e=$(window).height();0<d?$backTop.css("bottom","340px"):$backTop.css("bottom","-90px");clearTimeout(timmer);timmer=setTimeout(function(){clearTimeout(timmer)},100);});}}
+var chinaz=new chinaz();
+</script>

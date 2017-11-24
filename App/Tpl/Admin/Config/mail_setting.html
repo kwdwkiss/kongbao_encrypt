@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../Public/css/common.css" type="text/css" /> 
+<title>管理区域</title>
+<script type="text/javascript" src="../Public/js/jquery-1.4.2.min.js"></script> 
+ <link rel="stylesheet" href="__PUBLIC__/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="__PUBLIC__/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="__PUBLIC__/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript">
+  	KindEditor.ready(function(K) { 
+	 window.editor = K.create('#article');
+	 		var editor = K.editor({
+				allowFileManager : true
+			}); 		
+			K('#jietu_i').click(function() {
+				editor.loadPlugin('image', function() {
+					editor.plugin.imageDialog({
+						showRemote : false,
+						imageUrl : K('#jietu').val(),
+						clickFn : function(url, title, width, height, border, align) {
+							K('#jietu').val(url);
+							$('#jietu_save').val(url);
+							$("#tupian").attr('src',url);
+							editor.hideDialog();
+						}
+					});
+				});
+		});		
+}); 
+</script>
+<body>
+ <div class="fixed-bar">
+    <div class="item-title"> 
+      <h3>邮箱管理</h3>
+      <ul class="tab-base">  
+		 <li><a href="javascript:void(0)" class="current" ><span>邮箱配置</span></a></li>
+		<li><a href="../Config/user_setting" ><span>会员配置</span></a></li>
+		<li><a href="../Config/user_mass" ><span>群发配置</span></a></li> 
+		<li><a href="../Config/user_massfs" ><span>邮件群发</span></a></li>
+      </ul>
+    </div>
+  </div>
+<div id="man_zone">
+<form action="__URL__/mail_save" method="post">
+  <table width="97%" border="0" align="center"  cellpadding="3" cellspacing="1" class="table_style">
+   	<tr>
+      <td class="left_title_1">stmp邮箱服务器地址</td> 
+      <td>
+	  <input type="text" name="data[smtp_host]" maxlength="100" style="width: 240px"  value="{$Think.config.smtp_host}">
+	  </td>
+    </tr> 
+    <tr>
+	<td class="left_title_2">stmp邮箱服务器端口</td> 
+      <td><input type="text" name="data[smtp_port]" maxlength="100" style="width: 240px"  value="{$Think.config.smtp_port}"> 一般默认25</td>
+    </tr> 
+    <tr>
+	<td class="left_title_1">管理员收件箱</td> 
+      <td><input type="text" name="data[reply_email]" maxlength="100" style="width: 240px"   value="{$Think.config.reply_email}"> *用于接收网址提示信息</td>
+    </tr>     
+    <tr>
+	<td class="left_title_2">发件人名称</td> 
+      <td><input type="text" name="data[from_name]" maxlength="100" style="width: 240px"   value="{$Think.config.from_name}"></td>
+    </tr>     
+    <tr>
+      <td class="left_title_1">发件人地址</td> 
+      <td><input type="text" name="data[from_email]" maxlength="100" style="width: 240px"   value="{$Think.config.from_email}"></td>
+    </tr> 
+    <tr>
+	<td class="left_title_2">验证用户名</td> 
+      <td><input type="text" name="data[smtp_user]" maxlength="100" style="width: 240px"   value="{$Think.config.smtp_user}"></td>
+    </tr> 
+    <tr>
+      <td class="left_title_1">发件人邮箱密码</td> 
+      <td><input type="password" name="data[smtp_pass]" maxlength="100" style="width: 240px"   value="{$Think.config.smtp_pass}"></td>
+    </tr>     
+    <tr>
+	<td class="left_title_2">邮件设置测试：</td> 
+      <td><input type="text" name="mail_to" id="mail_to"/> *输入接收邮箱测试（先保存信息哦）</td>
+    </tr>     
+    <tr>
+		<td colspan="2" class="left_title_1">
+		<div align="center"> 
+		 <input type="submit" value="保存" />
+		 <input type="button" name="button" value="测试发送" onClick="javascript:test_mail();">  
+		</td>
+	</tr> 
+  </table>
+  </form>
+<script language="javascript">
+$(document).ready(function(){
+	$("#myform").submit(function(){
+				
+	});
+});
+function test_mail(){
+    $.post(
+    	'__URL__/testMail',
+    		{ 
+    		  mail_to : $('#mail_to').val(),
+    		},function(data){
+				alert(data);
+	});
+}
+
+</script>
+</div>
+</body>
+</html>

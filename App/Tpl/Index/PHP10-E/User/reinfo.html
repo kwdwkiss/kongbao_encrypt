@@ -1,0 +1,38 @@
+<include file="Public:header" />
+    </td>
+	<td valign="top" class="r">
+      <div class="title02">资料维护</div>
+	 <form id="register_form" action="{:U('saveuserinfo')}" method="POST" name="frmLogin">
+      <input type="hidden" name="id" value="{$user['id']}">	 
+      <table class="V_tb2">
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>用户名</th>
+        <td>{$user['username']}</td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>邮 箱</th>
+        <td><input type="text" name="email" value="{$user['email']}" class="V_input2" maxlength="30" /></td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>姓名</th>
+        <td><input type="text" name="nickname" value="{$user['nickname']}" class="V_input2" maxlength="15" /></td>
+      </tr>
+	  <tr class="td1">
+        <th><font style="color:#F00">*</font>手机号</th>
+        <td><input type="text" name="telphone" value="{$user['telphone']}" class="V_input2" maxlength="11"/></td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>QQ号</th>
+        <td><input type="text" disabled="true" value="{$user['user_qq']}" class="V_input2" /></td>
+      </tr>
+      <tr class="td1">
+        <th></th>
+        <td><input type="submit" value="提交修改" class="V_btn4 submit" /></td>
+      </tr>
+    </table>
+    </form>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

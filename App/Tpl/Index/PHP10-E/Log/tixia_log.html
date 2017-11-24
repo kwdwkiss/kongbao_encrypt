@@ -1,0 +1,62 @@
+<include file="Public:header" />
+    </td>
+  <td valign="top" class="r">	
+      <div class="title02">提现记录<a href="{:U('Cash/recharge')}" class="Annkela"><img src="/Public/xincss/images/22.png"/>在线充值</a></div>
+      <div class="block04">
+      	<table class="ipList" width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="title">
+            <td width="20" class="icon">&nbsp;</td>
+			<td>操作时间</td>
+			<td>提现金额</td>
+			<td>账号类型</td>
+			<td>提现状态</td>
+			<td>提现账号</td>
+			<td>提现姓名</td>
+          </tr>
+          <!-- 隔行变色 -->
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+          })
+          </SCRIPT>
+		<foreach name="tixian_list" item='tixian'> 
+          <tr class="td1">
+            <td>&nbsp;</td>
+            <td>{$tixian['addtime']}</td>
+			<td class="color_or">{$tixian['money']}</td>
+			<td> <switch name="tixian.cwsz_config.type" >
+			<case value="1">支付宝</case>
+			<case value="2">财付通</case>
+			<case value="3">银行转账</case> 
+			<default />其他
+			</switch></td>
+			<td><switch name="tixian.status" >
+			<case value="1">提现申请中</case>
+			<case value="2"><font color="green">成功提现</font></case>
+			<case value="3"><font color="red">提现失败</font></case>  
+			<default />其他
+			</switch></td>
+			<td>{$tixian.cwsz_config.account_no}</td>
+			<td>{$tixian.cwsz_config.account_name}</td>
+			</tr> </foreach> 
+        </table>
+      </div>
+      <div class="pageList">
+			<table width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="left"></td>
+					<td class="center">&nbsp;</td>
+					<td class="right" align="right">
+						<div class="pagebreak">
+							<table cellspacing="0" cellpadding="0"><tr><td class="page_no"><a class='current'>{$show}</a></td></tr></table>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+

@@ -1,0 +1,168 @@
+<include file="Public:top" />
+<script type="text/javascript">
+$(document).ready(function(){ 
+$("select").selectCss(); 
+});
+</script>
+<style type="text/css">
+.tag_select{display:block;height:24px;line-height:24px;background:url(/Public/images/xlico.gif) right center no-repeat;border:1px solid #CFCFCF;border-radius:5px;padding:3px 28px 3px 8px;color:#7D7D7D;font-size:12px;cursor:pointer}.tag_select_hover{color:#7D7D7D;background:url(/Public/images/xlico.gif) right center no-repeat}.tag_select_open{color:#7D7D7D;background:url(/Public/images/slico.gif) right center no-repeat}ul.tag_options{position:absolute;margin:0;list-style:none;border:solid 1px #CFCFCF;background:#fff;overflow:hidden;font-size:12px;z-index:1000}ul.tag_options li{background:#fff;display:block;padding:0 28px 0 8px;height:30px;text-decoration:none;line-height:30px;color:#7D7D7D;font-weight:400;font-size:12px;cursor:pointer}ul.tag_options li.open_hover{background:#00a2ca;color:#000;color:#fff;width:auto;font-weight:400;font-size:12px}ul.tag_options li.open_selected{background:#00a2ca;color:#fff;font-size:12px}.kongbao_kuaidiInfos{position:relative}.moban{float:right;left:380px;top:1px;position:absolute;z-index:1000}.kuaidi{outline:0;border:0;background-color:#00a1cc;padding:4px 10px;color:#fff;border-radius:5px;cursor:pointer}.kuaidi:hover{background:#fff;color:#00a1cc;border:1px solid #00a1cc}.label_sele{float:right;padding-right:600px;padding-bottom:10px}.kuaidi_DJ{height:28px;line-height:28px}.kuaidi_DJ strong{color:#999;font-weight:400}.kuaidi_DJ span{color:#00a2ca;padding-right:5px}.icon_m{display:inline-block;margin-right:3px;width:16px;height:16px;vertical-align:middle}.icon_m.icon_m1{background:url(/Public/images/icon_m_1.jpg) center center no-repeat}.icon_m.icon_m2{background:url(/Public/images/icon_m_2.jpg) center center no-repeat}.icon_m.icon_m3{background:url(/Public/images/icon_m_3.jpg) center center no-repeat}.kuaidi_DJ span i.pri{color:#f60}.kuaidi_DJ .sj{color:#00a2ca}.kuaidi_DJ .sj:hover{color:#f60}.list_tit{background-color:#f5f5f5;border-left:solid 2px #00a2c9;padding:10px 18px}.list_tit span{font-size:16px;padding:0 10px;margin-right:10px;cursor:pointer}.list_tit span:Hover{color:#00a2ca}.sh_box .sh_tit{height:30px;line-height:30px;width:100%;overflow:hidden}.sh_box .sh_cont{width:100%;overflow:hidden;padding:20px 0;border-top:1px dashed #ccc;border-bottom:1px dashed #ccc}.sh_box .sh_cont .sh_cont_left{width:958px;float:left}.sh_box .sh_cont .sh_cont_left #address{height:170px;width:680px;border:1px solid #ccc;padding:5px;line-height:12px}.sh_box .sh_cont .sh_cont_left #address:hover{border:1px solid #00a2ca}.sh_box .sh_cont .sh_cont_right{border-bottom:0 solid #ddd;padding-bottom:20px;margin-top:10px;line-height:35px}.sh_box .sh_cont .sh_cont_right p{line-height:30px;padding-left:40px}.sh_box .sh_cont .sh_cont_right .btn_jc{padding:3px 15px;border:1px solid #00a1cc;border-radius:4px;color:#00a1cc;margin:5px 0}.sh_box .sh_cont .sh_cont_right .btn_jc:hover{background:#00a1cc;color:#fff}.sh_box .sh_cont .sh_cont_right .btn_xd{background:#ff6000;padding:3px 15px;border:1px solid #ff6000;border-radius:4px;color:#fff;margin:5px 0}.sh_box .sh_cont .sh_cont_right .btn_xd:hover{background:#fff;color:#ff6000;border:1px solid #ff6000}.sh_box .sh_cont .sh_cont_right p.pdt{padding-top:5px}.form_address{display:block}.kongbao_adv{padding:10px 0}.webuploader-element-invisible{position:absolute!important;clip:rect(1px 1px 1px 1px);clip:rect(1px,1px,1px,1px)}.webuploader-pick{position:absolute;display:inline-block;cursor:pointer;background:#00a1cc;padding:5px 15px;color:#fff;line-height:18px!important;margin-left:90px;margin-top:1px;text-align:center;border-radius:3px;overflow:hidden}.webuploader-pick-hover{background:#fff;color:#00a1cc;border:1px solid #00a1cc}.pages{text-align:right;padding-right:15px;height:50px;margin-top:30px}.pages a,.pages span{padding:5px 8px;text-align:center;background:#fff;border:1px solid #ccc;border-radius:5px;color:#00a2d2;margin:0 3px}.pages .current,.pages a:hover,.pages span:hover{background:#00a2ca;color:#fff}
+#cheisnos{max-height:506px;overflow-y:scroll;border-top:1px solid #ddd;border-left:1px solid #ddd;border-bottom:1px solid #ddd;border-right:1px solid #ddd}#cheisnos thead{background:#eee}#cheisnos table{width:100%}#cheisnos table th{height:35px;line-height:35px;text-align:center;font-weight:500;color:#999;background:#f7f7f7}#cheisnos table td{height:auto;line-height:25px;word-break:break-all;padding:10px;text-align:center;color:#666;border-top:1px solid #ddd;overflow:hidden}
+</style>
+<div class="container cont_bg">
+    <div class="resize">
+        <div class="c_leftBox">
+    <div style="font-size: 16px;
+font-weight: normal;
+padding-bottom: 10px;">{$config['sitename']}</div>
+<include file="Public:left_nav" />
+</div>
+      <div class="c_rightBox"> <if condition="$config['tuiguang_dongtai']==1"> <iframe align=center border="0" noresize=noresize marginWidth=0 marginHeight=0 src="{:U('About/led')}"  frameBorder=0 width=100%  height=32px scrolling=no></iframe></if>
+        	<div class="kongbao_adv" id="kinMaxShow"> 
+			 <foreach name="kbhdp_list" item="kbhdp" key="k">
+							<div><a href="{$kbhdp['pic_url']}" target="_blank"><img src="{$kbhdp['pic']}" width="960px" height="230px" alt="{$kbhdp['ad_brief']}" ></a></div>	
+							 </foreach> 	
+            </div> 
+			<if condition="$config['tuiguang_ledkb']==1">
+				<div style="padding-right: 30px; padding: 4px 8px 4px 28px;width:922px;margin-left:0px;color: #4B4B4B;border: 1px solid #F5E190; background-color: #FFFAE2;line-height: 150%!important;_line-height: 160%;position: relative;overflow: hidden;" id="cheatHintArea">
+        		<span> <include file="Order:led" /></span> </div>
+				<br />
+				</if>
+			<form id="order_form" action="{:U('lxkbsave')}" method="POST" >
+            <div class="kongbao_kuaidiInfos">
+              <span class="label_sele">
+              <select name="type_id"  id="type_id" onChange="itemchange($(this))">
+                <foreach name="type_xiadan" item="type">
+                  <option value="{$type['id']}">{$type['name']}</option>
+                </foreach>
+              </select>
+              </span>
+			  <span class="moban"> <input type="button"  value="设为默认" onClick="setDefaultKuaidi(this)"  class="kuaidi"/>
+			 </span>
+              <div class="kuaidi_infos_obj"  >
+                        <span class="thumb_info bod t_c mt5">
+                            <a href="###"><img id="image_url" src="/{$type['image_url']}" onerror="this.src='/{$type['image_url']}'" width="190px" height="110px" /></a></span>
+                        <span class="kuaidiInfos">
+                            <div class="descript">
+                                <p>
+	<span style="color:#666666;font-family:arial, 宋体, sans-serif;font-size:12px;line-height:24px;text-indent:28px;white-space:normal;background-color:#FFFFFF;"><span style="color:#666666;font-family:arial, 宋体, sans-serif;font-size:12px;line-height:24px;text-indent:28px;white-space:normal;background-color:#FFFFFF;"> </span></span></p>
+<div>
+<span style="font-family:'Microsoft YaHei';font-size:14px;color:#7d7d7d;background-color:#FFFFFF;margin:-18px;" id="detail">{$kongbao_page['shuoming']}</span></div>                            </div>
+                            <div class="kuaidi_DJ">
+                            	<span style="font-family:'Microsoft 宋体';font-size:12px;color:#7d7d7d;background-color:#FFFFFF;" >单号价格：</span>
+<span class="red" id="danjia"></span>
+                                <a class="sj" href="{:U('Tg/uplevel')}">[会员升级]</a>                            </div>
+              </span>              </div></div>
+            <script type="text/javascript" src="/Public/css/jquery.kinMaxShow-1.1.min.js"></script>
+			<script type="text/javascript">
+                $("#kinMaxShow").kinMaxShow({
+                    height:230,
+                    button:{
+                        switchEvent:'mouseover',
+                        showIndex:true,
+                        focus:{color:"#fff"}
+                    }
+                })
+            </script>
+            <div class="kongbao_form">
+		
+                <div class="kongbao_list " style="margin:5px 0; ">
+					<style>.color_blue:hover{color:#00a2ca}</style>
+                    <div class="list_tit">
+                    	<span class="btn_yq">友情提示</span>
+                    	<span class="btn_ys"  onclick="show_czlc(this)" >操作演示</span>
+						<span class="account1_15"  onclick="show_jiaocheng()" >文件不会使用?</span>
+						<span class="account1_15" >{$kongbao_page['gonggao']}</span>
+                    </div>
+                    <div class="list_contaienr" >
+                        <ul style="margin-bottom:10px; padding-bottom:10px;">
+                            <li class="AllW lh30 h30 c_3">每条收货地址一行，收货地址从淘宝后台订单直接复制过来，切勿修改格式。</li>
+							<li class="AllW lh30 h30" style="color:#ff6600">新格式：姓名，手机，省 市 县区 地址，邮编</li>
+							<li class="AllW lh30 h30" style="color:#ff6600">例如：马云 ，13868686888 ，广东省 广州市 白云区 信发科技大厦 ，523000</li>
+							<li class="AllW lh30 h30" style="color:#ff6600">老格式：姓名，手机，，省 市 县区 地址，邮编</li>
+							<li class="AllW lh30 h30" style="color:#ff6600">例如：马云 ，13868686888 ， ，广东省 广州市 白云区 信发科技大厦 ，523000</li>
+                        </ul>
+                    </div>
+                </div>
+				<script type="text/javascript" src="__PUBLIC__/js/area.js"></script>
+				<script type="text/javascript">
+                    $(function(){ //调用插件
+                        $.fn.citySelect();
+                    });
+					$(document).ready(function(){
+						$(".btn_yq").click(function(){
+							$(".list_contaienr").slideToggle();
+						});	
+					});
+                </script>
+    <script type="text/javascript" src="/Public/moive_play/xjs/layerlx.js"></script>
+                <div class="sh_box">
+					<div class="mr_address" style="margin-top: 20px;">
+						<span class="fz14 lh30 c_6 pdr10 fl">
+							发货地址：
+						</span>
+						<div class="fz14 lh30 pdr10 fl">
+							<select class="active"name="address_id" id="address_id">
+							<option  value="">请选择发货地址或者添加新地址</option>
+                            <foreach name="address_list" item="address">
+							<option value="{$address['id']}" <eq name="address.is_default" value='1'>selected</eq> >{$address['title']}</option>
+							</foreach>
+                          </select>
+						  </span>
+						</div> 
+						<span class="fl"><input type="button" id="addAddress" class="lh30 btn btn_tj fl" value="添 加" /></span>
+						<span class="fl">
+                            <div id="fileList" class="uploader-list"></div>
+                            <div id="filePicker">上传文件</div>
+                           </span>
+						<span><a class="lh30" style="color: #00a2ca;font-size: 12px" href="{:U('User/address')}">[发货地址管理]</a></span>
+					</div>
+					
+                    <div class="sh_cont" style="border:none">
+                    	<div class="sh_cont_left">
+                        	<div class="textarea_cont" id="show_czlc" type="_re">
+                                <textarea  name="postscript"  id="postscript"  value="" onblur="javascript:this.value=this.value.replace(',','，');" style="width:100%; border:1px solid #ccc;height:200px;background: url(/Public/images/tishi.png) no-repeat center;" onfocus="this.style.backgroundImage='url()';" ></textarea></div>
+                       <div class="sh_cont_right"   >
+                    	  <input  id="btn_check" type="button" class="btn_jc" value="检测地址" onclick="checkisnos()" />&nbsp;
+                         <input type="submit"  class="btn_xd" value="立即下单" onclick="return chk_submit()"/>&nbsp;&nbsp;&nbsp;余额：<i class="color_or">¥{$user['money']}</i><div id="jiage" ></div>
+                <div id="cheisnos" ></div>
+		        <div id="addinputarrs" ></div> 
+				<input type="hidden" id="single_price"  value=""/>
+				<input type="hidden" id="order_money" name="order_money" value=""/>
+				<input type="hidden" id="order_nums" name="order_nums" value=""/> 
+</div>
+<iframe align=center border="0" noresize=noresize marginWidth=0 marginHeight=0 src="{:U('Log/daisao')}"  frameBorder=0 width=100%  height=590px scrolling=no></iframe>
+</div> 
+</div>
+</div>
+</div>
+</form>  
+</div>
+</div>
+</div>
+<include file="Public:foote" />
+<script type="text/javascript">
+var user_default_kuaidi="{$user_default_kuaidi}";
+function setDefaultKuaidi(){
+	var mydata={default_kuaidi:$("#type_id").val()};
+	$.post("{:U('setDefaultKuaidi')}",mydata,function(data,status){
+		  alert(data.status);
+	 },'json');
+}
+if(user_default_kuaidi!="0"){
+  $("#type_id").val(user_default_kuaidi);   
+  itemchange($("#type_id")); 
+} 
+$('#postscript').keyup(function(){
+            $('#cheisnos').html("");
+        })	
+$('#addAddress').click(function(){
+            layer.open({
+                type: 2,
+                title: false, 
+                area: ['625px', '320px'],
+                shadeClose: true,
+                content: "/index.php/User/adds.html" 
+            });
+        });
+</script>
+<script type="text/javascript" src="/Public/moive_play/lxdh.js"></script> 

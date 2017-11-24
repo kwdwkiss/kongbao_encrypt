@@ -1,0 +1,265 @@
+<include file="Public:top" /> 
+<link rel="stylesheet" href="__PUBLIC__/kindeditor/themes/default/default.css" />
+<script src="__PUBLIC__/kindeditor/kindeditor.js"></script>
+<script src="__PUBLIC__/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript">
+  	KindEditor.ready(function(K) {
+  		window.editor = K.create('#file_content');
+		var editor = K.editor({
+			allowFileManager : true
+		});
+		K('#jietu_i').click(function() {
+				editor.loadPlugin('image', function() {
+					editor.plugin.imageDialog({
+						showRemote : false,
+						imageUrl : K('#jietu').val(),
+						clickFn : function(url, title, width, height, border, align) {
+							K('#jietu').val(url);
+							$('#jietu_save').val(url);
+							editor.hideDialog();
+						}
+					});
+				});
+		});		
+	}); 	
+</script> 
+<script type="text/javascript">
+$(document).ready(function(){ 
+$("select").selectCss(); 
+});
+</script>
+<style>
+table.t1 {border: 1px solid #dfdfdf;color: #666;width:960px;}table.t1 td,table.t1 th {border: 1px solid #dfdfdf;padding:0.5em;}table.t1 tr.a1 {background-color: #f5fafe;}.myclass_pay_card input {background: #edf6fd;height: 10px;width: 220px;border: 1px solid #077dc4;}.myclass_pay_card input.submit {width: 100px;height: 34px;margin: 20px 0 0 260px;border: none;background: #fbd500;border: 1px solid #cc9901;}.btn_jc{ padding:3px 15px; border:1px solid #00a1cc; border-radius:4px; color:#00a1cc; margin:5px 0;}
+.tag_select{display:block;height:24px;line-height:24px;background: url("/Public/images/xlico.gif") right center no-repeat; border:1px solid #CFCFCF; border-radius:5px; padding:3px 48px 3px 8px; color:#7D7D7D; font-size:12px; cursor:pointer}
+.tag_select_hover{ color:#7D7D7D; background: url("/Public/images/xlico.gif") right center no-repeat;}
+.tag_select_open{ color:#7D7D7D; background: url("/Public/images/slico.gif") right center no-repeat;}
+ul.tag_options{position:absolute;margin:0;list-style:none;border: solid 1px #CFCFCF; background:#fff;overflow:hidden;font-size:12px; z-index:1000;}
+ul.tag_options li{background:#fff; display:block;padding:0px 28px 0px 8px; height:30px;text-decoration:none;line-height:30px;color:#7D7D7D; font-weight:normal; font-size:12px;cursor:pointer}
+ul.tag_options li.open_hover{background:#00a2ca;color:#000; color:#fff; width:auto; font-weight:normal; font-size:12px}
+ul.tag_options li.open_selected{background:#00a2ca; color:#fff;font-size:12px; }.kongbao_kuaidiInfos{position:relative;}.moban{float:right;left:380px;top:1px;position: absolute;z-index:9999;}
+.label_sele{ float:right; padding-right:688px; padding-bottom:0px;}
+</style> 
+
+<div class="container cont_bg">
+    <div class="resize">
+        <div class="c_leftBox">
+    <div style="font-size: 16px;
+font-weight: normal;
+padding-bottom: 10px;">{$config['sitename']}</div>
+<include file="Public:left_nav" />
+</div>
+<div class="c_rightBox">
+<div class="change_code">
+<div class="c_tit">
+<h2>底单申请</h2>
+</div>
+<br />
+<form id="register_form" action="{:U('ddsave')}" method="POST" > 
+<table width="950px" align="left"   class="t1" id="mytab">
+<tr><td colspan="2"  height="100px"  align="left">{$kongbao_page['dd_gonggao']}</td></tr>
+<tr>
+<td width="130px" height="30" align="right">快递类型</td>
+<td>
+<span class="label_sele">
+<select name="type_id" id="type_id" onchange="itemchange($(this))" class="tag_select">
+<option value="">选择快递</option>
+<foreach name="type_list" item="type">
+<option value="{$type['id']}">{$type['name']}</option>
+</foreach>
+</select> </span> 
+</td> 
+</tr> 
+<tr id="dd_price">
+<td width="130px" height="30" align="right">底单价格</td>
+<td   class="tdright"><input  align="right" name="price" type="text" disabled="true" id="price" value="0" size=5 class="account1_16">&nbsp;元</td>
+														       <input type="hidden" id="dd_price" name="dd_price" />
+														  </tr> 		
+														  <tr>
+														    <td width="130px" height="30" align="right">快递单号</td>
+														    <td   class="tdleft"><input name="note_no" type="text" id="note_no" size=50 class="account1_17 tip" title="9-13位字符，可由英文、数字及“_”、“-”组成">&nbsp;<strong><font color="#0a4252">*必填项</font></strong></td>
+														  </tr> 
+														 <tr>
+															   <td width="130px" height="30" align="right">降权截图</td>
+															      <td   class="tdleft">
+															      	<input type="text" id="jietu" value="" disabled="true"  size="60" class="account1_18"/>
+															      	<input type="hidden" id="jietu_save" value="" name="jietu" /> 
+															        <input type="button"  id="jietu_i" class="btn_jc"  value="选择图片" />
+															      <strong><font color="#0a4252">*无降权截图则不予处理</font></strong></td>
+													  </tr>     
+															  <tr>
+															    <td width="130px" height="30" align="right">发货地址</td>
+															    <td  class="tdleft"><input name="fhaddr" type="text" id="fhaddr" size=100 value="格式->姓名，手机，固话，地址，邮编 共4个逗(淘宝上复制下来)" onfocus="if(value==defaultValue){value='';this.style.color='#0a4252'}" onblur="if(!value){value=defaultValue;this.style.color='#0a4252'}" style="color:#0a4252" class="account1_19">
+															    &nbsp;<strong><font color="#0a4252">*必填项</font></strong></td>
+															  </tr>  
+															  <tr>
+															    <td width="130px" height="30" align="right">收货地址</td>
+															    <td  class="tdleft"><input name="shaddr" type="text" id="shaddr" size=100 value="格式->姓名，手机，固话，地址，邮编 共4个逗(淘宝上复制下来)" onfocus="if(value==defaultValue){value='';this.style.color='#0a4252'}" onblur="if(!value){value=defaultValue;this.style.color='#0a4252'}" style="color:#0a4252" class="account1_19">
+															    &nbsp;<strong><font color="#0a4252">*必填项</font></strong></td>
+															  </tr> 
+															  <tr>
+															    <td width="130px" height="30" align="right">发货日期</td>
+															    <td ><input name="order_time" type="text" id="order_time" size=80 value="" onfocus="if(value==defaultValue){value='';this.style.color='#0a4252'}" onblur="if(!value){value=defaultValue;this.style.color='#0a4252'}" style="color:#0a4252" class="account1_16 tip" title="6-10字符，数字组成">
+															      <br />
+															      &nbsp;如：2013-09-18(括号内可注明其他要求) 若没填写日期 则底单上不写发货日期</td>
+															  </tr>
+															  <tr>
+																    <td width="130px" height="30" align="right">重量</td>
+															        <td ><input name="weight" type="text" id="weight" class="account1_16 tip" title="1-5字符，数字组成，单位KG"/>	</td>			  	
+															  </tr>
+															  <tr>
+																    <td width="130px" height="30" align="right">运费</td>
+															        <td ><input name="yunfei" type="text" id="yunfei" class="account1_16 tip" title="1-5字符，数字组成，单位”元"/>	</td>		  	
+															  </tr>				
+															  <tr>
+																    <td width="130px" height="30" align="right">商品名称</td>
+															        <td ><input name="goods_name" type="text" size=100  id="goods_name" class="account1_16 tip" title="3-30字符，数字组成，不能出现敏感字符"/>	</td>							  	
+															  </tr>		  
+															  <tr >
+															  	
+																  	<td colspan="2"> 
+											 							       <div align="center">
+											 							         <input type="submit" style="cursor:hand" value="确认提交"  class="btn_jc"  onclick="return chk_submit()" />
+							 							                       </div></td>
+												      </tr>  
+										      </table>  
+											</form>
+								 </div>
+			</div>
+		</div>
+	</div>
+</section>
+ <!--脚注-->
+ <script type="text/javascript">  
+    function chk_submit()
+    { 
+    	 var user_money = "{$user['money']}";
+    	 var type_id = $('#type_id').val();
+    	 if(type_id<=0 || type_id=='')
+    	 {
+    	 	alert('请选择快递类型!')
+    	 	return false;
+    	 }
+    	 var dd_price = $("#dd_price").val();
+    	 if(dd_price>0)//如果大于0时判断是否满足
+    	 {
+    	 	  var price=parseFloat(user_money);
+    	 	  if(price<dd_price)
+    	 	  {
+    	 	  	alert('当前账户余额不足，请先充值!');
+    	 	  	return false;
+    	 	  }
+    	 }
+    	 var note_no = $("#note_no").val();
+    	 if(note_no =='')
+    	 {
+    	 	alert('请填写快递单号!');
+    	 	return false;
+    	 }
+    	 var jietu_save = $("#jietu_save").val();
+    	 if(jietu_save=='')
+    	 {
+      	 	alert('请上传降权截图!');
+    	 	return false;  	 	
+    	 }
+    	 var fhaddr = $("#fhaddr").val();
+    	 if(fhaddr=='')
+    	 {
+      	 	alert('请填写发货地址!');
+    	 	return false;  	 	
+    	 }
+    	 if(fhaddr=='格式->地址，邮编，姓名，手机，固话 共4个逗(淘宝上复制下来)')
+    	 {
+       	 	alert('请填写发货地址!');
+    	 	return false;  	   	 	
+    	 }
+    	 //判断发货地址是否满足条件
+    	 var result=check_address(fhaddr);
+    	 if(!result) 
+    	 {
+    	 	 alert('发货地址格式不对，请检查！');
+    	 	 return false;
+    	 } 
+    	 var shaddr = $("#shaddr").val();
+    	 if(shaddr=='')
+    	 {
+      	 	alert('请填写收货地址!');
+    	 	return false;  	 	
+    	 }   
+    	 if(shaddr=='格式->姓名，手机，固话，地址，邮编 共4个逗(淘宝上复制下来)')
+    	 {
+      	 	alert('请填写收货地址!');
+    	 	return false;  	 	
+    	 }       	 
+    	 //判断收货地址是否满足条件
+    	 var result=check_address(shaddr);
+    	  if(!result) 
+    	   {
+    	   	alert('收货地址格式不对，请检查！');   
+    	   	return false;
+    	   } 	  	 
+    }
+	 function trim(str){   
+			 str = str.replace(/^(\s|\u00A0)+/,'');   
+				for(var i=str.length-1; i>=0; i--){   
+				  if(/\S/.test(str.charAt(i))){   
+				    str = str.substring(0, i+1);   
+	 				  break;   
+				 }   
+			 }   
+			 return str;   
+	  }   
+	 function check_address(address)
+	 {
+	 	var adddan=trim(address).split("，");
+	    if(adddan.length!=5)
+	     {
+	       	  return false;
+	     }
+	    return true;
+	 }  
+ function itemchange(obj)
+     {
+	     	var type_id = obj.val();
+	     	if(type_id=='' || type_id==0)
+	     	{
+	     		$("#price").val('0');  
+	     		$("#dd_price").val('0'); 
+	     	}
+	     	else
+	     	{
+		     	$.post("{:U('getDetail')}",{id:type_id},function(data,status)
+		     	{
+		     		var return_data = data.data;  
+		     		if(return_data.dd_price>0)
+		     		{
+			      	    $('#dd_price').val(return_data.dd_price);   
+			     		$("#price").val(return_data.dd_price);     			
+		     		} 
+		     	},'json');  	     		
+	     	}  
+    }  
+ function DisplayFun(str)
+{
+	var tab1=document.getElementById("tab01");
+	var tab2=document.getElementById("tab02");  
+	var tab1c=document.getElementById("tab01_c");
+	var tab2c=document.getElementById("tab02_c"); 
+	if(str=="tab01")
+	{
+		tab1c.style.display="block";
+		tab2c.style.display="none";  
+		tab1.className="focus_button";
+		tab2.className="common_button";  
+		return ;
+	}
+	if(str=="tab02")
+	{
+		tab1c.style.display="none";
+		tab2c.style.display="block";  
+		tab1.className="common_button";
+		tab2.className="focus_button"; 
+		return ;
+	}  
+} 
+</script> 
+<include file="Public:foote" />

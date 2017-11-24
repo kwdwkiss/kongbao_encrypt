@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../Public/css/common.css" type="text/css" />
+<script charset="utf-8" src="__PUBLIC__/js/jquery.js"></script>
+<title>管理区域</title>
+<style type="text/css">
+<!--
+#man_zone .table_style tr .search {
+	margin-left: 10px;
+}
+-->
+</style>
+</head>
+<body>
+ <div class="fixed-bar">
+    <div class="item-title"> 
+      <h3>系统消息管理</h3>
+      <ul class="tab-base"> 
+         <li><a href="javascript:void(0)" class="current"><span>系统消息列表</span></a></li>  
+         <li><a href="{:U('add')}" ><span>系统消息新增</span></a></li> 
+      </ul>
+    </div>
+  </div>
+<div id="man_zone">
+
+  <table width="97%" border="0" align="center" cellpadding="3" cellspacing="1" class="table_style">
+    <tr>
+      <td colspan="8" class="left_title_2">      </td> 
+    </tr>
+    <tr>
+      <td width="5%" class="left_title_1"><div align="center">ID</div></td>
+      <td width="6%" class="left_title_1"><div align="center">发件人</div></td> 
+	   <td width="20%" class="left_title_1"><div align="center">发件人ip</div></td>
+      <td width="20%" class="left_title_1"><div align="center">消息标题</div></td>
+      <td width="20%" class="left_title_1"><div align="center">发送时间</div></td> 
+      <td width="20%" class="left_title_1"><div align="center">消息内容</div></td> 
+      <td colspan="6" class="left_title_1"><div align="center">操作</div></td>
+    </tr>
+    <foreach name="systemlist" item='system'> 
+      <tr> 
+	
+        <td><div align="center">{$system['mid']}</div></td>
+        <td><div align="center">{$system['username']}</div></td> 
+		  <td><div align="center">{$system['ip']}</div> </td>
+         <td><div align="center">{$system['title']}</div></td>
+		  <td><div align="center">{$system['content']}</div></td>
+         <td><div align="center">{$system['addtime']|date="Y-m-d H:i:s",###}</div></td> 
+       
+         <td colspan="6" align="center">
+        	<div style="margin:0 10px 0 5px;float:left"><a title="信息修改" href="__URL__/edit/id/{$system['mid']}"><img src="../Public/images/set2.gif" alt="编辑" /></a></div>
+        	<div style="margin:0 10px 0 5px;float:left"><a title="删除该信息"   href="__URL__/del/id/{$system['mid']}"  onclick="return confirm('确定要删除这个吗？\\r 删除后不能恢复，请谨慎操作！')" ><img src="../Public/images/pic12.gif" alt="删除" /></a></div>
+       	 </td>
+      </tr>
+    </foreach>
+   </tbody>
+  </table>
+  
+</div>
+</body>
+</html>

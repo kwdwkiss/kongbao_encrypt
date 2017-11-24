@@ -1,0 +1,61 @@
+<include file="Public:header" />
+    </td>
+  <td valign="top" class="r">	
+      <div class="title02">我的下线(<span class="fc2">{$counts}个</span>)<a href="{:U('Cash/recharge')}" class="Annkela"><img src="/Public/xincss/images/22.png"/>在线充值</a></div>
+      <div class="block04">
+	
+      	<table class="ipList" width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="title">
+            <td width="20" class="icon">&nbsp;</td>
+            <td>用户名</td>
+			<td>会员等级</td>
+			<td>创建时间</td>
+			<td>最后登录时间</td>
+			<td>最后登录地点</td>
+			<td>登录次数</td>
+			<td>累计消费金额</td>
+			<td>账户余额</td>
+          </tr>
+          <!-- 隔行变色 -->
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+          })
+          </SCRIPT>
+		<if condition="$count == 0"><foreach name="refer_users" item="user">
+          <tr class="td1">
+            <td>&nbsp;</td>
+            <td>{$user['username']}</td>
+			<td>{$user['user_type']}</td>
+			<td>{$user['create_time']}</td>
+			<td>{$user['last_login_time']}</td>
+			<td>{$user['last_login_ip']}</td>
+			<td>{$user['login_counts']}</td>
+			<td>{$user['used_money']}</td>
+			<td>{$user['money']}</td>
+          </tr>
+		</foreach>      
+        </table>
+      </div>
+      
+      <div class="pageList">
+			<table width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="left"></td>
+					<td class="center">&nbsp;</td>
+					<td class="right" align="right">
+						<div class="pagebreak">
+							<table cellspacing="0" cellpadding="0"><tr><td class="page_no">{$show}</td></tr></table>
+						</div>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+      
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+

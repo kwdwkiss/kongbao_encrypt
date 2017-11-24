@@ -1,0 +1,62 @@
+<style type="text/css">.lxgo {position: absolute;top: 11px;left: 0;width: 165px;height: 60px;background: url(<?php echo $logo;?>) no-repeat;}</style>
+<div class="features">
+		<div class="auto">
+			<ul class="clearfix">
+				<li class="ftr-1"><a class="hide-text">100％安全保障</a></li>
+				<li class="ftr-2"><a class="hide-text">7*24小时售后</a></li>
+				<li class="ftr-3"><a class="hide-text">7*24在线下单</a></li>
+				<li class="ftr-4"><a class="hide-text">7*24自动充值</a></li>
+				<li class="ftr-5"><a class="hide-text">1v1专席秘书</a></li>
+			</ul>
+		</div>
+	</div>
+<!-- footer -->
+	<div class="footer">
+		<div class="auto">
+
+			<ul class="suspension">
+				<li class="default-transition">
+					<a href="http://wpa.qq.com/msgrd?v=3&uin={$config['qq1']}&site=qq&menu=yes" class="voice-service hide-text" target="_blank" title="在线客服">{$config['sitename']}在线客服</a>
+				</li>
+				<li class="default-transition suspension-tel">
+					<span class="pop-tel hide-text" title="{$config['sitename']}客服热线">{$config['sitename']}客服热线</span>
+					<div class="connect-us pop-detail">
+						客服热线：{$config['phone']}
+						<span class="tel-corner-back"></span>
+						<span class="tel-corner"></span>
+					</div>
+				</li>
+				<li class="default-transition suspension-qrcode">
+					<span class="pop-qrcode hide-text" title="关注{$config['sitename']}微信公众号">关注{$config['sitename']}微信公众号</span>
+					<div class="qrcode pop-detail"></div>
+				</li>
+				<li class="default-transition" id="toTop" title="返回顶部">
+				</li>
+			</ul>
+
+			<!-- footer主要-->
+			<div class="footer-floor1">
+				<div class="footer-list">
+					<ul>
+					<span class="fc1">友情链接：</span>
+<foreach name="flink_list" item="flink">
+<a href="{$flink.siteurl}"  title="{$flink.sitebrief}" target="_blank"><span class="fc1">{$flink.sitename}</span>&nbsp;&nbsp;</a>
+</foreach>	
+					</ul>
+					<div class="clear-float"></div>
+				</div>
+				<div class="footer-right">
+					
+					
+				</div>
+				<div class="clear-float"></div>
+			</div>
+		</div>
+		<div class="footer-floor2">
+			<p>{$config['copy_right']}&nbsp;&nbsp;&nbsp;{$config['beian']}{$config['tongji']}</p>
+		</div>
+	</div>
+	<!-- footer end -->
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<script type="text/javascript">
+if (window == top) 
+{
+ location.href='__APP__'; 
+  }
+</script>
+<if condition="$config['tuiguang_dongtai']==1"> 
+<link href="__PUBLIC__/xincss/css/common.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<script type="text/javascript" src="__PUBLIC__/xincss/js/jquery.min.js"></script>
+</head>
+<body scroll="no">
+<link href="__PUBLIC__/xincss/css/Index.css" rel="stylesheet" type="text/css" />
+<!--------------------网站动态---------------------------------->
+<table class="Index_card">
+<tr>
+<td colspan="5" width="50%" valign="top">
+<dl class="dl_1">
+<dt>
+<div class="Dt_1">&nbsp;最新充值动态</div>
+</dt>
+<dd>
+<div class="gundong" id="systemnew1"> 
+  <ul>
+	   <foreach name="recharge_list" item="recharge">
+						<li>
+							<span class="left">
+								<a href="#"  class="gundo">
+									<nobr >恭喜会员****{$recharge['username']|cut_str=###,3} 成功充值<font class="fc2"><b>￥ {$recharge['pay_money']} </b></font>元</nobr>
+								</a>
+							 </span>
+							 <span class="right"><?php echo  date("Y-m-d");?>&nbsp;&nbsp;&nbsp;</span>
+						 </li>												
+		 </foreach> 
+			</dd>
+			<dd class="Dd">
+				<div class="Dd_1"></div>
+				<div class="Dd_2"></div>
+				<div class="Dd_3"></div>
+			</dd>
+	</dl>
+</td>
+<td>&nbsp;</td>
+<td colspan="5" width="50%" valign="top">
+<dl class="dl_1">
+<dt>
+<div class="Dt_1">&nbsp;最新下单动态</div>
+</dt>
+	<dd>
+	<div class="gundong" id="systemnew2">
+	<ul>
+					<foreach name="order_list" item="order">
+							<li>
+								<span class="left">
+									<a href="#"class="gundo">
+										<nobr >会员 ***{$order['username']|cut_str=###,3} 采购交易额为<font class="fc2"><b>￥{$order['pay_money']} </b></font>的订单，编号为<font class="fc2"><b>{$order['order_no']}***</b></font></nobr>
+									</a>
+								 </span>
+								 <span class="right"><?php echo  date("Y-m-d");?>&nbsp;&nbsp;&nbsp;</span>
+							 </li>												
+					</foreach> 
+			</div>
+			</dd>
+			<dd class="Dd">
+				<div class="Dd_1"></div>
+				<div class="Dd_2"></div>
+				<div class="Dd_3"></div>
+			</dd>
+		</dl>
+<!-------------------结束----------------------------------->   
+</td>
+</tr>
+</table>
+<script type="text/javascript">	//滚动插件
+	(function($){
+		$.fn.extend({
+			Scroll:function(opt,callback){
+					//参数初始化
+					if(!opt) var opt={};
+					var _this=this.eq(0).find("ul:first");
+					var lineH=_this.find("li:first").height(), //获取行高
+						line=opt.line?parseInt(opt.line,10):parseInt(193/lineH,10), //每次滚动的行数，默认为一屏，即父容器高度
+						speed=opt.speed?parseInt(opt.speed,10):500, //卷动速度，数值越大，速度越慢（毫秒）
+						timer=opt.timer?parseInt(opt.timer,10):3000; //滚动的时间间隔（毫秒）
+					if(line==0) line=1;
+					var upHeight=0-line*lineH+28;
+					//滚动函数
+					scrollUp=function(){
+							_this.animate({
+									marginTop:upHeight
+							},speed,function(){
+									for(i=1;i<=line;i++){
+											_this.find("li:first").appendTo(_this);
+									}
+									_this.css({marginTop:0});
+							});
+					}
+					//鼠标事件绑定
+					_this.hover(function(){
+							clearInterval(timerID);
+					},function(){
+							timerID=setInterval("scrollUp()",timer);
+					}).mouseout();
+			}     			       
+		}); 
+	})(jQuery);
+	(function($){
+		$.fn.extend({
+			Scroll2:function(opt,callback){
+					//参数初始化
+					if(!opt) var opt={};
+					var _this=this.eq(0).find("ul:first");
+					var lineH=_this.find("li:first").height(), //获取行高
+						line=opt.line?parseInt(opt.line,10):parseInt(193/lineH,10), //每次滚动的行数，默认为一屏，即父容器高度
+						speed=opt.speed?parseInt(opt.speed,10):500, //卷动速度，数值越大，速度越慢（毫秒）
+						timer=opt.timer?parseInt(opt.timer,10):3000; //滚动的时间间隔（毫秒）
+					if(line==0) line=1;
+					var upHeight=0-line*lineH+28;
+					//滚动函数
+					scrollUp2=function(){
+							_this.animate({
+									marginTop:upHeight
+							},speed,function(){
+									for(i=1;i<=line;i++){
+											_this.find("li:first").appendTo(_this);
+									}
+									_this.css({marginTop:0});
+							});
+					}
+					//鼠标事件绑定
+					_this.hover(function(){
+							clearInterval(timerID1);
+					},function(){
+							timerID1=setInterval("scrollUp2()",timer);
+					}).mouseout();
+			}     			       
+		}); 
+	})(jQuery);	
+	$(document).ready(function(){
+		$("#systemnew1").Scroll({line:5,speed:600,timer:4000}); 
+		$("#systemnew2").Scroll2({line:4,speed:400,timer:4000}); 
+	});
+ </script>
+ </if>

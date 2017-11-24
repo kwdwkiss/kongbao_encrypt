@@ -1,0 +1,47 @@
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+
+.timerbg{background:url(/video/yy.jpg) no-repeat;height:90px;width:1920px;margin:0px auto;}
+.timerbg div{float:right;font-size:16px;margin:40px 0 0 0;font-weight:800;text-align:left;width:650px;font-family:"微软雅黑","宋体";}
+.timerbg div strong{font-size:28px;margin:0 13px;color:#fff;font-family:Arial;}
+#daoend{margin:24px 0 0 0;width:324px;color:#fff;font-size:22px;}
+</style>
+<!--kaishi-->
+<div class="timerbg">
+		<div id="daoend" style="display:none;">本次活动已结束。</div>
+		<div id="dao"><strong id="RemainD"></strong><font color="#f7c500">天</font><strong id="RemainH"></strong><font color="#f7c500">时</font><strong id="RemainM"></strong><font color="#f7c500">分</font><strong id="RemainS"></strong><font color="#f7c500">秒</font></div>
+	</div>
+<!-- end -->
+<script type="text/javascript">
+	var startTime = new Date();
+	startTime.setFullYear(2015, 10, 11);
+	startTime.setHours(23);
+	startTime.setMinutes(59);
+	startTime.setSeconds(59);
+	startTime.setMilliseconds(999);
+	var EndTime=startTime.getTime();
+	function GetRTime(){
+		var NowTime = new Date();
+		var nMS = EndTime - NowTime.getTime();
+		var nD = Math.floor(nMS/(1000 * 60 * 60 * 24));
+		var nH = Math.floor(nMS/(1000*60*60)) % 24;
+		var nM = Math.floor(nMS/(1000*60)) % 60;
+		var nS = Math.floor(nMS/1000) % 60;
+		if (nMS < 0){
+			$("#dao").hide();
+			$("#daoend").show();
+		}else{
+		   $("#dao").show();
+		   $("#daoend").hide();
+		   $("#RemainD").text(nD);
+		   $("#RemainH").text(nH);
+		   $("#RemainM").text(nM);
+		   $("#RemainS").text(nS); 
+		}
+	}
+	
+	$(document).ready(function () {
+		var timer_rt = window.setInterval("GetRTime()", 1000);
+	});
+	</script>

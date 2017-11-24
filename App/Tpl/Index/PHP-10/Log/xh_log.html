@@ -1,0 +1,122 @@
+
+<include file="Public:top" /> 
+<script type="text/javascript">
+$(document).ready(function(){ 
+$("select").selectCss(); 
+});
+</script>
+<style type="text/css">
+.tag_select{display:block;height:24px;line-height:24px;background: url("/Public/images/xlico.gif") right center no-repeat; border:1px solid #CFCFCF; border-radius:5px; padding:3px 28px 3px 8px; color:#7D7D7D; font-size:12px; cursor:pointer}
+.tag_select_hover{ color:#7D7D7D; background: url("/Public/images/xlico.gif") right center no-repeat;}
+.tag_select_open{ color:#7D7D7D; background: url("/Public/images/slico.gif") right center no-repeat;}
+ul.tag_options{position:absolute;margin:0;list-style:none;border: solid 1px #CFCFCF; background:#fff;overflow:hidden;font-size:12px; z-index:1000 }
+ul.tag_options li{background:#fff; display:block;padding:0px 28px 0px 8px; height:30px;text-decoration:none;line-height:30px;color:#7D7D7D; font-weight:normal; font-size:12px;cursor:pointer}
+ul.tag_options li.open_hover{background:#00a2ca;color:#000; color:#fff; width:auto; font-weight:normal; font-size:12px}
+ul.tag_options li.open_selected{background:#00a2ca; color:#fff;font-size:12px; }
+.cabCont{position:relative; z-index:1;  border-top:1px solid #ccc; padding-top:20px; margin-top:-1px;}
+.labCont{position:relative; z-index:1; padding-top:20px; }
+.labCont table th{font-weight:normal; color:#333; height:40px; line-height:40px; border:none ; text-align:left; background:#f9f8f8; padding:0 10px;}
+.labCont table tr:hover{background:#f0fcff;}
+.labCont table td{height:40px; line-height:40px; border-bottom:1px dashed #ccc; color:#666; padding:0 5px;}
+.labCont table td.color_or{color:#f3783f; font-weight:bold; }
+.mag_td{padding:10px 0; overflow:hidden; width:100%;}
+</style>
+ <script type="text/javascript">
+	function export_log()
+	{
+ 	   var count = $("#count").val(); 
+	    if(count<=0) 
+	    {
+	    	alert('无数据可导出！'); 	
+	    	return false;
+	    }
+	   $("#export_form").submit();
+	}
+</script>
+<div class="container cont_bg">
+    <div class="resize">
+        <div class="c_leftBox">
+    <div style="font-size: 16px;
+font-weight: normal;
+padding-bottom: 10px;">{$config['sitename']}</div>
+<include file="Public:left_nav" />
+</div>
+        <div class="c_rightBox">
+            <div class="user_control">
+                <div class="user_control_b">
+                    <div class="tabBox my_aline danhao_mag">
+                        <div class="tabTit">
+                            <div class="tab_btn">
+                                <a class="cur">小号管理</a> 
+                            </div>
+                        </div>
+                        <div class="cabCont">  
+<form class="search" action="__URL__/xh_log" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="70">小号来源：</td>
+<td width="86">
+<select name="ftype">
+<option value="order_no" <eq name="_POST.ftype" value="order_no">selected</eq>>订单编号</option>
+</select> 
+
+	
+</td><td width="5">&nbsp;</td>
+    <td width="110"><input type="text" name="keyword" value="{:I('keyword')}" class="input_text"/></td><td width="5">&nbsp;</td>
+    <td width="86"><select name="type_id"  class="r_txt v_m bod w135" > 
+				      <option value="">小号类型</option>
+						      <foreach name="type_list" item="type">
+						      <option value="{$type['id']}"  <if condition="I('type_id','')==$type['id']" >selected</if> >{$type['name']}</option>
+						     </foreach>
+				  </select> 
+				   
+				  </td><td width="5" titel="{$Think.config.caozuoma}">&nbsp;</td>
+    <td width="40"><input type="hidden" id="count" value="{$count}"/> 
+									              <input name="submit" type="submit" class="ty_btn" value="查询" /> </td>
+	<td width="5">&nbsp;</td>
+	<td><input type="button"  class="ty_btn" value="导出数据" onclick="return export_log()"/></td>
+	 <td><span style="float:right;margin-right:20px"><font color="red">{$count}</font>条数据符合条件</span></td>
+  </tr>
+</table>
+ </form> 
+<form id="export_form" action="{:U('log_export_xh')}" method="post"> 
+<input type="hidden" name="ftype" value="{:I('ftype')}" /> 
+<input type="hidden" name="keyword" value="{:I('keyword')}" /> 
+<input type="hidden" name="type_id" value="{:I('type_id')}" /> 	                                 	
+</form>    
+							<div class="labCont"> 
+                            <div class="tabLi cur">
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <th scope="col">小号账号</th>
+                                        <th scope="col">小号类型</th>
+                                        <th scope="col">购买日期</th>
+                                        <th scope="col">订单编号</th>
+                                        <th scope="col">操作</th>
+                                        
+                                    </tr>
+									 <foreach name="log_list" key="key" item='log'>
+                                    <tr>
+                                            <td>{$log['note_brief']}</td>
+                                             <td><div >{$xh_type[$log['type_id']]}</div></td>
+                                            <td>{$log['order_time']}</td>
+                                            <td>{$log['order_no']}</td>
+                                            <td><a href="{:U('dhexp',array('id'=>$log['order_no'],'type'=>3))}">导出小号</a></td>
+                                           
+                                      </tr>  </foreach>                              </table>
+										<tfoot>
+								 <div class="pages">   
+							        {$show}
+							 </div>           
+							</tfoot>
+</form>
+                            </div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:foote" />

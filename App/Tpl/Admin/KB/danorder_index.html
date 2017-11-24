@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../Public/css/common.css" type="text/css" />   
+<link href="../Public/js/lhgcalendar/_doc/prettify/prettify.css" type="text/css" rel="stylesheet"/>
+<script type="text/javascript" src="../Public/js/lhgcalendar/_doc/prettify/prettify.js"></script>
+<script type="text/javascript" src="../Public/js/jquery-1.4.2.min.js"></script> 
+<script type="text/javascript" src="../Public/js/lhgcalendar/lhgcalendar.min.js"></script>
+<script type="text/javascript" src="../Public/js/demo.js"></script> 
+<title>管理区域</title>
+<style type="text/css">
+<!--
+#man_zone .table_style tr .search {
+	margin-left: 10px;
+}
+-->
+</style>
+<script type="text/javascript">
+	$(function(){  
+    $('#starttime').calendar({ format:'yyyy-MM-dd HH:mm:ss' });
+    $('#endtime').calendar({ format:'yyyy-MM-dd HH:mm:ss' }); 
+});  
+$(function()
+{
+     $('.checkall').click(function(){
+		$('.checkall').attr('checked',$(this).attr('checked'));
+		$('.checkitem').each(function(){
+			$(this).attr('checked',$('.checkall').attr('checked'));
+		});
+	}); 
+});  
+</script>
+</head>
+<body>
+ <div class="fixed-bar">
+    <div class="item-title"> 
+      <h3>空包订单</h3>
+      <ul class="tab-base"> 
+         <li><a href="javascript:void(0)" class="current" title="会员单个购买订单"  ><span>普通订单</span></a></li>  
+         <li><a href="{:U('order_daili')}" ><span>批发订单</span></a></li> 
+         <li><a href="{:U('longxiang_dan')}" ><span>空包订单导出</span></a></li>
+         <li><a href="{:U('longxiang_piliang')}" ><span>订单批量导出</span></a></li>  
+      </ul>
+    </div>
+  </div>
+
+<div id="man_zone">
+<if condition="$kongbao_config['refer_zhongname']==1">
+<include file="KB:dana" />
+<else/>
+<include file="KB:danb" />
+</if>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+	$(function(){  
+    $('#starttime').calendar({ format:'yyyy-MM-dd HH:mm:ss' });
+    $('#endtime').calendar({ format:'yyyy-MM-dd HH:mm:ss' }); 
+});  
+$(function()
+{
+     $('.checkall').click(function(){
+		$('.checkall').attr('checked',$(this).attr('checked'));
+		$('.checkitem').each(function(){
+			$(this).attr('checked',$('.checkall').attr('checked'));
+		});
+	}); 
+});  
+</script>
+<if condition="$anquan_setting['anquan_ddisuse']==1">
+<script>
+$(function(){
+
+	 $("#btdel").click(function(){
+	if($("#type_id").val()==""){
+		alert("请选择空包类型");
+		return false;
+	}
+		if($("#starttime").val()==""){
+		alert("请输入起始日期");
+		return false;
+	}
+		if($("#endtime").val()==""){
+		alert("请输入结束日期");
+		return false;
+	}
+		 if (confirm("确定要将满足条件的订单删除掉？删除将不可恢复")){
+			 $("#form1 #action").val("删除成功");
+			 alert($("#form1 #action").val());
+			 $("#form1")[0].submit();
+		 }
+	 });
+})
+</script>
+</if>

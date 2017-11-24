@@ -1,0 +1,48 @@
+<include file="Public:header" />
+</td><td valign="top" class="r">
+<div class="title02">提交工单
+<a href="{:U('User/complaint')}" class="Annkela"><img src="/Public/xincss/images/19.png"/>返回列表</a></div>
+	<form name="myform" method="post" action="{:U('User/liuyan_add')}" >
+    <table class="V_tb2">
+          <!-- 隔行变色 -->
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+          })
+          </SCRIPT>
+		<tr class="td1">
+        <th><font style="color:#F00">*</font>问题类别</th>
+        <td>
+		 <select name="type" class="select classid" style="width:200px">
+		<option value="投诉建议">&nbsp;&nbsp;投诉建议&nbsp;&nbsp;</option>
+		<option value="充值问题">&nbsp;&nbsp;充值问题&nbsp;&nbsp;</option>
+		<option value="单号问题">&nbsp;&nbsp;单号问题&nbsp;&nbsp;</option>
+		<option value="分站申请">&nbsp;&nbsp;分站申请&nbsp;&nbsp;</option>
+		</select>
+        </td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>标题</th>
+        <td><input type="text" name="title" class="V_input2" style="width:450px" id="title" /></td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>问题描述</th>
+        <td><textarea name="content" class="V_ta1"></textarea></td>
+      </tr>
+      
+      <tr class="td1">
+        <th></th>
+        <td><button onclick="return check_fields();" type="submit" class="V_btn4 submit">确定提交</button>
+		</td>
+      </tr>
+    </table>
+    </form>
+    <div class="V_con1">
+    	<p>请尽量清晰详尽的描述您的问题，以便客服人员能够快速帮您解决问题；<br />如果您有意见和建议，或者进行投诉请点击<b><a href="#" class="fc2">投诉建议</a></b>。</p>
+    </div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+

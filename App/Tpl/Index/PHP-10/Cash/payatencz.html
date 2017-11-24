@@ -1,0 +1,31 @@
+<volist name="payrule_setting" key="j" id="vo2">
+<label>
+<input onclick="$('#payAmount1').val($(this).val())"  type="radio" name="money"  value="{$vo2.start}" />{$vo2.start}元</span>
+<php>
+foreach($payrule_setting as $key => $value){
+if($vo2['give'] == '0'){
+echo '';
+break;
+}
+if($value['give'] == $vo2['give']){
+echo '<span class="ty_tab">送',$value['give'],'元&nbsp;&nbsp;</span>';
+break;
+}
+}
+</php>
+<!---->
+<php>
+foreach($yp_user_level as $key => $value){
+if($vo2['grade'] == '0'){
+echo '';
+break;
+}
+if($value['id'] == $vo2['grade']){
+echo '（自动升级为','<font color="#00a2ca"><b>&nbsp;',$value['title'],'</b></font>）终身权限';
+break;
+}
+}
+</php>
+</label>
+</div><div>
+</volist> 

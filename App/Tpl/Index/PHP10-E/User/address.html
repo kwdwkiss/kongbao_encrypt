@@ -1,0 +1,98 @@
+<include file="Public:header" />
+<script type="text/javascript" src="/Public/moive_play/xjs/layer.js"></script>
+    </td>
+  <td valign="top" class="r">	
+      <div class="title02">发货地址管理<a href="{:U('Order/kb')}" class="Annkela"><img src="/Public/xincss/images/19.png"/>在线下单</a></div>
+      <div class="block04">
+	  <input type="button"  class="Annkelb kel1" value="添加发货地址" id="addAddress"/>
+	  <br/> 
+	  <br/> 
+      	<table class="ipList" width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="title">
+            <td width="20" class="icon">&nbsp;</td>
+			<td>姓名</td>
+			<td>电话</td>
+			<td>发货地址</td>
+			<td>状态</td>
+			<td>操作</td>
+          </tr>
+          <!-- 隔行变色 -->
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+          })
+          </SCRIPT>
+		<foreach name="address_list" item="address">
+          <tr class="td1">
+            <td>&nbsp;</td>
+            <td>{$address['name']}</td>
+			<td>{$address['shouji']}</td>
+			<td>{$address['address']}</td>
+			<td><div><switch name="address.is_default" >
+			<case value="0"></case>
+			<case value="1"><font style="color:#ff0000">默认</font></case>
+			</switch> </div>								</td>
+			<td>
+			<div class="add_option">
+			<a href="javascript:void(0)" onclick="settt_default('{$address['id']}')">删除</a>
+			<em>|</em>
+			<a href="javascript:void(0);" class="editAddaress" value="{$address['id']}">编辑</a>
+			<em>|</em>
+			<a href="javascript:void(0)" onclick="set_default('{$address['id']}')">设为默认</a>                                      </div>                                    </td>
+			</tr>
+			</foreach>  
+        </table>
+      </div>
+      <div class="pageList">
+			<table width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="left"></td>
+					<td class="center">&nbsp;</td>
+					<td class="right" align="right">
+						<div class="pagebreak">
+							<table cellspacing="0" cellpadding="0"><tr><td class="page_no">{$show}</td></tr></table>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+    </td>
+  </tr>
+</table>
+<script type="text/javascript">
+$('#addAddress').click(function(){layer.open({type:2,title:false,area:['625px','365px'],shadeClose:true,content:"/index.php/User/address_add.html"});});$('.editAddaress').click(function(){var TheId=$(this).attr('value');layer.open({type:2,title:false,area:['625px','365px'],shadeClose:true,content:"/index.php/User/address_edit/id/"+TheId});});
+
+function settt_default(id)
+{
+if(confirm('确认删除吗?'))
+{
+$.post("{:U('address_del')}",{id:id},function(data,status)
+{ 
+if(data.status==1)
+{
+document.location.reload();
+}
+else
+{
+alert(data.info);
+}
+},'json');
+}
+else
+{
+return false;
+}
+}
+function set_default(id)
+{if(confirm('确认将此地址信息为默认发货地址吗?'))
+{$.post("/index.php/User/address_default.html",{id:id},function(data,status)
+{if(data.status==1)
+{document.location.reload();}
+else
+{alert(data.info);}},'json');}
+else
+{return false;}}
+</script>
+</body>
+</html>
+

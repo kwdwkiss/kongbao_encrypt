@@ -1,0 +1,29 @@
+<div class="getpass lbox" id="get_cwsz" style="display: none" >
+ <form action="{:U('User/savecwsz')}" method="POST" name="frmLogin">
+		<table width="100%">
+		       <tr>
+			   <td align="right" width="30%">用户名：</td>
+		            <td class="pl20">{$user['username']}
+                            </td>
+		       </tr>
+		       <tr>
+		            <td align="right" width="30%">支付号：</td>
+		            <td class="pl20"><input type="text" id="account" name="cwsz_config[account_no]" class="input_text" style="width:200px" value="{$cwsz_config['account_no']}">
+                            </td>
+		       </tr>
+		       <tr>
+		            <td align="right">支付名：</td>
+		            <td class="pl20"><input type="text" id="account_name" name="cwsz_config[account_name]" class="input_text" style="width:200px" value="{$cwsz_config['account_name']}"></td>
+		       </tr>
+		       <tr>
+		           
+
+		            <td class="pt10"></td>
+		            <td class="pl20 pt10">
+		             <input type="submit"    class="btn_jc" value="提交" onclick="return pay_submit()"/></td>
+		       </tr>
+		</table>
+		<input type="hidden" name="cwsz_config[type]" value='1' /> 
+	<input type="hidden" name="id" value="{$user['id']}">	 
+	</form>
+</div>

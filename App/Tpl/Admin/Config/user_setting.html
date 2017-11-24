@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../Public/css/common.css" type="text/css" />
+<script charset="utf-8" src="__PUBLIC__/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="__PUBLIC__/kindeditor/lang/zh_CN.js"></script>
+<title>管理区域</title>
+</head>
+<script>
+    KindEditor.ready(function(K){
+                window.editor = K.create('#zhuce');
+
+     });
+</script>
+<body>
+ <div class="fixed-bar">
+    <div class="item-title"> 
+      <h3>网站设置</h3>
+      <ul class="tab-base">  
+         <li><a href="../Config/mail_setting" ><span>邮箱配置</span></a></li>
+		 <li><a href="javascript:void(0)" class="current" ><span>会员配置</span></a></li>
+			<li><a href="../Config/user_mass" ><span>群发配置</span></a></li> 
+		<li><a href="../Config/user_massfs" ><span>邮件群发</span></a></li>
+      </ul>
+    </div>
+  </div>
+<div id="man_zone">
+	<form action="__URL__/user_setting" method="post">
+  <table width="97%" border="0" align="center"  cellpadding="3" cellspacing="1" class="table_style">
+   	<tr>
+    	<td class="left_title_1">新会员注册是否发送邮件：</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="data[user_setting_isuse]"  value="1"  <eq name="Think.config.user_setting_isuse" value='1'>checked</eq> />是
+       	<input type="radio" name="data[user_setting_isuse]"  value="0"  <eq name="Think.config.user_setting_isuse" value='0'>checked</eq> />否  	
+      			<font color='red'>(如果选"是"则注册就发送一封邮件)</font>
+    	</td> 
+    </tr>  
+    <tr>
+	<td class="left_title_2">是否充值审核操作邮件：</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="data[user_setting_isczdd]"  value="1"  <eq name="Think.config.user_setting_isczdd" value='1'>checked</eq> />是
+       	<input type="radio" name="data[user_setting_isczdd]"  value="0"  <eq name="Think.config.user_setting_isczdd" value='0'>checked</eq> />否  	
+      			<font color='red'>(如果选"是"则在审核充值订单时发送邮件通知)</font>
+    	</td> 
+    </tr>  
+    <tr>
+	<td class="left_title_1">是否启用加款邮件：</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="data[user_setting_isjktz]"  value="1"  <eq name="Think.config.user_setting_isjktz" value='1'>checked</eq> />是
+       	<input type="radio" name="data[user_setting_isjktz]"  value="0"  <eq name="Think.config.user_setting_isjktz" value='0'>checked</eq> />否  	
+      			<font color='red'>(如果选"是"则在给会员加款时邮件通知提醒)</font>
+    	</td> 
+    </tr>  
+    <tr>
+	<td class="left_title_2">是否启用审核邮件：</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="data[user_setting_isczsh]"  value="1"  <eq name="Think.config.user_setting_isczsh" value='1'>checked</eq> />是
+       	<input type="radio" name="data[user_setting_isczsh]"  value="0"  <eq name="Think.config.user_setting_isczsh" value='0'>checked</eq> />否  	
+      			<font color='red'>(如果选"是"则会员提交交易号后邮件通知提醒)</font>
+    	</td> 
+    </tr>  
+    <tr>
+	<td class="left_title_1">是否启用登录邮件：</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="data[user_setting_ishtdl]"  value="1"  <eq name="Think.config.user_setting_ishtdl" value='1'>checked</eq> />是
+       	<input type="radio" name="data[user_setting_ishtdl]"  value="0"  <eq name="Think.config.user_setting_ishtdl" value='0'>checked</eq> />否  	
+      			<font color='red'>(如果选"是"则在管理员登录后台时邮件通知提醒)</font>
+    	</td> 
+    </tr>  
+    <tr>
+	<td class="left_title_2">是否启用提现邮件：</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="data[user_setting_iscztx]"  value="1"  <eq name="Think.config.user_setting_iscztx" value='1'>checked</eq> />是
+       	<input type="radio" name="data[user_setting_iscztx]"  value="0"  <eq name="Think.config.user_setting_iscztx" value='0'>checked</eq> />否  	
+      			<font color='red'>(如果选"是"则在会员申请提现时邮件通知)</font>
+    	</td> 
+    </tr>  
+    <tr>
+	<td class="left_title_1">是否启用密码找回邮件：</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="data[user_setting_ismmzh]"  value="1"  <eq name="Think.config.user_setting_ismmzh" value='1'>checked</eq> />是
+       	<input type="radio" name="data[user_setting_ismmzh]"  value="0"  <eq name="Think.config.user_setting_ismmzh" value='0'>checked</eq> />否  	
+      			<font color='red'>(如果选"是"则可以通过邮件找回密码)</font>
+    	</td> 
+    </tr>  
+    <tr>
+      <td class="left_title_2">注册函数内容：</td> 
+      <td>
+	 <textarea type="text" name="data[user_setting_comte]"  style="width:650px;height:120px;" >{$Think.config.user_setting_comte}</textarea>&nbsp;
+	  
+	  <br/>
+	  可用变量：用户名 {username}，密码 - {password}，时间 - {times}
+	</td>
+    </tr> 
+    <tr>
+      <td class="left_title_1">密码找回邮件内容：</td> 
+      <td>
+	 <textarea type="text" name="data[user_setting_password]"  style="width:650px;height:120px;" >{$Think.config.user_setting_password}</textarea>&nbsp;
+	    <br/>
+	  可用变量：用户名 {username}，链接 - {mesurl}，时间 - {times}，点击认证 - {click}
+	</td>
+    </tr> 
+    <tr>
+     
+		<td colspan="2" class="left_title_1">
+		<div align="center"> 
+		 <input type="submit" value="保存" /> 
+		 <input type="reset" name="reset" value="重置"> 
+		</td>
+	</tr> 
+  </table>
+  </form>
+</div>
+</body>
+</html>

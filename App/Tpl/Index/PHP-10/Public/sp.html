@@ -1,0 +1,35 @@
+<if condition="$config['tuiguang_shiping']==1">
+<div class="content">
+<div class="model_box">
+<div class="title">
+<h1>动态&amp;视频</h1>
+<a href="#">更多>></a>
+</div>
+<div class="model_cont v_model_cont">
+<div class="cont">
+<a href="javascript:void(0);" class="video_obj">
+<img src="/video/zzjs.jpg" width="362" height="95" />
+<span><i class="icon iconfont" style="font-size:48px">&#xe60e;</i></span>
+</a>
+</div><div class="cont">
+<a href="javascript:void(0);" class="video_obj1">
+<img src="/video/xsjc.jpg" width="362" height="95" />
+<span><i class="icon iconfont" style="font-size:48px">&#xe60e;</i></span>
+</a>
+</div><div class="cont">
+<a href="javascript:void(0);" class="video_obj2">
+<img src="/video/tgsp.jpg" width="362" height="95" />
+<span><i class="icon iconfont" style="font-size:48px">&#xe60e;</i></span>
+</a>
+</div>
+</div>          
+</div>       
+</div>
+</div>
+</if>
+<script type="text/javascript" src="/Public/moive_play/xjs/layer.js"></script>
+<script type="text/javascript">   
+$(".content .model_box .model_cont .express").mouseover(function(){$(this).addClass("curr");$(this).siblings().removeClass("curr");});$('.video_obj').click(function(){var TheId=$(this).attr('value');layer.open({type:2,title:false,area:['800px','411px'],content:"/index.php/Gonggao/Index-zzjs.html"});})
+$('.video_obj1').click(function(){var TheId=$(this).attr('value');layer.open({type:2,title:false,area:['800px','411px'],content:"/index.php/Gonggao/Index-xsjc.html"});})
+$('.video_obj2').click(function(){var TheId=$(this).attr('value');layer.open({type:2,title:false,area:['800px','411px'],content:"/index.php/Gonggao/Index-tgsp.html"});})
+</script>

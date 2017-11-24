@@ -1,0 +1,45 @@
+<include file="Public:new" />
+<link rel="stylesheet" href="__PUBLIC__/xincss/css/login.css?v=783">
+	<!-- header end-->
+<div class="login-main-area">
+	<div class="bg-back">
+		<a href="{$loging_adv['pic_url']}" ><img src="{$loging_adv['pic']}" width="100%" ></a>
+	</div>
+	<div class="auto login-inner">
+		<div class="clearfix">
+			<div class="pattern-area">
+				
+
+			</div>
+			<div class="login-main pie-for-element">
+				<div class="login-title">
+					用户登录
+				</div>
+				<form action="__URL__/login" iid="register_form" method="post">
+					<div class="login-form-item form-item-bg form-item-bg-user">
+						<input type="text" name="username" placeholder="会员名" id="username" class="input-focus-handle">
+						<div id="emailAutoComplete" class="email-complete-list"></div>
+					</div>
+					<div class="login-form-item form-item-bg form-item-bg-lock">
+						<input type="password" name="password" id="password" placeholder="登录密码" class="input-focus-handle">
+					</div>
+					
+					<div class="login-options">
+					<label for="usernameSave" class="idsave-check">
+					<if condition="$qq_setting['qq_isuse']==1">
+						<a  style="float:left;" href="{:U('Qlogin/index')}"><img  src="/Public/images/Connect_qq_1.png" /></a>使用QQ登录</if> 
+						<a href="{:U('User/getPassword')}">忘记密码？</a>
+						</label>
+					</div>
+					<input type="submit" name="submit" value="登 录" class="login-submit default-transition default-font">
+				</form>
+				<div class="go-reg">
+					还没有账号？立即<a href="{:U('User/reg')}">免费注册</a>
+				</div>
+			</div>
+		</div>
+		<div class="bg-change">
+		</div>
+	</div>
+</div>
+<include file="Public:newfoot" />

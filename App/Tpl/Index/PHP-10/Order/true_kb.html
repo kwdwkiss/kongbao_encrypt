@@ -1,0 +1,174 @@
+<include file="Public:top" />
+<script type="text/javascript">
+$(document).ready(function(){ 
+$("select").selectCss(); 
+});
+</script>
+<style type="text/css">
+.tag_select{display:block;height:24px;line-height:24px;background: url("/Public/images/xlico.gif") right center no-repeat; border:1px solid #CFCFCF; border-radius:5px; padding:3px 28px 3px 8px; color:#7D7D7D; font-size:12px; cursor:pointer}
+.tag_select_hover{ color:#7D7D7D; background: url("/Public/images/xlico.gif") right center no-repeat;}
+.tag_select_open{ color:#7D7D7D; background: url("/Public/images/slico.gif") right center no-repeat;}
+ul.tag_options{position:absolute;margin:0;list-style:none;border: solid 1px #CFCFCF; background:#fff;overflow:hidden;font-size:12px; z-index:1000;}
+ul.tag_options li{background:#fff; display:block;padding:0px 28px 0px 8px; height:30px;text-decoration:none;line-height:30px;color:#7D7D7D; font-weight:normal; font-size:12px;cursor:pointer}
+ul.tag_options li.open_hover{background:#00a2ca;color:#000; color:#fff; width:auto; font-weight:normal; font-size:12px}
+ul.tag_options li.open_selected{background:#00a2ca; color:#fff;font-size:12px; }.kongbao_kuaidiInfos{position:relative;}.moban{float:right;left:380px;top:1px;position: absolute;z-index:1000;}.kuaidi{outline:none;border:0px;background-color:#00a1cc;padding:4px 10px; color:#fff; border-radius:5px; cursor:pointer;}.kuaidi:hover{ background:#fff; color:#00a1cc; border:1px solid #00a1cc;}.label_sele{ float:right; padding-right:600px; padding-bottom:10px;}.kuaidi_DJ{height:28px; line-height:28px;}.kuaidi_DJ strong{color:#999; font-weight:normal;}.kuaidi_DJ span{color:#00a2ca; padding-right:5px;}.icon_m{display:inline-block; *display:inline; *zoom:1; margin-right:3px; width:16px; height:16px; vertical-align:middle;}.icon_m.icon_m1{background:url(/Public/images/icon_m_1.jpg) center center no-repeat;}.icon_m.icon_m2{background:url(/Public/images/icon_m_2.jpg) center center no-repeat;}.icon_m.icon_m3{background:url(/Public/images/icon_m_3.jpg) center center no-repeat;}.kuaidi_DJ span i.pri{color:#ff6600;}.kuaidi_DJ .sj{color:#00a2ca;}.kuaidi_DJ .sj:hover{color:#ff6600;}.list_tit{background-color: #f5f5f5;border-left: solid 2px #00a2c9;padding: 10px 18px;}.list_tit span{font-size:16px; padding:0 10px; margin-right:10px; cursor:pointer;}.list_tit span:Hover{color:#00a2ca;}.sh_box .sh_tit{height:30px; line-height:30px; width:100%; overflow:hidden;}.sh_box .sh_cont{width:100%; overflow:hidden; padding:20px 0; border-top:1px dashed #ccc; border-bottom:1px dashed #ccc;}.sh_box .sh_cont .sh_cont_left{width:690px; float:left; }.sh_box .sh_cont .sh_cont_left #address{ height:170px; width:680px; border:1px solid #ccc; padding:5px; line-height:12px;}.sh_box .sh_cont .sh_cont_left #address:hover{border:1px solid #00a2ca;}.sh_box .sh_cont .sh_cont_right{width:232px; float:right; border-left:1px solid #ccc; height:180px;}.sh_box .sh_cont .sh_cont_right p{line-height:30px; padding-left:40px;}.sh_box .sh_cont .sh_cont_right .btn_jc{ padding:3px 15px; border:1px solid #00a1cc; border-radius:4px; color:#00a1cc; margin:5px 0;}.sh_box .sh_cont .sh_cont_right .btn_jc:hover{ background:#00a1cc; color:#fff;}.sh_box .sh_cont .sh_cont_right .btn_xd{background:#00a1cc;  padding:3px 15px; border:1px solid #00a1cc; border-radius:4px; color:#fff; margin:5px 0;}.sh_box .sh_cont .sh_cont_right .btn_xd:hover{ background:#fff; color:#00a1cc; border:1px solid #00a1cc;}.sh_box .sh_cont .sh_cont_right p.pdt{padding-top:5px;}.form_address{display:block;}.kongbao_adv{ padding:10px 0;}	
+.webuploader-element-invisible {position: absolute !important;clip: rect(1px 1px 1px 1px); clip: rect(1px,1px,1px,1px);}
+.webuploader-pick{border:1px solid #00a1cc;position: absolute;display: inline-block;cursor: pointer;padding: 5px 21px;color: #00a1cc;line-height: 18px !important;margin-left: 40px;margin-top: 8px;text-align: center;border-radius: 3px;overflow: hidden;}
+.webuploader-pick-hover{background:#00a1cc; color:#fff;}
+</style>
+<div class="container cont_bg">
+    <div class="resize">
+        <div class="c_leftBox">
+    <div style="font-size: 16px;
+font-weight: normal;
+padding-bottom: 10px;">{$config['sitename']}</div>
+<include file="Public:left_nav" />
+</div>
+        <div class="c_rightBox">
+        	<div class="kongbao_adv" id="kinMaxShow"> 
+							<foreach name="kbhdp_list" item="kbhdp" key="k">
+							<div><a href="{$kbhdp['pic_url']}" target="_blank"><img src="{$kbhdp['pic']}" width="960px" height="230px" alt="{$kbhdp['ad_brief']}" ></a></div>	
+							 </foreach> 	
+            </div> 
+			<form id="order_form" action="{:U('truelxkbsave')}" method="POST" >
+            <div class="kongbao_kuaidiInfos">
+              <span class="label_sele">
+              <select name="type_id"  id="type_id" onChange="itemchange($(this))">
+                <foreach name="type_zhen" item="type">
+                  <option value="{$type['id']}">{$type['name']}</option>
+                </foreach>
+              </select>
+              </span>
+			 <span class="moban"> <input type="button"  value="设为默认" onclick="setDefaultKuaidi(this)"  class="kuaidi"/>
+			 </span>
+              <div class="kuaidi_infos_obj"  >
+                        <span class="thumb_info bod t_c mt5">
+                            <a href="###"><img id="image_url" src="/{$type['image_url']}" onerror="this.src='/{$type['image_url']}'" width="190px" height="110px" /></a>
+                        </span>
+                        <span class="kuaidiInfos">
+                            <div class="descript">
+                                <p>
+	<span style="color:#666666;font-family:arial, 宋体, sans-serif;font-size:12px;line-height:24px;text-indent:28px;white-space:normal;background-color:#FFFFFF;"><span style="color:#666666;font-family:arial, 宋体, sans-serif;font-size:12px;line-height:24px;text-indent:28px;white-space:normal;background-color:#FFFFFF;"> </span></span> 
+</p>
+<div>
+<span style="font-family:'Microsoft YaHei';font-size:14px;color:#666666;background-color:#FFFFFF;margin:-18px;" id="detail">{$kongbao_page['shuoming']}</span> 
+</div>                            </div>
+                            <div class="kuaidi_DJ">
+                            	<strong>当前会员级别：</strong>
+								<span class="red">&nbsp;<img src="/{$user['user_type_img']}" align="texttop"></span>
+								</span> 
+<strong>享受价格：</strong><span class="red" id="current_text"></span>
+                                <a class="sj" href="{:U('Tg/uplevel')}">[会员升级]</a>
+                            </div>
+                        </span>
+              </div></div>
+            <script type="text/javascript" src="/Public/css/jquery.kinMaxShow-1.1.min.js"></script>
+			<script type="text/javascript">
+                $("#kinMaxShow").kinMaxShow({
+                    height:230,
+                    button:{
+                        switchEvent:'mouseover',
+                        showIndex:true,
+                        focus:{color:"#fff"}
+                    }
+                })
+            </script>		   
+				<div class="kongbao_form">
+                <div class="kongbao_list " style="margin:5px 0; ">
+					<style>.color_blue:hover{color:#00a2ca}</style>
+                    <div class="list_tit">
+                    	<span class="btn_yq">友情提示</span>
+                    	<span class="btn_ys"  onclick="show_czlc(this)" >操作演示</span>
+						<span class="account1_15"  onclick="show_jiaocheng()" >文件不会使用?</span>
+                    </div>
+                    <div class="list_contaienr" >
+                        <ul style="margin-bottom:10px; padding-bottom:10px;">
+                            <li class="AllW lh30 h30 c_3">每条收货地址一行，收货地址从淘宝后台订单直接复制过来，切勿修改格式。</li>
+							<li class="AllW lh30 h30" style="color:#ff6600">新格式：姓名，手机，省 市 县区 地址，邮编</li>
+							<li class="AllW lh30 h30" style="color:#ff6600">例如：马云 ，13868686888 ，广东省 广州市 白云区 信发科技大厦 ，523000</li>
+							<li class="AllW lh30 h30" style="color:#ff6600">老格式：姓名，手机，，省 市 县区 地址，邮编</li>
+							<li class="AllW lh30 h30" style="color:#ff6600">例如：马云 ，13868686888 ， ，广东省 广州市 白云区 信发科技大厦 ，523000</li>
+                        </ul>
+                    </div>
+                </div>
+				<script type="text/javascript" src="__PUBLIC__/js/area.js"></script>
+				<script type="text/javascript">
+					
+                    $(function(){ //调用插件
+                        $.fn.citySelect();
+                    });
+                   
+					$(document).ready(function(){
+						$(".btn_yq").click(function(){
+							$(".list_contaienr").slideToggle();
+						});	
+					});
+                </script>
+                <div class="sh_box">
+					<div class="mr_address" style="margin-top: 20px;">
+						<span class="fz14 lh30 c_6 pdr10 fl">
+							发货地址：
+						</span>
+						<div class="fz14 lh30 pdr10 fl">
+							<span class="fz14 lh30 pdr10 fl">&nbsp;&nbsp;&nbsp;&nbsp;<span id="address" ></span>
+										 	  	
+						  </span>
+						</div>
+					<table width="100%">
+					<tr><td width="10%" align="right"><div align="left" class="fz14 lh30 c_6 pdr10 fl">详细地址：</div></td> <td width="90%"><div align="left">
+					<input type="text" class="account1_18" name="send_address"  id="send_address"  value="" /><font color="#0a4252">*精准到门牌号</font>
+							 	  	  </div></td></tr>
+									<tr><td align="right"><div align="left" class="fz14 lh30 c_6 pdr10 fl">发货人名：</div></td> <td><div align="left">
+									  <input type="text" name="send_name"  id="send_name" class="account1_18" value="" /><font color="#0a4252">*发货人的真实姓名</font>
+									  </div></td></tr>
+							 	  	<tr><td align="right"><div align="left" class="fz14 lh30 c_6 pdr10 fl">手机号码：</div></td> <td><div align="left">
+							 	  	  <input type="text" name="send_shouji" id="send_shouji" class="account1_18" value="" /><font color="#0a4252">*发货人真实手机号码</font>
+							 	  	  </div></td></tr>
+							 	    <tr><td  align="right"><div align="left" class="fz14 lh30 c_6 pdr10 fl">邮政编码：</div></td> <td><div align="left">
+							 	      <input type="text" name="send_zipcode"  id="send_zipcode" class="account1_18" value="" /><font color="#0a4252">*发货人所在地邮编</font>
+							 	      </div></td></tr>
+							 	  </table>
+</div>
+<div class="sh_cont" style="border:none">
+<div class="sh_cont_left">
+<div class="textarea_cont" id="show_czlc" type="_re">
+<textarea  name="postscript"  id="postscript"  value="" onblur="javascript:this.value=this.value.replace(',','，');" style=" font-family: '微软雅黑'; width:100%; border:1px solid #ccc;height:200px;background: url(/Public/images/tishi.png) no-repeat center;" onfocus="this.style.backgroundImage='url()';" ></textarea></div>
+                        </div>
+                    	<div class="sh_cont_right"   >
+                            <p><span>我的等级：{$user['type_name']}</span></p>
+                            <p>余额：<i class="color_or">¥{$user['money']}</i></p>
+                        	<p  class="pdt"><input  id="btn_check" type="button" class="btn_jc" value="检测地址" onclick="checkisnos()" /></p>
+                        	<p id="now_money_the" ><div id="jiage" ></div></p>
+                        	<p class="pdt"><input type="submit"  class="btn_xd" value="立即下单" onclick="return chk_submit()"/> </p>
+							<span class="fl">
+                            <div id="fileList" class="uploader-list"></div>
+                            <div id="filePicker">上传文件</div>
+                           </span>
+                        </div>
+                    </div>
+                </div>
+                <div id="cheisnos" ></div>
+		        <div id="addinputarrs" ></div> 
+				<input type="hidden" id="single_price"  value=""/>
+				<input type="hidden" id="order_money" name="order_money" value=""/>
+				<input type="hidden" id="order_nums" name="order_nums" value=""/> 
+			   </form>         
+      </div>
+  </div>
+</div>
+<include file="Public:foote" />
+<script type="text/javascript" src="/Public/js/zhenkb.js"></script> 
+<script type="text/javascript">
+var user_default_kuaidi="{$user_default_kuaidi}";
+function setDefaultKuaidi(){
+	var mydata={default_kuaidi:$("#type_id").val()};
+	$.post("{:U('setDefaultKuaidi')}",mydata,function(data,status){
+		  alert(data.status);
+	 },'json');
+}
+if(user_default_kuaidi!="0"){
+  $("#type_id").val(user_default_kuaidi);   
+  itemchange($("#type_id")); 
+} 
+</script>
+<script type="text/javascript" src="/Public/moive_play/lxdh.js"></script> 

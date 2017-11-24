@@ -1,0 +1,65 @@
+<div class="menu">
+<h2><a href="{:U('User/Home')}" onfocus="this.blur();">会员首页</a></h2>
+<ul class="menuList" id="tree">
+	<li>
+		<span class="l1">业务管理</span>
+		<ul class="menuList2" style="display:none">
+			<li><a href="{:U('Cash/recharge')}" onfocus="this.blur();" <if condition="$cur eq recharge">class="curr"</if>>账户充值</a></li>
+			<if condition="$user['agent']==1"><li><a href="{:U('Daili/Index')}" >分站价格表<img style="margin-top:-2px; margin-left:5px;" src="/Public/images/hot.png"/></a></li></if>
+			<li><a href="{:U('Order/kb')}" <if condition="$cur eq kb">class="curr"</if>>淘宝空包下单<img style="margin-top:-2px; margin-left:5px;" src="/Public/images/hot.png"/></a></li>
+			<li><a href="{:U('Order/jdkb')}" <if condition="$cur eq jdkb">class="curr"</if>>京东拼多多空包</a></li>
+			<if condition="$kongbao_config['true_valid']"><li><a href="{:U('Order/true_kb')}" <if condition="$cur eq true_kb">class="curr"</if>>真实空包下单</a></li>
+			<li><a href="{:U('Order/daili_upload')}" class="lefta8">代理表格上传</a></li></if>
+			<if condition="$kongbao_config['pf_valid']==1"><li><a href="{:U('Order/kb_pf')}" original-title="我要批发单号">我要批发单号</a></li></if>
+			<if condition="$xiaohao_config['valid']==1"><li><a href="{:U('Order/xh')}" <if condition="$cur eq xh">class="curr"</if>>购买小号</a></li>
+			<li><a href="{:U('Order/dd_apply')}" <if condition="$cur eq dd_apply">class="curr"</if>>底单申请</a></li>
+			<li><a href="{:U('Tg/uplevel')}" onfocus="this.blur();" <if condition="$cur eq uplevel">class="curr"</if>>快递价格<img style="margin-top:-2px; margin-left:5px;" src="/Public/images/hot.png"/></a></li>
+				</ul>
+			</li>
+			<li>
+		
+			<span class="l6">订单管理</span>
+		<ul class="menuList2" style="display:none">
+			<li><a href="{:U('Log/kb_log')}">空包单号管理</a></li>
+			<if condition="$kongbao_config['pf_valid']==1">	<li><a href="{:U('Log/pifa_log')}" original-title="单号批发管理">单号批发管理</a></li></if>
+			<li><a href="{:U('Log/xh_log')}">小号管理</a></li></if>
+			<li><a href="{:U('Log/didan_loig')}" >底单管理</a></li>
+				</ul>
+			</li>
+			<li>
+				<span class="l2">财务管理</span>
+				<ul class="menuList2" style="display:none">
+				   <li><a href="{:U('Log/cz_order')}" <if condition="$cur eq yj_log">class="curr"</if>>充值记录</a></li>
+				   <li><a href="{:U('Log/xf_order')}" <if condition="$cur eq yj_log">class="curr"</if>>消费明细</a></li>
+				   <li><a href="{:U('Log/yj_log')}" <if condition="$cur eq yj_log">class="curr"</if>>我的推广佣金</a></li>
+                   <li><a href="{:U('Log/tixia_log')}" <if condition="$cur eq tixia_log">class="curr"</if>>提现记录</a></li>
+				</ul>
+			</li>
+			<li>
+				<span class="l3">客户服务</span>
+				<ul class="menuList2" style="display:none">
+				<li><a href="{:U('User/liuyan')}" <if condition="$cur eq liuyan">class="curr"</if>>提交工单<img style="margin-top:-2px; margin-left:5px;" src="/Public/images/hot.png"/></a></li>
+				<li><a href="{:U('User/complaint')}" onfocus="this.blur();" <if condition="$cur eq complaint">class="curr"</if>>我的工单</a></li>
+				</ul>
+			</li>
+			<li>
+				<span class="l4">用户管理</span>
+				<ul class="menuList2" style="display:none">
+				    <li><a href="{:U('User/address')}" <if condition="$cur eq address">class="curr"</if>>发货地址 </a></li>
+					<li><a href="{:U('User/repass')}" onfocus="this.blur();">修改密码 </a></li>
+                    <li><a href="{:U('User/reinfo')}" onfocus="this.blur();">资料维护</a></li>
+					<li><a href="{:U('System/index')}" onfocus="this.blur();" <if condition="$cur eq index">class="curr"</if>>站内消息</a></li>
+					<li><a href="{:U('Tg/index')}" onfocus="this.blur();">我的推广</a></li>
+				</ul>
+			</li>
+			<li>
+				<span class="l5">新闻资讯</span>
+				<ul class="menuList2" style="display:none">
+				<li><a href="{:U('Help/index')}" >帮助中心</a></li>
+				<li><a href="{:U('Gonggao/index')}">网站公告</a></li>
+				<li><a href="{:U('Article/index')}">文章中心</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+    </td>

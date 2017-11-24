@@ -1,0 +1,65 @@
+<include file="Public:header" />
+    </td>
+	<td valign="top" class="r">
+    <div class="title02">修改密码</div>
+	 <form  name="reg" id="reg" action="{:U('User/savepass')}" method="POST">
+      <table class="V_tb2">
+          <!-- 隔行变色 -->
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+          })
+          </SCRIPT>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>用户名</th>
+        <td>{$user['username']}</td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>原密码</th>
+        <td><input type="password" name="oldpwd" id="oldpwd" class="V_input2" /></td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>新密码</th>
+        <td><input type="password" name="password" id="password" class="V_input2" /></td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>确认新密码</th>
+        <td><input type="password" name="repassword" id="repassword" class="V_input2" /></td>
+      </tr>
+      <tr class="td1">
+        <th></th>
+        <td><input type="submit" value="提交修改" class="V_btn4 submit" onclick="return chk_submit()"/></td>
+      </tr>
+    </table>
+
+	</form>
+    
+    </td>
+  </tr>
+</table>
+<script  type="text/javascript"> 
+function chk_submit()
+{  
+var password = $("#password").val();
+var oldpwd = $("#oldpwd").val();
+var repassword = $("#repassword").val();
+if (oldpwd==""){ //没有再次输入密码的时候
+alert('原密码不能为空！');
+return false;
+}
+if (password==""){ //没有再次输入密码的时候
+alert('密码不能为空！');
+return false;
+}
+if (repassword==""){ //没有再次输入密码的时候
+alert('请再输入一次密码！');
+return false;
+}     
+if(repassword!=password){   //再次输入密码不正确的时候
+alert('两次输入的密码不一致！');
+return false;
+}    
+}
+</script>
+</body>
+</html>

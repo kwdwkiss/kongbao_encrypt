@@ -1,0 +1,27 @@
+<include file="Public:new" />
+<script type="text/javascript" src="__PUBLIC__/xincss/js/lxjs.js"></script>
+<link href="__PUBLIC__/xincss/pwd/getpassword.css" rel="stylesheet" type="text/css"/>
+<link href="__PUBLIC__/xincss/pwd/v1Compatibility.css" rel="stylesheet">
+<div style="clear:both;height:20px"></div>
+<div class="autowidth main-body getpassword">
+	<div class="step step3">
+	</div>
+	<div class="form">
+		<form action="{:U('Email/findpwd')}" method="post" onsubmit="return fahuodi_email();">
+		<input type="hidden" name="id" value="{$user['id']}">
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<th>邮箱地址：</th>
+					<td><input type="text" name="email" id="email" class="input" class="input" style="width:300px" /></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td><input type="submit" value="下一步" class="submit" /></td>
+				</tr>
+
+			</table>
+		</form>
+	</div>
+</div>
+<div style="clear:both;height:20px"></div>
+<include file="Public:newfoot" />

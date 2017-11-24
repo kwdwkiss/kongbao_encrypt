@@ -1,0 +1,113 @@
+<!-- 产品展示-->
+	<div class="products">
+		<div class="auto">
+			<div class="products-title">
+				<div class="section-title">产品与服务</div>
+				<p>{$seo_desc}</p>
+			</div>
+			<volist name="kongbao_type" id="vo" offset="0" length="1"> 
+			<?php $server="/$vo[images_url]"; ?>
+            <style type="text/css">.sosting-servers{background-image: url(<?php echo $server;?>);}</style>
+			<div class="server-choose clearfix">
+				<div class="sosting-servers service-block">
+					<h2>{$vo.name}</h2>
+					<p><?php $str = "$vo[comm]"; $comm = strip_tags($str); echo mb_substr($comm,0,30,"UTF-8"),"..."; ?></p>
+					<div class="server-price"><notempty name="vo['config']['price']['a4']">{$vo['config']['level']['a4']}：<span>{$vo['config']['price']['a4']}</span>元/单</notempty></div>
+					<a href="{:U('Order/kb')}" class="buy-cloud" target="_blank">立即购买</a>
+					<if condition="$vo['topnew']==1">
+					<span class="sale-label hot-sale-label"></span></if>
+					<if condition="$vo['toprec']==1">
+					<span class="sale-label new-sale-label"></span>
+					</if>
+				</div>
+				</volist> 
+				<volist name="kongbao_type" id="vo" offset="0" length="2"> 
+				 <if condition="$i egt 2">
+				 <?php $virtual="/$vo[images_url]"; ?>
+				 <style type="text/css">.virtual-servers{margin-left: 3%;background-image: url(<?php echo $virtual;?>);}</style>
+				<div class="virtual-servers service-block">
+					<h2>{$vo.name}</h2>
+					<p><?php $str = "$vo[comm]"; $comm = strip_tags($str); echo mb_substr($comm,0,30,"UTF-8"),"..."; ?></p>
+					<div class="server-price"><notempty name="vo['config']['price']['a4']">{$vo['config']['level']['a4']}：<span>{$vo['config']['price']['a4']}</span>元/单</notempty></div>
+					<a href="{:U('Order/kb')}" class="buy-cloud" target="_blank">立即购买</a>
+					<if condition="$vo['topnew']==1">
+					<span class="sale-label hot-sale-label"></span></if>
+					<if condition="$vo['toprec']==1">
+					<span class="sale-label new-sale-label"></span>
+					</if>
+				</div>
+				</if>
+				</volist> 
+				<volist name="kongbao_type" id="vo" offset="0" length="3"> 
+				 <if condition="$i egt 3">
+				 <?php $hosting="/$vo[images_url]"; ?>
+				 <style type="text/css">.hosting-servers{margin-left: 3%;background-image: url(<?php echo $hosting;?>);}</style>
+				<div class="hosting-servers service-block">
+					<h2>{$vo.name}</h2>
+					<p><?php $str = "$vo[comm]"; $comm = strip_tags($str); echo mb_substr($comm,0,30,"UTF-8"),"..."; ?></p>
+					<div class="server-price"><notempty name="vo['config']['price']['a4']">{$vo['config']['level']['a4']}：<span>{$vo['config']['price']['a4']}</span>元/单</notempty></div>
+					<a href="{:U('Order/kb')}" class="buy-cloud" target="_blank">立即购买</a>
+					<if condition="$vo['topnew']==1">
+					<span class="sale-label hot-sale-label"></span></if>
+					<if condition="$vo['toprec']==1">
+					<span class="sale-label new-sale-label"></span>
+					</if>
+				</div>
+				</if>
+				</volist> 
+			<volist name="kongbao_type" id="vo" offset="0" length="4"> 
+			<if condition="$i egt 4">
+			<?php $sserver="/$vo[images_url]"; ?>
+            <style type="text/css">.ssosting-servers{background-image: url(<?php echo $sserver;?>);}</style>
+			<div class="sserver-choose clearfix">
+				<div class="ssosting-servers service-block">
+					<h2>{$vo.name}</h2>
+					<p><?php $str = "$vo[comm]"; $comm = strip_tags($str); echo mb_substr($comm,0,30,"UTF-8"),"..."; ?></p>
+					<div class="server-price"><notempty name="vo['config']['price']['a4']">{$vo['config']['level']['a4']}：<span>{$vo['config']['price']['a4']}</span>元/单</notempty></div>
+					<a href="{:U('Order/kb')}" class="buy-cloud" target="_blank">立即购买</a>
+					<if condition="$vo['topnew']==1">
+					<span class="sale-label hot-sale-label"></span></if>
+					<if condition="$vo['toprec']==1">
+					<span class="sale-label new-sale-label"></span>
+					</if>
+				</div>
+				</if>
+				</volist> 
+				<volist name="kongbao_type" id="vo" offset="0" length="5"> 
+				 <if condition="$i egt 5">
+				 <?php $vvirtual="/$vo[images_url]"; ?>
+				 <style type="text/css">.vvirtual-servers{margin-left: 3%;background-image: url(<?php echo $vvirtual;?>);}</style>
+				<div class="vvirtual-servers service-block">
+					<h2>{$vo.name}</h2>
+					<p><?php $str = "$vo[comm]"; $comm = strip_tags($str); echo mb_substr($comm,0,30,"UTF-8"),"..."; ?></p>
+					<div class="server-price"><notempty name="vo['config']['price']['a4']">{$vo['config']['level']['a4']}：<span>{$vo['config']['price']['a4']}</span>元/单</notempty></div>
+					<a href="{:U('Order/kb')}" class="buy-cloud" target="_blank">立即购买</a>
+					<if condition="$vo['topnew']==1">
+					<span class="sale-label hot-sale-label"></span></if>
+					<if condition="$vo['toprec']==1">
+					<span class="sale-label new-sale-label"></span>
+					</if>
+				</div>
+				</if>
+				</volist> 
+				<volist name="kongbao_type" id="vo" offset="0" length="6"> 
+				 <if condition="$i egt 6">
+				 <?php $hhosting="/$vo[images_url]"; ?>
+				 <style type="text/css">.hhosting-servers{margin-left: 3%;background-image: url(<?php echo $hhosting;?>);}</style>
+				<div class="hhosting-servers service-block">
+					<h2>{$vo.name}</h2>
+					<p><?php $str = "$vo[comm]"; $comm = strip_tags($str); echo mb_substr($comm,0,30,"UTF-8"),"..."; ?></p>
+					<div class="server-price"><notempty name="vo['config']['price']['a4']">{$vo['config']['level']['a4']}：<span>{$vo['config']['price']['a4']}</span>元/单</notempty></div>
+				<a href="{:U('Order/kb')}" class="buy-cloud" target="_blank">立即购买</a>
+					<if condition="$vo['topnew']==1">
+					<span class="sale-label hot-sale-label"></span></if>
+					<if condition="$vo['toprec']==1">
+					<span class="sale-label new-sale-label"></span>
+					</if>
+				</div>
+				</if>
+				</volist>
+			</div>
+			</div>
+		</div>
+	</div>

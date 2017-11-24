@@ -1,0 +1,226 @@
+<include file="Public:header" />
+</td>
+<td valign="top" class="r">
+<link rel="stylesheet" href="__PUBLIC__/kindeditor/themes/default/default.css" />
+<script src="__PUBLIC__/kindeditor/kindeditor.js"></script>
+<script src="__PUBLIC__/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript">
+  	KindEditor.ready(function(K) {
+  		window.editor = K.create('#file_content');
+		var editor = K.editor({
+			allowFileManager : true
+		});
+		K('#jietu_i').click(function() {
+				editor.loadPlugin('image', function() {
+					editor.plugin.imageDialog({
+						showRemote : false,
+						imageUrl : K('#jietu').val(),
+						clickFn : function(url, title, width, height, border, align) {
+							K('#jietu').val(url);
+							$('#jietu_save').val(url);
+							editor.hideDialog();
+						}
+					});
+				});
+		});		
+	}); 	
+</script> 
+<div class="title02">底单申请
+<a href="{:U('Log/didan_loig')}" class="Annkela"><img src="/Public/xincss/images/19.png"/>返回列表</a></div>
+<form id="register_form" action="{:U('ddsave')}" method="POST" > 
+    <table class="V_tb2">
+          <!-- 隔行变色 -->
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+          })
+          </SCRIPT>
+		<tr class="td1">
+        <th><font style="color:#F00">*</font>问题类别</th>
+        <td>
+		<select name="type_id" id="type_id" onchange="itemchange($(this))" class="select classid">
+<option value="">选择快递</option>
+<foreach name="type_list" item="type">
+<option value="{$type['id']}">{$type['name']}</option>
+</foreach>
+</select>
+        </td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>底单价格</th>
+        <td>
+		<input type="text" name="price" class="V_input2"  id="price" value="0" size=5 />
+		<input type="hidden" id="dd_price" name="dd_price" /></td>
+      </tr>
+	   <tr class="td1">
+        <th><font style="color:#F00">*</font>快递单号</th>
+        <td>
+		<input  name="note_no" type="text" id="note_no" size=50  class="V_input2"  /></td>
+      </tr>
+	   <tr class="td1">
+        <th><font style="color:#F00">*</font>降权截图</th>
+        <td>
+		<input type="text" id="jietu" value="" disabled="true"  size="60" class="V_input2" style="width:450px"/>
+		<input type="hidden" id="jietu_save" value="" name="jietu" /> 
+		<input type="button"  id="jietu_i" class="Annkelb kel1"  value="选择图片" />
+		</td>
+      </tr>
+	   <tr class="td1">
+        <th><font style="color:#F00">*</font>发货地址</th>
+        <td>
+		<input name="fhaddr" style="width:450px" type="text" id="fhaddr" size=100 value="格式->姓名，手机，固话，地址，邮编 共4个逗(淘宝上复制下来)" onfocus="if(value==defaultValue){value='';this.style.color='#0a4252'}" onblur="if(!value){value=defaultValue;this.style.color='#0a4252'}" style="color:#0a4252" class="V_input2" >
+		</td>
+      </tr>
+	  <tr class="td1">
+        <th><font style="color:#F00">*</font>收货地址</th>
+        <td>
+		<input name="shaddr" style="width:450px" type="text" id="shaddr" size=100 value="格式->姓名，手机，固话，地址，邮编 共4个逗(淘宝上复制下来)" onfocus="if(value==defaultValue){value='';this.style.color='#0a4252'}" onblur="if(!value){value=defaultValue;this.style.color='#0a4252'}" style="color:#0a4252" class="V_input2" ></td>
+      </tr>
+	  <tr class="td1">
+        <th><font style="color:#F00">*</font>发货日期</th>
+        <td>
+		<input name="order_time" type="text" id="order_time" size=80 value="" onfocus="if(value==defaultValue){value='';this.style.color='#0a4252'}" onblur="if(!value){value=defaultValue;this.style.color='#0a4252'}" style="color:#0a4252" class="V_input2" title="6-10字符，数字组成"></td>
+      </tr>
+	  <tr class="td1">
+        <th><font style="color:#F00">*</font>商品重量</th>
+        <td>
+		<input name="weight" type="text" id="weight" class="V_input2" title="1-5字符，数字组成，单位KG"/></td>
+      </tr>
+	  <tr class="td1">
+        <th><font style="color:#F00">*</font>发货运费</th>
+        <td>
+		<input name="yunfei" type="text" id="yunfei" class="V_input2" title="1-5字符，数字组成，单位”元"/></td>
+      </tr>
+	  <tr class="td1">
+        <th><font style="color:#F00">*</font>商品名称</th>
+        <td>
+		<input name="goods_name" type="text" size=100  id="goods_name" class="V_input2" title="3-30字符，数字组成，不能出现敏感字符"/></td>
+      </tr>
+     
+      <tr class="td1">
+        <th></th>
+        <td><button onclick="return chk_submit();" type="submit" class="V_btn4 submit">确定提交</button>
+		</td>
+      </tr>
+    </table>
+    </form>
+    <div class="V_con1">
+    	<p>请尽量清晰详尽的描述您的问题，以便客服人员能够快速帮您解决问题；<br />如果您有意见和建议，或者进行投诉请点击<b><a href="#" class="fc2">投诉建议</a></b>。</p>
+    </div>
+    </td>
+  </tr>
+</table>
+<script type="text/javascript">  
+    function chk_submit()
+    { 
+    	 var user_money = "{$user['money']}";
+    	 var type_id = $('#type_id').val();
+    	 if(type_id<=0 || type_id=='')
+    	 {
+    	 	alert('请选择快递类型!')
+    	 	return false;
+    	 }
+    	 var dd_price = $("#dd_price").val();
+    	 if(dd_price>0)//如果大于0时判断是否满足
+    	 {
+    	 	  var price=parseFloat(user_money);
+    	 	  if(price<dd_price)
+    	 	  {
+    	 	  	alert('当前账户余额不足，请先充值!');
+    	 	  	return false;
+    	 	  }
+    	 }
+    	 var note_no = $("#note_no").val();
+    	 if(note_no =='')
+    	 {
+    	 	alert('请填写快递单号!');
+    	 	return false;
+    	 }
+    	 var jietu_save = $("#jietu_save").val();
+    	 if(jietu_save=='')
+    	 {
+      	 	alert('请上传降权截图!');
+    	 	return false;  	 	
+    	 }
+    	 var fhaddr = $("#fhaddr").val();
+    	 if(fhaddr=='')
+    	 {
+      	 	alert('请填写发货地址!');
+    	 	return false;  	 	
+    	 }
+    	 if(fhaddr=='格式->地址，邮编，姓名，手机，固话 共4个逗(淘宝上复制下来)')
+    	 {
+       	 	alert('请填写发货地址!');
+    	 	return false;  	   	 	
+    	 }
+    	 //判断发货地址是否满足条件
+    	 var result=check_address(fhaddr);
+    	 if(!result) 
+    	 {
+    	 	 alert('发货地址格式不对，请检查！');
+    	 	 return false;
+    	 } 
+    	 var shaddr = $("#shaddr").val();
+    	 if(shaddr=='')
+    	 {
+      	 	alert('请填写收货地址!');
+    	 	return false;  	 	
+    	 }   
+    	 if(shaddr=='格式->姓名，手机，固话，地址，邮编 共4个逗(淘宝上复制下来)')
+    	 {
+      	 	alert('请填写收货地址!');
+    	 	return false;  	 	
+    	 }       	 
+    	 //判断收货地址是否满足条件
+    	 var result=check_address(shaddr);
+    	  if(!result) 
+    	   {
+    	   	alert('收货地址格式不对，请检查！');   
+    	   	return false;
+    	   } 	  	 
+    }
+	 function trim(str){   
+			 str = str.replace(/^(\s|\u00A0)+/,'');   
+				for(var i=str.length-1; i>=0; i--){   
+				  if(/\S/.test(str.charAt(i))){   
+				    str = str.substring(0, i+1);   
+	 				  break;   
+				 }   
+			 }   
+			 return str;   
+	  }   
+	 function check_address(address)
+	 {
+	 	var adddan=trim(address).split("，");
+	    if(adddan.length!=5)
+	     {
+	       	  return false;
+	     }
+	    return true;
+	 }  
+ function itemchange(obj)
+     {
+	     	var type_id = obj.val();
+	     	if(type_id=='' || type_id==0)
+	     	{
+	     		$("#price").val('0');  
+	     		$("#dd_price").val('0'); 
+	     	}
+	     	else
+	     	{
+		     	$.post("{:U('getDetail')}",{id:type_id},function(data,status)
+		     	{
+		     		var return_data = data.data;  
+		     		if(return_data.dd_price>0)
+		     		{
+			      	    $('#dd_price').val(return_data.dd_price);   
+			     		$("#price").val(return_data.dd_price);     			
+		     		} 
+		     	},'json');  	     		
+	     	}  
+    }  
+
+</script> 
+</body>
+</html>
+

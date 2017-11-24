@@ -1,0 +1,1 @@
+<script type="text/javascript" src="/?b=c&f=main.js,go.js,base/util.js,product/union.js&v=2.0"></script>  

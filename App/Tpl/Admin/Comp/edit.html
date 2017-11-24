@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../Public/css/common.css" type="text/css" />
+<title>管理区域</title>
+</head> 
+<body>
+ <div class="fixed-bar">
+    <div class="item-title"> 
+      <h3>问答管理</h3>
+      <ul class="tab-base"> 
+         <li><a href="javascript:void(0)" class="current"><span>编辑问答</span></a></li>  
+      </ul>
+    </div>
+  </div>
+<div id="man_zone">
+<form action="__URL__/update" method="post">
+  <table width="99%" border="0" align="center"  cellpadding="3" cellspacing="1" class="table_style">
+     <tr>
+      <td class="left_title_2">标题</td>
+      <td ><input type="text"  name="note_no" size="50" value="{:strip_tags($xiaohao[title])}" require="true" datatype="require" ></td>
+    </tr>
+    <tr>
+      <td class="left_title_2">问答类型</td> 
+      <td>
+      	     <input type="text"    disabled="true" value="{$xiaohao['opt_type']}">
+      </td>
+    </tr>
+     <tr>
+      		<td class="left_title_2">会员名</td>  
+      		<td><input type="text"    disabled="true" value="{:strip_tags($xiaohao[username])}"></td>
+     </tr>
+    <tr>
+      <td class="left_title_2"> 提问时间</td>
+      <td><input type="text" disabled="true"  size="31" value="{$xiaohao['addtime']}"></td>
+    </tr> 
+     <tr>
+      		<td class="left_title_2">问</td>  
+      		<td><textarea name="content" id="content" cols="80" rows="10" require="true"    disabled="true" >{:strip_tags($xiaohao[content])}</textarea></td>
+     </tr>
+     <tr>
+      		<td class="left_title_2">答</td>  
+      		<td><textarea name="reply" id="reply" cols="80" rows="10" require="true" datatype="require" msgid="contentmsg">{$xiaohao[reply]}</textarea></td>
+     </tr>
+     <tr>
+      		<td class="left_title_2">回答者</td>  
+      		<td><input type="text"    disabled="true" value="{$xiaohao[username2]}"></td>
+     </tr>
+    <tr>
+      <td class="left_title_2"> 答复时间</td>
+      <td><input type="text" disabled="true"  size="31" value="{$xiaohao['replytime']}"></td>
+    </tr> 
+    <tr bgcolor="#FFFFFF">
+      <td colspan="2" class="left_title_2"><div align="center">
+        <input type="hidden" name="id" value="{$xiaohao['id']}" /> 
+        <input type="hidden" name="username2" value="{$xiaohao['id']}" /> 
+        <input type="submit" value="答复" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input class="button" type="button" onclick="history.go(-1);" value="返回" /></div></td>
+    </tr>
+  </table>
+</form>
+</div>
+</body>
+</html>

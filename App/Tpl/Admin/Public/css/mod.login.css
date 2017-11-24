@@ -1,0 +1,17 @@
+body {
+  	background: url(../images/login/login_01.gif);
+    font-size: 12px;
+}
+.bai{
+	color: #fff;
+	font-size: 12px;
+}
+
+.form{
+	margin: 85px auto 0;
+  	display: block;
+}
+
+input[type='text'],input[type='password']{
+	height:20px;
+}

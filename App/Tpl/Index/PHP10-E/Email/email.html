@@ -1,0 +1,29 @@
+<include file="Public:new" />
+<script type="text/javascript" src="__PUBLIC__/xincss/js/lxjs.js"></script>
+<link href="__PUBLIC__/xincss/pwd/getpassword.css" rel="stylesheet" type="text/css"/>
+<link href="__PUBLIC__/xincss/pwd/v1Compatibility.css" rel="stylesheet">
+<div style="clear:both;height:20px"></div>
+<div class="autowidth main-body getpassword">
+	<div class="step step3">
+	</div>
+	<div class="form">
+		<form name="validateForm" id="reg" action="/index.php" method="POST" style="padding-top:20px; padding-bottom:50px;">
+		<input type="hidden" name="id" value="{$user['id']}">
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<th width="100"></th>
+					<td><p style="color:#f40; font-size:24px;"><span style="color:#3C0;">{$username}</span>恭喜您！邮件发送成功、请登录邮箱查收....</p>
+                </td>
+				</tr>
+				<tr>
+				
+			<th></th>
+					<td><input type="submit" value="返回首页" class="button submit" /></td>
+				</tr>
+			</table>
+		<input type="hidden" name="id" value="{$user['id']}">
+	</form>
+	</div>
+</div>
+<div style="clear:both;height:20px"></div>
+<include file="Public:newfoot" />

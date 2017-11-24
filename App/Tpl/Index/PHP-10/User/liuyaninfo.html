@@ -1,0 +1,142 @@
+<include file="Public:top" />
+<div class="container cont_bg">
+    <div class="resize">
+        <div class="c_leftBox">
+    <div style="font-size: 16px;
+font-weight: normal;
+padding-bottom: 10px;">{$config['sitename']}</div>
+<include file="Public:left_nav" />
+</div>
+<div class="c_rightBox">
+            <div class="change_code">
+                <div class="c_tit">
+                    <h2>工单详情</h2>
+                </div>
+				<br>
+				 </div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+          <tbody>
+<tr>
+            <td height="60" align="center" valign="middle" >
+			<table width="95%" height="50" border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr >
+                <td width="80" align="left"></td>
+                <td align="right"><a href="{:U('User/complaint')}"  style="width: 83px" class="account1_14">我的工单</a></td>
+                </tr><tr>
+                <td width="80" align="left">工单类型：</td>
+                <td align="left"><input type="text"  readonly class="fz14 lh30 pdr10 fl"    value="{$xiaohao['opt_type']}"></td>
+                </tr>
+            </tbody></table>
+			</td>
+          </tr>
+		  <tr>
+            <td height="60" align="center" valign="middle" >
+			<table width="95%" height="50" border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td width="80" align="left">工单标题：</td>
+                <td align="left"><input name="title" type="text" id="title" size="40" require="true" datatype="require"  value="{$xiaohao[title]}" class="fz14 lh30 pdr10 fl"  readonly>
+　</td>
+              </tr>
+            </tbody></table>
+			</td>
+          </tr>
+		  <tr>
+            <td height="60" align="center" valign="middle" >
+			<table width="95%" height="50" border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td width="80" align="left">提交时间：</td>
+                <td align="left"><input name="addtime" type="text" id="addtime" size="40" require="true" datatype="require"  value="{$xiaohao['addtime']}" class="fz14 lh30 pdr10 fl"  readonly>
+　</td>
+              </tr>
+            </tbody></table>
+			</td>
+          </tr>
+
+
+		  <tr>
+            <td height="60" align="center" valign="middle" >
+			<table width="95%" height="50" border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td width="80" align="left">工单内容：</td>
+                <td align="left"><textarea name="content" id="content" cols="80" rows="10" require="true" datatype="require" msgid="contentmsg"  readonly>{$xiaohao[content]}</textarea></td>
+                </tr>
+            </tbody></table>
+			</td>
+          </tr>
+
+		  <tr>
+            <td height="60" align="center" valign="middle" >
+			<table width="95%" height="50" border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td width="80" align="left">回复内容：</td>
+                <td align="left"><textarea name="reply" id="reply" cols="80" rows="10" require="true" datatype="require"  msgid="contentmsg" readonly>{$xiaohao[reply]}</textarea></td>
+                </tr>
+            </tbody></table>
+			</td>
+          </tr>
+		  
+		  <tr>
+            <td height="60" align="center" valign="middle" >
+			<table width="95%" height="50" border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td width="80" align="left">回复时间：</td>
+                <td align="left"><input name="replytime" type="text" id="replytime" size="40" require="true" datatype="require"  value="{$xiaohao['replytime']}" readonly>
+　</td>
+              </tr>
+            </tbody></table>
+			</td>
+          </tr>
+		 
+              <tr>
+                <td height="80" colspan="3" align="center" valign="bottom">
+				<table width="138" border="0" cellspacing="0" cellpadding="0">
+                  <tbody><tr>
+                    <td>
+                    <input type="submit" name="btnSave" value="返回" id="btnSave" class="recharge_sub" onClick="javascript :history.back(-1);" >
+                   </td>
+                  </tr>
+                </tbody></table>
+				</td>
+              </tr>
+			  
+                </tbody>
+				</table>
+<!-- kbdzhong end -->
+
+				</td>
+              </tr>
+            </tbody></table>
+<!-- k1 end -->
+</td>
+  </tr>
+</tbody></table>
+                            </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+</div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+   
+<SCRIPT LANGUAGE="JavaScript">
+	$('form').checkForm(1);
+	function check()
+	{
+		if(typeof(FCKeditorAPI)!="undefined")
+		{
+			oEditor= FCKeditorAPI.GetInstance('content');
+			if(oEditor)
+			{
+				var t = oEditor.GetXHTML();
+				$('#content').val(t);
+			}
+		}
+		$('form').checkForm(1);
+		return true;
+	}
+</SCRIPT>
+<include file="Public:foote" />

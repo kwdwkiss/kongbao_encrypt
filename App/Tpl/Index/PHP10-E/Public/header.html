@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$seo_title} </title>
+<meta name="Keywords" content="{$seo_keyword}">
+<meta name="Description" content="{$seo_desc}">
+<script type="text/javascript" src="__PUBLIC__/xincss/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/xincss/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="__PUBLIC__/xincss/js/menu.js"></script>
+<link href="__PUBLIC__/xincss/css/style.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<link href="__PUBLIC__/xincss/css/user.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<link href="__PUBLIC__/xincss/css/common.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<if condition="$qq_setting['qq_isuse']==1">
+<meta property="qc:admins" content="{$qq_setting['qq_appcode']}" />
+</if>
+</head>
+<body scroll="no">
+<table class="tab" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="64" colspan="2"> 
+	<div class="head">
+		<a class="logo" href="{:U('User/Home')}" onfocus="this.blur();"><img src="__ROOT__/{$config.site_logo}" align="absbottom" ></a>
+		<ul class="nav">
+			<li>欢迎您，{$user['username']}</li>
+			<li><a class="mess" href="{:U('System/index')}">站内消息（<span class="color_ju">{$allnoread}</span>）</a></li>
+			<li><a class="mess1" href="__APP__" target="_blank">官网首页</a></li>
+			<li><a class="mess2" href="{:U('User/logout')}">退 出</a></li>
+		</ul>
+	</div>
+    </td>
+  </tr>
+  <tr>
+<td class="l" width="180" valign="top">      
+<include file="Public:left" />
+<include file="Public:kefua" />
+</div>

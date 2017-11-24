@@ -1,0 +1,115 @@
+<include file="Public:header" />
+<script type="text/javascript">
+var refresh_seconds=parseInt("{$xiaohao_config['refresh_second']}");$(function()
+{$('.checkall').click(function(){$('.checkall').attr('checked',$(this).attr('checked'));$('.checkitem').each(function(){$(this).attr('checked',$('.checkall').attr('checked'));});});if(refresh_seconds>0)
+{setTimeout('myrefresh()',refresh_seconds);}});function myrefresh()
+{window.location.reload();}
+var swffile="/Public/moive_play/Uploader.swf";function xhbuy(id,money)
+{if(confirm('确定要购买这个小号？'))
+{$.post("/index.php/Order/buyxh.html",{id:id,money:money},function(data,status)
+{if(status=='success')
+{if(data.status==1)
+{alert("小号购买成功,请到小号购买记录处查看!");}
+else
+{alert(data.info);}
+window.location.href=data.data;}
+else
+{alert('小号购买失败!请联系网站客服');}},'json');}
+else
+{return false;}}
+</script>
+    </td>
+<td valign="top" class="r">	
+<div class="title02">购买小号<a href="{:U('Cash/recharge')}" class="Annkela"><img src="/Public/xincss/images/22.png"/>在线充值</a></div>
+<div class="block04">
+<form action="{:U('xh')}" method="post" >  
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="3"  align="center" >{$kongbao_page['xh_gonggao']}</td></tr>
+<tr> 
+<td colspan="3">
+<table width="100%" align="left" class=""  > 
+<tr>
+<td align="left" height="30px" colspan="2"> <div align="left">当前会员级别：
+<span class="#f3783f"><img src="/{$user['user_type_img']}" align="texttop"></span></div> </td>
+</tr>							 
+<foreach name="type_list" item="type_xh">
+  <tr>
+	   <td height="30px" >{$type_xh['name']}</td>
+	   <td align="left">
+			 <foreach name="user_level_list" item="ulevel">
+				   {$ulevel['title']}：<font color="#f3783f"><b>{$type_xh['config']['price'][$ulevel['id']]|number_format=###,2}</b></font>元/个 
+			 </foreach>
+	   </td>
+  </tr>
+</foreach> 
+</table>
+</td>
+</tr>  
+<tr>
+<td  colspan="5" height="40px" valign="center"  >
+请选择小号类型：<select name="xh_type_id" id="xh_type_id" class="select classid" style="width:300px">
+<option value=""  >============请选择小号类型============</option>
+<foreach name="type_list" item="type">
+<option value="{$type['id']}" <if condition="$type['id']==I('xh_type_id','')" >selected</if>  >{$type['name']}</option>
+</foreach>
+</select>
+<input type="submit" class="Annkelb"  value="查询">
+<input  type="button" class="Annkelb kel1" value="批量购买" onclick="if(confirm('确定全部购买吗？')){$('#form').submit();}">
+</td> 
+</tr> 	 				 
+</table> 
+</form>
+      	<table class="ipList" width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="title">
+            <td width="20" class="icon">&nbsp;</td>
+			<td><input name="checkbox" type="checkbox"  class="checkall" id="checkallBottom" /></td>
+			<td>编号</td>
+			<td>小号类型</td>
+			<td>小号账号</td>
+			<td>小号密码</td>
+			<td>邮箱账号</td>
+			<td>邮箱密码</td>
+			<td>当前享受价</td>
+			<td>操作</td>
+          </tr>
+          <!-- 隔行变色 -->
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+          })
+          </SCRIPT>
+		<form method="post" action="{:U('buyxh_pl')}" id="form" >
+		<foreach name="xh_list" item="xh"> 
+          <tr class="td1">
+            <td>&nbsp;</td>
+			<td> <input type="checkbox" name='id[]' value="{$xh['id']}" class="checkitem"></td>
+			<td>{$xh['id']}</td>
+			<td>{$xh['type_name']}</td>
+			<td >{$xh['account']}</td>
+			<td>购买后显示</td>
+			<td>购买后显示</td>
+			<td>购买后显示</td>
+			<td class="color_or"> {$xh['price']|number_format=###,2}元</td>
+			<td> <input type="button" class="Annkelb kel1" onclick="return xhbuy('{$xh['id']}',{$xh['price']})" value="购买"></td>
+			</tr> </foreach>
+			</form>
+        </table>
+      </div>
+       <div class="pageList">
+			<table width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="left"></td>
+					<td class="center">&nbsp;</td>
+					<td class="right" align="right">
+						<div class="pagebreak">
+							<table cellspacing="0" cellpadding="0"><tr><td class="page_no"><a class='current'>{$show}</a></td></tr></table>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

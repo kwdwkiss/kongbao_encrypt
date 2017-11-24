@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../Public/css/common.css" type="text/css" />
+<title>管理区域</title>
+</head>
+
+<body>
+ <div class="fixed-bar">
+    <div class="item-title"> 
+      <h3>网站设置</h3>
+      <ul class="tab-base">  
+         <li><a href="{:U('config')}" ><span>基本设置</span></a></li> 
+         <li><a href="{:U('payonline_setting')}" ><span>支付设置</span></a></li>
+		  <li><a href="{:U('api_name')}" ><span>接口设置</span></a></li>
+         <li><a href="{:U('bindip')}" ><span>IP绑定设置</span></a></li> 
+         <li><a href="javascript:void(0)" class="current" ><span>全局开关设置</span></a></li> 
+         <li><a href="{:U('qq_setting')}" ><span>QQ互联设置</span></a></li>
+      </ul>
+    </div>
+  </div>
+<div id="man_zone">
+<form action="__URL__/anquan_save" method="post">
+  <table width="97%" border="0" align="center"  cellpadding="3" cellspacing="1" class="table_style">
+   	<tr>
+	<td class="left_title_1">取消空单</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="anquan_setting[anquan_qxisuse]"  value="1"  <eq name="config['anquan_setting']['anquan_qxisuse']" value='1'>checked</eq> />是
+       	<input type="radio" name="anquan_setting[anquan_qxisuse]"  value="0"  <eq name="config['anquan_setting']['anquan_qxisuse']" value='0'>checked</eq> />否  	
+      	(如果选<font color='red'>"是"</font>则在空包订单页面显示取消空包按钮)
+    	</td> 
+    </tr>  
+    <tr>
+    	<td class="left_title_2">空包订单</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="anquan_setting[anquan_ddisuse]"  value="1"  <eq name="config['anquan_setting']['anquan_ddisuse']" value='1'>checked</eq> />是
+       	<input type="radio" name="anquan_setting[anquan_ddisuse]"  value="0"  <eq name="config['anquan_setting']['anquan_ddisuse']" value='0'>checked</eq> />否  	
+      	(如果选<font color='red'>"是"</font>则在空包订单页面显示删除按钮)
+    	</td> 
+    </tr>  
+    <tr>
+	<td class="left_title_1">购买订单</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="anquan_setting[anquan_gmisuse]"  value="1"  <eq name="config['anquan_setting']['anquan_gmisuse']" value='1'>checked</eq> />是
+       	<input type="radio" name="anquan_setting[anquan_gmisuse]"  value="0"  <eq name="config['anquan_setting']['anquan_gmisuse']" value='0'>checked</eq> />否  	
+      	(如果选<font color='red'>"是"</font>则在购买订单页面显示删除按钮)
+    	</td> 
+    </tr>  
+    <tr>
+      <td class="left_title_2">充值订单</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="anquan_setting[anquan_czisuse]"  value="1"  <eq name="config['anquan_setting']['anquan_czisuse']" value='1'>checked</eq> />是
+       	<input type="radio" name="anquan_setting[anquan_czisuse]"  value="0"  <eq name="config['anquan_setting']['anquan_czisuse']" value='0'>checked</eq> />否  	
+      	(如果选<font color='red'>"是"</font>则在充值订单页面显示删除按钮)
+    	</td> 
+    </tr>  
+    <tr>
+	  <td class="left_title_1">账户日志</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="anquan_setting[anquan_rzisuse]"  value="1"  <eq name="config['anquan_setting']['anquan_rzisuse']" value='1'>checked</eq> />是
+       	<input type="radio" name="anquan_setting[anquan_rzisuse]"  value="0"  <eq name="config['anquan_setting']['anquan_rzisuse']" value='0'>checked</eq> />否  	
+      	(如果选<font color='red'>"是"</font>则在账户日志页面显示删除按钮)
+    	</td> 
+    </tr>  
+    <tr>
+	 <td class="left_title_2">空包单号</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="anquan_setting[anquan_dhisuse]"  value="1"  <eq name="config['anquan_setting']['anquan_dhisuse']" value='1'>checked</eq> />是
+       	<input type="radio" name="anquan_setting[anquan_dhisuse]"  value="0"  <eq name="config['anquan_setting']['anquan_dhisuse']" value='0'>checked</eq> />否  	
+      	(如果选<font color='red'>"是"</font>则在空包单号页面显示删除按钮)
+    	</td> 
+    </tr>  
+    <tr>
+	<td class="left_title_1">小号订单</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="anquan_setting[anquan_xhdisuse]"  value="1"  <eq name="config['anquan_setting']['anquan_xhdisuse']" value='1'>checked</eq> />是
+       	<input type="radio" name="anquan_setting[anquan_xhdisuse]"  value="0"  <eq name="config['anquan_setting']['anquan_xhdisuse']" value='0'>checked</eq> />否  	
+      	(如果选<font color='red'>"是"</font>则在小号订单页面显示删除按钮)
+    	</td> 
+    </tr>  
+    <tr>
+	<td class="left_title_2">小号库存</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="anquan_setting[anquan_xhisuse]"  value="1"  <eq name="config['anquan_setting']['anquan_xhisuse']" value='1'>checked</eq> />是
+       	<input type="radio" name="anquan_setting[anquan_xhisuse]"  value="0"  <eq name="config['anquan_setting']['anquan_xhisuse']" value='0'>checked</eq> />否  	
+      	(如果选<font color='red'>"是"</font>则在小号库存页面显示删除按钮)
+    	</td> 
+    </tr>  
+    <tr>
+	<td class="left_title_1">管理日志</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="anquan_setting[anquan_glisuse]"  value="1"  <eq name="config['anquan_setting']['anquan_glisuse']" value='1'>checked</eq> />是
+       	<input type="radio" name="anquan_setting[anquan_glisuse]"  value="0"  <eq name="config['anquan_setting']['anquan_glisuse']" value='0'>checked</eq> />否  	
+      	(如果选<font color='red'>"是"</font>则在管理员登录日志页面显示删除按钮)
+    	</td> 
+    </tr>  
+    <tr>
+	<td class="left_title_2">会员列表</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="anquan_setting[anquan_hyisuse]"  value="1"  <eq name="config['anquan_setting']['anquan_hyisuse']" value='1'>checked</eq> />是
+       	<input type="radio" name="anquan_setting[anquan_hyisuse]"  value="0"  <eq name="config['anquan_setting']['anquan_hyisuse']" value='0'>checked</eq> />否  	
+      	(如果选<font color='red'>"是"</font>则在会员列表页面显示删除按钮)
+    	</td> 
+    </tr>  
+    <tr>
+	<td class="left_title_1">导入单号</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="anquan_setting[anquan_drisuse]"  value="1"  <eq name="config['anquan_setting']['anquan_drisuse']" value='1'>checked</eq> />是
+       	<input type="radio" name="anquan_setting[anquan_drisuse]"  value="0"  <eq name="config['anquan_setting']['anquan_drisuse']" value='0'>checked</eq> />否  	
+      	(如果选<font color='red'>"是"</font>则在空包管理页面（显示新增空包）)
+    	</td> 
+    </tr>  
+    <tr>
+	<td class="left_title_2">删除管理</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="anquan_setting[anquan_guanliyisuse]"  value="1"  <eq name="config['anquan_setting']['anquan_guanliyisuse']" value='1'>checked</eq> />是
+       	<input type="radio" name="anquan_setting[anquan_guanliyisuse]"  value="0"  <eq name="config['anquan_setting']['anquan_guanliyisuse']" value='0'>checked</eq> />否  	
+      	(如果选<font color='red'>"是"</font>则在管理列表页面显示删除按钮)
+    	</td> 
+    </tr>  
+    <tr>
+	<td class="left_title_1">删除导航</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="anquan_setting[anquan_daohangisuse]"  value="1"  <eq name="config['anquan_setting']['anquan_daohangisuse']" value='1'>checked</eq> />是
+       	<input type="radio" name="anquan_setting[anquan_daohangisuse]"  value="0"  <eq name="config['anquan_setting']['anquan_daohangisuse']" value='0'>checked</eq> />否  	
+      	(如果选<font color='red'>"是"</font>则在导航列表页面显示删除按钮)
+    	</td> 
+    </tr>  
+    <tr>
+	<td class="left_title_2">会员密码</td>
+    	<td class="" align="left"  >
+		<input type="radio" name="anquan_setting[anquan_mimaisuse]"  value="1"  <eq name="config['anquan_setting']['anquan_mimaisuse']" value='1'>checked</eq> />是
+       	<input type="radio" name="anquan_setting[anquan_mimaisuse]"  value="0"  <eq name="config['anquan_setting']['anquan_mimaisuse']" value='0'>checked</eq> />否  	
+      	(如果选<font color='red'>"是"</font>则在会员列表页面显示修改密码按钮)
+    	</td> 
+    </tr>  
+    <tr>
+     <td class="left_title_1">操作密码</td> 
+	      <td><input type="text" name="caozuoma"  size="40" /></td>
+    </tr>    
+    <tr>
+		<td colspan="2" class="left_title_1">
+		<div align="center"> 
+		 <input type="submit" value="保存" />  
+		</td>
+	</tr> 
+  </table>
+  </form>
+</div>
+</body>
+</html>

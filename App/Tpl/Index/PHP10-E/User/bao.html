@@ -1,0 +1,54 @@
+<div class="getpass lbox" id="get_pass" style="display: none" >
+<script type="text/javascript" src="__PUBLIC__/xincss/js/lxjs.js"></script>
+<script type="text/javascript">
+var old_mibao_display="{$mibao_display}";
+</script>
+<form name="validateForm" id="register_form" action="{:U('User/mibao_save')}" method="POST">
+<table class="V_tb2">
+          <!-- 隔行变色 -->
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+          })
+          </SCRIPT>
+		<tr class="td1" style="display:{$mibao_display}">
+        <th style="display:{$mibao_display}"><font style="color:#F00">*</font>原密保</th>
+        <td>
+		<select name="mibao_name_old" id="mibao_name_old" class="select classid" style="width:200px;">
+  		<option value="{$baoss['name']}">{$baoss['name']}</option>
+  		</select>
+        </td>
+      </tr>
+      <tr class="td1" style="display:{$mibao_display}">
+        <th style="display:{$mibao_display}"><font style="color:#F00">*</font>原答案</th>
+        <td><input type="text" name="mibao_daan_old" id="mibao_daan_old" class="V_input2" /></td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>新密保</th>
+        <td><select name="mibao_name" id="mibao_name" class="select classid" style="width:200px;">
+  								<option value="">请选择新安全问题</option>
+  								<volist name="mibao_setting" key="j" id="vo2">
+  									<option value="{$vo2.name}">{$vo2.name}</option>
+  								</volist>
+  							</select></td>
+      </tr>
+        <tr class="td1">
+        <th><font style="color:#F00">*</font>新答案</th>
+        <td><input name="mibao_daan" id="mibao_daan" class="V_input2"></td>
+      </tr>
+	    <tr class="td1">
+        <th><font style="color:#F00">*</font>请确认</th>
+        <td><input name="mibao_daan_repass" id="mibao_daan_repass" class="V_input2"></td>
+      </tr>
+      <tr class="td1">
+        <th></th>
+        <td><button onclick="return mibao_submit();" type="submit" class="V_btn4 submit">确定提交</button>
+		</td>
+      </tr>
+    </table><input type="hidden" name="id" value="{$user['id']}">
+    </form>
+   
+    </td>
+  </tr>
+</table>
+

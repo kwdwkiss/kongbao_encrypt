@@ -1,0 +1,154 @@
+<include file="Public:header" />
+</td>
+<script type="text/javascript" src="/Public/css/myfrom/artDialog4.1.7/artDialog.js?skin=green"></script>
+<link href="__PUBLIC__/xincss/css/Index.css" rel="stylesheet" type="text/css" />
+<td valign="top" class="r">
+
+<table class="Index_card">
+  <tr>
+	<td style="width:65px;"><div class="em"></div></td>
+	<td width="32%">
+		<div class="Contact">
+			<dl>
+				<dt>
+			   <div class="Ti"><span class="abbr"><span class="color_fei">Hi, </span></i><span class="color_shenn">{$user['username']}</span></span>&nbsp;&nbsp;<span class="color_fei">会员ID:<span class="color_ju">{$user['id']}</span></div>
+			   <div class="Bz">{$user['email']}&nbsp;&nbsp;&nbsp;<span class="ju"><img src="/{$user['user_type_img']}" align="absmiddle">&nbsp;&nbsp;<a href="{:U('Tg/uplevel')}" ><span class="color_tiann">[?]</span></a></span></div>
+				</dt>
+				<dd>
+				<ul class="aul">
+					<li>安全手机：<if condition="($user[telphone] eq 1) OR ($user[telphone] gt 10) "><span class="color_ju">已绑定</span><else/><span class="color_tiann">未绑定</span></if><a href="{:U('User/reinfo')}" class="Mleft20 color_tiann">修改</a></li>
+					<li class="a">安全邮箱：<if condition="($user[email] eq 1) OR ($user[email] gt 10) "><span class="color_ju">已绑定</span><else/><span class="color_tiann">未绑定</span></if><a href="{:U('User/reinfo')}" class="Mleft20 color_tiann">修改</a></li>
+					<li class="b">密码问题：<if condition="$baoss['daan']"><span class="color_ju">已绑定</span><else/><span class="color_tiann">未绑定</span></if><if condition="$baoss['daan']"><span class="color_ju"><a href="javascript:void(0)"  onclick="art.dialog({title:'修改密保',content:document.getElementById('get_pass'),lock:true})" class="Mleft20 color_tiann">修改</a><else/><a href="javascript:void(0)"  onclick="art.dialog({title:'设置密保',content:document.getElementById('get_pass'),lock:true})" class="Mleft20 color_tiann">设置</a></if></li>
+				</ul>
+			</dd>
+		</dl>
+	</div>
+	</td>
+	<td style="width:2%;">&nbsp;</td>
+	<td style="width:65px;"><div class="em Money"></div></td>
+	<td width="32%">
+		<div class="Contact">
+			<dl>
+				<dt>
+					<div class="Ti change">
+						<span class="abbr"><?php $num="$user[money]";$x=explode(".",$num);echo  $x[0].".";echo '<i>',$x[1],'元'; ?></i></span>
+						<span class="ju"><a href="{:U('Cash/recharge')}" class="Annkeld">充 值</a><a href="{:U('Order/kb')}" class="Annkele">购 买</a></span>
+					</div>
+					<div class="Bz changea">可提现：{$user['refer_money']}元<span class="ju"><a href="{:U('Log/yj_log')}" class="color_tiann">查看</a></span></div>
+				</dt>
+				<dd>
+					<ul class="bul Mtop20">
+						<li><a href="{:U('Cash/tixian')}">提现</a></li>
+						<li><a href="{:U('Log/refer_log')}">下线</a></li>
+						<li class="w"><a href="{:U('Log/kb_log')}">单号管理</a></li>
+						<if condition="$user['agent']==1"> 
+						<li class="w"><a href="{:U('Daili/Index')}">分站价格表<img style="margin-top:-2px; margin-left:5px;" src="/Public/images/hot.png"/></a></li>
+						</if>
+					</ul>
+					<div class="Scfdh0"></div>
+					<ul class="bul">
+						<li><a href="{:U('Log/cz_order')}">充值明细</a></li>
+						<li><a href="{:U('Log/xf_order')}">消费明细</a></li>
+						<li><a href="{:U('Log/didan_loig')}">底单管理</a></li>
+						<li><a href="javascript:void(0)"  onclick="art.dialog({title:'佣金转换',content:document.getElementById('get_change'),lock:true})">佣金转换</a></li>
+						<li class="w"><a href="{:U('Tg/index')}">我要推广</a></li>
+					</ul>
+				</dd>
+			</dl>
+		</div>
+	</td>
+	<td style="width:2%;">&nbsp;</td>
+	<td style="width:65px;"><div class="em overcome"></div></td>
+	<td width="32%">
+		<div class="Contact">
+			<dl>
+				<dt>
+				<volist name="kefu_list" id="kefu" offset="0" length="1"> 
+					<volist name="kefu['data']" id="kf" offset="0" length="1"> 
+					<div class="Ti niaoyunicon change">
+					  <span class="abbr Pleft50">专席秘书</span>
+					  <span class="ju"><a href="tencent://message/?uin={$kf['kf_qq']}" class="Annkeld">联 系</a><a href="{:U('User/liuyan')}" class="Annkele">投 诉</a></span>
+					</div>
+					<div class="Zsname Bz Pleft50 changea">{$kf['kf_name']}<span style="font-size:12px;color:#999;padding-left:20px"></span></div>
+				</dt>
+				<dd>
+					<ul class="cul Pleft50">
+						<li>工号：{$kf['kf_gh']}</li>
+						<li>Q Q：<span class="color_tiann">{$kf['kf_qq']}</span></li>
+						<li>电话：{$kf['kf_phone']}</li>
+					</ul>
+					 
+				</dd>
+			</dl> 
+		</div>
+		</volist>
+		</volist>
+	</td>
+  </tr>
+  <tr>
+	<td colspan="8" style=" height:25px;">&nbsp;</td>
+  </tr>
+  <tr>
+	<td colspan="5" valign="top">
+		<dl class="dl_1">
+			<dt>
+				<div class="Dt_1">&nbsp;产品与统计信息</div>
+			</dt>
+			<dd>
+				<div class="Dt_0">
+					<div class="Bpwen1 ico1"><span >本站共计商家：<font color="#f3783f"><b>{$zongshu}</b> </font>家</span><a href="{:U('Tg/index')}">邀请</a></div>
+					<div class="Bpwen1 ico2"><span>我的推广人数 <font color="#f3783f"><b>{$refer_nums}</b> </font>人</span><a href="{:U('Log/refer_log')}">明细</a></div>
+					
+					<div class="Bpwen1 ico3"><span>本站共计商品：<font color="#f3783f"><b>{$zongsp}</b> </font>个</span><a href="{:U('Order/kb')}">购买</a></div>
+					<div class="Bpwen1 ico4"><span>我今下单金额：<font color="#f3783f"><b>￥{$now_count}</b> </font>元</span><a href="{:U('Log/xf_order')}">查看</a></div>
+					
+					<div class="Bpwen1 ico5"><span>本网站月成交：<font color="#f3783f"><b>{$zongbis}</b> </font>笔</span><a href="{:U('Order/kb')}">购买</a></div>
+					<div class="Bpwen1 ico6"><span>我今日下单量：<font color="#f3783f"><b>{$n_order_count}</b> </font>个</span><a href="{:U('Log/kb_log')}">明细</a></div>
+					
+					<div class="Bpwen2 ico7"><span>本站月交易额：<font color="#f3783f"><b>{$zongs}</b> </font>元</span><a href="{:U('Order/kb')}">购买</a></div>
+					<div class="Bpwen2 ico8 wusox"><span>我的累计消费：<font color="#f3783f"><b>{$user['used_money']}</b> </font>元</span><a href="{:U('Log/xf_order')}">查看</a></div>
+					<div class="Scfdh0"></div>
+				</div>
+			</dd>
+			<dd class="Dd">
+				<div class="Dd_1"></div>
+				<div class="Dd_2"></div>
+				<div class="Dd_3"></div>
+			</dd>
+		</dl>
+	</td>
+	<td>&nbsp;</td>
+	<td colspan="2" valign="top">
+		<dl class="dl_2">
+			<dt>
+				<div class="Dt_1">官方公告</div>
+				<div class="Dt_3"><a href="{:U('Gonggao/index')}" target="_blank" class="color_tiann">更多</a></div>
+			</dt>
+			<dd>
+				<div class="Dt_0">
+				<volist name="gonggao_list" id="gonggao" offset="0" length='5' >
+					<div class="Bpwen1"><a href="{:U('Gonggao/gonggao',array('id'=>$gonggao['id']))}" target="_blank">• {$gonggao["title"]|cut_str=###,25}</a><span>{$gonggao['time']|substr=###,0,10}</span></span></div>
+					 </volist>
+			</dd>
+			<dd class="Dd">
+				<div class="Dd_1"></div>
+				<div class="Dd_2"></div>
+				<div class="Dd_3"></div>
+			</dd>
+		</dl>
+	</td>
+  </tr>
+</table>
+<!--结束--> 
+<if condition="$config['tuiguang_dongtai']==1"> 
+<iframe align=center border="0" noresize=noresize marginWidth=0 marginHeight=0 src="{:U('About/dongtai')}"  frameBorder=0 width=100%  height=250px scrolling=no></iframe>
+<!-------------------结束----------------------------------->   
+</if> 
+</td>
+</tr>
+</table>
+<include file="User:bao" />
+<include file="User:tou" />
+<script type="text/javascript" src="/Public/moive_play/xjs/layer.js"></script>
+</body>
+</html>

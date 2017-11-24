@@ -1,0 +1,90 @@
+<include file="Public:header" />
+    </td>
+<script type="text/javascript">
+function export_log()
+{var count=$("#count").val();if(count<=0)
+{alert('无数据可导出！');return false;}
+$("#export_form").submit();}
+</script>
+  <td valign="top" class="r">	
+      <div class="title02">小号管理<a href="{:U('Cash/recharge')}" class="Annkela"><img src="/Public/xincss/images/22.png"/>在线充值</a></div>
+      <div class="block04">
+	  <form class="search" action="__URL__/xh_log" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="45">来源：</td>
+<td width="86">
+<select name="ftype" class="select classid" style="margin-top:0px;width:90px;">
+<option value="order_no" <eq name="_POST.ftype" value="order_no">selected</eq>>订单编号</option>
+</select> 
+</td><td width="5">&nbsp;</td>
+	<td width="110"><input type="text" name="keyword" value="{:I('keyword')}" class="Index_Search" style="width:120px;"/></td><td width="5">&nbsp;</td>
+	<td width="86"><select name="type_id" class="select classid"> 
+	<option value="">小号类型</option>
+	<foreach name="type_list" item="type">
+	<option value="{$type['id']}"  <if condition="I('type_id','')==$type['id']" >selected</if> >{$type['name']}</option>
+	</foreach>
+	</select> 
+	</td><td width="5">&nbsp;</td>
+    <td width="40"><input type="hidden" id="count" value="{$count}"/> 
+	<input name="submit" type="submit" class="Annkelb_1" value="查询" /> </td>
+	<td width="5">&nbsp;</td>
+	<td><input type="button"  class="Annkelb kel1" value="导出数据" onclick="return export_log()"/></td>
+	 <td><span style="float:right;margin-right:20px"><font color="red">{$count}</font>条数据符合条件</span></td>
+  </tr>
+</table>
+</form> 
+<form id="export_form" action="{:U('log_export_xh')}" method="post"> 
+<input type="hidden" name="ftype" value="{:I('ftype')}" /> 
+<input type="hidden" name="keyword" value="{:I('keyword')}" /> 
+<input type="hidden" name="type_id" value="{:I('type_id')}" /> 	                                 	
+</form>    
+<br/> 
+<table class="ipList" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr class="title">
+       <td width="20" class="icon">&nbsp;</td>
+           <td>小号账号</td>
+			<td>小号类型</td>
+			<td>购买日期</td>
+			<td>订单编号</td>
+			<td>操作</td>
+          </tr>
+          <!-- 隔行变色 -->
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+          })
+          </SCRIPT>
+	<foreach name="log_list" key="key" item='log'>
+		<tr class="td1">
+		 <td>&nbsp;</td>
+		<td>{$log['note_brief']}</td>
+		<td><div >{$xh_type[$log['type_id']]}</div></td>
+		<td>{$log['order_time']}</td>
+		<td>{$log['order_no']}</td>
+		<td><a href="{:U('dhexp',array('id'=>$log['order_no'],'type'=>3))}">导出小号</a></td>
+		</tr>							  
+		</foreach> 
+        </table>
+      </div>
+      <div class="pageList">
+			<table width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="left"></td>
+					<td class="center">&nbsp;</td>
+					<td class="right" align="right">
+						<div class="pagebreak">
+							<table cellspacing="0" cellpadding="0"><tr><td class="page_no"><a class='current'>{$show}</a></td></tr></table>
+						</div>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+      
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+

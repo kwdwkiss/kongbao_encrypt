@@ -1,0 +1,184 @@
+<include file="Public:header" />
+</td><td valign="top" class="r">
+<div class="title02">代理表格上传
+<style type="text/css"> 
+	.file-box{ position:relative;width:660px}
+	.txt{ height:22px; border:1px solid #cdcdcd; width:300px;}
+	.btn{ background-color:#FFF; border:1px solid #CDCDCD;height:24px; width:70px;}
+	.file{ position:absolute; top:10; right:140px; height:24px;margin-top:15px;filter:alpha(opacity:0);opacity: 0;width:278px }
+</style> 
+<a href="{:U('User/complaint')}" class="Annkela"><img src="/Public/xincss/images/19.png"/>返回列表</a></div>
+<form id="order_form" action="{:U('upload')}" method="POST" enctype="multipart/form-data" > 
+    <table class="V_tb2">
+
+		<tr class="td1">
+        <th><font style="color:#F00">*</font>快递类型</th>
+        <td>
+		<select name="type_id" id="type_id" onchange="itemchange($(this))" class="select classid" style="width:200px">
+		<option value="">请选择快递类型</option>
+		<foreach name="type_list" item="type">
+		<option value="{$type['id']}">{$type['name']}</option>
+	    </foreach>
+		</select>
+        </td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>上传表格</th>
+        <td>
+		<div class="file-box">  
+		<input type='text' name='textfield' id='textfield' class="V_input2"/> 
+		<input type='button' class='Annkelb_1' value='浏览...' />
+		<font class="fc2">格式如：天天快递-20151210-5.xsl</font>
+		<input type="file" name="fileField" class="file" id="fileField" size="28" onchange="change($(this))" /> 
+		<input type="hidden" name="filename"  value="" id="filename" />
+		</div>  
+		</td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>问题描述</th>
+        <td></td>
+      </tr>
+      
+      <tr class="td1">
+        <th></th>
+        <td><button onclick="return chk_submit();" type="submit" class="V_btn4 submit">确定提交</button>
+		</td>
+      </tr>
+    </table>
+    </form>
+	<form class="search" action="__URL__/daili_upload" method="post">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+		<td width="70">筛选：</td>
+		<td width="86">
+		<select name="status">
+		<option value="">处理状态</option>
+		<option value="0" <eq name="_POST.status" value="0">selected</eq>>待处理</option>
+		<option value="1" <eq name="_POST.status" value="1">selected</eq>>已处理</option>  
+		<option value="2" <eq name="_POST.status" value="2">selected</eq>>失败</option>
+		</select>
+		</td><td width="5">&nbsp;</td>
+		<td width="86"><select name="type_id"  class="select classid" > 
+		<option value="">空包类型</option>
+		 <foreach name="type_list" item="type">
+	     <option value="{$type['id']}"  <if condition="I('type_id','')==$type['id']" >selected</if> >{$type['name']}</option>
+	    </foreach>
+		</select>
+		</td>
+		</td><td width="5">&nbsp;</td>
+		<td width="40"><input name="submit" type="submit" class="Annkelb_1" value="查询" />
+		<input type="hidden" id="count" value="{$count}"/></td>
+		<td width="5">&nbsp;</td>
+		<td></td>
+		</tr>
+		</table>
+		</form>
+		<br/> 
+      	<table class="ipList" width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="title">
+            <td width="20" class="icon">&nbsp;</td>
+            <td>上传时间</td>
+		    <td>文件名称</td>
+		    <td >快递类型</td>
+		    <td>状态</td>
+		    <td>处理</td>
+          </tr>
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+          })
+          </SCRIPT>
+		<foreach name="file_list" key="key" item='file'>
+          <tr class="td1">
+            <td>&nbsp;</td>
+            <td>{$file['addtime']}</td>
+            <td>{$file['filename']}</td>
+			<td>{$type_list[$file['type_id']]['name']}</td>
+			<td>
+			<p>
+			<switch name="file.status">
+			<case value="0">待处理</case>
+			<case value="1">已处理</case>
+			<case value="2"><font color="red">失败</font></case>
+			<default/>待处理
+			</switch>
+			</p>
+			</td>
+			<td><if condition="$file['fileurl'] !=''"> 
+			<a href="{:U('down_daili',array('id'=>$file['id']))}">下载</a>
+			</if>
+			<if condition="$file['status']==2"> 
+			<a title="将该文件删除并重新上传" href="javascript:void(0)" onclick="return file_del({$file['id']})">删除</a>
+			</if></td>
+          </tr>
+		</foreach>      
+        </table>
+      </div>
+      <div class="pageList">
+			<table width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="left"></td>
+					<td class="center">&nbsp;</td>
+					<td class="right" align="right">
+						<div class="pagebreak">
+							<table cellspacing="0" cellpadding="0"><tr><td class="page_no"><a class='current'>{$show}</a></td></tr></table>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+    <div class="V_con1">
+    	<p>上传文件的格式;快递类型-时间-数量 如：<b class="fc2">天天快递-20151210-5.xsl</b>请编辑好文件在上传；<br />以便客服人员能够快速帮您解决问题；<br />如果您有意见和建议，或者进行投诉请点击<b><a href="#" class="fc2">投诉建议</a></b>。</p>
+    </div>
+    </td>
+  </tr>
+</table>
+<script type="text/javascript">
+    function change(obj)
+    {
+    	var file_path = obj.val(); 
+         var fullFileName=file_path.match(/([^\\^\/^\:^\?^\|^\<^\>^\|])*(\.)(.{1,8})$/)[0];//获取文件全名
+		 var fileName=fullFileName.match(/[^\.]+/)[0];//文件名，不带点和后缀
+		 var type=file_path.match(/^(.*)(\.)(.{1,8})$/)[3];//文件类型 
+		 if(type !='xls')
+		 {
+		 	alert('选择文件必须为xls表格文件');
+		 	return false;
+		 }
+		 $('#textfield').val(file_path); 
+		 $('#filename').val(fileName);
+    }  
+    function chk_submit()
+    { 
+          var type_id = $("#type_id").val();
+         if(type_id=='')
+         {
+         	alert('请选择快递类型!');
+         	return false;
+         }       	
+         var filename = $("#filename").val();
+         if(filename=='')
+         {
+         	alert('请上传表格文件!');
+         	return false;
+         }   
+   } 
+   function file_del(file_id)
+   {
+   	 $.post("{:U('file_del')}",{id:file_id},function(data,status)
+   	 {
+   	 	 if(status=='success')
+   	 	 {
+   	 	 	 alert(data.info);
+   	 	 	 document.location.href = "{:U('daili_upload')}";
+   	 	 }
+   	 	 else
+   	 	 {
+   	 	 	alert('删除失败!');
+   	 	 }
+   	 },'json');
+   }
+</script>
+</body>
+</html>
+

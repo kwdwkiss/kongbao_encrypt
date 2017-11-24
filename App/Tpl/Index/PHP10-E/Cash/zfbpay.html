@@ -1,0 +1,63 @@
+<if condition="$alipay==1">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" " http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+<link rel="shortcut icon" href="/favicon.ico"/>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.min.js"></script>
+<title>支付宝充值图文说明</title>
+<style type="text/css">
+.pay-main {display: block; width: 970PX; margin: 0px auto; color: rgb(85, 85, 85); font-family: Arial, Helvetica, sans-serif, Simsun, 宋体; font-size: 12px; }
+.pay-bot {padding-top: 45px; height: 60px;  text-align: center; z-index: 11; border-bottom:solid 1px rgb(228, 228, 228); border-left:solid 1px rgb(228, 228, 228); border-right:solid 1px rgb(228, 228, 228)}
+.pay-l {width: 100%;}
+.pay-online {height: 650px; padding: 20px 0px 20px 30px; position: relative; border:solid 1px rgb(228, 228, 228)}
+#Submit1 {color: rgb(85, 85, 85); text-decoration: none; display: block; overflow: hidden; width: 180px; height: 50px; text-indent: -9999px; bottom: 17px; left: 350px; z-index: 12; position: absolute; background: url(/Public/xincss/images/index.png) 0px -7px no-repeat; cursor:pointer}
+#Submit1:hover {background: url(/Public/xincss/images/index.png) 0px -58px no-repeat;}
+b {color: rgb(102, 153, 0); font-family: Arial, Helvetica, sans-serif, Simsun, 宋体; font-size: 14px; font-style: normal; font-variant: normal; letter-spacing: normal; line-height: 60px; orphans: auto; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-align:center;}
+#ai { color:#F00; font-size:15px}
+#ao { color:#669900; font-size:15px; font-weight: bold;}
+#as { color:#669900; font-size:16px; font-weight: bold;}
+</style>
+</head>
+<body>
+   
+<div class="pay-main">
+  <div id="hx1" class="pay-l">
+    <div class="pay-online" >    
+      <div style="text-align:center" ><b>最新支付宝充值图文说明 - {$config['sitename']}</b></div>
+      <p id="as">由于支付宝规则调整，跳转后收款人无法填充,<a id="Submit1" ></a>需自行填写收款人和充值金额 , 以下是图文说明。</p>
+      <p id="ai">收款人：{$info["optEmail"]} </p>
+      <p id="ai">付款金额：{$info["payAmount"]} 元</p>
+      <p id="ai">付款说明：{$info["title"]}　　*{$info[memo]}<a style="position: absolute; left: 927px; top: 6px; font-size:14px; color:#F30; cursor:pointer; text-decoration:none;" href="javascript:window.close()" >X关闭</a></p>
+      <p><img src="__PUBLIC__/xincss/images/alipay_zz.png" width="700" height="360" style="border:#F00 dashed 3px;" boder="0"; " /></p>
+    </div>
+    <div class="pay-bot" >
+      <p class="lh24" style="padding: 0px; margin: 0px; line-height: 24px;">支付过程中遇到任何问题，请向客服咨询：<span class="Apple-converted-space"> </span><a href="tencent://message/?uin={$config['qq1']}&amp;Menu=yes" class="colorlink" style="color: rgb(102, 153, 0); text-decoration: underline;">{$config['qq1']}</a><span class="Apple-converted-space"> </span><br style="word-wrap: break-word;" />
+        <span class="green" style="padding: 0px; margin: 0px; color: rgb(102, 153, 0);">温馨提示：</span>{$config['sitename']}支付宝帐号为：{$info["optEmail"]} , 其他一律为骗子！</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<script>
+function openwin(url) {  
+    var a = document.createElement("a");  
+    a.setAttribute("href", url);  
+    a.setAttribute("target", "_blank");  
+    a.setAttribute("id", "camnpr");  
+    a.setAttribute("rel", "noreferrer"); 
+    document.body.appendChild(a);  
+    a.click();  
+}  
+$(function () {
+    $("#Submit1").click(function() {
+    	openwin("https://shenghuo.alipay.com/transfer/otmpay/fill.htm?memo={$info[memo]}&title={$info[title]}&smsNos=&_input_charset=utf8&amounts={$info[payAmount]}&realname=&optEmails={$info["optEmail"]}");
+    });
+});
+</script>
+</body>
+</html>
+<else/>
+<script language='javascript'>document.location = '{$pay_url}'</script>
+</if>

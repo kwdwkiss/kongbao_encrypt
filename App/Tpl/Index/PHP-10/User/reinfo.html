@@ -1,0 +1,41 @@
+<include file="Public:top" />
+<div class="container cont_bg">
+    <div class="resize">
+        <div class="c_leftBox">
+    <div style="font-size: 16px;
+font-weight: normal;
+padding-bottom: 10px;">{$config['sitename']}</div>
+<include file="Public:left_nav" />
+</div>
+<div class="c_rightBox">
+            <div class="change_code">
+                <div class="c_tit">
+                    <h2>完善资料</h2>
+                </div>
+               <form id="register_form" action="{:U('saveuserinfo')}" method="POST" name="frmLogin">
+                    <div class="c_form">
+                        <div class="f_left">
+                             <ul>
+                                <li><label>用户名称：</label><i>{$user['username']}</i></li>
+								<li><label>用户姓名：</label><input type="text" class="input_text tip" style="width:200px" name="nickname" value="{$user['nickname']}" title="3-15位字符，可由英文、数字及“_”、“-”组成" size="30"></li>
+                                <li><label>电子邮件：</label><input type="text" class="input_text tip" style="width:200px" name="email" value="{$user['email']}" size="30"  title="请输入常用的邮箱，将用来找回密码、接受订单通知等" ></li>
+                                <li><label>联系电话：</label><input type="text" class="input_text tip" style="width:200px" name="telphone" value="{$user['telphone']}" title="请输入正常畅通的电话" size="30"></li>
+								<li><label>常用QQ：</label><input type="text" class="input_text tip" style="width:200px"  disabled="true" value="{$user['user_qq']}" title="请输入常用的QQ号码，便于客服联系" size="30"/><i><span class="check_code">找回密码认证，修改请联系客服！</span></i></li>
+                                <li><label>&nbsp;</label><input type="submit" class="form_sub" value="提交确认"/></li>
+                            </ul>
+                        </div>
+                        <div class="f_right">
+                            <p>
+                                <span class="span1">填写账号</span>
+                                <span class="span2">填写姓名</span>
+                                <span class="span3">完成</span>
+                            </p>
+                        </div>
+                    </div>
+					<input type="hidden" name="id" value="{$user['id']}">	 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:foote" />

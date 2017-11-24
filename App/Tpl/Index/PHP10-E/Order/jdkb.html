@@ -1,0 +1,118 @@
+<include file="Public:header" />
+</td>
+<td valign="top" class="r">
+<script type="text/javascript" src="__PUBLIC__/xincss/js/kb.js"></script>  
+	<div class="title02">
+<script type="text/javascript" src="/Public/moive_play/xjs/layer.js"></script>
+<a href="{:U('Log/kb_log')}" class="Annkela"><img src="/Public/xincss/images/19.png"/>单号管理</a></div>
+	<div style="padding: 4px 8px 4px 28px;width:96.8%;color: #4B4B4B;border: 1px solid #F5E190; background-color: #FFFAE2;line-height: 150%!important;_line-height: 160%;position: relative;overflow: hidden;" id="cheatHintArea">
+     <include file="Order:led" /></div>
+	<form id="order_form" action="{:U('lxkbsave')}" method="POST" >
+    <table class="V_tb2">
+		<tr class="td1">
+        <th><font style="color:#F00">*</font>快递类型</th>
+        <td><span style="float:left; border:1px solid #cccccc; background:#fff;margin-right:10px;margin-bottom:5px; margin-top:5px;">
+<a href="###"><img id="image_url" src="/{$type['image_url']}" onerror="this.src='/Public/images/xzkd.jpg'" width="190px" height="100px" /></a></span>
+		<select name="type_id"  id="type_id" onChange="itemchange($(this))" style="margin-top:5px;" class="select classid">
+		 <foreach name="type_xiadan" item="type">
+                  <option value="{$type['id']}">{$type['name']}</option>
+                </foreach>
+		</select>
+		<input type="button"  value="设为默认" onClick="setDefaultKuaidi(this)"  class="Annkelb_1" style="margin-top:5px;"/>
+		<div class="descript" style="margin-top: 5px;width:60%;line-height:20px"><span style="font-family:'Microsoft 宋体';font-size:12px;color:#7d7d7d;background-color:#FFFFFF;margin:0px;" id="detail">{$kongbao_page['shuoming']}</span></div>
+        </td>
+      </tr>
+     
+	   <tr class="td1">
+        <th><font style="color:#F00">*</font>单号价格</th>
+		<td>
+		<span style="font-family:'Microsoft 宋体';font-size:12px;color:#7d7d7d;background-color:#FFFFFF;margin:0px;" id="danjia"></span>
+		</td>
+      </tr>
+	   <tr class="td1">
+        <th><font style="color:#F00">*</font>下单格式</th>
+        <td style="font-family:'Microsoft 宋体';font-size:12px;color:#cccccc;background-color:#FFFFFF;margin:0px;line-height:8px">
+		<p style="color:#ff6600">新格式：姓名，手机，省 市 县区 地址，邮编</p>
+		<p style="color:#7d7d7d">例如：马云 ，13868686888 ，广东省 广州市 白云区 信发科技大厦 ，523000</p>
+		<p style="color:#ff6600">老格式：姓名，手机，，省 市 县区 地址，邮编</p>
+		<p style="margin-bottom:6px;color:#7d7d7d;">例如：马云 ，13868686888 ， ，广东省 广州市 白云区 信发科技大厦 ，523000
+		</p> 
+		</td>
+      </tr>
+	    <tr class="td1">
+        <th><font style="color:#F00">*</font>发货地址</th>
+        <td><select name="address_id" id="address_id" class="select classid" style="width:450px;margin-top:8px;" >
+		<option  value="" >请选择发货地址或者添加新地址</option>
+		<foreach name="address_list" item="address">
+		<option value="{$address['id']}" <eq name="address.is_default" value='1' >selected</eq> >{$address['title']}</option>
+		</foreach>
+		</select>
+		<input type="button"  class="Annkelb kel1" value="添加" id="addAddress"/>
+		<div class="Annkelbsc ">
+        <div id="fileList" class="uploader-list"></div>
+        <div id="filePicker">上传文件</div>
+        </span>
+		</td>
+		</tr><if condition="$kongbao_config['refer_zhongname']==1">
+		<tr class="td1">
+        <th><font style="color:#F00">*</font>商品详情</th>
+        <td><if condition="$kongbao_config['refer_mingname']==1">  
+		<input type="text" class="V_input2" style="width:150px" name="goods_name" id="goods_name" placeholder="商品真实名称"/>&nbsp;</if>
+<input type="text" name="zhongliang" id="zhongliang" class="V_input2" style="width:150px" placeholder="商品真实重量、单位kg" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')"/>	&nbsp;<span class="fc3" style="font-family:'Microsoft 宋体';font-size:12px;">商品重量只可填数字、默认单位为kg</span>
+		</td>
+      </tr></if>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>收货地址</th>
+        <td>
+		 <textarea  class="V_ta1" name="postscript"  id="postscript"  value="" onBlur="javascript:this.value=this.value.replace(',','，');" style="width:98%; border:1px solid #ccc;height:200px;background: url(/Public/images/tishi.png) no-repeat center;" onFocus="this.style.backgroundImage='url()';" ></textarea>
+		</td>
+      </tr>
+       <tr class="td1">
+        <th></th>
+        <td>
+		<input  id="btn_check" type="button" class="V_btn4 submit" value="检测地址" onClick="checkisnos()" />&nbsp;
+         <input type="submit"  class="V_btn4 submit" value="立即下单" onClick="return chk_submit()"/>&nbsp;&nbsp;&nbsp;余额：<b><a  class="fc2">¥{$user['money']}</a></b><div id="jiage" ></div></td>
+      </tr> 
+	<input type="hidden" id="single_price"  value=""/>
+	<input type="hidden" id="order_money" name="order_money" value=""/>
+	<input type="hidden" id="order_nums" name="order_nums" value=""/> 
+    </table>
+	<div class="V_conkong">
+  <div id="cheisnos" ></div>
+<div id="addinputarrs" ></div>
+    </div>
+    </form>
+    <div class="V_con1" style="margin-top:10px;">
+    	<p>请尽量清晰详尽的描述您的问题，以便客服人员能够快速帮您解决问题；<br />如果您有意见和建议，或者进行投诉请点击<b><a href="#" class="fc2">投诉建议</a></b>。</p>
+    </div> 
+    </td>
+  </tr>
+</table> 
+</body>
+</html>
+<script type="text/javascript">
+var user_default_kuaidi="{$user_default_kuaidi}";
+function setDefaultKuaidi(){
+	var mydata={default_kuaidi:$("#type_id").val()};
+	$.post("{:U('setDefaultKuaidi')}",mydata,function(data,status){
+		  alert(data.status);
+	 },'json');
+}
+if(user_default_kuaidi!="0"){
+  $("#type_id").val(user_default_kuaidi);   
+  itemchange($("#type_id")); 
+} 
+$('#postscript').keyup(function(){
+            $('#cheisnos').html("");
+        })	
+$('#addAddress').click(function(){
+            layer.open({
+                type: 2,
+                title: false, 
+                area: ['625px', '320px'],
+                shadeClose: true,
+                content: "/index.php/User/adds.html" 
+            });
+        });
+</script>
+<script type="text/javascript" src="/Public/moive_play/lxdh.js"></script>   	

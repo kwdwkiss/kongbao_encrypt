@@ -1,0 +1,118 @@
+<include file="Public:top" />
+<style type="text/css">
+.tg_cont .hy_row{overflow:hidden;padding:50px 0 40px 30px;width:100%;height:auto}.tg_cont .hy_row h4{padding-bottom:5px;width:750px;font-size:16px}.tg_cont .hy_row p.text{padding:10px 0}.tg_cont .list_tips{margin:30px 0}.tg_cont .list_tips ul{overflow:hidden;padding:5px 0;width:100%;height:auto;background:#eee}.tg_cont .list_tips ul li{padding:6px 0 6px 33px;width:100%;height:auto;background:url(/Public/images/kb2.png) no-repeat 17px;color:#999}.tg_cont .list_tips ul li a{padding-left:10px;color:#00a2c9;text-decoration:underline}.tg_cont .list_tips ul li a:hover{color:#f40}.form_shouhui_address .click_btn{padding:4px 6px;width:100%;border:1px solid #ccc;border-radius:4px}.form_shouhui_address .address_op{width:90px}.form_shouhui_address .address_op span{display:block;margin:5px 0}.form_shouhui_address .address_op div{margin:20px 0}.form_shouhui_address .click_btn:hover{border:1px solid #fff;background:#00a2ca;color:#fff}#czlc_img{position:absolute}#show_czlc .close{position:absolute;top:24px;right:33px;z-index:20;display:block;width:61px;height:29px;background:#f40;color:#fff;text-align:center;line-height:29px;cursor:pointer}#show_czlc .close:hover{background:#00a2ca}.form_shouhui_address .pdl10{padding-left:20px}.form_shouhui_address .daochu_btn{display:block;padding-left:20px;width:96px;height:34px;border:1px solid #ccc;border-radius:4px;background:#f3f3f3 url(/Public/images/kb3.png) no-repeat 10px;text-align:center;line-height:34px}input,textarea{border-top:0;border-right:0;border-bottom:0 solid #000;border-left:0}
+</style>
+<!--中间-->
+<div class="container cont_bg">
+    <div class="resize">
+        <div class="c_leftBox">
+    <div style="font-size: 16px;
+font-weight: normal;
+padding-bottom: 10px;">{$config['sitename']}</div>
+<include file="Public:left_nav" />
+</div>
+        <div class="c_rightBox">
+            <div class="change_code tg_box">
+                <div class="c_tit">
+                    <h2>全面推广</h2>
+                </div>
+                <div class="tg_cont">
+                	<div class="hy_row">
+                    	<a class="fl" href="javascript:;"><img src="{$config['tg_images']}" width="143" height="80" /></a>
+                        <div class="fr">
+                        	<h4>了解推广服务</h4>
+                            <p class="text">在你熟悉的网络范围内，把你自己的专属连接推广出去，即可为你带来收益。</p>
+                            <p class="text">通过你专属连接注册进来的每一个会员消费的钱都能获得相应的提成。
+</p>
+                        </div>
+                    </div>
+                   <div class="link_box">
+ <div class="mine_link" style="width:100%">
+<div class="expand_link">
+我的专属推广链接
+<span class="duihua"><span></span></span>
+</div>
+<div class="link_addr" style="width:401px">物流单号24小时自助购买地址：
+<input class="text"   value="{$tg_content[0]}" type="text" id="tuijianlianjie" />
+ </div><a href="#" id="copybtn" class="copy_addr">复制链接进行推广</a> 	
+                  </div>
+                </div>
+					{$kongbao_page['tuiguang_qmtg']}
+                    
+                    <script type="text/javascript">
+                    	jQuery(function(){
+							var $ = jQuery;
+							$(".tg_table .copy_link").click(function(){
+								$(this).parents(".tg_table").find("#copy_text").select();
+							})
+						})
+                    </script>
+                    <div class="tg_lc">
+                        <dl>
+                            <dt>推广流程</dt>
+                            <dd class="dd1">复制推广链接</dd>
+                            <dd class="dd2">发送给好友</dd>
+                            <dd class="dd3">好友通过链接加入</dd>
+                            <dd class="dd4">推广成功</dd>
+                        </dl>
+                    </div>
+					<div class="kongbao_list tg_qk">
+                        <div class="list_title">
+                            <span class="title_line"></span>
+                            <span class="title">推广情况</span>
+                        </div>
+                        <div class="qk_cont">
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td width="15%">
+                                    	<p>总推广人数</p>
+                                        <strong style="color:#f90;font-size:28px">{$refer_nums} 人</strong>                                        
+                                    </td>
+                                    <td width="15%">
+                                   		<p>可结算佣金</p>
+                                        <strong style="color:#f90;font-size:28px">￥{$user['refer_money']}</strong>                                        
+                                    </td>
+                                    <td width="15%">
+                                        <p>累计消费金额</p>
+										<strong style="color:#f90;font-size:28px">￥{$user['used_money']}</strong>
+                                        
+                                    </td>
+									<td width="15%">
+                                        <p>冻结中的佣金</p>
+										<strong style="color:#f90;font-size:28px">￥{$user['invalid_money']}</strong>
+                                        
+                                    </td>
+                                    <td width="15%"><a class="btn" href="{:U('Cash/tixian')}">申请提现</a></td>
+                                </tr>
+                            </table>
+
+                        </div>
+						<if condition="$config['tuiguang_zhuanqushipin']==1">
+                        <div class="qk_moive">
+                            <div class="moive_box">
+                                <dl class="dl1" style="margin-left:0;">
+                                    <dt>
+                                        <img src="/Public/image/shipin1.png" width="180" height="101" />
+                                        <a class="m_button" onclick="art.dialog({title:'播放视频',content:document.getElementById('change_head_1'),width:660,height:440,lock:true})"></a>
+                                    </dt>
+                                    <dd>
+                                        <h4>了解{$config['sitename']}</h4>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>                </div>
+      
+<div id="change_head_1" style="display:none;">
+<!---视频地址-->
+<embed src="" quality="high" width="600" height="400" align="middle" allowscriptaccess="always" allowfullscreen="true" mode="transparent" type="application/x-shockwave-flash">
+<!---视频地址-->
+</div>
+</if>
+      </div>
+        </div>
+    </div>
+</div>
+<include file="Public:foote" />
+<script src="/Public/moive_play/fzjs/jquery.zclip.min.js"></script>
+<script src="/Public/moive_play/fzjs/default.js"></script>

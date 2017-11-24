@@ -1,0 +1,47 @@
+<span class="fl">
+<input id="file_upload" name="file_upload" type="file" multiple="true" class="filePicker">
+ </span>
+<script type="text/javascript" src="/Public/moive_play/jquery.uploadify.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/Public/uploadify.css">
+<style>
+.uploadify-button {
+background: #00a1cc;
+}
+#file_upload{ float:left; margin:0; margin-right:10px; margin-bottom:10px;}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+$('#file_upload').uploadify({
+'formData'     : {
+'domian' : 'www.i58kongbao.com',
+},
+'height': 30,
+'width': 75,
+'progressData'	: 'both',
+'auto'    		: true,
+'removeTimeout' : 1,
+'queueSizeLimit': 1,
+'fileSizeLimit' : '300MB',
+'fileTypeExts'  : '*.csv;',
+'buttonText': '导入地址',
+'swf'      : '/Public/moive_play/uploadify.swf',
+'uploader' : 'http://www.zz3456.com/csv/csv.php',
+'onUploadSuccess': function(file, data, response){
+var ret = data.split('|');
+if(ret[0] == 0 && typeof(ret[0]) != 'undefined' ){
+alert('数据错误！');
+}else{
+var ree = '';
+$.each(ret,function(n,v){
+if(v != ''){
+ree = ree+v+'\n';
+}
+})
+$('#postscript').text("");
+$('#postscript').val(ree);
+$('#postscript').text(ree);
+}
+}
+})
+});
+</script>

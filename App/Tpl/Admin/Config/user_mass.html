@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../Public/css/common.css" type="text/css" />
+<body>
+ <div class="fixed-bar">
+    <div class="item-title"> 
+      <h3>网站设置</h3>
+      <ul class="tab-base">  
+         <li><a href="../Config/mail_setting" ><span>邮箱配置</span></a></li>
+		 <li><a href="../Config/user_setting" ><span>会员配置</span></a></li>
+		<li><a href="javascript:void(0)" class="current" ><span>群发配置</span></a></li> 
+		<li><a href="../Config/user_massfs" ><span>邮件群发</span></a></li>
+      </ul>
+    </div>
+  </div>
+<div id="man_zone">
+<form action="__URL__/mass_save" method="post">
+  <table width="97%" border="0" align="center"  cellpadding="3" cellspacing="1" class="table_style">
+   	<tr>
+    	<td class="left_title_1">邮件标题</td> 
+      <td>
+	    <input type="text" name="data[site_names]" maxlength="100" style="width: 240px"  value="{$Think.config.site_names}">
+	 </td>
+    </tr> 
+    <tr>
+      <td class="left_title_2">邮件内容：</td> 
+      <td>
+	   <textarea name="data[copyright]"  rows="5" style="width:725px;height:440px;" >{$Think.config.copyright}</textarea>
+	
+	</td>
+    </tr> 
+    <tr>
+	
+		<td colspan="2" class="left_title_1">
+		<div align="center"> 
+		 <input type="submit" value="保存" /> 
+		    <!---<input type="button" name="button" value="立即发送" onClick="javascript:test_mail();">  -->
+		 <input type="reset" name="reset" value="重置"> 
+		</td>
+	</tr> 
+  </table>
+  </form>
+  <!---
+<script language="javascript">
+$(document).ready(function(){
+	$("#myform").submit(function(){
+				
+	});
+});
+function test_mail(){
+    $.post(
+    	'__URL__/mail_mass',
+	});
+}
+</script>
+-->
+</div>
+</body>
+</html>

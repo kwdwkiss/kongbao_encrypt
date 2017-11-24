@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><!--IE优先使用chrome内核-->
+<meta name="renderer" content="webkit" /> <!--360优先使用chrome内核-->
+<meta http-equiv="Cache-Control" content="no-siteapp" /><!-- 禁止手机百度转码 -->
+<title>{$seo_title} </title>
+<meta name="Keywords" content="{$seo_keyword}">
+<meta name="Description" content="{$seo_desc}">
+<if condition="$qq_setting['qq_isuse']==1">
+<meta property="qc:admins" content="{$qq_setting['qq_appcode']}" />
+</if>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="/Public/css/lxindex.css" />
+<script type="text/javascript" src="/Public/css/jquery.min.js"></script>
+<script type="text/javascript" src="/Public/css/myself.js"></script>
+<script type="text/javascript" src="/Public/css/jquery.form.js"></script>
+<script type="text/javascript" src="/Public/css/pan_jquery.js"></script>
+<script type="text/javascript" src="/Public/css/selectCss.js"></script>
+<script type="text/javascript" src="/Public/js/jquery_js.js"></script>
+<script type="text/javascript" src="/Public/css/myfrom/artDialog4.1.7/artDialog.js?skin=green"></script>
+</head>
+<body style="background: none">
+<!--头部-->
+<div id="J-home-topbar-menu" class="topbar-menu curr-topbar-menu">
+<div class="top_nav">
+    <div class="cont">
+        <div class="left_cont">
+		
+           <if condition="session('IS_LOGIN')==0">
+            <span>我已有{$config['sitename']}账户&nbsp;&nbsp;</span>
+                <a href="{:U('User/uslogin')}">快速登录</a>
+                <a href="{:U('User/reg')}">注册</a>
+				</if>
+                       <if condition="session('IS_LOGIN')==1">
+					<div class="danhao-user">
+                    <div class="lnk-user">
+                        <a href="{:U('User/home')}" class="user-uid">[&nbsp;{$user['username']}&nbsp;]</a>
+                        <i class="icon iconfont">&#xe604;</i>
+                    </div>
+                    <div class="user-list" style="left:-500px; width:168px; height:0px;">
+                        <div class="user-list-info">
+                            <div class="info-pic">
+                               <a href="{:U('User/home')}"><img src="{$user['head_img']}" data-original="/Public/images/tx_images.jpg" width="38" height="38" /></a>                             
+                            </div>
+                            <div class="info-txt">
+                                <span>
+                                    <a>￥{$user['money']}</a>
+                                </span>
+                                <br>
+                                <a href="{:U('Cash/recharge')}" class="c_skyBlue">充值</a>
+                                <span style="margin:0.3%; color:#ccc;">|</span>
+                                <a href="{:U('Cash/tixian')}" class="c_skyBlue">提现</a>
+                            </div>
+                        </div>
+                        <ul class="list_info">
+                           <li><a href="{:U('Order/kb')}">空包下单</a></li>
+                                <li><a href="{:U('User/mingxi')}">全部资金明细<!--<small class="color_orange">(1)</small>--></a></li>
+                                <li><a href="{:U('User/repass')}">修改密码</a></li>
+                                <li><a href="{:U('Tg/uplevel')}">会员升级</a></li>
+                                <li><a href="{:U('Log/refer_log')}">我的下线</a></li>
+								<li><a href="{:U('System/index')}" >消息中心<span style="font-family:'Microsoft 宋体';font-size:12px;color:#fc9a03;" >&nbsp;({$allnoread})</span></a></li>
+                                <li><a href="{:U('User/logout')}">退出</a></li>
+                        </ul>
+                    </div>
+                </div>
+				<script type="text/javascript">
+                    $(function(){
+                        //触摸会员头显示像下滑框
+                        $(".top_nav .cont .left_cont .danhao-user").mouseover(function(){
+                            $(this).find(".lnk-user").addClass("user-list-select");
+                            $(this).find(".user-list").css({
+                                left:"0px",
+                                height:"auto",
+                            });
+                        }).mouseleave(function(){
+                            $(this).find(".lnk-user").removeClass("user-list-select");
+                            $(this).find(".user-list").css({
+                                left:"-500px",
+                                height:"0px",
+                            });
+                        });
+                    })
+                </script> 
+				</if>       </div>
+        <div class="right_cont">
+		 <a class="qq" href="http://wpa.qq.com/msgrd?v=3&uin={$config['qq1']}&site=qq&menu=yes" target="_blank">在线客服</a>
+            <style type="text/css">
+                .qq{
+                    display: block;
+                    height: 28px;
+                    margin-top: 0px !important;
+                    line-height: 28px;
+                    padding: 0px 10px;
+                }
+                .qq:hover{
+                    background: #00a2ca;
+                    color: #fff!important;
+                }
+            </style>
+           
+            <a href="javascript:alert('Ctrl+D快捷加入收藏');">加入收藏</a>
+			<if condition="session('IS_LOGIN')==1">
+            <span class="message_box">
+               
+                     <a href="{:U('System/index')}" class="notice"><i class="icon iconfont">&#xe617;</i> <span >{$allnoread}</span></a>
+			 <else/>
+			<a href="{:U('User/home')}">管理控制台</a>
+			</if>
+               <div class="freshman_box">
+                <div class="freshman">
+                    <a href="javascript:void(0);">新手视频</a>
+                </div>
+                <div class="freshman_list" style="width: 175px;">
+                    <a href="javascript:video(0)" class="first video_obj" >站长介绍</a>
+                     <a href="javascript:video(0)" class="first video_obj1">新手教程</a>
+                     <a href="javascript:video(0)" class="first video_obj2" class="last" > 推广教程</a>
+                </div>
+                       <if condition="session('IS_LOGIN')==1">
+					   <a href="{:U('Tg/index')}">邀请好友有&大礼<span class="angle"></span></a>
+					   <else/>
+					   <a href="{:U('User/reg')}">注册送豪华&大礼<span class="angle"></span></a>
+					</if>                  
+            </div>
+            <script type="text/javascript">
+              
+                $(".top_nav .cont .right_cont .freshman_box .freshman , .top_nav .cont .right_cont .freshman_list").mouseover(function(){
+                    $(".top_nav .cont .right_cont .freshman_box .freshman > i").css("color","#000").css("-webkit-transform","rotate(180deg)");
+                    $(".top_nav .cont .right_cont .freshman_box .freshman").addClass("curr").find("a").css("color","#000!important").find("i").css("color","#ffcc00");
+                    $(".top_nav .cont .right_cont .freshman_box .freshman_list").show();
+                }).mouseout(function(){
+                    $(".top_nav .cont .right_cont .freshman_box .freshman > i").css("color","#fff").css("-webkit-transform","rotate(0deg)");
+                    $(".top_nav .cont .right_cont .freshman_box .freshman").removeClass("curr").find("a").css("color","#fff").find("i").css("color","#ffcc00");
+                    $(".top_nav .cont .right_cont .freshman_box .freshman_list").hide();
+                });
+            </script>
+        </div>
+    </div>
+</div>
+<include file="Public:kefua" />
+<div class="index1_40" style="width:100%; height:62px; background:#00a2ca; z-index:100; position:relative;">
+	<div class="index1_41" style="overflow:visible">
+    	<div class="index1_42">
+        	<a href="__APP__" class="index1_43"><img src="__ROOT__/{$config.site_logoo}" style="margin-top:4px;">
+			</a>
+<if condition="$config['tuiguang_dtswf']==1">
+{$config['dtswf_javascript']}
+</if>
+        </div>
+		 <if condition="session('IS_LOGIN')==1">
+		  {$kongbao_page['tuiguang_dlh']}
+		  <else />
+		{$kongbao_page['tuiguang_dlq']} 
+		</if>
+        <ul id="menu">
+          <li>
+             <a href="__APP__" class="tit curr">首页</a>
+          </li>
+          <volist name="daohang" id="daohang" offset="0" length='6' >
+  <li>
+<a href="{$daohang.url}"  title="{$daohang.name}"  class="tit">{$daohang.name}<if condition="$daohang['sort_bz']==1"><img src="{$daohang['image_url']}" width="26" style="margin-left:5px;" alt="{$daohang.name}"/></if></a>
+  </li>
+</volist>
+        </ul>
+       
+        <br class="clr" />
+    </div>
+</div>

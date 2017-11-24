@@ -1,0 +1,77 @@
+<include file="Public:header" />
+    </td>
+  <td valign="top" class="r">	
+      <div class="title02">批发单号管理<a href="{:U('Cash/recharge')}" class="Annkela"><img src="/Public/xincss/images/22.png"/>在线充值</a></div>
+      <div class="block04">
+		 <form class="search" action="__URL__/pifa_log" method="post">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+		<td width="70">单号来源：</td>
+		<td width="86">
+		<select name="ftype" class="select classid" style="margin-top:0px;width:90px;">
+        <option value="order_no" <eq name="_POST.ftype" value="order_no">selected</eq>>订单编号</option>
+       </select>  
+		</td><td width="5">&nbsp;</td>
+		<td width="110"><input type="text" name="keyword" value="{:I('keyword')}" class="Index_Search" style="width:100px;"/></td><td width="5">&nbsp;</td>
+		<td width="86">
+		 <select name="type_id" class="select classid" style="margin-top:0px;width:90px;"> 
+		<option value="">单号类型</option>
+		<foreach name="type_list" item="type">
+		<option value="{$type['id']}"  <if condition="I('type_id','')==$type['id']" >selected</if> >{$type['name']}</option>
+		</foreach>
+		</select>   
+		</td
+		></td><td width="5">&nbsp;</td>
+		<td width="40"><input name="submit" type="submit" class="Annkelb_1" value="查询" />
+		<input type="hidden" id="count" value="{$count}"/></td>
+		<td > (文件名组成:类型名+订单号+个数)</td>
+		<td>
+		</td>
+		</tr>
+		</table>
+		</form>
+		<br/> 
+      	<table class="ipList" width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="title">
+            <td width="20" class="icon">&nbsp;</td>
+            <td>快递公司</td>
+			<td>订单编号</td>
+			<td>下单时间</td>
+			<td>导出单号</td>
+          </tr>
+          <!-- 隔行变色 -->
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+          })
+          </SCRIPT>
+		  <foreach name="log_list" key="key" item='log'>
+          <tr class="td1">
+            <td>&nbsp;</td>
+            <td>{$kb_type[$log['type_id']]}</td>
+			<td>{$log['order_no']}</td>
+			<td>{$log['order_time']}</td>
+		    <td><p><a href="{:U('dhexp',array('id'=>$log['order_no'],'type'=>1))}">导出单号</a></p></td> 
+          </tr>
+		</foreach>      
+        </table>
+      </div>
+      <div class="pageList">
+			<table width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="left"></td>
+					<td class="center">&nbsp;</td>
+					<td class="right" align="right">
+						<div class="pagebreak">
+							<table cellspacing="0" cellpadding="0"><tr><td class="page_no"><a class='current'>{$show}</a></td></tr></table>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+

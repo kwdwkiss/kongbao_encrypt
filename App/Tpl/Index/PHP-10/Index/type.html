@@ -1,0 +1,44 @@
+<div class="content">
+   <div class="model_box"> 
+    <div class="title"> 
+     <h1>安全、稳定的快递任你选</h1> 
+    </div> 
+    <div class="model_cont">
+     <volist name="kongbao_type" id="vo" offset="0" length="1"> 
+      <div class="express first curr">
+       <div class="main_face">
+        <h3>{$vo.name}</h3>
+        <p><?php $str = "$vo[comm]"; $comm = strip_tags($str); echo mb_substr($comm,0,30,"UTF-8"),"..."; ?></p>
+        <img src="/{$vo.images_url}" width="125" height="130" />
+       </div>
+       <div class="main_cont">
+       <notempty name="vo['config']['price']['a1']"> <span><p><span><img src="/Public/images/1.gif" width="36" height="32" /></span>{$vo['config']['level']['a1']}：<em>{$vo['config']['price']['a1']}</em>元/单</p></span></notempty> 
+       <notempty name="vo['config']['price']['a2']"> <span><p><span><img src="/Public/images/2.gif" width="36" height="32" /></span>{$vo['config']['level']['a2']}：<em>{$vo['config']['price']['a2']}</em>元/单</p></span></notempty> 
+       <notempty name="vo['config']['price']['a3']"> <span><p><span><img src="/Public/images/3.gif" width="36" height="32" /></span>{$vo['config']['level']['a3']}：<em>{$vo['config']['price']['a3']}</em>元/单</p></span></notempty> 
+        <notempty name="vo['config']['price']['a4']"><span><p><span><img src="/Public/images/4.gif" width="36" height="32" /></span>{$vo['config']['level']['a4']}：<em>{$vo['config']['price']['a4']}</em>元/单</p></span></notempty> 
+        <span><p><a href="{:U('Order/kb')}" class="bgc_skyBlue">快速下单</a></p></span>
+       </div> 
+      </div>
+     </volist> 
+     <volist name="kongbao_type" id="vo" offset="0" length="4">
+      <if condition="$i egt 2">
+       <div class="express first ">
+        <div class="main_face">
+         <h3>{$vo.name}</h3>
+         <p><?php $str = "$vo[comm]"; $comm = strip_tags($str); echo mb_substr($comm,0,30,"UTF-8"),"..."; ?></p>
+         <img src="/{$vo.images_url}" width="125" height="130" />
+        </div> 
+        <div class="main_cont">
+        <notempty name="vo['config']['price']['a1']"> <span><p><span><img src="/Public/images/1.gif" width="36" height="32" /></span>{$vo['config']['level']['a1']}：<em>{$vo['config']['price']['a1']}</em>元/单</p></span></notempty> 
+        <notempty name="vo['config']['price']['a2']"><span><p><span><img src="/Public/images/2.gif" width="36" height="32" /></span>{$vo['config']['level']['a2']}：<em>{$vo['config']['price']['a2']}</em>元/单</p></span></notempty> 
+        <notempty name="vo['config']['price']['a3']"><span><p><span><img src="/Public/images/3.gif" width="36" height="32" /></span>{$vo['config']['level']['a3']}：<em>{$vo['config']['price']['a3']}</em>元/单</p></span></notempty> 
+        <notempty name="vo['config']['price']['a4']"> <span><p><span><img src="/Public/images/4.gif" width="36" height="32" /></span>{$vo['config']['level']['a4']}：<em>{$vo['config']['price']['a4']}</em>元/单</p></span></notempty> 
+         <span><p><a href="{:U('Order/kb')}" class="bgc_skyBlue">快速下单</a></p></span>
+        </div> 
+       </div>
+      </if> 
+     </volist> 
+    </div>
+   </div>
+  </div>
+ 

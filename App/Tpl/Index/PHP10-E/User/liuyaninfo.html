@@ -1,0 +1,74 @@
+<include file="Public:header" />
+</td>
+<link href="http://www.niaoyun.com/skin/user/css/workorder_view.css" rel="stylesheet" type="text/css" media="screen,projection" />
+    <td valign="top" class="r">
+
+
+    <div class="Top_Czn Icon">
+        <h3>{$xiaohao[title]}</h3>
+        <span class="Slash"></span>
+		<if condition="$xiaohao[reply]==''">
+		<span class='Prompt a'>客服未响应</span>
+			<else />
+    	<span class='Prompt a'>已经回复</span>
+		</if>
+        <a href="{:U('User/complaint')}" class="Annkelc float_right"><img src="/Public/xincss/images/19.png"/>返回列表</a>
+    </div>
+
+	<div class="block04">
+        <div class="Fenlei">
+            <ul class="List_2">
+                <li>创建：{$xiaohao['addtime']}</li>
+                <li class="Line"></li>
+                <li>响应：{$xiaohao['replytime']}</li>
+                <li class="Line"></li>
+                <li class="tyle">类型：{$xiaohao['opt_type']}</li>
+                	<li class="Line"></li>
+                	<li class="Fork"><a href="javascript:void(0)" id="ok">已解决</a></li>
+        		<li class="Line"></li>
+        		<li style="background:none;padding-left:0"><a href="{:U('User/liuyan')}">投诉</a></li>
+            </ul>
+        </div>
+        <ul class="V_part2">
+			<li>
+				<div class="V_Puser floatL">
+					<img class="floatL" src="/Public/xincss/images/User/V_pic2.gif" />
+					<b class="fc22">我</b>
+				</div>
+				<div class="V_Ptext floatL">
+					<div class="V_Pbox floatL">
+						<span class="V_Pbot_cor"></span>
+						<p>
+							<p>{$xiaohao[content]}</p>
+						</p>
+					</div>
+					<em class="floatR fc3">{$xiaohao['addtime']}</em>
+				</div>
+			</li>
+			<if condition="$xiaohao[reply]==''">
+			<else />
+				<li>
+					<div class="V_Puser floatR">
+					<img class="floatL" src="/Public/xincss/images/User/V_pic2.gif" />
+					<b class="fc1">工号 {$xiaohao['gonghao']}</b>
+					</div>
+					<div class="V_Ptext1 floatR">
+						<div class="V_Pbox V_bd1 floatLR Thisstation">
+							<span class="V_Pbot_cor1"></span>
+							<p>
+							<p>{$xiaohao[reply]}</p>
+							</p>
+						</div>
+						<em class="floatL fc3">{$xiaohao['replytime']}</em>
+					</div>
+				</li>
+			</if>
+				
+    </td>
+  </tr>
+</table>
+
+
+</body>
+</html>
+

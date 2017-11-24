@@ -1,0 +1,49 @@
+<include file="Public:header" />
+</td><td valign="top" class="r">
+<div class="title02">绑定账号
+<a href="{:U('User/complaint')}" class="Annkela"><img src="__PUBLIC__/xincss/images/19.png"/>返回列表</a></div>
+	<form action="{:U('savecwsz')}" method="POST" name="frmLogin">
+	<input type="hidden" name="id" value="{$user['id']}">
+    <table class="V_tb2">
+	
+  <SCRIPT LANGUAGE="JavaScript">
+  $(function(){
+   $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+  })
+  </SCRIPT>
+	<tr class="td1">
+	<th><font style="color:#F00">*</font>用户登陆名</th>
+	<td>
+	<strong><b class="fc2">{$user['username']}</b></strong>
+	</td>
+      </tr>
+	  <tr class="td1">
+        <th><font style="color:#F00">*</font>提现方式</th>
+        <td><img src="__PUBLIC__/xincss/images/User/recharge_img3.jpg" width="134" height="38" /></td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>提现支付宝</th>
+        <td><input type="text" name="cwsz_config[account_no]" value="{$cwsz_config['account_no']} " class="V_input2" style="width:250px"><font class="fc2">请务必正确填写</font></td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>支付宝姓名</th>
+        <td><input type="text" name="cwsz_config[account_name]" value="{$cwsz_config['account_name']}" class="V_input2" style="width:250px"><font class="fc2">请务必正确填写</font></td>
+      </tr>
+       
+      <tr class="td1">
+        <th></th>
+        <td><button onclick="return tixian_submit();" type="submit" class="V_btn4 submit">确定提交</button>
+		</td>
+      </tr>
+    </table>
+    </form>
+    <div class="V_con1">
+    	<p>请填写完整的支付宝地址及收款人姓名，以便客服人员能够快速帮您解决问题；<br />如果您有意见和建议，或者进行投诉请点击<b><a href="#" class="fc2">投诉建议</a></b>。</p>
+    </div>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
+

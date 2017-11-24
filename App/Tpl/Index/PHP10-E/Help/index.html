@@ -1,0 +1,50 @@
+<include file="Public:new" />
+<link rel="stylesheet" href="__PUBLIC__/xincss/css/news.css"/>
+
+<div class="news-main">
+	<div class="auto">
+		<div class="news-tabs">
+			
+			
+			<div class="news-tabs-btn">
+				<a href="{:U('Gonggao/index')}" class="news-tabs-link " id="toNewsType2">官方公告</a>
+			</div>
+			
+			<div class="news-tabs-btn">
+				<a href="{:U('Article/index')}" class="news-tabs-link" id="toNewsType2">文章中心</a>
+			</div>
+			
+			<div class="news-tabs-btn">
+				<a href="{:U('Help/index')}" class="news-tabs-link news-tab-current" id="toNewsType2">帮助中心</a>
+			</div>
+		<div class="news-tabs-btn">
+				<a href="{:U('About/index')}" class="news-tabs-link " id="toNewsType2">关于我们</a>
+			</div>
+			<div class="clear-float"></div>
+		</div>
+		<div class="news-list-box" id="newsType1">
+			<ul class="news-list">
+				
+				 <foreach name="help_list" item="help">
+				<li class="news-piece">
+					<span class="news-mark"></span>
+					<a href="{:U('help',array('id'=>$help['id']))}" style="color:#f60">
+						{$help["title"]}
+					</a>
+				    	
+					<em class="news-time">{$help["time"]}</em>
+				</li>
+				</foreach> 
+				
+			</ul>
+			<div class="news-pagination">
+				<table cellspacing="0" cellpadding="0"><tr><td class="page_text page_home"><td class="page_text page_prev">
+				<div class="pagebreak">
+							<table cellspacing="0" cellpadding="0"><tr><td class="page_no"><a class='page_current'>{$show}</a></td></tr></table>
+						</div>
+				</td></tr></table>
+			</div>
+		</div>
+	</div>
+</div>
+<include file="Public:newfoot" />

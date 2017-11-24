@@ -1,0 +1,62 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="/Public/moive_play/fzjs/js/jquery.js"></script>
+<style>
+a, body, div, html, img, li, ul,dl,dt,dd { border: 0; margin: 0; padding: 0; text-decoration:none;}
+body { height:auto; width:100%; min-width:1180px;  font:12px/1.5 "\5FAE\8F6F\96C5\9ED1","Microsoft Yahei","Hiragino Sans GB",tahoma,arial,"\5B8B\4F53"; margin:0px; padding:0px; display:block; color:#000;  }
+.right_cont{background-color: #fff; position: relative; padding-bottom: 120px;width: 1200px;background: #fff;min-height: 150px; padding-top: 0px;}
+.contenter .resize .right_cont .warm_box{display:block; height:32px; line-height:32px; color:#666; background:#f1f6fa; padding:0px 10px;}
+.contenter .resize .right_cont .warm_box i{color:#00a2ca; font-size:16px; margin-right:5px;}
+.c_skyBlue{ color:#00a2ca; }
+</style>
+<link rel="stylesheet" type="text/css" href="/Public/css/common.css" />
+<link rel="stylesheet" type="text/css" href="/Public/css/console1412.css" />
+</head>
+<body>
+<script type="text/javascript">
+if (window == top) 
+{
+ location.href='__APP__'; 
+  }
+</script>
+<script type="text/javascript">
+    $(function(){
+        var j=setInterval(function(){
+                autoScroll()
+            },2000);
+        $('#scrollDiv div').mouseover(function(){
+            clearInterval(j);
+        }).mouseout(function(){
+            j=setInterval(function(){
+                autoScroll()
+            },2000)
+        })
+    })
+    //自动上下进行滚动
+    function autoScroll(){
+        var html=$('#scrollDiv').find('div').eq(0).html();
+        $('#scrollDiv').find('div').eq(0).hide(2000,function(){
+            $('#scrollDiv').append('<div>'+html+'</div>');
+            $('#scrollDiv').find('div').eq(0).remove();
+        });
+    }
+</script>
+<div class="contenter">
+<div class="resize">
+<div class="left_cont">
+</div>
+<div class="right_cont">
+<div class="warm_box" style="overflow: hidden;background: #EEEEEE" id="scrollDiv" >
+<div>
+<foreach name="order_list" item="order">
+<foreach name="recharge_list" item="recharge">
+<i class="icon iconfont">&#xe620;</i>
+<a class="c_skyBlue" >
+<nobr>【{$recharge['addtime']|substr=###,0,10}】****{$recharge['username']|cut_str=###,2} <font color="red"><b>  成功充值</b></font> <font color="red"><b>￥{$recharge['pay_money']}</b></font> 元  ，编号为<font color="red"><b>{$recharge['outer_order_no']|cut_str=###,25} </b></font></nobr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<nobr>【{$order['addtime']|substr=###,0,10}】会员 ***{$order['username']|cut_str=###,2} <font color="red"><b>购买空包</b></font>交易额为<font color="red"><b>￥{$order['pay_money']} </b></font>的订单，编号为<font color="red"><b>{$order['order_no']|cut_str=###,15} </b></font></nobr>
+</a></div><div>				
+</foreach> 
+</foreach> 

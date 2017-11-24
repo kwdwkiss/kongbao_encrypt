@@ -1,0 +1,135 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="/Public/css/common.css" />
+<script type="text/javascript" src="/Public/css/jquery.min.js"></script>
+<script type="text/javascript" src="/Public/css/myself.js"></script>
+<script type="text/javascript" src="/Public/css/jquery.form.js"></script>
+<script type="text/javascript" src="/Public/css/pan_jquery.js"></script>
+<script type="text/javascript" src="/Public/css/selectCss.js"></script>
+<script type="text/javascript" src="/Public/js/jquery_js.js"></script>
+<script type="text/javascript" src="/Public/css/myfrom/artDialog4.1.7/artDialog.js?skin=green"></script>
+</head>
+<body>
+<script type="text/javascript">
+if (window == top) 
+{
+ location.href='__APP__'; 
+  }
+</script>
+<style type="text/css">
+*{margin:0;padding:0}
+html{overflow-y:scroll}
+body{overflow:hidden;background:url() center top repeat-y;font-size:12px;font-family:"微软雅黑",Verdana,Geneva,sans-serif}
+input{font-family:"微软雅黑"}
+img{border:0}
+ul{list-style:none}
+img{border:0}
+a{text-decoration:none;cursor:pointer}
+.fl{float:left}
+.fr{float:right}
+.cl{clear:both}
+.resize{overflow:hidden;margin:0 auto;width:1178px}
+i{font-style:normal}
+.color_or{color:#f3783f}
+.wzh_ts{position:absolute;top:-20px;left:0;z-index:1000;display:block;padding:2px 10px;height:25px;border:1px solid #ccc;border-radius:5px;background:#fff;box-shadow:2px 2px 2px #ccc;line-height:25px;opacity:0;cursor:default;filter:alpha(opacity=0)}
+.mgt20{margin-top:20px}
+.contenter .resize{width:980px;margin-left:-0px;}
+.contenter .resize .right_cont .table_box .tab_nav{overflow:hidden;height:30px;border-bottom:2px solid #00a2ca;line-height:30px}
+.contenter .resize .right_cont .table_box .tab_nav>a{float:left;display:inline-block;margin-right:2px;width:113px;background:#d9dee4;color:#666;text-align:center}
+.contenter .resize .right_cont .table_box .tab_nav>a.curr{background:#00a2ca;color:#fff}
+.contenter .resize .right_cont .table_box .tab_nav>a:hover{background:#00a2ca;color:#fff}
+.contenter .resize .right_cont .table_box .tab_cont{display:block;width:100%}
+.contenter .resize .right_cont .table_box .tab_obj{margin-top:7px;width:958px;height:auto;border:1px solid #ddd}
+.contenter .resize .right_cont .table_box .tab_obj tr:hover{background:#ddd;cursor:pointer}
+.contenter .resize .right_cont .table_box .tab_obj tr th{height:35px;background:#f7f7f7;color:#999;text-align:center;font-weight:500;line-height:35px}
+.contenter .resize .right_cont .table_box .tab_obj tr th i{margin-left:5px;color:#ccc;font-size:16px;cursor:pointer}
+.contenter .resize .right_cont .table_box .tab_obj tr td{overflow:hidden;padding:10px 5px;height:auto;border-top:1px solid #ddd;color:#666;text-align:center;line-height:25px;word-break:break-all}
+.contenter .resize .right_cont .table_box .tab_nav .export_list{float:right;display:inline-block}
+.contenter .resize .right_cont .table_box .tab_nav .export_list a{display:inline-block;margin:0 25px;color:#00a2ca}
+.contenter .resize .right_cont .table_box .tab_nav .export_list a i{font-size:20px}
+.pages{margin-top:30px;padding-right:15px;height:50px;text-align:right}
+.pages a,.pages span{margin:0 3px;padding:5px 8px;border:1px solid #ccc;border-radius:5px;background:#fff;color:#00a2d2;text-align:center}
+.pages .current,.pages a:hover,.pages span:hover{background:#00a2ca;color:#fff}
+</style>
+<script type="text/javascript"> 
+	function export_today()
+	{
+ 	   var count = $("#count").val(); 
+	    if(count<=0) 
+	    {
+	    	alert('无数据可导出！'); 	
+	    	return false;
+	    }
+	   $("#export_form").submit();
+	}
+	function export_All()
+	{
+ 	   var count = $("#count").val(); 
+	    if(count<=0) 
+	    {
+	    	alert('无数据可导出！'); 	
+	    	return false;
+	    }
+	   $("#export_form_All").submit();
+	}
+</script>
+<div class="contenter">
+<div class="resize">
+<div class="right_cont">
+<div class="table_box">
+<div class="tab_nav">
+<a href="javascript:void(0);" class="curr">待扫描的空包</a>
+<span class="export_list">
+<a href="javascript:void(0)" onclick="return export_today()" class="c_skyBlue"><i class="icon iconfont">&#xe61c;</i>导出当天的单号</a>
+<a href="javascript:void(0)" onclick="return export_All()" class="c_skyBlue"><i class="icon iconfont">&#xe61c;</i>导出所有的单号</a></span></div>
+<form class="search" action="" method="post" id="query_form"> 		      
+</form>
+<form id="export_form" action="{:U('Log/today_export')}" method="post"> 
+<input type="hidden" name="ftype" value="{:I('ftype')}" /> 
+<input type="hidden" name="keyword" value="{:I('keyword')}" /> 
+<input type="hidden" name="type_id" value="{:I('type_id')}" /> 	                                 	
+</form> 
+<form id="export_form_All" action="{:U('Log/log_exportquan')}" method="post"> 
+<input type="hidden" name="ftype" value="{:I('ftype')}" /> 
+<input type="hidden" name="keyword" value="{:I('keyword')}" /> 
+<input type="hidden" name="type_id" value="{:I('type_id')}" /> 	                                 	
+</form> 
+<table cellpadding="0" cellspacing="0" class="tab_obj">
+<thead>
+<tr>
+<th width="10%">快递公司</th>
+<th width="10%">快递单号</th>
+<th width="10%">发货地址</th>
+<th width="10%">收货人</th>
+<th width="10%">收货地址</th>
+
+<th width="15%">下单时间</th>
+<th width="10%">状态</th>
+ </tr>
+</thead>
+<foreach name="log_list" key="key" item='log'>
+<tbody id="tbody">
+<td>{$kb_type[$log['type_id']]}</td>
+<td><div >{$log['note_no']}</div></td>
+<td>{$log['send_province']} {$log['send_city']} {$log['send_district']}</td>
+<td>{$log['rec_name']}</td>
+<td>{$log['rec_province']} {$log['rec_city']} {$log['rec_district']}</td>
+
+<td><div >{$log['order_time']}</div></td>
+<td align="center">
+<if condition="$log['exp_status']==0 && $log['order_status']==1">
+<a href= "{:U('log_update',array('id'=>$log['id']))}"><span style="height:25px;line-height:25px;width:60px"><font color="red">待扫描</font></span></a>
+</if>
+</td>
+</tbody>
+</foreach>  
+</table>
+ <div class="pages">   
+{$show}
+</div> 
+</div>
+</div>
+</div>

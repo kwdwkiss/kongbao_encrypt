@@ -1,0 +1,73 @@
+<include file="Public:top" />
+<style type="text/css">
+.btn_tx{background:#FFF;padding:1px 1px;border:1px solid #f60;border-radius:4px;color:#f60;margin:5px 0}.btn_tx:hover{background:#f60;color:#FFF;border:1px solid #FFF}
+</style>
+<div class="container cont_bg">
+    <div class="resize">
+        <div class="c_leftBox">
+    <div style="font-size: 16px;
+font-weight: normal;
+padding-bottom: 10px;">{$config['sitename']}</div>
+<include file="Public:left_nav" />
+</div>
+        <div class="c_rightBox recharge withdrawals">
+            <div class="change_code">
+                <div class="c_tit">
+                    <h2>佣金提现</h2>
+                </div>
+                <div class="c_form">
+                    <form action="{:U('deal_tixian')}" method="POST" >
+                        <div class="f_left">
+                            <ul>
+                                <li>
+                                    <label>账户可提现金额：</label>
+                                    <div class="label_cont"><strong>{$userInfo['refer_money']}</strong> 元 <img class="tip" src="/Public/images/tip.png" width="9" height="9" /><span class="tip_mes">可提现金额</span></div>
+                                </li>
+								<if condition="$tixian_setting['min_money'] gt 0">
+                                <li>
+                                    <label>最低提现要求：</label>
+                                    <div class="label_cont"><strong>{$tixian_setting['min_money']}</strong> 元 <img class="tip" src="/Public/images/tip.png" width="9" height="9" /><span class="tip_mes">最低提现要求</span></div>
+                                </li></if>
+                                <li>
+                                    <label>提现支付宝地址：</label>
+                                    <div class="label_cont"> {$cwsz_config['account_no']} </div>
+                                </li>
+                                <li>
+                                    <label>提现支付宝姓名：</label>
+                                    <div class="label_cont"><if condition="$cwsz_config['account_name']">{$cwsz_config['account_name']}<span class="check_code">姓名错误将提现失败</span><else/><a href="{:U('User/home')}" class="btn_tx">添加</a><span class="check_code">请添加提现支付宝姓名</span></if></div>
+                                </li>
+                                <li>
+                                    <label>提现金额：</label>
+                                    <div class="label_cont"><input id="money" name="money"  class="input_text" value="" type="text" /> <span class="check_code">输入提现金额</span></div>
+                                </li>
+                                <li>
+                                    <label>提现方式：</label>
+                                    <div class="label_cont"><img src="/Public/images/recharge_img3.jpg" width="134" height="38" /></div>
+                                </li>
+                                <li class="link">
+                                    <label>&nbsp;</label>
+                                    <div class="label_cont"><input type="submit" class="recharge_sub"  value="立即提现" onclick="return tixian_submit()" />
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+						<input type="hidden" name="user_id" value="{$userInfo['id']}" /> 
+						<input type="hidden" name="status" value="1" />
+                    </form>
+                    <div class="f_right">
+                        <img src="/Public/images/withdrawals_img1.jpg" width="391" height="104"/>
+                    </div>
+                </div>
+                <div class="c_text">
+                    <div class="t_tit">
+                        <h3>温馨提示</h3>
+                    </div>
+                    <div class="t_cont">
+                       {$kongbao_page['tuiguang_fangfa']}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:foote" />

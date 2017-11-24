@@ -1,0 +1,69 @@
+<script type="text/javascript" src="__PUBLIC__/js/jquery.validation.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.poshytip.min.js" charset="utf-8"></script> 
+<script type="text/javascript">
+//资料表单提示
+$('.tip').poshytip({
+	className: 'tip-yellowsimple',
+	showOn: 'focus',
+	alignTo: 'target',
+	alignX: 'center',
+	alignY: 'top',
+	offsetX: 0,
+	offsetY: 2,
+	allowTipHover: false
+}); 
+
+//资料表单验证
+$(function(){ 
+	    $("#KinSlideshow").KinSlideshow();   
+		jQuery.validator.addMethod("lettersonly", function(value, element) {
+			return this.optional(element) || /^[^:%,'\*\"\s\<\>\&]+$/i.test(value);
+		}, "Letters only please"); 
+		jQuery.validator.addMethod("lettersmin", function(value, element) {
+			return this.optional(element) || ($.trim(value.replace(/[^\u0000-\u00ff]/g,"aa")).length>=3);
+		}, "Letters min please"); 
+		jQuery.validator.addMethod("lettersmax", function(value, element) {
+			return this.optional(element) || ($.trim(value.replace(/[^\u0000-\u00ff]/g,"aa")).length<=15);
+		}, "Letters max please");
+    $("#register_form").validate({
+        errorPlacement: function(error, element){
+            var error_td = element.parent('dd');
+            error_td.find('label').hide();
+            error_td.append(error);
+        },
+        submitHandler:function(form){ 
+            ajaxpost('register_form', '', '', 'onerror');
+        },
+        rules : {
+            mibao_daan : {
+                required : true,
+                lettersmin : true,
+                lettersmax : true,
+                lettersonly : true,
+            },
+            mibao_daan_repass : {
+                required : true,
+                lettersmin : true,
+                lettersmax : true,
+                lettersonly : true,
+            },
+        },
+        messages : {
+            mibao_daan : {
+                required : '密保答案不能为空',
+                lettersmin : '密保答案必须在3-15个字符之间',
+                lettersmax : '密保答案必须在3-15个字符之间',
+				lettersonly: '密保答案不能包含敏感字符',
+            },
+           mibao_daan_repass : {
+                required : '确认答案不能为空',
+                lettersmin : '确认答案必须在3-15个字符之间',
+                lettersmax : '确认答案必须在3-15个字符之间',
+				lettersonly: '确认答案不能包含敏感字符',
+            },
+        }
+    });
+});
+</script>
+<script src="/Public/moive_play/fzjs/jquery.zclip.min.js"></script>
+<script src="/Public/moive_play/fzjs/default.js"></script>

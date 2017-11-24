@@ -1,0 +1,28 @@
+<include file="Public:header" />
+<!-- top -->
+    <!-- contenter -->
+    <div class="content">
+        <div class="f_content">
+            <div class="step_show">
+                <p><img src="/Public/images/find_pswd_1.png" width="730" height="35" /></p>
+                <div class="mtext">
+                    <span class="fl curr">验证身份</span>
+                    <span class="curr">重置登录密码</span>
+                    <span class="fr curr">完成</span>
+                </div>
+            </div>
+			<form name="validateForm" id="reg" action="/index.php" method="POST" style="padding-top:20px; padding-bottom:50px;">
+            <div class="step_cont">
+                <h2><i class="icon iconfont">&#xe60d;</i>验证身份，请完成以下操作</h2>
+                <div class="list_cont">
+                    <p><i class="icon iconfont">&#xe61e;</i></p>
+                    <p style="color:#f40; font-size:24px;"><span style="color:#3C0;">{$username}</span>恭喜您！密码修改成功....</p>
+                    <p style="color:#333; font-size:18px; margin-top:15px;">恭喜您！您的新密码：<span style="color:#3C0;">{$userpwd}</span> 现在可以去<a href="{:U('User/uslogin')}">登陆</a>，去浏览试试...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+	<input type="hidden" name="id" value="{$user['id']}">
+	</form>
+    <!-- contenter -->
+<include file="Public:footer" />

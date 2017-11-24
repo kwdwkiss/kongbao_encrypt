@@ -1,0 +1,42 @@
+<style type="text/css">
+.xiaox{background:#0099cc;padding:0px 2px;border:1px solid #0099cc;border-radius:6px;color:#fff;margin:5px 0}
+</style>
+<dl>
+<dt><a >账户管理</a></dt> <dd><a <if condition="$cur eq Home">class="curr"</if> href="{:U('User/Home')}">管理中心</a></dd>
+<dd><a href="{:U('Cash/recharge')}" <if condition="$cur eq recharge">class="curr"</if>>账户充值</a></dd>
+<dd><a href="{:U('Tg/uplevel')}" <if condition="$cur eq uplevel">class="curr"</if>>快递价格<img style="margin-top:-2px; margin-left:5px;" src="/Public/images/hot.png"/></a></dd>
+<dd><a href="{:U('User/repass')}" <if condition="$cur eq repass">class="curr"</if>>修改密码 </a></dd>
+<dd><a href="{:U('User/liuyan')}" <if condition="$cur eq liuyan">class="curr"</if>>提交工单<img style="margin-top:-2px; margin-left:5px;" src="/Public/images/hot.png"/></a></dd>
+<dd><a href="{:U('User/reinfo')}" <if condition="$cur eq reinfo">class="curr"</if>>修改资料</a></dd>
+<dd><a href="{:U('System/index')}" <if condition="$cur eq index">class="curr"</if>>系统消息 <span class="xiaox" >{$allnoread}</span></a>
+</dd>
+</dl>
+<dl> 
+<dt><a>服务中心</a></dt>
+<if condition="$kongbao_config['true_valid']">
+<dd><a href="{:U('Order/true_kb')}" <if condition="$cur eq true_kb">class="curr"</if>>真实空包下单</a></dd>
+</if>
+<dd><a href="{:U('Order/kb')}" <if condition="$cur eq kb">class="curr"</if>>淘宝空包下单<img style="margin-top:-2px; margin-left:5px;" src="/Public/images/hot.png"/></a></dd>
+<dd><a href="{:U('Order/jdkb')}" <if condition="$cur eq jdkb">class="curr"</if>>京东空包</a></dd>
+<dd><a href="{:U('User/address')}" <if condition="$cur eq address">class="curr"</if>>发货地址 </a></dd>
+<dd><a href="{:U('Log/kb_log')}" <if condition="$cur eq kb_log">class="curr"</if>>单号管理</a></dd>
+<if condition="$xiaohao_config['valid']==1">
+<dd><a href="{:U('Order/xh')}" <if condition="$cur eq xh">class="curr"</if>>购买小号</a></dd>
+<dd><a href="{:U('Log/xh_log')}" <if condition="$cur eq xh_log">class="curr"</if>>小号管理</a></dd>
+</if><dd><a href="{:U('Order/dd_apply')}" <if condition="$cur eq dd_apply">class="curr"</if>>底单申请</a></dd>
+<dd><a href="{:U('Log/didan_log')}" <if condition="$cur eq didan_log">class="curr"</if>>底单管理</a></dd>
+</dl>
+<dl>
+<dt><a>推广管理</a></dt>
+<dd><a href="{:U('About/index')}" >我们的优势</a></dd>
+<dd><a href="{:U('Log/refer_log')}" <if condition="$cur eq refer_log">class="curr"</if>>我的下线</a></dd>
+<dd><a href="{:U('Log/yj_log')}" <if condition="$cur eq yj_log">class="curr"</if>>我的推广佣金</a></dd>
+<dd><a href="{:U('Log/tixia_log')}" <if condition="$cur eq tixia_log">class="curr"</if>>提现记录</a></dd>
+</dl>
+<dl>
+<dt><a>资讯中心</a></dt>
+<dd><a href="{:U('Gonggao/index')}" >帮助中心</a></dd>
+<dd><a href="{:U('Gonggao/index')}">网站公告</a></dd>
+<dd><a href="{:U('Article/index')}">文章中心</a></dd>
+<dd><a href="{:U('Gonggao/fenzhan')}">分站加盟<img style="margin-top:-2px; margin-left:5px;" src="/Public/images/hot.png"/></a></dd>
+</dl>

@@ -1,0 +1,48 @@
+<include file="Public:header" />
+</td><td valign="top" class="r">
+<div class="title02">
+<a href="{:U('User/Home')}" class="Annkela"><img src="/Public/xincss/images/19.png"/>会员中心</a>
+</div>
+    <table class="V_tb2"> 
+	<tr class="td1">
+        <th><font style="color:#F00">*</font>专属链接</th>
+        <td>
+		 <input class="V_input2" style="width:450px" value="{$tg_content[0]}" type="text" id="tuijianlianjie" />
+        </td>
+      </tr>    
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>推广详情</th>
+		<td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td width="15%">
+				<p>总推广人数</p>
+				<strong style="color:#f90;font-size:28px">{$refer_nums} 人</strong>                                        
+			</td>
+			<td width="15%">
+				<p>可结算佣金</p>
+				<strong style="color:#f90;font-size:28px">￥{$user['refer_money']}</strong>                                        
+			</td>
+			<td width="15%">
+				<p>累计消费金额</p>
+				<strong style="color:#f90;font-size:28px">￥{$user['used_money']}</strong>
+				
+			</td>
+			<td width="15%">
+				<p>冻结中的佣金</p>
+				<strong style="color:#f90;font-size:28px">￥{$user['invalid_money']}</strong>
+				
+			</td>
+			<td width="15%"><a class="V_btn4" href="{:U('Cash/tixian')}">申请提现</a></td>
+		</tr>
+		</table>
+		</td>
+      </tr>
+    </table>
+    <div class="V_con1">
+    	<p>请尽量清晰详尽的描述您的问题，以便客服人员能够快速帮您解决问题；<br />如果您有意见和建议，或者进行投诉请点击<b><a href="#" class="fc2">投诉建议</a></b>。</p>
+    </div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

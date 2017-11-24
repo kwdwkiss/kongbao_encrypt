@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title> - </title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+   
+<style type="text/css">
+/** 通用CSS样式 **/
+*{margin:0px; padding:0px; _min-height:1px; }
+a, body, div, html, img, li, ul,dl,dt,dd { border: 0; margin: 0; padding: 0; text-decoration:none;}
+html, body { height:auto; width:100%; overflow-x:hidden; font: 12px  'Microsoft YaHei','Helvetica Neue', Arial,\5b8b\4f53,'Liberation Sans', FreeSans, sans-serif; margin:0px; padding:0px; display:block; color:#000;  }
+body{overflow-y:hidden; color:#666;}
+img { color: transparent; font-size:12px;  -ms-interpolaton-mode: bicubic; }
+ol, ul ,dl ,dt,dd{ list-style: none;  }
+input{ outline:none; font-family:'Microsoft YaHei'; }
+a{ cursor:pointer; color:#4a92f5;}
+em, i, b, sub, sup { font-style: normal; }
+input[type='submit'],input[type='button']{ cursor:pointer; }
+input:-webkit-autofill { -webkit-box-shadow: 0 0 0px 1000px white inset; }
+input[type='checkbox'],input[type='radio']{ vertical-align:middle; margin-right:5px;}
+/** 通用CSS样式 **/
+.tc{text-align:center;}
+.p10 {padding: 10px;}
+h1.title {  background: #FFF; font-size:14px; padding: 5px; border-bottom: #f0f0f0 1px solid; margin-bottom: 5px;}
+table.form {width: 810px;}
+table.form td.label{text-align: right;width: 120px;font-weight: 800; font-size:14px;}
+table.form td{padding:6px;}
+table.form select{width: auto; height: 28px; line-height: 28px;}
+table.form input[type="text"], table.form input[type="password"]{border: 1px solid #afafaf; padding: 3px; width: 200px; height: 24px; line-height: 18px; vertical-align: middle;}
+table.form textarea{display: block; width: 420px; height: 48px; margin: 0; border: 1px solid #afafaf; padding: 3px; font-size: 12px;}
+table.form td .btn{padding: 6px 20px; font-size: 14px; border: none; overflow: hidden; background: #00a2ca; cursor: pointer; border: 1px solid #00a2ca; border-radius: 3px; display: inline-block;line-height: 24px; zoom:1; color: #fff; height: auto;}
+table.form td .btn:hover{opacity:0.8; filter:alpha(opacity=80)}
+table.form td label{margin-left:10px; font-family:'宋体'; vertical-align:sub;}
+table.form td label span{display:none; overflow:hidden;}
+table.form td label span.err_msg{color:#DD0000;}
+table.form td label span.right_msg{color:#06AC87;}
+</style>
+<script type="text/javascript" src="/Public/css/jquery.min.js"></script>
+<script type="text/javascript" src="/Public/css/myself.js"></script>
+</head>
+<body>
+<div class=" p10">
+    <h1 class="title"><span>发货地址：</span></h1>
+    <form  id="address_form"  action="{:U('User/address_bianji')}" method="POST">
+                <table class="form">
+            <tr>
+                <td class="label">所在地区：</td>
+                <td id="areas">
+                  <select id="s_province" name="address_province" ></select>&nbsp;&nbsp;
+				  <select id="s_city" name="address_city" ></select>&nbsp;&nbsp;
+				  <select id="s_county" name="address_district"></select>&nbsp;&nbsp;
+                    <label>
+                    	<span class="err_msg"><i class="icon iconfont">&#xe61b;</i>请选择完整地区信息！</span>
+                        <span class="right_msg"><i class="icon iconfont">&#xe617;</i> </span>
+                    </label>
+                </td>
+            </tr>
+            <tr> <script type="text/javascript" src="__PUBLIC__/js/area.js"></script>
+				 <script type="text/javascript">_init_area();</script>
+                <td class="label">详细地址：</td>
+                <td>
+				<input type="text" style="width: 400px" name="address" id="address" placeholder="不要重复提交 省 市 区" maxlength="60"  maxlen="10" class="input_text tip" title="请输入详细地址" value="{$address['address']}" size="30"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">发货人姓名：</td>
+                <td>
+				<input type="text"  name="name" id="name" value="{$address['name']}" class="input_text tip"  title="1-15位字符，可由英文、中文及“_”、“-”组成" size="15" />
+                    
+                   
+                </td>
+            </tr>
+            <tr>
+                <td class="label">手机号码：</td>
+                <td>
+                   <input type="text" name="shouji" id="shouji" maxlength="20" class="input_text tip" value="{$address['shouji']}" title="请输入正常畅通的电话" size="15"/>
+                </td>
+            </tr>
+            <tr>
+			<td class="label">揽件服务网点：</td>
+                <td>
+                   <input type="text" name="send_netdot" id="send_netdot" maxlength="20" class="input_text tip" value="{$address['send_netdot']}" title="请输入正却的揽件网点" size="30"/>&nbsp;<font color="#00a2ca">&nbsp;*(必填)*&nbsp;请填写真实发货揽件网点</font>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="tc">
+				<input type="hidden" name="id" value="{$address['id']}">
+                	<input type="submit" value="提交" class="btn">
+					
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/logi.css"><!--公用样式-->
+<script src="__PUBLIC__/js/jquery.KinSlideshow-1.1.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.validation.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.poshytip.min.js" charset="utf-8"></script> 
+<script type="text/javascript">
+$('.tip').poshytip({
+	className: 'tip-yellowsimple',
+	showOn: 'focus',
+	alignTo: 'target',
+	alignX: 'center',
+	alignY: 'top',
+	offsetX: 0,
+	offsetY: 2,
+	allowTipHover: false
+}); 
+$(function(){$("#KinSlideshow").KinSlideshow();jQuery.validator.addMethod("lettersonly",function(value,element){return this.optional(element)||/^[^:%,'\*\"\s\<\>\&]+$/i.test(value);},"Letters only please");jQuery.validator.addMethod("lettersmin",function(value,element){return this.optional(element)||($.trim(value.replace(/[^\u0000-\u00ff]/g,"aa")).length>=1);},"Letters min please");jQuery.validator.addMethod("lettersmax",function(value,element){return this.optional(element)||($.trim(value.replace(/[^\u0000-\u00ff]/g,"aa")).length<=15);},"Letters max please");$("#register_form").validate({errorPlacement:function(error,element){var error_td=element.parent('dd');error_td.find('label').hide();error_td.append(error);},submitHandler:function(form){ajaxpost('register_form','','','onerror');},rules:{name:{required:true,lettersmin:true,lettersmax:true,lettersonly:true,},shouji:{required:true,lettersonly:true,minlength:6,maxlength:12},address:{required:true,lettersonly:true,minlength:2,maxlength:30},},messages:{name:{required:'发货人不能为空',lettersmin:'发货人必须在1-15个字符之间',lettersmax:'发货人必须在3-15个字符之间',lettersonly:'发货人不能包含敏感字符',},shouji:{required:'手机号不能为空',minlength:'手机号长度应在6-12个字符之间',maxlength:'手机号长度应在6-12个字符之间'},address:{required:'详细地址不能为空',minlength:'详细地址长度应在1-30个字符之间',maxlength:'详细地址长度应在1-30个字符之间'},}});});
+</script>
+</body>
+</html>

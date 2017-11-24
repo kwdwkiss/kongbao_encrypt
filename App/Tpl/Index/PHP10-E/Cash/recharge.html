@@ -1,0 +1,192 @@
+<include file="Public:header" />
+<script type="text/javascript" src="__PUBLIC__/xincss/js/myfrom/artDialog4.1.7/artDialog.js?skin=green"></script>
+<style type="text/css">
+.pays{position: relative;}
+.btn_xd{background:#00a1cc;padding:2px 10px;border:1px solid #00a1cc;border-radius:4px;color:#fff;margin:5px 0;}
+</style>
+<link href="__PUBLIC__/xincss/css/payment.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<td valign="top" class="r">
+      <div class="title02">在线充值<a href="{:U('Log/cz_order')}" class="Annkela"><img src="/Public/xincss/images/12.png"/>历史充值记录</a></div>
+       <form action="{:U('zfbpay')}" method="post" id="payform" target="_blank">
+      <table class="V_tb2">
+      <tr class="td1">
+        <th><font style="color:#F00;">*</font>当前余额</th>
+        <td><em>{$user['money']}</em>元</td>
+      </tr>
+	   
+      <tr class="td1">
+        <th><font style="color:#F00;">*</font>收款支付宝</th>
+        <td>
+		<div class='pays'><input class="V_input1" value="{$pay_setting['alipay_zz']['receiver']}" type="text" id="paytitle" style="color:#ff8400;font-weight:bold;font-size:14px" readonly="readonly"/>&nbsp;
+		<a href="#" id="copybtnpaytitle" class="btn_xd">复制</a>&nbsp;&nbsp;（官方唯一支付宝:<b class="fc2">{$pay_setting['alipay_zz']['receiver']}</b>）</div></td>
+      </tr>
+	   <tr class="td1">
+        <th><font style="color:#F00;">*</font>充值金额</th>
+        <td><input type="text" class="V_input1" name="payAmount" value="10.00" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')"/>元（RMB）</td>
+      </tr><if condition="$pay_setting['alipay_zz']['alipay_zsewmsk']==0">
+	  <tr class="td1">
+        <th><font style="color:#F00;">*</font>当前ID</th>
+        <td><input type="text" class="V_input1"  value="{$user['id']}" readonly="readonly"/>用于充值备注 付款说明<em>（必填）</em></td>
+      </tr> </if>
+	  <if condition="$pay_setting['alipay_zz']['alipay_ewmsk']==1">	
+	   <tr class="td1">
+        <th><font style="color:#F00;">*</font>二维码充值</th>
+        <td height="150px"><if condition="$pay_setting['alipay_zz']['alipay_zsewmsk']==1">
+		<div style="margin-bottom:30px;padding:2px;position:relative;width:70px;height:70px;left:-10px;top:-25px;">
+		<img width='150' src="{$pay_setting['alipay_zz']['alipay_smewm']}"/>
+		<img height='120' style="position:absolute;top:18px;left:18px;" src="/code/{$user['id']}.png" onerror="this.src='/Public/images/wewm.gif'" alt="请用手机支付宝扫我" title="请用手机支付宝扫我" />
+		<img height='20' style="position:absolute;top:65px;left:69px;background:#fff;border-radius:4px;padding:1px;" src="/favicon.ico" alt="请用手机支付宝扫我" title="请用手机支付宝扫我" />
+		<else/>	<div style="margin-bottom:30px;padding:2px;position:relative;width:70px;height:70px;left:-10px;top:-25px;">
+<img src="{$pay_setting['alipay_zz']['alipay_smewm']}" width="150" height="150px" /></ismg></dd>
+</if>
+<div style="position:absolute;top:15px;line-height:1.6;left:160px;background:#fff;width:270px;border-radius:4px;padding:1px;">{$pay_setting['alipay_zz']['alipay_smewmpay']}	<p style="font-weight:bold;font-size:14px"><font color="#008eb7">不会使用？<a href="javascript:void(0)" onclick="sub_paysmzf()" ><font color="#ff8400">【查看教程】</a></font></font></p></div></div></td>
+      </tr>
+	  </if>
+      <tr class="td1">
+        <th><font style="color:#F00;">*</font>充值方式</th>
+        <td><span style="display:none"><input type="text" id="payType" name="payType" value="1" placeholder="alipay" class="account1_16" /> </span>
+            <div class="paytypes">
+                    <div>
+                        <b><input type="radio" name="payType" value="1" id="alipay" checked="checked" onclick="$('#payType').val($(this).val())"/></b>
+                        <label for="alipay">
+                           <a class="ico alipay"></a>
+                        </label>
+                        </div>
+                        <div>
+						<if condition="$pay_setting['tenpay_zz']['tenpay_valid']==1">
+						 <!--支付宝-->
+                        <b><input type="radio" name="payType" value="2" id="icbc" onclick="$('#payType').val($(this).val())"/></b>
+                        <label for="icbc">
+                           <a class="ico icbc"></a>
+                        </label>
+                    </div>
+					 <div>
+					 </if> 
+					  <!--财付通-->
+                    </div>
+                    <div style="clear:both;height:20px"></div>
+            </div>
+        </td>
+      </tr>
+      <tr class="td1">
+        <th></th>
+        <td>
+<input type="hidden" name="memo" value="{$pay_setting['alipay_zz']['comm']}" />
+<input type="hidden" name="zfboptEmail" value="{$pay_setting['alipay_zz']['receiver']}" />
+<input type="hidden" name="title" id="title" value="{$user['id']}">
+<if condition="$pay_setting['tenpay_zz']['tenpay_valid']==1">
+<input type="hidden" name="optEmail" value="{$pay_setting['tenpay_zz']['receiver']}" />
+<input type="hidden" name="title_qq" id="title_qq" value="{$title_qq}">
+</if> 
+<input type="submit" value="立即充值" class="V_btn23 submit payButton"/>&nbsp;<input type="button" value="未到账提交交易号" onclick="art.dialog({title:'未到账提交交易号',content:document.getElementById('get_bangding'),lock:true})" class="V_btn22 submit payButton"/>&nbsp;注：如果充值未到账请提交真实<b class="fc2">“交易号”</b>
+</td>
+      </tr>
+    </table>
+    </form>
+	<if condition="$reg_setting['reg_zengsong']==1">
+<include file="User:zs" />
+</if>
+   <div class="V_con1">
+      <p>充值最小金额<b class="fc2"><if condition="$pay_setting['alipay_zz']['min_money'] gt 0 ">{$pay_setting['alipay_zz']['min_money']}</if>.00</b>元，充值金额必须为整数<br />支付过程中浏览器会有几次跳转，支付完成之前请勿关闭浏览器，否则可能造成支付失败<br />充值款项是用户资源预存在小网站的消费款项，不能提现。<br />
+      如充值后款项没有到账请联系在线客服帮助处理，<a href="{:U('User/liuyan')}" target="_blank">提交工单</a></p>
+    </div>   
+</td>
+</tr>
+</table>
+<?php $usid="$user[id]"; ?>
+<div class="getpass lbox" id="get_bangding" style="display: none" >
+<style type="text/css">
+.Annkela{ display:inline-block; height:35px; line-height:35px; background-color:#009FD9; border-radius:2px; color:#FFF; margin:0px 5px; padding:0px; padding-right:0px; text-decoration:none;}
+ </style>
+ <form action="{:U('alipay_save')}" method="post" id="myform" onsubmit="return chongzhi()"  >     
+	<table class="V_tb2">
+      <tr class="td1">
+        <th style="display:{$mibao_display}"><font style="color:#F00">*</font>充值类型：</th>
+        <td>
+		 <select name="order_type" class="select classid" style="width:200px">
+		<option value="0" >支付宝充值</option>
+		<if condition="$pay_setting['tenpay_zz']['tenpay_valid']==1">
+		<option value="1" >财付通充值</option>
+		</if>
+ </select> 
+	 </td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>交易号码：</th>
+        <td><input name="outer_order_no" type="text" id="outer_order_no" size="30"  class="V_input2" style="width:250px" /></td>
+      </tr>
+	    <tr class="td1">
+        <th><font style="color:#F00">*</font>转账金额：</th>
+        <td><input name="price" type="text" id="price" size="2" value="" class="V_input2" onclick="huodongtishi()" style="width:70px">&nbsp;元 <font class="fc2">填写您转账的金额</font></td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>确认提交：</th>
+        <td><input type="submit" id="dosubmit" class="Annkela" value="立即提交【交易号】" />
+		</td>
+      </tr>
+    </table>
+    </form> 
+    </td>
+  </tr>
+</table>
+</div>	
+</div>
+
+<script type="text/javascript">
+
+function chongzhi()
+{
+	var tenpay_valid="{$pay_setting['tenpay_zz']['tenpay_valid']}";
+	if(tenpay_valid=="1")
+	{
+		 if(!confirm('充值类型一定要正确选择，以便及早审核！您确定已经选择的充值类型正确？'))
+		 {
+		 	return false;
+		 }
+	}
+	var num = /^[0-9]+(.[0-9]{1,2})?$/; //金额的匹配规则 
+	var money = $('#price').val();
+	var outer_order_no = $("#outer_order_no").val();
+    var regnum=/^[1-9]\d*$|^0$/;   // 注意：故意限制了 0321 这种格
+	if(outer_order_no=='')
+	{
+		alert('请正确填写转账交易号!');
+		$('#outer_order_no').focus();
+		return false;
+	}
+     if(!regnum.test(outer_order_no))
+     {    
+     	alert("请填写正确的交易号");    
+     	$('#outer_order_no').focus();
+     	return false;
+     } 
+	if(money=='')
+	{
+		alert('请正确填写交易号对应的转账金额!');
+		$('#price').focus();
+		return false;
+	}
+    if(!money.match(num))
+    {
+        	alert('转账金额格式不对!(XXX.XX)');
+        	$('#price').focus();
+        	return false;
+    }
+	if(money<=0)
+	{
+		alert('转账金额必须大于0');
+		$('#price').focus();
+		return false;
+	}
+	return true;
+}  
+<if condition="$pay_setting['alipay_zz']['alipay_zsewmsk']==1">
+function sub_paysmzf(){art.dialog({content:'<div id="jiaocheng" style="margin-bottom:20px;padding:2px;position:relative;width:763px;height:516px;"><img src="/Public/xincss/images/smpay.jpg" width="763" /><img src="/code/<?php echo $usid;?>.png" height="127" style="position:absolute;top:191px;left:579px;opacity:0.7;"/> </div>'})}
+<else/> 
+function sub_paysmzf(){art.dialog({content:'<div id="jiaocheng" style="overflow-x: hidden; width:961px; margin:0 auto;height: 600px;overflow-y: scroll">'+'<img src="/Public/xincss/images/paysmzf_01.gif" width="961" height="382"/> '+'<img src="/Public/xincss/images/paysmzf_02.gif" width="961" height="382"/> '+'<img src="/Public/xincss/images/paysmzf_03.gif" width="961" height="382"/>'+'<img src="/Public/xincss/images/paysmzf_04.gif" width="961" height="382"/></div>'})}
+</if>
+</script>
+<script src="/Public/moive_play/fzjs/jquery.zclip.min.js"></script>
+<script src="/Public/moive_play/fzjs/default.js"></script>	
+</body>
+</html>

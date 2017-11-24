@@ -1,0 +1,237 @@
+<div class="c_rightBox"> <if condition="$config['tuiguang_dongtai']==1"> <iframe align=center border="0" noresize=noresize marginWidth=0 marginHeight=0 src="{:U('About/led')}"  frameBorder=0 width=100%  height=32px scrolling=no></iframe></if>
+<div class="c_rightBox recharge">
+<div class="account1">
+<style type="text/css">
+.btn_xd{background:#00a1cc;padding:2px 10px;border:1px solid #00a1cc;border-radius:4px;color:#fff;margin:5px 0;}
+.btn_pay{background:#ff6000;padding:8px 15px;border:1px solid #ff6000;border-radius:4px;color:#fff;margin:5px 0}
+.paycss{width:220px; height:25px; line-height:25px; border-radius:3px; border:1px solid #ddd;}
+</style>
+<?php $usid="$user[id]"; ?>
+<div class="account1_1">充值</div>
+<if condition="$pay_setting['alipay_zz']['alipay_ewmsk']==1">
+<div id="tab_Father1"> 
+<div class="pro_detail" id="tab00_c"> 
+<div class="account1_2">
+<div class="account1_3">
+<div class="account1_4"><img src="/Public/images/index_11.png" width="34px" height="34px" /></div>
+<div class="account1_5">{$kongbao_page['recharge_tixing']}</div>
+</div>
+<div class="account1_6">
+<dl>
+<dt>当前余额：</dt>
+<dd><em>{$user['money']}</em>元 <a href="#"><img src="/Public/images/index_12.png" width="12" height="11" /></a></dd>
+
+</dl>
+<dl>
+<if condition="$pay_setting['alipay_zz']['alipay_zsewmsk']==0">
+<dt>您当前ID：</dt>
+<else/>
+<dt>收款名称：</dt>
+</if>
+<dd>
+<div class="account1_7">
+<div>
+<label>
+</label>
+<if condition="$pay_setting['alipay_zz']['alipay_zsewmsk']==1">
+<input  value="{$pay_setting['alipay_zz']['name']}" readonly="readonly" class="account1_166" />
+<else/>
+<input  value="{$user['id']}" readonly="readonly" class="account1_166" /> </if>
+</div>
+<div>
+<dd>
+
+<ismg>
+<if condition="$pay_setting['alipay_zz']['alipay_zsewmsk']==1">
+<div style="margin-bottom:30px;padding:2px;position:relative;width:70px;height:70px;left:68px;top:-25px;">
+<img width='150' src="{$pay_setting['alipay_zz']['alipay_smewm']}"/>
+<img height='120' style="position:absolute;top:18px;left:18px;" src="/code/{$user['id']}.png" onerror="this.src='/Public/images/wewm.gif'" alt="请用手机支付宝扫我" title="请用手机支付宝扫我" />
+<img height='20' style="position:absolute;top:65px;left:69px;background:#fff;border-radius:4px;padding:1px;" src="/favicon.ico" alt="请用手机支付宝扫我" title="请用手机支付宝扫我" />
+<else/>
+<img src="{$pay_setting['alipay_zz']['alipay_smewm']}" width="150" height="150px" style="margin-top:15px"/></ismg></dd>
+</if><dd><sms>
+{$pay_setting['alipay_zz']['alipay_smewmpay']}
+<p><font color="#008eb7">不会使用？<a href="javascript:void(0)" onclick="sub_paysmzf()" >【查看教程】</a></font></p>
+</sms></dd>
+</dl>
+<dl>
+<dt class="account1_8">充值方式：</dt>
+<dd>
+<if condition="$pay_setting['alipay_zz']['alipay_ewmsk']==1">
+<a href="#" onclick="DisplayFun('tab00')" ><img src="/Public/images/index_116.png" width="140px" height="45px" /></a>
+<a href="#" onclick="DisplayFun('tab01')" ><img src="/Public/images/index_19.png" width="140px" height="45px" /></a>
+</if>
+<if condition="$pay_setting['tenpay_zz']['tenpay_valid']==1">
+<a href="#" onclick="DisplayFun('tab02')"><img src="/Public/images/recharge_img4.jpg" width="140px" height="45px" /></a>
+</if>
+</dd>
+</dl>
+</div>
+<if condition="$pay_setting['alipay_zz']['alipay_ewmsk']==1">
+<div class="account1_9">
+<span><img src="/Public/images/index_13.png" width="55px" height="55px" /><div>确认支付金额</div></span>
+                            <span class="account1_11"><img src="/Public/images/index_17.png" width="65" height="34px" /></span>
+                            <span><img src="/Public/images/index_14.png" width="55px" height="55px" /><div>支付宝支付</div></span>
+                            <span class="account1_11"><img src="/Public/images/index_17.png" width="65" height="34px" /></span>
+                            <span><img src="/Public/images/index_15.png" width="55px" height="55px" /><div>完成</div></span>
+                        </div>
+                        <div class="account1_12">
+                           <a id="aPayAlipay" href="#" target="_blank"></a>
+						    <a href="javascript:void(0)" onclick="sub_paysmzf()" class="btn_pay">点击不会扫码？</a>
+							 <span style="width: 153px" class="account1_14" id="payjyh1">未到账提交交易号</span>
+                            <a href="javascript:void(0)" onclick="show_jiaocheng()" class="account1_15">交易号提交流程？</a>
+                        </div>
+                    </div>
+					   </div>
+					   
+</if></if>
+<form method="post" id="recharge_form" target="_blank" action="{:U('zfbpay')}" accept-charset="GBK" onSubmit="document.charset='GBK';" >
+<if condition="$pay_setting['alipay_zz']['alipay_ewmsk']==1">			
+<div class="pro_detail" id="tab01_c" style="display:none;" style="padding-top: 5px;">
+<else/>
+<div class="pro_detail" id="tab01_c"> 
+</if>
+<div class="account1_2">
+<div class="account1_3">
+<div class="account1_4"><img src="/Public/images/index_11.png" width="34px" height="34px" /></div>
+<div class="account1_5">{$kongbao_page['recharge_tixing']}</div>
+</div>
+<div class="account1_6">
+<dl>
+<dt>当前余额：</dt>
+<dd><em>{$user['money']}</em>元 <a href="#"><img src="/Public/images/index_12.png" width="12" height="11" /></a></dd>
+</dl>
+<dl>
+<if condition="$pay_setting['alipay_zz']['alipay_zdtb']==0">	
+<dt>付款说明：</dt>
+<input class="paycss" id="paysc" type="text" value="{$title}" size="30" style="color:#000;visible:hidden;" readonly="readonly">&nbsp;
+<input class="btn_xd" id="copy_button" type="button"  value=" 复制 " onmouseOver="toClipboard(this.id,'paysc')" />
+<dl>
+<dt>支付宝号：</dt>
+<input class="paycss" id="payse" type="text" value="{$pay_setting['alipay_zz']['receiver']}" size="30" style="color:#000;visible:hidden;" readonly="readonly">&nbsp;
+<input class="btn_xd" id="cops_button" type="button"  value=" 复制 " onmouseOver="toClipboard(this.id,'payse')" />
+</dl>
+<dl>
+</if>
+<dt>充值金额：</dt>
+<dd>
+<div class="account1_7">
+<div>
+<label>
+<input onclick="$('#payAmount').val($(this).val())" checked value=""  type="radio" name="money" />
+自定义充值金额：
+</label>
+<input type="text" id="payAmount" name="payAmount" value="" placeholder="{$pay_setting['alipay_zz']['min_money']}" class="account1_16" /> 元<if condition="$pay_setting['alipay_zz']['min_money'] gt 0 "><font color="red">*最低充{$pay_setting['alipay_zz']['min_money']}元</font></if> 
+</div>
+<div>
+<if condition="$reg_setting['reg_zengsong']==1">
+<include file="Cash:payalicz" />
+<else/>
+<include file="Cash:blicz" />
+</if>     
+</dd>
+</dl>
+<dl>
+<dt class="account1_8">充值方式：</dt>
+<dd>
+<if condition="$pay_setting['alipay_zz']['alipay_ewmsk']==1">				
+<a href="#" onclick="DisplayFun('tab00')" ><img src="/Public/images/index_119.png" width="140px" height="45px" /></a>
+</if> 	
+<a href="#" onclick="DisplayFun('tab01')" ><img src="/Public/images/index_16.png" width="140px" height="45px" /></a>
+<if condition="$pay_setting['tenpay_zz']['tenpay_valid']==1">	
+<a href="#" onclick="DisplayFun('tab02')"><img src="/Public/images/recharge_img4.jpg" width="140px" height="45px" /></a>
+</if> 	
+</dd>
+</dl>
+</div>
+<div class="account1_9">
+<span><img src="/Public/images/index_13.png" width="55px" height="55px" /><div>确认支付金额</div></span>
+<span class="account1_11"><img src="/Public/images/index_17.png" width="65" height="34px" /></span>
+<span><img src="/Public/images/index_14.png" width="55px" height="55px" /><div>支付宝支付</div></span>
+<span class="account1_11"><img src="/Public/images/index_17.png" width="65" height="34px" /></span>
+<span><img src="/Public/images/index_15.png" width="55px" height="55px" /><div>完成</div></span>
+</div>
+<div class="account1_12">
+<input type="hidden" name="memo" value="{$pay_setting['alipay_zz']['comm']}" />
+<input type="hidden" name="optEmail" value="{$pay_setting['alipay_zz']['receiver']}" />
+<input type="hidden" name="title" id="title" value="{$title}">
+<a id="aPayAlipay" href="#" target="_blank"></a>
+<a id="aPayAlipay" href="#" target="_blank"><input type="submit" class="recharge_sub" value="点击充值" onclick="return chk_submit(1)"  ></a>
+<a href="javascript:void(0)" onclick="sub_paysm()" class="btn_pay">支付宝充值教程</a>
+ <span style="width: 153px" class="account1_14" id="payjyh2">未到账提交交易号</span>
+<a href="javascript:void(0)" onclick="show_jiaocheng()" class="account1_15">交易号提交流程？</a>
+</div>
+</div>
+</form>
+</div> 	 						 	 	
+<if condition="$pay_setting['tenpay_zz']['tenpay_valid']==1">
+<form method="post" id="recharge_form" target="_blank" action="{:U('tenpay')}"  >			
+<div class="pro_detail" id="tab02_c" style="display:none" style="padding-top: 5px;">
+<div class="account1_2">
+<div class="account1_3">
+<div class="account1_4"><img src="/Public/images/index_11.png" width="34px" height="34px" /></div>
+<div class="account1_5">{$kongbao_page['recharge_tixing']}</div>
+</div>
+<div class="account1_6">
+<dl>
+<dt>当前余额：</dt>
+<dd><em>{$user['money']}</em>元 <a href="#"><img src="/Public/images/index_12.png" width="12" height="11" /></a></dd>
+</dl>
+<dl>
+<dt>充值金额：</dt>
+<dd>
+<div class="account1_7">
+<div>
+<label>
+<input onclick="$('#payAmount1').val($(this).val())" checked value=""  type="radio" name="money" />
+自定义充值金额：
+</label>
+<input type="text" id="payAmount1" name="payAmount" value="" placeholder="{$pay_setting['alipay_zz']['min_money']}" class="account1_16" /> 元<if condition="$pay_setting['alipay_zz']['min_money'] gt 0 "><font color="red">*最低充{$pay_setting['alipay_zz']['min_money']}元</font></if> 
+</div>
+<div>
+<if condition="$reg_setting['reg_zengsong']==1">
+<include file="Cash:payatencz" />
+<else/>
+<include file="Cash:btencz" />
+</if>         
+</dd>
+</dl>
+<dl>
+<dt class="account1_8">充值方式：</dt>
+<dd>
+<if condition="$pay_setting['alipay_zz']['alipay_ewmsk']==1">				
+<a href="#" onclick="DisplayFun('tab00')" ><img src="/Public/images/index_119.png" width="140px" height="45px" /></a>
+</if> 
+<a href="#" onclick="DisplayFun('tab01')" ><img src="/Public/images/index_19.png" width="140px" height="45px" /></a>
+<if condition="$pay_setting['tenpay_zz']['tenpay_valid']==1">	
+<a href="#" onclick="DisplayFun('tab02')"><img src="/Public/images/recharge_img5.jpg" width="140px" height="45px" /></a>
+</if>
+</dd>
+</dl>
+</div></if> 
+<if condition="$pay_setting['tenpay_zz']['tenpay_valid']==1">
+<div class="account1_9">
+<span><img src="/Public/images/index_13.png" width="55px" height="55px" /><div>确认支付金额</div></span>
+<span class="account1_11"><img src="/Public/images/index_17.png" width="65" height="34px" /></span>
+<span><img src="/Public/images/index_14.png" width="55px" height="55px" /><div>支付宝支付</div></span>
+<span class="account1_11"><img src="/Public/images/index_17.png" width="65" height="34px" /></span>
+<span><img src="/Public/images/index_15.png" width="55px" height="55px" /><div>完成</div></span>
+</div>
+<div class="account1_12">
+<input type="hidden" name="memo" value="{$pay_setting['alipay_zz']['comm']}" />
+<input type="hidden" name="optEmail" value="{$pay_setting['tenpay_zz']['receiver']}" />
+<input type="hidden" name="title" id="title_qq" value="{$title_qq}">
+<a id="aPayAlipay" href="#" target="_blank"></a>
+<a id="aPayTenpay" href="#" target="_blank"><input type="submit" class="recharge_sub" value="点击充值" onclick="return chk_submit(2)"  ></a>
+ <span style="width: 153px" class="account1_14" id="payjyh3">未到账提交交易号</span>
+<a href="javascript:void(0)" onclick="show_jiaocheng()" class="account1_15">交易号提交流程？</a>
+</div>
+</div>
+</form>
+</div>	
+</div>
+</if> 
+</div>
+ </div>
+  </div>
+   </div>

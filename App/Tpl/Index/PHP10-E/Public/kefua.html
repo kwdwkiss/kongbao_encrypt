@@ -1,0 +1,37 @@
+<div class="helper-wrap">
+	<div class="helper-box">
+    	<div class="helper-grab">
+        	<div class="box-switch"><a href="javascript:;" title="关闭" class="closehhh"></a></div>
+            <span class="top-text">您可能遇到的问题?</span>
+        </div>
+        <div class="helper-transition">
+        	<div class="box-list2" style="border-bottom: 1px solid #ddd">
+               <volist name="bangzhu" id="bangzhu" offset="0" length='7'>
+			    <div class="list_con">
+                        <div class="list-tit">
+                           <a href="{:U('Help/help',array('id'=>$bangzhu['id']))}"><em style="color:#6f7473"> {$bangzhu["title"]|cut_str=###,22}</em></a>
+                        </div>
+                    </div>
+					     </volist>
+</div>
+<em style="color:#000">
+<p  style="line-height: 30px;width: 50%;float: left;padding-bottom: 5px">
+售前QQ：{$config['qq1']}(7*12小时) <a target=_blank href=http://wpa.qq.com/msgrd?v=3&uin={$config['qq1']}&site=qq&menu=yes><img src="/Public/xincss/images/pa.jpg" align="absmiddle"  /></a></p>
+<p  style="line-height: 30px;width: 50%;float: right;padding-bottom: 5px"></p></em>
+售后QQ：{$config['qq2']}(7*12小时) <a target=_blank href=http://wpa.qq.com/msgrd?v=3&uin={$config['qq2']}&site=qq&menu=yes><img src="/Public/xincss/images/pa.jpg" align="absmiddle"  /></a>
+        </div>
+    </div>
+</div>
+<div class="kefu_img" style="position: fixed;_position: absolute; top: 430px;right: 1px;z-index: 10000;width: 38px;height: 128px;">
+	<span class="kefu_head"></span>
+    <span class="kefu_cont"></span>
+</div>
+<script type="text/javascript">
+    $('.kefu_img').click(function(){
+        $('.helper-wrap').show();
+    })
+    $('.closehhh').click(function(){
+        $('.helper-wrap').hide();
+    })
+</script> 
+</div>

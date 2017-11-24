@@ -1,0 +1,55 @@
+<include file="Public:top" />
+<div class="container cont_bg">
+<div class="resize">
+<div class="c_leftBox">
+<div style="font-size: 16px;font-weight: normal;padding-bottom: 10px;">{$config['sitename']}-新闻中心</div>
+<dl>
+<dt><a href="#">{$config['sitename']}</a></dt><dd><a href="{:U('Gonggao/index')}">通知公告</a></dd><dd><a href="{:U('Help/index')}">帮助中心</a></dd><dd><a class="curr" href="{:U('Article/index')}">网店经验</a></dd><dd><a href="{:U('About/index')}">关于我们</a></dd><dd><a href="{:U('Gonggao/fenzhan')}">分站加盟<img style="margin-top:-2px; margin-left:5px;" src="/Public/images/hot.png"/></a></dd>
+</dl>
+</div>
+<style>
+.y-clear:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}
+.y-clear{zoom:1}
+.y-cny{font-family:arial}
+h2,h3,h4,h5,h6{font-weight:500;color:#000}
+.list-detail .partner-list-info{margin-top:8px}
+.list-detail .partner-list-info dl{padding:20px 0;border-bottom:1px dashed #DDD}
+.list-detail .partner-list-info dt{float:left;width:178px;height:124px;border:1px solid #ddd}
+.list-detail .partner-list-info dt a{display:block;height:100%}
+.list-detail .partner-list-info dt img{width:100%;position:relative;top:0px}
+.list-detail .partner-list-info .detail-info{margin-left:210px}
+.list-detail .partner-list-info .detail-info .name{font-size:16px;color:#000}
+.list-detail .partner-list-info .detail-info .info{margin-top:10px;color:#666;line-height:24px}
+.list-detail .partner-list-info .detail-info .link{line-height:24px}
+.list-detail .list-pagination{margin-top:48px}
+</style>
+<div class="c_rightBox">
+            <div class="change_code news_List">
+                <div class="c_tit">
+                    <h2>资讯中心</h2>
+                </div>
+                <div class="list_cont">
+                    <ul>
+            <div class="under-line"></div>
+                </div>
+                <div id="All" class="list-detail" style="display:block">
+                    <div class="partner-list-info">
+                        <foreach name="article_list" item="article">
+                        <dl class="y-clear">
+					
+                            <dt><a href="{:U('article',array('id'=>$article['id']))}"><img src="{$article["article_images"]}" width="178px" height="124px"></a></dt>
+                            <dd class="detail-info">
+                                <h2 class="name">{$article["article_name"]}</h2>
+                                <p class="info">{$article["article_desc"]}</p>
+                                <p class="link"><a  href="{:U('article',array('id'=>$article['id']))}">查看详情>></a></p>
+                            </dd>
+                        </dl>
+                      </foreach>
+                    </div>
+                <div class="pages">
+                  {$show}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:foote" /> 

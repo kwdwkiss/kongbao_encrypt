@@ -1,0 +1,114 @@
+<include file="Public:header" />
+</td>
+<td valign="top" class="r">
+<script type="text/javascript" src="__PUBLIC__/js/payfor.js"></script>
+<div class="title02">我要批发空包
+<a href="{:U('Order/dh_log')}" class="Annkela"><img src="/Public/xincss/images/19.png"/>返回列表</a></div>
+<form id="order_form" action="{:U('kb_pfsave')}" method="POST" >  
+    <table class="V_tb2">
+          <!-- 隔行变色 -->
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+          })
+          </SCRIPT>
+		<tr class="td1">
+        <th><font style="color:#F00">*</font>快递类型</th>
+        <td>
+		<select name="type_id" id="type_id" onchange="itemchange($(this))" class="select classid" style="width:300px">
+		<option value="">==请==选==择==单==号==类==型==</option>
+		<foreach name="type_list" item="type">
+		<option value="{$type['id']}">{$type['name']}</option>
+		</foreach>
+		</select> 
+        </td>
+      </tr>
+      <tr class="td1">
+        <th><font style="color:#F00">*</font>类型描述</th>
+        <td><textarea id="detail" disabled="true" rows="8" class="V_ta1" style="width:300px"></textarea></td>
+      </tr>
+	  <tr class="td1">
+        <th><font style="color:#F00">*</font>享受价格</th>
+        <td><font class="fc2"><b>{$user['type_name']}</b></font>
+		&nbsp;&nbsp;享受单价：<font class="fc2"><b> <span id="current_text"></span></b></font></td>
+      </tr>
+       <tr class="td1">
+        <th><font style="color:#F00">*</font>数量选择</th>
+        <td><div class="p_number">
+		<div class="add_chose">
+			<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">-</a>
+			<input type="text" name="qty_item_1" value="1" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="V_input2"  />
+			<a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">+</a>		</div>				
+	</div></td>
+      </tr>
+	   <tr class="td1">
+        <th><font style="color:#F00">*</font>合计金额</th>
+        <td><div class="p_number">
+		<div class="f_l buy">
+			 ￥<span class="total-font" id="total_item_1">0.00</span>
+			<input type="hidden" name="total_price" id="total_price" value="" />
+		</div>		
+</div>	</td>
+      </tr>
+	  <tr class="td1">
+        <th><font style="color:#F00">*</font>交单格式表</th>
+        <td><font size="2" ><span class="fc2">每个快递的格式不一样请逐一下载</sapn>(<a  id="down_url" href="{:U('downfile')}" >点此下载批发交单格式表格</a>)</font> </td>
+      </tr>
+      <tr class="td1">
+        <th></th>
+        <td><button onclick="return check_fields();" type="submit" class="V_btn4 submit">确定提交</button>
+		</td>
+      </tr>
+    </table>
+    </form>
+    <div class="V_con1">
+    	<p>请尽量清晰详尽的描述您的问题，以便客服人员能够快速帮您解决问题；<br />如果您有意见和建议，或者进行投诉请点击<b><a href="#" class="fc2">投诉建议</a></b>。</p>
+    </div>
+    </td>
+  </tr>
+</table>
+<script type="text/javascript">
+     function itemchange(obj)
+     {
+     	var type_id = obj.val();
+     	if(type_id=='' || type_id==0)
+     	{
+     		$("#detail").text('');
+     		$("#current_text").html('');   
+     		$("#single_price").val('');   
+     		$("#total_item_1").html('');
+     		$("#total_price").val('');
+     		$("#qty_item_1").val('1');
+     	} 
+     	$.post("{:U('getDetail')}",{id:type_id,type:'kb'},function(data,status)
+     	{
+     		var return_data = data.data; 
+     		var detail = return_data.detail.replace(/\|/gm,     "\r\n")
+     		$("#detail").text(detail);
+      		var current_text = return_data.current;
+      		var single_price = return_data.price; 
+     		$("#current_text").html(current_text);    		
+     		$("#single_price").val(single_price);    	
+     		var image_url = return_data.image_url; 
+     		$("#down_url").attr('href',return_data.file_url);
+     		$('#image_url').attr('src','__ROOT__/'+image_url);
+     		var total_item_1 = parseFloat(single_price).toFixed(2);
+     		$("#total_item_1").html(total_item_1);
+     		$("#total_price").val(total_item_1);
+     		$("#qty_item_1").val('1');
+     	},'json');  
+     } 
+ function trim(str){   
+		 str = str.replace(/^(\s|\u00A0)+/,'');   
+			for(var i=str.length-1; i>=0; i--){   
+			  if(/\S/.test(str.charAt(i))){   
+			    str = str.substring(0, i+1);   
+ 				  break;   
+			 }   
+		 }   
+		 return str;   
+	    }   
+</script>
+</body>
+</html>
+

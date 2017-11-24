@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body style="margin: 0px;padding: 0px">
+<script type="text/javascript" src="/Public/moive_play/swfobject.js"></script>
+<div class="video" id="CuPlayer"  style="overflow: hidden;padding: 0px;background: #000"  >
+    <strong>提示：您的Flash Player版本过低，请<a href="">点此进行网页播放器升级</a>！</strong>
+</div>
+<script type="text/javascript">
+    var so = new SWFObject("/Public/moive_play/52playerVM2.swf","CuPlayerVM2","792","406","9","#000000");
+    so.addParam("allowfullscreen","true");
+    so.addParam("allowscriptaccess","always");
+    so.addParam("wmode","opaque");
+    so.addParam("quality","high");
+    so.addParam("salign","lt");
+    so.addVariable("video_file","/video/xsjc.flv"); //视频文件地址
+    so.addVariable("playbtn_scale","1"); //播放按钮缩放
+    so.addVariable("auto_play","yes"); //是否自动播放
+    so.addVariable("clock_display","yes");
+    so.addVariable("fullscreen_display","y");  //是否允许全屏
+    so.write("CuPlayer");
+</script>
+</body>
+</html>

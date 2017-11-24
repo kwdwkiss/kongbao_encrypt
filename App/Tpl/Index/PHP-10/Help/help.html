@@ -1,0 +1,35 @@
+<include file="Public:top" />
+<div class="container cont_bg">
+    <div class="resize">
+        <div class="c_leftBox">
+           <div style="font-size: 16px;
+font-weight: normal;
+padding-bottom: 10px;">{$config['sitename']}-新闻中心</div>
+            <dl>
+                <dt><a href="#">{$config['sitename']}</a></dt>
+                <dd><a href="{:U('Gonggao/index')}">通知公告</a></dd><dd><a class="curr" href="{:U('Help/index')}">帮助中心</a></dd><dd><a href="{:U('Article/index')}">网店经验</a></dd><dd><a href="{:U('About/index')}">关于我们</a></dd><dd><a href="{:U('Gonggao/fenzhan')}">分站加盟<img style="margin-top:-2px; margin-left:5px;" src="/Public/images/hot.png"/></a></dd></dl>
+        </div>
+        <div class="c_rightBox">
+        	<div class="newsCont">
+                <div class="web_maps">
+                	<ul>
+                    	<li><img src="/Public/images/news_cont.jpg" width="12" height="12" /></li>
+                        <li><a href="{:U('Help/index')}">帮助中心</a> &gt;</li>
+                        <li><span>{$help["title"]}</span></li>
+                    </ul>
+                </div>
+                <div class="news_nr">
+                	<h2>{$help["title"]}</h2>
+                    {$help["content"]}</div>
+                <div class="news_link">
+                	<a class="link_lt" href="{:U('User/liuyan')}">提交工单</a>
+                	<a class="link_yx" href="{:U('Help/index')}">返回列表</a>
+					<if condition="$config['tuiguang_pinlun']==1">
+					{$config['pinlun_javascript']}
+					</if>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:foote" />

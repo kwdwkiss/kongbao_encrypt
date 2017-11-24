@@ -1,0 +1,42 @@
+<div class="getpass lbox" id="get_pass" style="display: none" >
+ <form name="validateForm" id="register_form" action="{:U('User/mibao_save')}" method="POST">
+		<table width="100%">
+		       <tr>
+			    <tr style="display:{$mibao_display}" >
+		            <td align="right" width="30%">原密保：</td>
+		            <td class="pl20">
+				            <select name="mibao_name_old" id="mibao_name_old" class="select classid" style="width:200px;">
+  		<option value="{$baoss['name']}">{$baoss['name']}</option>
+  		</select>
+                            </td>
+		       </tr>
+		       <tr> <tr style="display:{$mibao_display}" >
+		            <td align="right">原答案：</td>
+		            <td class="pl20"><input type="text" name="mibao_daan_old" id="mibao_daan_old" class="input_text" style="width:200px"/></td>
+		       </tr>
+		       <tr>
+		            <td align="right">新密保：</td>
+		            <td class="pl20">
+					<select name="mibao_name" id="mibao_name">
+  								<option value="">请选择新安全问题</option>
+  								<volist name="mibao_setting" key="j" id="vo2">
+  									<option value="{$vo2.name}">{$vo2.name}</option>
+  								</volist>
+  							</select>
+							</td></tr><tr>
+			    <td align="right">新答案：</td>
+		            <td class="pl20"><input type="text" name="mibao_daan" id="mibao_daan"  class="input_text" style="width:200px" title="3-15位字符，可由英文、数字及“_”、“-”组成、不可喊敏感字符"/></td>
+		       </tr>
+		       <tr>
+			   <td align="right">请确认：</td>
+		            <td class="pl20"><input type="text" name="mibao_daan_repass" id="mibao_daan_repass"  class="input_text" style="width:200px" title="3-15位字符，可由英文、数字及“_”、“-”组成、不可喊敏感字符"/></td>
+		       </tr>
+		       <tr>
+		            <td class="pt10"></td>
+		            <td class="pl20 pt10">
+		             <input type="submit"  onclick="return mibao_submit()"  class="btn_jc" value="提交" /></td>
+		       </tr>
+		</table>
+		<input type="hidden" name="id" value="{$user['id']}">
+	</form>
+</div>

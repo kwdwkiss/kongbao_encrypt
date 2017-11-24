@@ -1,0 +1,134 @@
+<div class="main1 m_top">
+  <div class="main1_1 left">
+    <div class="main1_1title">
+      <div class="main1_1title1">
+        <h4>{$articletype1['name']}</h4>
+      </div>
+      <div class="main1_1title2"><a href="{:U('Article/index')}"><img src="/Public/images/morees.gif" border="0" /></a></div>
+    </div>
+    <div class="main1_1centen">
+      <dl>
+	 <volist name="a1" id="article" offset="0" length='1' >
+        <dd><a href="{:U('Article/article',array('id'=>$article['id']))}" ><img src="{$config['siteurl']}{$article["article_images"]}" onerror="this.src='/Public/images/wt.jpg'" width="118" height="73" border="0" /></a></dd><span><dd>{$article["article_name"]|cut_str=###,30}</dd></span>
+		 </volist>
+		</br></br></br></br></br>		
+          <ul class="index1_img">
+		   <volist name="a1" id="article" offset="0" length='6' >
+			<if condition="$i gt 1">
+		  <li><dt><a href="{:U('Article/article',array('id'=>$article['id']))}" ><em style="color:#999">[{$article['article_time']|substr=###,0,10}]</em>{$article["article_name"]|cut_str=###,22}</a></dt></li>					
+	      </if>
+		  </volist></ul>
+      </dl>
+    </div>
+	
+  </div><div class="main1_2 left">
+		<div class="main1_1title">
+			<div class="main1_2title1"><h4>{$articletype2['name']}</h4></div>
+			<div class="main1_1title2"><a href="{:U('Article/index')}"><img src="/Public/images/morees.gif" border="0" /></a></div>
+		</div>
+		<div class="main1_1centen">
+			<dl>
+			  <volist name="a2" id="article" offset="0" length='1' >
+        <dd><a href="{:U('Article/article',array('id'=>$article['id']))}" ><img src="{$config['siteurl']}{$article["article_images"]}" onerror="this.src='/Public/images/wt.jpg'" width="118" height="73" border="0" /></a></dd><span><dd>{$article["article_name"]|cut_str=###,30}</dd></span>
+		 </volist>
+		</br></br></br></br></br>
+		<ul class="index1_img">
+		    <volist name="a2" id="article" offset="0" length='6' >
+			<if condition="$i gt 1">
+		  <li><dt><a href="{:U('Article/article',array('id'=>$article['id']))}" ><em style="color:#999">[{$article['article_time']|substr=###,0,10}]</em>{$article["article_name"]|cut_str=###,22}</a></dt></li>					
+	      </if>
+		  </volist>
+          </ul>
+			</dl>
+		</div>
+	</div><div class="main1_1 left">
+      <div class="main1_1title">
+        <div class="main1_3title1"><h4>{$articletype3['name']}</h4></div>
+        <div class="main1_1title2"><a href="{:U('Article/index')}"><img src="/Public/images/morees.gif" border="0" /></a></div>
+      </div>
+      <div class="main1_1centen">
+        <dl>
+		
+           <volist name="a3" id="article" offset="0" length='1' >
+        <dd><a href="{:U('Article/article',array('id'=>$article['id']))}" ><img src="{$config['siteurl']}{$article["article_images"]}" onerror="this.src='/Public/images/wt.jpg'" width="118" height="73" border="0" /></a></dd><span><dd>{$article["article_name"]|cut_str=###,30}</dd></span>
+		 </volist>
+		</br></br></br></br></br>
+				<ul class="index1_img">
+         <volist name="a3" id="article" offset="0" length='6' >
+			<if condition="$i gt 1">
+		  <li><dt><a href="{:U('Article/article',array('id'=>$article['id']))}" ><em style="color:#999">[{$article['article_time']|substr=###,0,10}]</em>{$article["article_name"]|cut_str=###,22}</a></dt></li>					
+	      </if>
+		  </volist>
+           </ul>
+        </dl>
+      </div>
+    </div>
+</div>
+<div class="main1 m_top">
+  <div class="main1_1 left">
+    <div class="main1_1title">
+      <div class="main1_1title1">
+        <h4>{$articletype4['name']}</h4>
+      </div>
+      <div class="main1_1title2"><a href="{:U('Article/index')}"><img src="/Public/images/morees.gif" border="0" /></a></div>
+    </div>
+    <div class="main1_1centen">
+      <dl>
+        <volist name="a4" id="article" offset="0" length='1' >
+        <dd><a href="{:U('Article/article',array('id'=>$article['id']))}" ><img src="{$config['siteurl']}{$article["article_images"]}" onerror="this.src='/Public/images/wt.jpg'" width="118" height="73" border="0" /></a></dd><span><dd>{$article["article_name"]|cut_str=###,30}</dd></span>
+		 </volist>
+		</br></br></br></br></br>
+		<ul class="index1_img">
+         <volist name="a4" id="article" offset="0" length='6' >
+			<if condition="$i gt 1">
+		  <li><dt><a href="{:U('Article/article',array('id'=>$article['id']))}" ><em style="color:#999">[{$article['article_time']|substr=###,0,10}]</em>{$article["article_name"]|cut_str=###,22}</a></dt></li>					
+	      </if>
+		  </volist>
+           </ul>
+          
+      </dl>
+    </div>
+  </div><div class="main1_2 left">
+		<div class="main1_1title">
+			<div class="main1_2title1"><h4>{$articletype5['name']}</h4></div>
+			<div class="main1_1title2"><a href="{:U('Article/index')}"><img src="/Public/images/morees.gif" border="0" /></a></div>
+		</div>
+		<div class="main1_1centen">
+			<dl>
+			 <volist name="a5" id="article" offset="0" length='1' >
+        <dd><a href="{:U('Article/article',array('id'=>$article['id']))}" ><img src="{$config['siteurl']}{$article["article_images"]}" onerror="this.src='/Public/images/wt.jpg'" width="118" height="73" border="0" /></a></dd><span><dd>{$article["article_name"]|cut_str=###,30}</dd></span>
+		 </volist>
+		</br></br></br></br>
+		<ul class="index1_img">
+         <volist name="a5" id="article" offset="0" length='6' >
+			<if condition="$i gt 1">
+		  <li><dt><a href="{:U('Article/article',array('id'=>$article['id']))}" ><em style="color:#999">[{$article['article_time']|substr=###,0,10}]</em>{$article["article_name"]|cut_str=###,22}</a></dt></li>					
+	      </if>
+		  </volist>
+           </ul>
+          
+			</dl>
+		</div>
+	</div><div class="main1_1 left">
+      <div class="main1_1title">
+        <div class="main1_3title1"><h4>{$articletype6['name']}</h4></div>
+        <div class="main1_1title2"><a href="{:U('Article/index')}"><img src="/Public/images/morees.gif" border="0" /></a></div>
+      </div>
+      <div class="main1_1centen">
+        <dl>
+          <volist name="a6" id="article" offset="0" length='1' >
+        <dd><a href="{:U('Article/article',array('id'=>$article['id']))}" ><img src="{$config['siteurl']}{$article["article_images"]}" onerror="this.src='/Public/images/wt.jpg'" width="118" height="73" border="0" /></a></dd><span><dd>{$article["article_name"]|cut_str=###,30}</dd></span>
+		 </volist>
+		</br></br></br></br></br>
+				
+         <ul class="index1_img">
+         <volist name="a6" id="article" offset="0" length='6' >
+			<if condition="$i gt 1">
+		  <li><dt><a href="{:U('Article/article',array('id'=>$article['id']))}" ><em style="color:#999">[{$article['article_time']|substr=###,0,10}]</em>{$article["article_name"]|cut_str=###,22}</a></dt></li>					
+	      </if>
+		  </volist>
+           </ul>
+        </dl>
+      </div>
+    </div>	
+</div>

@@ -1,0 +1,78 @@
+<include file="Public:top" />
+<div class="container cont_bg">
+    <div class="resize">
+        <div class="c_leftBox">
+    <div style="font-size: 16px;
+font-weight: normal;
+padding-bottom: 10px;">{$config['sitename']}</div>
+    <dl>
+        <dt><a >账户管理</a></dt>
+        <dd><a class="curr" href="{:U('Index/Index')}">管理中心</a></dd>
+        <dd><a  href="{:U('Cash/recharge')}">账户充值</a></dd>
+        <dd><a href="{:U('Tg/uplevel')}">快递价格<img style="margin-top:-2px; margin-left:5px;" src="/Public/images/hot.png"/></a></dd>
+        <dd><a  href="{:U('User/repass')}">修改密码 </a></dd>
+        <dd><a href="{:U('User/mingxi')}">资金明细</a>
+        </dd>
+    </dl>
+    <dl> <dt><a>服务中心</a></dt>
+        <if condition="$kongbao_config['true_valid']">
+	<dd><a  href="{:U('Order/true_kb')}">真实空包下单</a></dd>
+	</if>
+        <dd><a  href="{:U('Order/kb')}">空包下单<img style="margin-top:-2px; margin-left:5px;" src="/Public/images/hot.png"/></a></dd>
+        <dd><a  href="{:U('User/address')}">发货地址 </a></dd>
+        <dd><a  href="{:U('Log/kb_log')}">单号管理</a></dd>
+		 <if condition="$xiaohao_config['valid']==1">
+		<dd><a  href="{:U('Order/xh')}">购买小号</a></dd>
+		<dd><a   href="{:U('Log/xh_log')}">小号管理</a></dd>
+		  </if><dd><a  href="{:U('Order/dd_apply')}">底单申请</a></dd>
+		 <dd><a  href="{:U('Log/didan_log')}">底单管理</a></dd>
+		<dd><a  href="{:U('User/liuyan')}">提交工单<img style="margin-top:-2px; margin-left:5px;" src="/Public/images/hot.png"/></a></dd>
+		<dd><a  href="{:U('User/reinfo')}">修改资料</a></dd>
+    </dl>
+    <dl>
+        <dt><a>推广管理</a></dt>
+        <dd><a href="{:U('About/index')}">我们的优势</a></dd>
+        <dd><a href="{:U('Log/refer_log')}">我的下线</a></dd>
+       <dd><a href="{:U('Log/yj_log')}">我的推广佣金</a></dd>
+        <dd><a href="{:U('Cash/tixian')}">我的提现</a></dd>
+        <dd><a href="{:U('Log/tixia_log')}">提现记录</a></dd>
+    </dl>
+	<dl>
+        <dt><a>资讯中心</a></dt>
+        <dd><a href="{:U('Gonggao/index')}">帮助中心</a></dd>
+        <dd><a href="{:U('Gonggao/index')}">网站公告</a></dd>
+        <dd><a href="{:U('Article/index')}">文章中心</a></dd>
+    </dl>
+</div>
+<div class="c_rightBox">
+            <div class="change_code">
+                <div class="c_tit">
+                    <h2>佣金转换</h2>
+                </div>
+               <form action="{:U('deal_change')}" method="POST" name="frmLogin">
+                    <div class="c_form">
+                        <div class="f_left">
+                            <ul>
+                                <li><label>用户名称：</label><i>{$user['username']}</i></li>
+                                <li><label>账户金额：</label><input type="text" disabled="true" class="input_text" style="width:200px" value="{$user['money']}"><span class="check_code">当前账户余额</span></li>
+                                <li><label>可用佣金：</label><input type="text" class="input_text" style="width:200px" id="valid_money" disabled="true" value="{$user['refer_money']}"><span class="check_code">可用于转换金额</span></li>
+								<li><label>冻结金额：</label><input type="text" disabled="true" class="input_text" style="width:200px" value="{$user['invalid_money']}"><span class="check_code">提现中不可用</span></li>
+                                <li><label>转换金额：</label><input type="text" id="money" name="money" class="input_text" style="width:200px"><span class="check_code">输入金额转换为账户余额</span></li>
+                                <li><label>&nbsp;</label><input type="submit" class="form_sub" value="提交确认" onclick="return change_submit()"/></li>
+                            </ul>
+                        </div>
+                        <div class="f_right">
+                            <p>
+                                <span class="span1">填写金额</span>
+                                <span class="span2">提交转换</span>
+                                <span class="span3">完成</span>
+                            </p>
+                        </div>
+                    </div> 
+					<input type="hidden" name="id" value="{$user['id']}">	 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:foote" />

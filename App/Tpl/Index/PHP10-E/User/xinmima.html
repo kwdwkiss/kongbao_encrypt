@@ -1,0 +1,28 @@
+<include file="Public:new" />
+<script type="text/javascript" src="__PUBLIC__/xincss/js/lxjs.js"></script>
+<link href="__PUBLIC__/xincss/pwd/getpassword.css" rel="stylesheet" type="text/css"/>
+<link href="__PUBLIC__/xincss/pwd/v1Compatibility.css" rel="stylesheet">
+<div style="clear:both;height:20px"></div>
+<div class="autowidth main-body getpassword">
+	<div class="step step3">
+	</div>
+	<div class="form">
+		<form name="validateForm" id="reg" action="/index.php/User/uslogin.html" method="POST" style="padding-top:20px; padding-bottom:50px;">
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<th width="100"></th>
+					<td><p style="color:#f40; font-size:24px;"><span style="color:#3C0;">{$username}</span>恭喜您！密码修改成功....</p>
+                    <p style="color:#333; font-size:18px; margin-top:15px;">恭喜您！您的新密码：<span style="color:#3C0;">{$userpwd}</span> 现在可以去<a href="{:U('User/uslogin')}">登陆</a>，去浏览试试...</p></td>
+				</tr>
+				<tr>
+				
+			<th></th>
+					<td><input type="submit" value="立即登录" class="button submit" /></td>
+				</tr>
+			</table>
+		<input type="hidden" name="id" value="{$user['id']}">
+	</form>
+	</div>
+</div>
+<div style="clear:both;height:20px"></div>
+<include file="Public:newfoot" />

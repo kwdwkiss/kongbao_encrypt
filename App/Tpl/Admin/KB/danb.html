@@ -1,0 +1,93 @@
+  <table width="97%" border="0" align="center" cellpadding="3" cellspacing="1" class="table_style">
+    <tr>
+      <td colspan="12" class="left_title_2">
+       <form class="search" action="__URL__/danorder_index" method="post" id="form1">
+          <div align="left">筛选： 
+              <select name="ftype">
+              	 <option value="user_id" <eq name="_POST.ftype" value="user_id">selected</eq>>用户ID</option>
+                 <option value="username" <eq name="_POST.ftype" value="username">selected</eq>>用户名</option>  
+                 <option value="order_no" <eq name="_POST.ftype" value="order_no">selected</eq>>订单编号</option>
+                 <option value="note_no" <eq name="_POST.ftype" value="note_no">selected</eq>>空包单号</option>
+				 <option value="order_status" <eq name="_POST.ftype" value="order_status">selected</eq>>已取消单</option>
+              </select>
+              <input type="text" name="keyword" value="{:I('keyword')}" />
+              <select name="type_id">
+              	   <option value="">请选择空包类型</option>
+                  <foreach name="type_list" item="type">
+                  	    <option value="{$type['id']}"  <if condition="I('type_id')==$type['id']">selected</if> >{$type['name']}</option>
+                  </foreach>
+              </select> 
+			 
+               <input class="prettyprint"   id="starttime" name="starttime" value="{:I('starttime')}" style="width:130px;"/>至
+               <input class="prettyprint"  id="endtime" name="endtime"  value="{:I('endtime')}" style="width:130px;"/> 
+			    <if condition="$anquan_setting['anquan_ddisuse']==1">
+               <input type="hidden"  name="action" id="action" value="" />
+                <input name="btdel" id="btdel" type="button" value="一键删除" />
+				</if> 
+				<select name="sta">
+				<option value="0"  <if condition="$st==0" >selected</if>  >所有订单</option>
+				<option value="1"  <if condition="$st==1" >selected</if> >已完成订单</option>  
+				<option value="2"  <if condition="$st==2" >selected</if> >已取消订单</option>
+				</select>   
+               <input name="submit1" type="submit" value="查询" />   已取消的订单在输入框输入“<font color="red">2</font>”进行筛选      
+              <span style="float:right"><font color="red">{$count}</font>条数据符合条件</span>
+           </div>
+        </form>          
+      </td> 
+    </tr>
+    <tr>
+      <td width="4%" align="center"><input type="checkbox"  class="checkall" id="checkallBottom"></td>
+      <td width="5%" class="left_title_1"><div align="center">用户ID</div></td>
+      <td width="10%" class="left_title_1"><div align="center">用户名</div></td> 
+      <td width="10%" class="left_title_1"><div align="center">空包单号</div></td>
+      <td width="10%" class="left_title_1"><div align="center">空包类型</div></td>
+      <td width="10%" class="left_title_1"><div align="center">订单编号</div></td>
+      <td width="8%" class="left_title_1"><div align="center">发货人</div></td>
+      <td width="8%" class="left_title_1"><div align="center">收货人</div></td>    
+      <td width="14%" class="left_title_1"><div align="center">下单时间</div></td>
+      <td width="6%" class="left_title_1"><div align="center">订单状态</div></td> 
+      <td width="6%" class="left_title_1"><div align="center">查看<br/>收货地址</div></td>
+      <td width="5%" class="left_title_1"><div align="center">操作</div></td> 
+    </tr>
+    <form method="post" action="{:U('order_cancel')}" id="form" >
+    <foreach name="order_longxiang" item='order'> 
+      <tr> 
+      	 <td align="center" ><if condition="$order['order_status']==1"><input type="checkbox" name='id[]' value="{$order['id']}" class="checkitem"></if></td>
+         <td><div align="center">{$order['user_id']}</div></td>
+         <td><div align="center">{:strip_tags($order['username'])}</div></td>
+         <td><div align="center">{$order['note_no']}</div></td>
+          <td><div align="center">{$order['name']} </div> </td>
+         <td><div align="center">{$order['order_no']}</div></td>
+         <td><div align="center">{:strip_tags($order['send_name'])}</div></td> 
+         <td><div align="center">{:strip_tags($order['rec_name'])}</div></td>  
+         <td><div align="center">{$order['order_time']}</div></td>
+         <td><div align="center">
+		         	    <switch name="order.exp_status">
+		         	      <case value="0"><font style="color:#00a2c9">等待发货</font></case>
+		         	   	  <case value="1">已扫描</case> 
+						  <case value="2"><font color="red">已取消</font></case>
+		         	   </switch>
+         	  </div></td>
+        <td><div align="center"><a href="javascript:void(0)" onclick="alert('{:strip_tags($order['rec_address'])}')">查看</a></div></td>
+        <td align="center"> 
+        	 <if condition="$anquan_setting['anquan_qxisuse']==1">
+			 <if condition="$order['order_status']==1">
+			 <a title="取消该该笔订单,取消操作不可恢复，谨慎操作" href="__URL__/order_cancel/id/{$order['id']}"><img src="../Public/images/pic12.gif" alt="取消该笔订单"></img></a>
+			 <else />  <img src="../Public/images/auth_tip_ok.png" alt="已取消"></img>
+		</if></if>     
+				<if condition="$anquan_setting['anquan_qxisuse']==0">  <img src="../Public/images/pic12.gif" alt="取消该笔订单"></img></if>     
+			 </div>
+         </td>
+      </tr>
+    </foreach>
+    </form>
+    <tfoot>
+	    <tr>
+		     <td colspan="12">
+		     <if condition="$anquan_setting['anquan_qxisuse']==1"> 
+			  <if condition="$order['order_status']==1">
+			  <a href="JavaScript:void(0);" class="btn" onclick="if(confirm('确定要取消这些订单吗？\r\n 操作后不可恢复，请谨慎操作！')){$('#form').submit();}"><span>取消订单</span></a></if></if>
+             {$show}</td>
+	    </tr>
+    </tfoot>      
+  </table>

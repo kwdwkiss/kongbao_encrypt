@@ -1,0 +1,108 @@
+<include file="Public:top" />
+<script type="text/javascript">
+$(document).ready(function(){ 
+$("select").selectCss(); 
+});
+</script>
+<style>
+.tag_select{display:block;height:24px;line-height:24px;background: url("/Public/images/xlico.gif") right center no-repeat; border:1px solid #CFCFCF; border-radius:5px; padding:1px 48px 3px 8px; color:#7D7D7D; font-size:12px; cursor:pointer}
+.tag_select_hover{ color:#7D7D7D; background: url("/Public/images/xlico.gif") right center no-repeat;}
+.tag_select_open{ color:#7D7D7D; background: url("/Public/images/slico.gif") right center no-repeat;}ul.tag_options{position:absolute;margin:0;list-style:none;border: solid 1px #CFCFCF; background:#fff;overflow:hidden;font-size:12px; z-index:1000;}ul.tag_options li{background:#fff; display:block;padding:0px 28px 0px 8px; height:30px;text-decoration:none;line-height:30px;color:#7D7D7D; font-weight:normal; font-size:12px;cursor:pointer}ul.tag_options li.open_hover{background:#00a2ca;color:#000; color:#fff; width:auto; font-weight:normal; font-size:12px}ul.tag_options li.open_selected{background:#00a2ca; color:#fff;font-size:12px; }.kongbao_kuaidiInfos{position:relative;}.moban{float:right;left:380px;top:1px;position: absolute;z-index:9999;}.label_sele{ float:right; padding-right:710px; padding-bottom:0px;}
+</style> 
+<div class="container cont_bg">
+    <div class="resize">
+        <div class="c_leftBox">
+    <div style="font-size: 16px;
+font-weight: normal;
+padding-bottom: 10px;">{$config['sitename']}</div>
+<include file="Public:left_nav" />
+</div>
+<style type="text/css">
+.liuyan{ width:30%;  height:32px;}
+</style>
+<div class="c_rightBox">
+            <div class="change_code">
+                <div class="c_tit">
+                    <h2>提交工单</h2>
+                </div>
+               <form name="myform" method="post" action="{:U('User/liuyan_add')}" >
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+          <tbody>
+<tr>
+            <td height="60" align="center" valign="middle" >
+			<table width="95%" height="50" border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr >
+                <td width="80" align="left"></td>
+                <td align="right"><a href="{:U('User/complaint')}"  style="width: 83px" class="account1_14">我的工单</a></td>
+                </tr><tr>
+                <td width="80" align="left">工单类型：</td>
+				<br/>
+                <td align="left">
+			
+            <span class="label_sele">
+			  <select name="type" class="liuyan">
+                		<option value="投诉建议">&nbsp;&nbsp;投诉建议&nbsp;&nbsp;</option>
+                		<option value="充值问题">&nbsp;&nbsp;充值问题&nbsp;&nbsp;</option>
+                		<option value="单号问题">&nbsp;&nbsp;单号问题&nbsp;&nbsp;</option>
+                	</select>
+					</span> 
+					  </td>
+                </tr>
+            </tbody></table>
+			</td>
+          </tr>
+		  <tr>
+            <td height="60" align="center" valign="middle" >
+			<table width="95%" height="50" border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td width="80" align="left">工单标题：</td>
+                <td align="left"><input name="title" class="account1_19" type="text" id="title" size="40" require="true" datatype="require" >
+　</td>
+              </tr>
+            </tbody></table>
+			</td>
+          </tr>
+
+
+		  <tr>
+            <td height="60" align="center" valign="middle" class="kbxxx">
+			<table width="95%" height="50" border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td width="80" align="left">工单内容：</td>
+                <td align="left"><textarea name="content" id="content" cols="80" rows="10" require="true" datatype="require"  msgid="contentmsg"></textarea></td>
+                </tr>
+            </tbody></table>
+			</td>
+          </tr>
+
+          </tr>
+		 
+              <tr>
+                <td height="80" colspan="3" align="center" valign="bottom">
+				<table width="138" border="0" cellspacing="0" cellpadding="0">
+                  <tbody><tr>
+                    <td>
+					<button onclick="return check_fields();" type="submit" class="recharge_sub">确定提交</button>
+					
+                   
+                   </td>
+                  </tr>
+                </tbody></table></td>
+              </tr>
+                </tbody></table>
+		</form>
+<!-- kbdzhong end -->
+
+				</td>
+              </tr>
+            </tbody></table>
+<!-- k1 end -->
+</td>
+  </tr>
+</tbody></table>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:foote" />

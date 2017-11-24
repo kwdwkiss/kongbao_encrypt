@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link rel="stylesheet" href="../Public/css/common.css" type="text/css" />
+<script type="text/javascript" src="../Public/js/jquery-1.4.2.min.js"></script>
+<title>管理区域</title>
+<style type="text/css">
+<!--
+#man_zone .table_style tr .search {
+	margin-left: 10px;
+}
+-->
+</style>
+<script type="text/javascript">
+	$(function()
+{
+    	$('.checkall').click(function(){
+		$('.checkall').attr('checked',$(this).attr('checked'));
+		$('.checkitem').each(function(){
+			$(this).attr('checked',$('.checkall').attr('checked'));
+		});
+	});
+}) 
+</script>
+</head>
+<body>
+ <div class="fixed-bar">
+    <div class="item-title"> 
+      <h3>有问必答</h3>
+      <ul class="tab-base"> 
+         <li><a href="javascript:void(0)" class="current"><span>未答复</span></a></li> 
+         <li><a href="{:U('used_index')}" ><span>已答复</span></a></li>
+      </ul>
+    </div>
+  </div>
+<div id="man_zone">
+  <table width="97%" border="0" align="center" cellpadding="3" cellspacing="1" class="table_style">
+    <tr>
+      <td colspan="8" class="left_title_2">
+        <form class="search" action="__URL__/index" method="post">
+          <div align="left" style="display:none">筛选： 
+              <select name="ftype">
+              	 <option value="note_no" <if condition="I('ftype')=='note_no'">selected</if>>小号</option>
+                 <option value="order_no" <if condition="I('ftype')=='order_no'">selected</if>>订单编号</option>  
+              </select>
+              <input type="text" name="keyword" value="{:I('keyword')}"/> 
+              <select name="type_id">
+              	  <option value="">留言类型</option>
+              	  <option value="投诉建议">投诉建议</option>
+              	  <option value="充值问题">充值问题</option>
+              	  <option value="单号问题">单号问题</option>
+              </select>                         
+              <input name="submit" type="submit" value="查询" /> 
+              <span style="float:right"><font color="red">{$count}</font>条数据符合条件</span>
+          </div>
+        </form>        
+      </td> 
+    </tr>
+    <tr>
+	  <th width="4%" align="center"><input type="checkbox"  class="checkall" id="checkallBottom"></th> 
+      <td width="5%" class="left_title_1"><div align="center">ID</div></td>
+      <td width="10%" class="left_title_1"><div align="center">会员</div></td> 
+      <td width="20%" class="left_title_1"><div align="center">标题</div></td> 
+      <td width="10%" class="left_title_1"><div align="center">类型</div></td> 
+      <td width="15%" class="left_title_1"><div align="center">是否答复</div></td>   
+      <td width="15%" class="left_title_1"> <div align="center">添加时间</div> </td>  
+      <td width="13%" class="left_title_1"><div align="center">操作</div></td>
+    </tr>
+     <form method="post" action="{:U('del')}" id="form" >
+       <tbody>
+	    <foreach name="xiaohao_list" item='xiaohao'> 
+	      <tr> 
+			<td align="center" ><input type="checkbox" name='id[]' value="{$xiaohao['id']}" class="checkitem"></td>
+	        <td><div align="center">{$xiaohao['id']}</div></td>
+	        <td><div align="center">{:strip_tags($xiaohao['username'])}</div></td> 
+	         <td><div align="center">{:strip_tags($xiaohao['title'])}  </div></td> 
+	         <td><div align="center">{$xiaohao['opt_type']}  </div></td>
+	         <td><div align="center"> <?php if($xiaohao['status']==1){ ?>是 <?php  }else{  ?> 否 <?php } ?>  </div></td> 
+	        <td><div align="center">{$xiaohao['addtime']}</div></td>  
+	        <td align="center">
+	        	<div style="margin:0 10px 0 5px;float:left"><a title="信息修改" href="__URL__/edit/id/{$xiaohao['id']}"><img src="../Public/images/set2.gif" alt="编辑" /></a></div>
+	            <div style="margin:0 10px 0 15px;float:left"><a title="删除信息"   href="__URL__/del/id/{$xiaohao['id']}" onclick="return confirm('确定要删除该条信息吗？')"><img src="../Public/images/pic12.gif" alt="删除" /></a></div>
+	          </td>
+	      </tr>
+	    </foreach>
+	    </tbody>
+	    <tfoot>
+		    <tr>
+			     <td colspan="8">
+			      <a href="JavaScript:void(0);" class="btn" onclick="if(confirm('确定要删除吗？')){$('#form').submit();}"><span>删除</span></a>
+			       {$show} </td>
+		    </tr>
+	    </tfoot>
+	 </form>
+  </table>
+</div>
+</body>
+</html>

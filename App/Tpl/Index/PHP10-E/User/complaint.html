@@ -1,0 +1,72 @@
+<include file="Public:header" />
+</td>
+<script type="text/javascript"> 
+$(function()
+{
+     $('.checkall').click(function(){
+		$('.checkall').attr('checked',$(this).attr('checked'));
+		$('.checkitem').each(function(){
+			$(this).attr('checked',$('.checkall').attr('checked'));
+		});
+	});
+
+});  
+</script>
+	<td valign="top" class="r">
+     <div class="title02">我的工单<a href="{:U('User/liuyan')}" class="Annkela"><img src="/Public/xincss/images/11.png"/>发起新工单</a></div>
+      <div class="V_news">
+        <div class="V_Ntitle">
+		<if condition="$status eq 0"><span class="VNa"><else/><span></if> <a  href="{:U('User/complaint')}">未解决工单</a></span>
+        <if condition="$status eq 1"><span class="VNa"><else/><span></if><a href="__URL__/complaint/id/1" >已解决工单</a>  </span>
+        </div>
+		<form name="myform" method="post" action="{:U('User/liuyan_add')}" onSubmit="return check()">
+		<table class="ipList V_tb3" width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="V_Ntitle1">
+            <td width="20" >&nbsp;</td>
+				
+            <td>工单标题</td>
+			<td>提交时间</td>
+			<td>状态</td>
+			<td>详情</td>
+          </tr>
+          <!-- 隔行变色 -->
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td2").each(function(i){   this.style.backgroundColor  =  ['#fafafa','#fff'][i%2]   })   
+          })
+          </SCRIPT>
+		 <foreach name="log_list" item='log'> 
+		<tr class="td2">
+		 <td>&nbsp;</td>
+			
+			<td>{$log["title"]}</td>
+			<td>{$log["addtime"]}</td>
+			<td><?php if($log["status"]==1){ ?>是 <?php  }else{  ?> 否 <?php } ?></td>
+			<td>{$user['title']}</td>
+			<td><a href="__URL__/liuyaninfo/id/{$log["id"]}" class="delete c_skyBlue">查看</a></td>
+		</tr>
+		</foreach>
+        </table>
+      </div>
+      <div class="pageList">
+		<table width="100%" cellspacing="0" cellpadding="0">
+			<tr>
+				<td ></td>
+				<td class="center">&nbsp;</td>
+				<td class="right" align="right">
+					<div class="pagebreak">
+					<table cellspacing="0" cellpadding="0"><tr><td class="page_no"></td></tr></table>
+					</div>
+				</td>
+			</tr>
+		</table>
+      </div>
+    </td>
+  </tr>
+</table>
+</form>
+</body>
+</html>
+
+
+

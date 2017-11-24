@@ -1,0 +1,58 @@
+<include file="Public:header" />
+    </td>
+  <td valign="top" class="r">	
+      <div class="title02">消费明细<a href="{:U('Cash/recharge')}" class="Annkela"><img src="/Public/xincss/images/22.png"/>在线充值</a></div>
+      <div class="block04">
+	  
+      	<table class="ipList" width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="title">
+            <td width="20" class="icon">&nbsp;</td>
+            <td>订单编号</td>
+            <td>订单金额</td>
+			<td>订单状态</td>
+            <td>订单详情</td>
+			<td>操作时间</td>
+          </tr>
+          <!-- 隔行变色 -->
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+          })
+          </SCRIPT>
+		<foreach name="order_list" key="key" item='order'> 
+          <tr class="td1">
+            <td>&nbsp;</td>
+			<td>{$order["order_no"]}</td>
+			<td class="color_or">{$order["pay_money"]}</td>
+			<td><switch name="order.status">
+			<case value="1"  >已支付</case>
+			<case value="0"><font color="red">未支付</font></case>
+			<default />已支付
+			</switch></td>
+			<td>{$order["comm"]}</td>
+			<td>{$order["addtime"]}</td>
+			</tr>
+			</foreach> 
+        </table>
+      </div>
+      <div class="pageList">
+			<table width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="left"></td>
+					<td class="center">&nbsp;</td>
+					<td class="right" align="right">
+						<div class="pagebreak">
+							<table cellspacing="0" cellpadding="0"><tr><td class="page_no"><a class='current'>{$show}</a></td></tr></table>
+						</div>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+      
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+

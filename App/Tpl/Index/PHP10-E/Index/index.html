@@ -1,0 +1,110 @@
+<include file="Public:new" />
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="__PUBLIC__/xincss/long/public.js?v=727"></script>
+<link rel="stylesheet" href="__PUBLIC__/xincss/long/home.css?v=653"/>
+<script src="__PUBLIC__/xincss/long/xnyFreeScroll.js"></script>
+<script src="__PUBLIC__/xincss/long/home.js"></script>
+<div id="banner-slider">
+<div id="slider-back">
+<volist name="slide_list" id="slide" offset="0" length="5">
+<p style="background-image:url({$slide['pic']});max-width:100%;"></p>
+</volist> 
+</div>
+<div class="slider-main">
+<?php $logo="__ROOT__/$config[site_logoo]"; ?>
+<volist name="slide_list" id="slide" offset="0" length="5">
+			<div class="banner-txt">
+			<?php $namese="$slide[ad_namese]"; ?>
+			<?php $briefse="$slide[ad_briefse]"; ?>
+			<?php $gengduo="$slide[ad_gengduo]"; ?>
+			<if condition="$slide['ad_ist']==0"><div class="slider-txt" data-start_top="40" data-to_top="+=60"></if>
+			<if condition="$slide['ad_ist']==1"><div class="slider-txt" data-start_top="100" data-to_top="100" data-start_left="-300" data-to_left="0"></if>
+			<if condition="$namese==''"><else /><div class="banner-txt-<?php echo $namese;?>">{$slide['ad_name']}</div></if>
+			<if condition="$briefse==''"><else /><span class="banner-txt-<?php echo $briefse;?>">{$slide['ad_brief']}</span></if>
+			</div>
+			<if condition="$gengduo==''"><else /><a href="{$slide['pic_url']}" class="banner-<?php echo $gengduo;?>" target="_blank" data-start_top="370" data-to_top="-=50">了解更多</a></if>
+			</div>
+			 </volist>  
+			<ul id="slider-btn" class="pie-for-children">
+			<volist name="slide_list" id="slide" offset="0" length="1">
+			<li class="slider-active"></li>	
+			</volist> 
+			<volist name="slide_list" id="slide" offset="0" length="4">
+			<if condition="$i egt 2"> 
+			<li></li>
+			</if>
+			</volist>	
+		</div>
+	</div><!-- end-->
+	<div class="news-bar">
+		<div class="auto">
+			<div class="news-left">
+				<span></span>
+				<div class="news-list">
+                 <volist name="gonggao_list" id="gonggao" offset="0" length="10">
+					<p>
+					<a href="{:U('Gonggao/gonggao',array('id'=>$gonggao['id']))}" >  {$gonggao["title"]}</a>
+					<b class="news-date"><?php echo date("n-j",strtotime($gonggao["time"])); ?></b>
+					</p>
+					</volist>
+				</div>
+			</div>
+			<div class="news-right">
+				<span id="prev-news"></span>
+				<span id="next-news"></span>
+			</div>
+		</div>
+	</div>
+<if condition="$kongbao_config['refer_type']==1">
+<include file="Index:type" />
+<else/>
+<include file="Index:hzzs" />
+</if>
+<!-- 解决方案-->
+{$kongbao_page['tuiguang_aqtx']}	
+<if condition="$kongbao_config['refer_type']==1">
+<include file="Index:hzzs" />
+</if>
+	<!-- 底部通告栏-->
+	<div class="notice">
+		<div class="auto">
+			<div class="nt-1">
+				<div class="nt-title">
+					<div class="nt-main-title">产品·公告</div>
+					<a href="{:U('Gonggao/index')}" target="_blank">更多 &gt;</a>
+				</div>
+				<ul class="nt-list">
+					<volist name="gonggao_list" id="gonggao" offset="0" length="5">
+					<li><a href="{:U('Gonggao/gonggao',array('id'=>$gonggao['id']))}" ><span>【<?php echo date("m-d",strtotime($gonggao["time"])); ?>】</span>{$gonggao["title"]|cut_str=###,20}</a></li>
+					</volist>
+				</ul>
+			</div>
+			<div class="nt-2">
+				<div class="nt-title">
+					<div class="nt-main-title">行业动态</div>
+					<a href="{:U('Article/index')}" target="_blank">更多 &gt;</a>
+				</div>
+				<ul class="nt-list">
+					<volist name="article_list" id="article" offset="0" length="5">
+					<li><a href="{:U('Article/article',array('id'=>$article['id']))}" ><span>【<?php echo date("m-d",strtotime($article["article_time"])); ?>】</span>{$article["article_name"]|cut_str=###,20}</a></li>
+					</volist>
+				</ul>
+			</div>
+			<div class="nt-3">
+				<div class="nt-title">
+					<div class="nt-main-title">帮助文档</div>
+					<a href="{:U('Help/index')}" target="_blank">更多 &gt;</a>
+				</div>
+				<ul class="nt-list">
+				<volist name="help_list" id="help" offset="0" length="5">
+					<li><a href="{:U('Help/help',array('id'=>$help['id']))}" >【<?php echo date("m-d",strtotime($help["time"])); ?>】</span>{$help["title"]}</a></li>
+					</volist>
+				</ul>
+			</div>
+			<div class="clear-float"></div>
+		</div>
+	</div>
+	<div class="to-register">
+		<a href="{:U('User/reg')}" class="default-transition">免费注册，享新手礼包</a>
+	</div>
+	<include file="Public:newfoot" />

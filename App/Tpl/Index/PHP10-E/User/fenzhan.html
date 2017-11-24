@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$seo_title} </title>
+<meta name="Keywords" content="{$seo_keyword}">
+<meta name="Description" content="{$seo_desc}">
+<link href="__PUBLIC__/xincss/css/common_f.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<script type="text/javascript" src="__PUBLIC__/xincss/js/jquery.min.js"></script>
+</head>
+<body>
+<link href="__PUBLIC__/xincss/css/fenlogin.css" rel="stylesheet" type="text/css" />
+<if condition="session('IS_LOGIN')==0">
+	<div style="clear:both"></div>
+	<div class="autowidth">
+		<div class="login">
+			<table cellspacing="0" cellpadding="0" class="logintable">
+				<tr>
+					
+					<td class="loginright">
+						<div class="box">	
+						<h1>会员登录</h1>
+							<div class="form">
+								 <form action="__URL__/login" id="register_form" method="post" >
+									<input name="a" type="hidden" value="login" />
+									<input name="redirectURL" type="hidden" value="" />
+									<table cellspacing="0" cellpadding="0">
+										<tr>
+											<td><input type="text" name="username" id="username" class="username" tabindex="1" /></td>
+										</tr>
+										<tr>
+											<td><input type="password" name="password" id="password" class="password" tabindex="2" /></td>
+										</tr>
+									</table>
+									<div style="padding:10px 0 0 10px;margin-top:10px">
+									 <input id="button_search" type="submit" value="立即登录" name="submit" class="submit ajaxSubmit">
+									</div>
+									<div style="height:25px;line-height:25px;padding:0 10px;margin-top:15px;font-size:14px">
+										<div class="left">	<if condition="$qq_setting['qq_isuse']==1">
+											 <a style="float:right; margin-right:20px;" href="{:U('Qlogin/index')}">使用QQ登录<img src="/Public/images/Connect_qq_1.png" /></a> </if> 
+										</div>还没有账号? <a href="{:U('User/reg')}" style="color:#11a4ff">立即注册!</a>
+										<div class="right">
+											<a href="{:U('User/getPassword')}" style="color:#11a4ff">忘记密码?</a>
+										</div>
+									</div>
+								</form>
+								<script type="text/javascript" src="__PUBLIC__/xincss/js/login.js"></script>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+<else />
+<div style="clear:both"></div>
+	<div class="autowidth">
+		<div class="login">
+ <a href="{:U('User/home')}"  class="submit ajaxSubmit">立即登录</a>
+ </div>
+	</div>
+</if>

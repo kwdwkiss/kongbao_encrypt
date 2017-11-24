@@ -1,0 +1,112 @@
+<include file="Public:top" />
+<div class="container cont_bg">
+    <div class="resize">
+        <div class="c_leftBox">
+    <div style="font-size: 16px;
+font-weight: normal;
+padding-bottom: 10px;">{$config['sitename']}</div>
+    <dl>
+        <dt><a >账户管理</a></dt> <dd><a  href="{:U('User/Home')}">管理中心</a></dd>
+        <dd><a  href="{:U('Cash/recharge')}">账户充值</a></dd>
+        <dd><a href="{:U('Tg/uplevel')}">快递价格<img style="margin-top:-2px; margin-left:5px;" src="/Public/images/hot.png"/></a></dd>
+        <dd><a  href="{:U('User/repass')}">修改密码 </a></dd>
+        <dd><a href="{:U('User/mingxi')}">资金明细</a>
+        </dd>
+    </dl>
+    <dl> <dt><a>服务中心</a></dt>
+        <if condition="$kongbao_config['true_valid']">
+	<dd><a  href="{:U('Order/true_kb')}">真实空包下单</a></dd>
+	</if>
+        <dd><a  href="{:U('Order/kb')}">空包下单<img style="margin-top:-2px; margin-left:5px;" src="/Public/images/hot.png"/></a></dd>
+        <dd><a  href="{:U('User/address')}">发货地址 </a></dd>
+        <dd><a  href="{:U('Log/kb_log')}">单号管理</a></dd>
+		 <if condition="$xiaohao_config['valid']==1">
+		<dd><a  href="{:U('Order/xh')}">购买小号</a></dd>
+		<dd><a   href="{:U('Log/xh_log')}">小号管理</a></dd>
+		  </if><dd><a  href="{:U('Order/dd_apply')}">底单申请</a></dd>
+		 <dd><a  href="{:U('Log/didan_log')}">底单管理</a></dd>
+		<dd><a class="curr" href="{:U('User/liuyan')}">提交工单<img style="margin-top:-2px; margin-left:5px;" src="/Public/images/hot.png"/></a></dd>
+		<dd><a href="{:U('User/reinfo')}">修改资料</a></dd>
+    </dl>
+    <dl>
+        <dt><a>推广管理</a></dt>
+        <dd><a href="{:U('About/index')}">我们的优势</a></dd>
+        <dd><a href="{:U('Log/refer_log')}">我的下线</a></dd>
+       <dd><a href="{:U('Log/yj_log')}">我的推广佣金</a></dd>
+        <dd><a href="{:U('Log/tixia_log')}">提现记录</a></dd>
+    </dl>
+	<dl>
+        <dt><a>资讯中心</a></dt>
+        <dd><a href="{:U('Gonggao/index')}">帮助中心</a></dd>
+        <dd><a href="{:U('Gonggao/index')}">网站公告</a></dd>
+        <dd><a href="{:U('Article/index')}">文章中心</a></dd>
+    </dl>
+</div>
+
+<div class="c_rightBox">
+            <div class="change_code">
+                <div class="c_tit">
+                    <h2>我的工单</h2>
+                </div>
+				<br>
+				 </div>
+<form name="myform" method="post" action="{:U('User/liuyan_add')}" onSubmit="return check()">
+
+ <div class="tabBox">
+                        <div class="tabTit">
+                            <div class="tab_btn">
+							
+                                <a <if condition="$status eq 0"> class="cur"</if> href="{:U('User/complaint')}" >未回复留言</a>
+								<a <if condition="$status eq 1"> class="cur"</if> href="__URL__/complaint/id/1" >已回复留言</a>
+                            </div>
+                        </div>
+                        <div class="tabCont">
+                            <div class="tabLi  cur">
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <th scope="col">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;标题</th>
+                                        <th scope="col">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间<a class="icon_ye" href="#"></a></th>
+                                        <th scope="col">是否回复<a class="icon_ye" href="#"></a></th>
+                                        <th scope="col">详情<a class="icon_ye" href="#"></a></th>
+                                      
+                                    </tr>
+									 <foreach name="log_list" item='log'> 
+									<tr>
+                                            <td>{$log["title"]}</td>
+                                            <td>{$log["addtime"]}</td>
+                                            <td class="color_or">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php if($log["status"]==1){ ?>是 <?php  }else{  ?> 否 <?php } ?></td>
+                                            <td><a href="__URL__/liuyaninfo/id/{$log["id"]}" >&nbsp;&nbsp;查看详情&nbsp;&nbsp;</a></td>
+                                          
+                                        </tr> </foreach>
+                                            </table><div class="pages">
+                                {$show} </div>
+                            </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+</div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+   
+<SCRIPT LANGUAGE="JavaScript">
+	$('form').checkForm(1);
+	function check()
+	{
+		if(typeof(FCKeditorAPI)!="undefined")
+		{
+			oEditor= FCKeditorAPI.GetInstance('content');
+			if(oEditor)
+			{
+				var t = oEditor.GetXHTML();
+				$('#content').val(t);
+			}
+		}
+		$('form').checkForm(1);
+		return true;
+	}
+</SCRIPT>
+<include file="Public:foote" />

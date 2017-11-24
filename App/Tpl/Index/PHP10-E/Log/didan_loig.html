@@ -1,0 +1,103 @@
+<include file="Public:header" />
+<script type="text/javascript"> 
+	function export_log()
+	{
+ 	   var count = $("#count").val(); 
+	    if(count<=0) 
+	    {
+	    	alert('无数据可导出！'); 	
+	    	return false;
+	    }
+	   $("#export_form").submit();
+	}
+</script>
+</td>
+<td valign="top" class="r">	
+<div class="title02">底单管理<a href="{:U('Order/kb')}" class="Annkela"><img src="/Public/xincss/images/19.png"/>在线下单</a></div>
+<div class="block04">
+<form class="search" action="__URL__/didan_loig" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0"><tr>
+<td width="45">筛选：</td>
+<td width="86">
+<select name="ftype" class="select classid" style="margin-top:0px;width:90px;">
+<option value="note_no" <eq name="_POST.ftype" value="note_no">selected</eq>>空包单号</option>  
+</select>
+</td>
+<td width="5">&nbsp;</td>
+<td width="110"><input type="text" name="keyword" value="{:I('keyword')}" class="Index_Search" style="width:130px;"/></td><td width="5">&nbsp;</td>
+<td width="86"><select name="type_id"  class="select classid" > 
+ <option value="">空包类型</option>
+<foreach name="type_list" item="type">
+<option value="{$type['id']}"  <if condition="I('type_id','')==$type['id']" >selected</if> >{$type['name']}</option>
+</foreach>
+</select>
+</td><td width="5">&nbsp;</td>
+<td width="80"><select name="status" class="select classid">
+<option value="">状态</option>
+<option value="1" <if condition="I('status','')==1" >selected</if>>申请中</option>
+<option value="2" <if condition="I('status','')==2" >selected</if>>已完成</option>
+<option value="3" <if condition="I('status','')==3" >selected</if>>失败</option>
+</select>  </td>
+</td><td width="5">&nbsp;</td>
+<td width="40"><input name="submit" type="submit" class="Annkelb_1" value="查询" />
+<input type="hidden" id="count" value="{$count}"/></td>
+<td width="5">&nbsp;</td>
+<td></td>
+</tr>
+</table></form>
+	  <br/> 
+      	<table class="ipList" width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="title">
+            <td width="20" class="icon">&nbsp;</td>
+			<td>空包单号</td>
+			<td>空包类型</td>
+			<td>发货地址</td>
+			<td>收货地址</td>
+			<td>申请日期</td>
+			<td>状态</td>
+          </tr>
+          <!-- 隔行变色 -->
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+          })
+          </SCRIPT>
+		<foreach name="log_list" key="key" item='log'>
+          <tr class="td1">
+            <td>&nbsp;</td>
+            <td>{$log['note_no']}</td>
+			 <td>{$kb_type[$log['type_id']]}</td>
+			<td>{$log['address_rec']}</td>
+			<td>{$log['address_send']}</td>
+			<td>{$log['order_time']}</td>
+			<td>
+			<switch name="log.status">
+			<case value="1"><font style="color:#ff0000">申请中</font></case>
+			<case value="2"><font color="blue">已完成</font></case>
+			<case value="3"><font color="red">失败</font></case>
+			</switch>
+			</td>
+			</tr>
+			</foreach>  
+        </table>
+      </div>
+      <div class="pageList">
+			<table width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="left"></td>
+					<td class="center">&nbsp;</td>
+					<td class="right" align="right">
+						<div class="pagebreak">
+							<table cellspacing="0" cellpadding="0"><tr><td class="page_no">{$show}</td></tr></table>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
+

@@ -1,0 +1,59 @@
+<include file="Public:header" />
+    </td>
+  <td valign="top" class="r">	
+      <div class="title02">佣金记录<a href="{:U('Cash/recharge')}" class="Annkela"><img src="/Public/xincss/images/22.png"/>在线充值</a></div>
+      <div class="block04">
+	  
+      	<table class="ipList" width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="title">
+            <td width="20" class="icon">&nbsp;</td>
+			<td>操作时间</td>
+            <td>项目名称</td>
+            <td>金额变化</td>
+			<td>账户余额</td>
+            <td>佣金余额</td>
+			<td>项目详细</td>
+          </tr>
+          <!-- 隔行变色 -->
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td1").each(function(i){   this.style.backgroundColor  =  ['#fff','#fafafa'][i%2]   })   
+          })
+          </SCRIPT>
+		<foreach name="log_list" key="key" item='log'> 
+          <tr class="td1">
+            <td>&nbsp;</td>
+            <td>{$log["addtime"]}</td>
+			<td><switch name="log.stage" >
+			<case value="refer">佣金提成</case>
+			<default />其他
+			</switch></td>
+			<td class="color_or">{$log["money"]}</td>
+			<td>{$log["remain_money"]}</td>
+			<td>{$log["remain_refer_money"]}</td>
+			<td>{$log["comm"]}</td>
+			</tr> </foreach>
+        </table>
+      </div>
+      
+      <div class="pageList">
+			<table width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="left"></td>
+					<td class="center">&nbsp;</td>
+					<td class="right" align="right">
+						<div class="pagebreak">
+							<table cellspacing="0" cellpadding="0"><tr><td class="page_no"><a class='current'>{$show}</a></td></tr></table>
+						</div>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+      
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../Public/css/common.css" type="text/css" />
+<script type="text/javascript" src="../Public/js/lhgcalendar/_doc/prettify/prettify.js"></script>
+<script type="text/javascript" src="../Public/js/lhgcalendar/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="../Public/js/lhgcalendar/lhgcalendar.min.js"></script>
+<script type="text/javascript" src="../Public/js/demo.js"></script> 
+<title>管理区域</title>
+</head> 
+<body>
+ <div class="fixed-bar">
+    <div class="item-title"> 
+      <h3>管理员信息</h3>
+      <ul class="tab-base">   
+         <li><a href="{:U('repass')}" ><span>管理员密码修改</span></a></li> 
+         <li><a href="javascript:void(0)" class="current"><span>管理员列表</span></a></li>   
+         <li><a href="{:U('gladd')}" ><span>新增管理员</span></a></li> 
+      </ul>
+    </div>
+  </div>
+<div id="man_zone">
+<form action="__URL__/aupdate" method="post">
+  <table width="99%" border="0" align="center"  cellpadding="3" cellspacing="1" class="table_style">
+
+    <tr>
+      <td class="left_title_1">用户名</td>
+      <td><input type="text"  size="31"  name="username"  value="{$userdata['username']}"></td>
+    </tr> 
+	  <tr>
+	    <td width="130" height="25"><div align="right">账号类型：</div></td>
+	    <td>
+	    	<select  name="user_type" >
+	    		<option value="1" <?php if($userdata['groupid']==1){ ?>selected <?php } ?> >管理员</option>
+	    		<option value="2" <?php if($userdata['groupid']==3){ ?>selected <?php } ?>  >主管</option>
+				<option value="3" <?php if($userdata['groupid']==4){ ?>selected <?php } ?>  >财务</option>
+				<option value="4" <?php if($userdata['groupid']==5){ ?>selected <?php } ?>  >客服</option>
+	    	</select>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td width="130" height="25"><div align="right">密码：</div></td>
+	    <td><input type="text"  name="password"  value="">
+	    *不修改请留空</td>
+	  </tr>
+	   <td class="left_title_1">操作密码</td> 
+	      <td><input type="text" name="caozuoma"  size="20" /></td>
+    </tr>    
+    <tr>
+    <tr bgcolor="#FFFFFF">
+      <td colspan="2" class="left_title_2"><div align="center">
+      	<input type="submit" value="保存"   /> 
+        <input type="hidden" name="id" value="{$userdata['id']}" />
+        <input class="button" type="button" onclick="history.go(-1);" value="取消" /></div> </td>
+    </tr>
+  </table>
+</form>
+</div>
+</body>
+</html>

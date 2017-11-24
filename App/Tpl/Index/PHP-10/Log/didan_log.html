@@ -1,0 +1,138 @@
+
+<include file="Public:top" /> 
+<script type="text/javascript">
+$(document).ready(function(){ 
+$("select").selectCss(); 
+});
+</script>
+<style type="text/css">
+.tag_select{display:block;height:24px;line-height:24px;background: url("/Public/images/xlico.gif") right center no-repeat; border:1px solid #CFCFCF; border-radius:5px; padding:3px 28px 3px 8px; color:#7D7D7D; font-size:12px; cursor:pointer}
+.tag_select_hover{ color:#7D7D7D; background: url("/Public/images/xlico.gif") right center no-repeat;}
+.tag_select_open{ color:#7D7D7D; background: url("/Public/images/slico.gif") right center no-repeat;}
+ul.tag_options{position:absolute;margin:0;list-style:none;border: solid 1px #CFCFCF; background:#fff;overflow:hidden;font-size:12px; z-index:1000 }
+ul.tag_options li{background:#fff; display:block;padding:0px 28px 0px 8px; height:30px;text-decoration:none;line-height:30px;color:#7D7D7D; font-weight:normal; font-size:12px;cursor:pointer}
+ul.tag_options li.open_hover{background:#00a2ca;color:#000; color:#fff; width:auto; font-weight:normal; font-size:12px}
+ul.tag_options li.open_selected{background:#00a2ca; color:#fff;font-size:12px; }
+.cabCont{position:relative; z-index:1;  border-top:1px solid #ccc; padding-top:20px; margin-top:-1px;}
+.labCont{position:relative; z-index:1; padding-top:20px; }
+.labCont table th{font-weight:normal; color:#333; height:40px; line-height:40px; border:none ; text-align:left; background:#f9f8f8; padding:0 10px;}
+.labCont table tr:hover{background:#f0fcff;}
+.labCont table td{height:40px; line-height:40px; border-bottom:1px dashed #ccc; color:#666; padding:0 5px;}
+.labCont table td.color_or{color:#f3783f; font-weight:bold; }
+.mag_td{padding:10px 0; overflow:hidden; width:100%;}
+</style>
+<script type="text/javascript"> 
+	function export_log()
+	{
+ 	   var count = $("#count").val(); 
+	    if(count<=0) 
+	    {
+	    	alert('无数据可导出！'); 	
+	    	return false;
+	    }
+	   $("#export_form").submit();
+	}
+</script>
+<div class="container cont_bg">
+    <div class="resize">
+        <div class="c_leftBox">
+    <div style="font-size: 16px;
+font-weight: normal;
+padding-bottom: 10px;">{$config['sitename']}</div>
+<include file="Public:left_nav" />
+</div>
+        <div class="c_rightBox">
+            <div class="user_control">
+                <div class="user_control_b">
+                    <div class="tabBox my_aline danhao_mag">
+                        <div class="tabTit">
+                            <div class="tab_btn">
+                                <a class="cur">底单管理</a> 
+                            </div>
+                        </div>
+                        <div class="cabCont"> 
+<form class="search" action="__URL__/didan_log" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0"><tr>
+<td width="70">底单筛选：</td>
+<td width="86">
+<select name="ftype">
+<option value="note_no" <eq name="_POST.ftype" value="note_no">selected</eq>>空包单号</option>  
+</select>
+</td>
+<td width="5">&nbsp;</td>
+<td width="110"><input type="text" name="keyword" value="{:I('keyword')}" class="input_text"/></td><td width="5">&nbsp;</td>
+<td width="86"><select name="type_id"  class="r_txt v_m bod w135" > 
+ <option value="">空包类型</option>
+<foreach name="type_list" item="type">
+<option value="{$type['id']}"  <if condition="I('type_id','')==$type['id']" >selected</if> >{$type['name']}</option>
+</foreach>
+</select>
+</td><td width="5">&nbsp;</td>
+<td width="80"><select name="status">
+<option value="">状态</option>
+<option value="1" <if condition="I('status','')==1" >selected</if>>申请中</option>
+<option value="2" <if condition="I('status','')==2" >selected</if>>已完成</option>
+<option value="3" <if condition="I('status','')==3" >selected</if>>失败</option>
+</select>  </td>
+</td><td width="5">&nbsp;</td>
+<td width="40"><input name="submit" type="submit" class="ty_btn" value="查询" />
+				  <input type="hidden" id="count" value="{$count}"/></td>
+	<td width="5">&nbsp;</td>
+	<td></td>
+  </tr>
+</table></form>
+<div class="labCont"> 
+<div class="tabLi cur">
+                                 <table class="t1" align="left" width="100%" > 
+									 <foreach name="log_list" key="key" item='log'>
+							    	  <if condition="$key%2==0">
+							    	  	   <tr style="background-color:#e2f3f7 ;"> 
+							    	  <else/>
+							    	       <tr style="background-color:#f8f2bd ;" > 
+							    	  </if> 
+							    	          <td width="100" align="center">空包单号&nbsp;</td>
+											  <td width="" height="20">{$log['address_send']}</td>
+											 <td width="80" rowspan="2" align="center">{$log['order_time']}</td>  
+											 <td width="100" align="center">空包类型&nbsp;</td> 
+											 <td width="100" align="center">状态&nbsp;</td>
+											 <td width="50px" rowspan="2"> 
+											 	 <if condition="$log['status']==2"> 
+											 	 	<a href="{$log['didan_image']}" target="_blank" title="底单截图">下载底单</a>  
+											 	 </if> 
+											 	  <if condition="$log['status']==3"> 
+							 	 						<a href="javascript:void(0)" onclick="alert('{$log['comm']}')"  title="{$log['comm']}">查看失败原因</a>  
+							 	 					</if> 
+											 </td>
+										 </tr>
+							    	  <if condition="$key%2==0">
+							    	  	   <tr style="background-color:#e2f3f7 ;"> 
+							    	  <else/>
+							    	       <tr style="background-color:#f8f2bd ;" > 
+							    	  </if> 
+							    	                <td width="100" align="center">{$log['note_no']}</td>
+												    <td height="20">{$log['address_rec']}</td> 
+												    <td width="100" align="center">{$kb_type[$log['type_id']]}</td>
+												    <td width="100" align="center">
+												    	<switch name="log.status">
+												    		<case value="1"><font color="red">申请中</font></case>
+												    		<case value="2"><font color="blue">已完成</font></case>
+												    		<case value="3"><font color="red">失败</font></case>
+												    	</switch>
+				                                   </td>
+										 </tr>	 
+						     </foreach> 
+						     <tr>
+						      <td height="20" colspan="6"><div align="center">{$show}</div></td>
+						    </tr>
+						  </table>
+
+                            </div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:foote" />

@@ -1,0 +1,82 @@
+<include file="Public:header" />
+</td>
+<script type="text/javascript"> 
+$(function()
+{
+     $('.checkall').click(function(){
+		$('.checkall').attr('checked',$(this).attr('checked'));
+		$('.checkitem').each(function(){
+			$(this).attr('checked',$('.checkall').attr('checked'));
+		});
+	});
+
+});  
+</script>
+	<td valign="top" class="r">
+      <div class="title02">站内消息</div>
+      <div class="V_news">
+        <div class="V_Ntitle">
+		<if condition="$cur eq index"><span class="VNa"><else/><span></if> <a  href="{:U('System/index')}">全部消息({$all})</a></span>
+        <if condition="$cur eq weidu"><span class="VNa"><else/><span></if><a href="{:U('System/weidu')}" >未读消息({$allnoread})</a>  </span>
+		<if condition="$cur eq yidu"><span class="VNa"><else/><span></if><a href="{:U('System/yidu')}" >已读消息({$allread})</a></span>   
+        </div>
+		<form method="post" id="form" action="{:U('System/excute')}"><input name="type" id="type" type="hidden" value="del" />
+		<table class="ipList V_tb3" width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr class="V_Ntitle1">
+            <td width="20" >&nbsp;</td>
+			<td><input type="checkbox" class="checkall" id="checkallBottom"></td>					
+            <td>信息类型</td>
+			<td>收件时间</td>
+            <td>发件人</td>
+            <td>标题</td>
+			<td>状态</td>
+			<td>操作</td>
+          </tr>
+          <!-- 隔行变色 -->
+		  <SCRIPT LANGUAGE="JavaScript">
+          $(function(){
+           $(".td2").each(function(i){   this.style.backgroundColor  =  ['#fafafa','#fff'][i%2]   })   
+          })
+          </SCRIPT>
+		<foreach name="system_list" key="key" item="user"> 
+		<tr class="td2">
+		 <td>&nbsp;</td>
+			<td><input type="checkbox" name="id[]" value="{$user['mid']}" class="checkitem"></td>
+			<td>{$user['type']}</td>
+			<td>{$user['addtime']|date="Y-m-d H:i:s",###}</td>
+			<td>{$user['username']}</td>
+			<td>{$user['title']}</td>
+			<td >
+			<if condition="$cur eq yidu">已查阅
+			<elseif condition="$cur eq weidu" /><span class="fc2">未查阅</span>
+			<else />{$user['read']}
+			</if>
+			</td>
+			<td><a href="__URL__/view/id/{$user['mid']}" class="delete c_skyBlue">查看</a></td>
+		</tr>
+		</foreach>
+        </table>
+      </div>
+      <div class="pageList">
+	  <a href="JavaScript:void(0);"  onclick="if(confirm('确定标记已读吗？')){$('#type').val('read');$('#form').submit();}" class="Annkelb kel1"><span>标记已读</span></a>
+		<table width="100%" cellspacing="0" cellpadding="0">
+			<tr>
+				<td></td>
+				<td class="center">&nbsp;</td>
+				<td class="right" align="right">
+					<div class="pagebreak">
+					<table cellspacing="0" cellpadding="0"><tr><td class="page_no"><a class='current'>{$show}</a></td></tr></table>
+					</div>
+				</td>
+			</tr>
+		</table>
+      </div>
+    </td>
+  </tr>
+</table>
+</form>
+</body>
+</html>
+
+
+

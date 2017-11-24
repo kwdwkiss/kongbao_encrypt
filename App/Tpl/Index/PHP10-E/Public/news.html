@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<title>{$seo_title} </title>
+	<meta name="Keywords" content="{$seo_keyword}">
+	<meta name="Description" content="{$seo_desc}">
+	<link rel="stylesheet" href="__PUBLIC__/xincss/long/common.css?v=767"/>
+	<script type="text/javascript" src="__PUBLIC__/xincss/js/jquery.min.js"></script>
+</head>
+<body class="about-page">
+<!-- header -->
+	<div class="header-fix">
+		<div class="global-topbar">
+			<div class="auto">
+				<div class="welcome-container" >
+					<div class="logout-container">
+	<if condition="session('IS_LOGIN')==0">
+	<p class="slogan">欢迎上{$config['sitename']}，</p>
+    	<font id="loginStatus">
+		<a href="{:U('User/uslogin')}" class="login-button">请登录</a>
+		<a href="{:U('User/reg')}" class="register-button">免费注册</a>
+		<a href="{:U('User/reg')}" class="link-items reg-gift">注册有礼</a>	
+    	</font>
+		  <else />
+		<p class="slogan">[&nbsp;{$user['username']}&nbsp;]欢迎您再次来到{$config['sitename']}!</p>
+    	<font id="loginStatus">
+		<a href="{:U('User/logout')}" class="register-button">安全退出</a>
+    	</font>
+		</if>		
+		</div>	
+				</div>
+				<div class="topbar-right">
+					<a href="{:U('User/home')}" class="link-items">管理控制台</a>
+					<span class="link-spacing"></span>
+					<a href="{:U('Help/index')}" class="link-items">帮助文档</a>
+					<span class="link-spacing"></span>
+					<a href="javascript:alert('Ctrl+D快捷加入收藏');" class="link-items">加入收藏</a>
+					<span class="link-spacing"></span>
+					 <a class="link-items" href="http://wpa.qq.com/msgrd?v=3&uin={$config['qq1']}&site=qq&menu=yes" target="_blank">在线客服</a><a href="http://wpa.qq.com/msgrd?v=3&uin={$config['qq1']}&site=qq&menu=yes" class="link-items reg-gift" target="_blank">领取礼包</a>	
+
+				</div>
+			</div>
+		</div>
+		<div class="header">
+			<div class="auto">
+				<div class="header-logo">
+					<a href="/" class="lxgo hide-text">{$config['sitename']}</a>
+					<a class="slogan-gif hide-text">{$config['dtswf_javascript']}</a>
+				</div>
+				<div class="header-nav" >
+					<ul  id="menu">
+						<li class="nav-1 header-nav-li"><a href="/" class="tit">首&nbsp;&nbsp;页</a></li>
+							<volist name="daohang" id="daohang" offset="0" length='6' >
+		<li class="nav-2 header-nav-li"><a href="{$daohang.url}"  title="{$daohang.name}"  onfocus="this.blur();" class="tit">{$daohang.name}<if condition="$daohang['sort_bz']==1"><img src="{$daohang['image_url']}" width="26" style="margin-left:5px;" alt="{$daohang.name}"/></if></a></li>
+		</volist>			
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+    var pn = location.pathname;
+    var as = document.getElementById('menu').getElementsByTagName('a'), find = false;
+    for (var i = 0, j = as.length; i < j; i++)
+    if (as[i].href.indexOf(pn) != -1) { as[i].className = 'tit curr'; find = true; break; }
+</script>
+	<?php $logo="__ROOT__/$config[site_logoo]"; ?>
+	<!-- header end-->

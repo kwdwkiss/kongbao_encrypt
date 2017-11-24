@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title> - </title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+   <script type="text/javascript" src="/Public/css/jquery.min.js"></script>
+<style type="text/css">
+/** 通用CSS样式 **/
+*{margin:0px; padding:0px; _min-height:1px; }
+a, body, div, html, img, li, ul,dl,dt,dd { border: 0; margin: 0; padding: 0; text-decoration:none;}
+html, body { height:auto; width:100%; overflow-x:hidden; font: 12px  'Microsoft YaHei','Helvetica Neue', Arial,\5b8b\4f53,'Liberation Sans', FreeSans, sans-serif; margin:0px; padding:0px; display:block; color:#000;  }
+body{overflow-y:hidden; color:#666;}
+img { color: transparent; font-size:12px;  -ms-interpolaton-mode: bicubic; }
+ol, ul ,dl ,dt,dd{ list-style: none;  }
+input{ outline:none; font-family:'Microsoft YaHei'; }
+a{ cursor:pointer; color:#4a92f5;}
+em, i, b, sub, sup { font-style: normal; }
+input[type='submit'],input[type='button']{ cursor:pointer; }
+input:-webkit-autofill { -webkit-box-shadow: 0 0 0px 1000px white inset; }
+input[type='checkbox'],input[type='radio']{ vertical-align:middle; margin-right:5px;}
+/** 通用CSS样式 **/
+.tc{text-align:center;}
+.p10 {padding: 10px;}
+h1.title {  background: #FFF; font-size:14px; padding: 5px; border-bottom: #f0f0f0 1px solid; margin-bottom: 5px;}
+table.form {width: 810px;}
+table.form td.label{text-align: right;width: 120px;font-weight: 800; font-size:14px;}
+table.form td{padding:6px;}
+table.form select{width: auto; height: 28px; line-height: 28px;}
+table.form input[type="text"], table.form input[type="password"]{border: 1px solid #afafaf; padding: 3px; width: 200px; height: 24px; line-height: 18px; vertical-align: middle;}
+table.form textarea{display: block; width: 420px; height: 48px; margin: 0; border: 1px solid #afafaf; padding: 3px; font-size: 12px;}
+table.form td .btn{padding: 6px 20px; font-size: 14px; border: none; overflow: hidden; background: #00a2ca; cursor: pointer; border: 1px solid #00a2ca; border-radius: 3px; display: inline-block;line-height: 24px; zoom:1; color: #fff; height: auto;}
+table.form td .btn:hover{opacity:0.8; filter:alpha(opacity=80)}
+table.form td label{margin-left:10px; font-family:'宋体'; vertical-align:sub;}
+table.form td label span{display:none; overflow:hidden;}
+table.form td label span.err_msg{color:#DD0000;}
+table.form td label span.right_msg{color:#06AC87;}
+</style>
+</head>
+<body>
+<div class=" p10">
+    <h1 class="title"><span>提交交易号：</span></h1>
+    <form action="{:U('Cash/alipay_save')}" method="post" id="myform" onsubmit="return chongzhi()" >
+                <table class="form">
+            <tr>
+                <td class="label">支付交易编号：</td>
+				  <td>
+               <input name="outer_order_no" type="text" style="width: 300px" id="outer_order_no" maxlength="35"   class="input_text tip" size="30"/>
+                </td>
+            </tr>
+            <tr> 
+                <td class="label">选择充值类型：</td>
+                <td>
+				
+				<select name="order_type" style="_height:15px;_line-height:5px;">
+				<option value="0" >支付宝充值</option>
+				<option value="1" >财付通充值</option>
+				</select>
+                </td>
+            </tr>
+            <tr>
+			 <td class="label">支付金额：</td>
+				  <td>
+               <input type="text" style="width: 80px" name="price" id="price" maxlength="20"   class="input_text tip" size="20"/>&nbsp;(RMB元)
+                </td>
+            </tr>
+            <tr> 
+                <td colspan="2" class="tc">
+                	<input type="submit" value="提交" class="btn" id="dosubmit">
+					<input type="hidden" name="user_id" value="{$user['id']}">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script type="text/javascript">
+
+function chongzhi()
+{
+	var tenpay_valid="{$pay_setting['tenpay_zz']['tenpay_valid']}";
+	if(tenpay_valid=="1")
+	{
+		 if(!confirm('充值类型一定要正确选择，以便及早审核！您确定已经选择的充值类型正确？'))
+		 {
+		 	return false;
+		 }
+	}
+	var num = /^[0-9]+(.[0-9]{1,2})?$/; //金额的匹配规则 
+	var money = $('#price').val();
+	var outer_order_no = $("#outer_order_no").val();
+    var regnum=/^[1-9]\d*$|^0$/;   // 注意：故意限制了 0321 这种格
+	if(outer_order_no=='')
+	{
+		alert('请正确填写转账交易号!');
+		$('#outer_order_no').focus();
+		return false;
+	}
+     if(!regnum.test(outer_order_no))
+     {    
+     	alert("请填写正确的交易号");    
+     	$('#outer_order_no').focus();
+     	return false;
+     } 
+	if(money=='')
+	{
+		alert('请正确填写交易号对应的转账金额!');
+		$('#price').focus();
+		return false;
+	}
+    if(!money.match(num))
+    {
+        	alert('转账金额格式不对!(XXX.XX)');
+        	$('#price').focus();
+        	return false;
+    }
+	if(money<=0)
+	{
+		alert('转账金额必须大于0');
+		$('#price').focus();
+		return false;
+	}
+	return true;
+}
+</script>
+</body>
+</html>

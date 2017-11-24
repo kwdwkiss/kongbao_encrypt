@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../Public/css/common.css" type="text/css" />
+<script type="text/javascript" src="../Public/js/jquery-1.4.2.min.js"></script> 
+ <link rel="stylesheet" href="__PUBLIC__/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="__PUBLIC__/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="__PUBLIC__/kindeditor/lang/zh_CN.js"></script>
+<title>管理区域</title>
+<script type="text/javascript">
+  	KindEditor.ready(function(K) { 
+	 		var editor = K.editor({
+				allowFileManager : true
+			}); 		
+			K('#jietu_i').click(function() {
+				editor.loadPlugin('image', function() {
+					editor.plugin.imageDialog({
+						showRemote : false,
+						imageUrl : K('#jietu').val(),
+						clickFn : function(url, title, width, height, border, align) {
+							K('#jietu').val(url);
+							$('#jietu_save').val(url);
+							$("#tupian").attr('src',url);
+							editor.hideDialog();
+						}
+					});
+				});
+		});		
+}); 
+</script>
+</head> 
+<body>
+ <div class="fixed-bar">
+    <div class="item-title"> 
+      <h3>导航名称</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('index')}" ><span>导航列表</span></a></li>
+         <li><a href="{:U('add')}" ><span>导航新增</span></a></li>
+         <li><a href="javascript:void(0)" class="current"><span>导航编辑</span></a></li>
+      </ul>
+    </div>
+  </div>
+<div id="man_zone">
+<form action="__URL__/update" method="post" enctype="multipart/form-data">
+  <table width="99%" border="0" align="center"  cellpadding="3" cellspacing="1" class="table_style">
+    <tr>
+      <td width="18%" class="left_title_1"><span class="left-title">导航名称</span></td>
+      <td width="82%"><input type="text" name="name" size="40" value="{$udata['name']}"></td>
+    </tr>
+    <tr>
+      <td class="left_title_2">连接地址</td>
+      <td><input type="text" name="url" size="100" value="{$udata['url']}"></td>
+    </tr>
+	  <tr>
+	 <td class="left_title_1">排序</td>
+      <td>
+      	    <input type="text" name="sort" value="{$udata['sort']}" />(类型显示时，数字越大显示靠后)
+      </td>
+    </tr>
+	  <tr>
+	   <td class="left_title_2">热点标志</td>
+      <td><input type="text"  id="jietu" size="31" value="{$udata['image_url']}">
+		      	<input type="button" id="jietu_i" value="选择图片" />
+		      	<input type="hidden" id="jietu_save" value="{$udata['image_url']}" name="image_url" /> 
+				
+	用于导航热点标志调用展示</td>
+    </tr> 
+     <tr>
+	 
+          <td class="left_title_1" ></td>
+      	   <td align="left"> <img src="{$udata['image_url']}" onerror="this.src='__ROOT__/Public/Uploads/rd/icon_new.png'" width="39px" height="20px" alt="热点标志"/> 
+      	</td> 
+    </tr>  
+	  <tr>
+	 
+	 <td class="left_title_2">是否显示热点标志</td>
+      <td><input type="radio" name="sort_bz"  value="1"   <eq name="udata.sort_bz" value='1'>checked</eq> />是
+      	  <input type="radio" name="sort_bz"  value="0" <eq name="udata.sort_bz" value='0'>checked</eq> />否</td>
+    </tr>
+        
+    <tr>
+	
+     <td class="left_title_2">操作密码</td> 
+	      <td><input type="text" name="caozuoma"  size="20" /></td>
+    </tr>    
+    <tr>
+  </table>
+  <div style="height:21px;width:200px;margin-top:20px;margin-left:200px;" >
+         <input type="hidden" name="id" value="{$udata['id']}" />
+		 <input type="submit" value="保存" /> 
+		 <input class="button" type="button" onclick="history.go(-1);" value="取消" />
+		</div>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$seo_title} </title>
+<meta name="Keywords" content="{$seo_keyword}">
+<meta name="Description" content="{$seo_desc}">
+<link href="__PUBLIC__/xincss/css/common_f.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<script type="text/javascript" src="__PUBLIC__/xincss/js/jquery.min.js"></script>
+<if condition="$qq_setting['qq_isuse']==1">
+<meta property="qc:admins" content="{$qq_setting['qq_appcode']}" />
+</if>
+</head>
+<body>
+<!-- header -->
+<div class="top">
+	<div class="content">
+  	<b><if condition="session('IS_LOGIN')==1">{$user['username']}！欢迎您再次来到{$config['sitename']} <else/>欢迎来到{$config['sitename']}，开启您的安全之旅！</if></b>
+    <div class="r">
+	<if condition="session('IS_LOGIN')==1">
+    	<span>
+		<a class="nb1" href="{:U('User/Home')}">会员中心</a>
+		<a class="nb1" href="{:U('System/index')}">站内消息（<span class="fc1">{$allnoread}</span>）</a>
+    	<a class="nb1" href="{:U('Order/kb')}" >在线下单</a>
+		<a class="nbr" href="{:U('User/logout')}">退出</a>
+    	</span>
+		 <else/>
+    	<font id="loginStatus">
+			<a class="fc1" href="{:U('User/uslogin')}">登录</a>
+			<a class="fc2" href="{:U('User/reg')}">注册</a>
+    	</font>
+		</if>
+    </div>
+  </div>
+</div>
+<div class="header">
+	<div class="content" >
+ 		<a class="logo" href="/" onfocus="this.blur();" ><img src="__ROOT__/{$config.site_logo}" align="absbottom" ></a>
+    	<div class="nav">
+		<a href="__APP__" title="首页" class="selected">首页</a>
+		<volist name="daohang" id="daohang" offset="0" length='6' >
+		<a href="{$daohang.url}"  title="{$daohang.name}"  onfocus="this.blur();" >{$daohang.name}</a>
+		</volist>
+
+</div>
+</div>
+</div>
+<include file="Public:kefua" />

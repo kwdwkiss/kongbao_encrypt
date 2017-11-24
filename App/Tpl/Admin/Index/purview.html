@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../Public/css/common.css" type="text/css" /> 
+<script charset="utf-8" src="../Public/js/jquery-1.4.2.min.js"></script>
+<title>管理区域</title>
+<style>
+		table{border-collapse:collapse;border-spacing:0;border-left:1px dashed #888;border-top:1px dashed #888;background:#efefef;}
+		tr,td{border-right:1px dashed #888;border-bottom:1px dashed #888;padding:2px 2px;font-family:Arial}
+		tr{background:#ccc;font-size:larger}
+</style>
+<script  type="text/javascript">
+	function btn_close(obj)
+	{ 
+		var str = "#"+obj; 
+		$(str).css('display','none');
+	}
+</script>
+</head>
+<body>
+ <div class="fixed-bar">
+    <div class="item-title"> 
+      <h3>系统提示</h3> 
+    </div>
+  </div>
+<div id="man_zone">
+
+				    <table width="100%" style="border:0;border-right:0 dashed #AAAAAA;">
+				    	 <tr> <td colspan="2"  align="right"><div align="center">
+							<font size="6" color="#FF00FF"><b>此页面对您暂未开放！</b></font>&nbsp;&nbsp;</div></td> </tr>
+				    	 
+				    	 <tr> <td width="100" align="right"><font color="red">版权所有&nbsp;&nbsp;</font></td> <td><a href="{$Think.config.T_WEIBO}" target="_blank"><font color="red">{$Think.config.soft_banquan}</font></a></td></tr>
+ 				    </table> 
+</div>
+</body>
+</html>

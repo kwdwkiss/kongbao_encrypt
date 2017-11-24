@@ -1,0 +1,122 @@
+
+<include file="Public:top" />
+<script  type="text/javascript"> 
+function chk_submit()
+{  
+	var rec_name = $("#rec_name").val();
+	var send_name = $("#send_name").val();
+	var pr1 = $("#pr1").val();
+	var ci1 = $("#ci1").val();
+	var co1 = $("#co1").val();
+	var pr2 = $("#pr2").val();
+	var ci2 = $("#ci2").val();
+	var co2 = $("#co2").val();
+  if (rec_name==""){ //收货姓名不能为空
+        alert('收货姓名不能为空！');
+        return false;
+      }
+if (send_name==""){ //收货姓名不能为空
+        alert('发货姓名不能为空！');
+        return false;
+      }
+  if (pr1==""){ //收货姓名不能为空
+        alert('发货省份不能为空！');
+        return false;
+      }  
+  if (ci1==""){ //收货姓名不能为空
+        alert('发货城市不能为空！');
+        return false;
+      }  
+  if (co1==""){ //收货姓名不能为空
+        alert('发货地区不能为空！');
+        return false;
+      }  
+  if (pr2==""){ //收货姓名不能为空
+        alert('收货省份不能为空！');
+        return false;
+      }  
+  if (ci2==""){ //收货姓名不能为空
+        alert('收货城市不能为空！');
+        return false;
+      }  
+  if (co2==""){ //收货姓名不能为空
+        alert('收货地区不能为空！');
+        return false;
+      }     
+}
+</script>
+<style type="text/css">
+	.btn_tx{background:#FFF; padding:1px 1px; border:1px solid #ff6600; border-radius:4px; color:#ff6600; margin:5px 0;}
+	.btn_tx:hover{ background:#ff6600; color:#FFF; border:1px solid #FFF;}
+	.privinces,.citys,.countys { position: absolute; width: 295px; background-color: #f8f8f8; padding: 10px 15px; border: 1px #d9d9d9 solid; box-shadow: 3px 3px 5px rgba(128,128,128,0.2);}
+.privinces .a,.citys .a,.countys .a { font-family: "微软雅黑"; font-size: 12px; color: #333; text-decoration: none; display: block; float: left; *display: inline-block; _display: inline; zoom: 1; *float: none; padding: 3px 5px; }
+.privinces a:hover,.citys .a:hover,.countys .a:hover { background-color: #00a2ca; color: #fff;}
+</style>
+<div class="container cont_bg">
+    <div class="resize">
+        <div class="c_leftBox">
+    <div style="font-size: 16px;
+font-weight: normal;
+padding-bottom: 10px;">{$config['sitename']}</div>
+<include file="Public:left_nav" />
+</div>
+<div class="c_rightBox">
+            <div class="change_code">
+                <div class="c_tit">
+                    <h2>订单修改</h2>
+                </div>
+                <form  id="register_form"  action="{:U('log_save')}" method="POST">
+				<input type="hidden" name="is_update" id="is_update" value="1" />
+				<input type="hidden" name="is_update1" id="is_update1" value="1" />
+                    <div class="c_form">
+                        <div class="f_left">
+                            <ul>
+                                <li><label>快递类型：</label>{$kb_type[$kongbao_order['type_id']]}<span class="check_code">快递类型无法修改</span></li>
+                                <li><label>发货姓名：</label><input type="text" class="input_text tip" style="width:200px" id="send_name" name="send_name" value="{$kongbao_order['send_name']}" title="1-15位字符，可由英文、中文及“_”、“-”组成" size="15"/></li>
+                                <li><label>发货电话：</label><input type="text" class="input_text tip" style="width:200px"  name="send_shouji" value="{$kongbao_order['send_shouji']}" title="请输入正常畅通的电话" size="15" /></li>
+								<li><label>发货地址：</label>
+								
+								<input  id="pr1" class="input_text" style="width:100px" name="send_province" placeholder="请选择省份" value="{$kongbao_order['send_province']}" readonly> 
+								<input id="ci1" class="input_text" style="width:100px;" name="send_city" placeholder="请选择城市" value="{$kongbao_order['send_city']}" readonly> 
+								<input id="co1" class="input_text" style="width:100px;" name="send_district"  placeholder="请选择地区"  value="{$kongbao_order['send_district']}" readonly>
+								
+								</li >
+								<li><label>详细地址：</label><input type="text" class="input_text tip" style="width:200px" placeholder="非必填" id="send_address" name="send_address" value="{$kongbao_order['send_address']}" title="请输入详细地址" size="30"/><span class="check_code">请确认你的发货信息准确</span></li >	
+								
+								
+								
+								
+								<li style="border-top:1px dashed #ccc; margin:10px 0"></li>
+								<li><label>收货姓名：</label><input type="text" class="input_text tip" style="width:200px" name="rec_name" id="rec_name" value="{$kongbao_order['rec_name']}" title="1-15位字符，可由英文、中文及“_”、“-”组成" size="15"/></li>
+                                <li><label>收货电话：</label><input type="text" class="input_text tip" style="width:200px"  name="rec_shouji" value="{$kongbao_order['rec_shouji']}" title="请输入正常畅通的电话" size="15" /></li>
+								<li><label>收货地址：</label>
+								<input  id="pr2" class="input_text" style="width:100px" name="rec_province" placeholder="请选择省份" value="{$kongbao_order['rec_province']}" readonly> <input id="ci2" class="input_text" style="width:100px;" name="rec_city" placeholder="请选择城市" value="{$kongbao_order['rec_city']}" readonly> <input id="co2" class="input_text" style="width:100px;" name="rec_district"  placeholder="请选择地区"  value="{$kongbao_order['rec_district']}" readonly></li >
+								<li><label>详细地址：</label><input type="text" class="input_text tip" style="width:200px" placeholder="非必填" name="rec_address" value="{$kongbao_order['rec_address']}" title="请输入详细地址" size="30"/><span class="check_code">请确认你的收货信息准确</span></li >	
+                                <li><label>&nbsp;</label><input class="recharge_sub" type="submit" onclick="return chk_submit()" value="确认修改" /></li>
+                            </ul>
+                      </div>
+                        <div class="f_right">
+                            <p>
+                                <span class="span1">修改信息</span>
+                                <span class="span2">检验信息</span>
+                                <span class="span3">完成</span>
+                            </p>
+                        </div>
+                    </div><input type="hidden" name="id" value="{$kongbao_order['id']}">
+	</form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/css/js/jquery.js"></script>
+        <!--引用地区选择插件-->
+        <script type="text/javascript" src="__PUBLIC__/css/data.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/css/areaselect.js"></script>
+        <script type="text/javascript">
+            new locationCard({
+                ids: ['pr1', 'ci1', 'co1']
+            }).init();
+            new locationCard({
+                ids: ['pr2', 'ci2', 'co2']
+            }).init();
+        </script>

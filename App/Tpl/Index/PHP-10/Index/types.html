@@ -1,0 +1,56 @@
+<div class="index1_1">
+<div class="index1_2">
+<span class="index1_3">我们的合作伙伴</span>
+<div class="index1_4"></div>
+<a href="#" class="index1_5">更多>></a>
+</div>
+<div class="index1_6">
+<div class="index1_7">
+<ul>
+<volist name="kongbao_type" id="vo" offset="0" length='8' >
+<li><a href="#"><img src="/{$vo.image_url}" width="170px" height="65px" /></a>
+<div class="index1_18">
+<div class="index1_19">
+<div class="index1_20"><p> 
+<notempty name="vo['config']['price']['a1']">普通会员: {$vo['config']['price']['a1']}元/单</notempty> 
+<notempty name="vo['config']['price']['a2']">高级会员: {$vo['config']['price']['a2']}元/单</notempty> 
+<notempty name="vo['config']['price']['a3']">高级代理: {$vo['config']['price']['a3']}元/单</notempty>
+<notempty name="vo['config']['price']['a4']">金牌代理: {$vo['config']['price']['a4']}元/单</notempty>
+</p>   </div><div class="index1_21"><a href="#">立 即购 买</a></div>
+</div></div></li>
+</volist> 
+</ul>
+</div>
+<script type="text/javascript">		
+$(".index1_7 ul li > a ").mouseover(function(){$(this).next(".index1_18").css("display","block");$(this).css("display","none");}).mouseout(function(){$(this).next(".index1_18").css("display","none");$(this).css("display","block");});$(".index1_7 ul li .index1_18").mouseover(function(){$(this).css("display","block");$(this).prev("a").css("display","none");}).mouseout(function(){$(this).css("display","none");$(this).prev("a").css("display","block");});$(".index1_7 table tr td > a ").mouseover(function(){$(this).next(".index1_18").css("display","block");$(this).css("display","none");}).mouseout(function(){$(this).next(".index1_18").css("display","none");$(this).css("display","block");});$(".index1_7 table tr td .index1_18").mouseover(function(){$(this).css("display","block");$(this).prev("a").css("display","none");}).mouseout(function(){$(this).css("display","none");$(this).prev("a").css("display","block");});
+</script>
+		 <if condition="session('IS_LOGIN')==0">
+       <form action="{:U('User/login')}" id="js-login_form" method="post">
+            <div class="index1_8">
+                <div class="index1_9">
+                    <span>登录名：</span>
+                </div>
+                <input type="text" name="username" style="color:#999999" placeholder="手机/邮箱/会员名" />
+                <div class="index1_9">
+                    <span>登录密码：</span>
+                </div>
+                <input type="password" name="password" placeholder="登录密码" />
+				 <a href="javascript:void(0)" onclick="$('#js-login_form').submit()" class="index1_10">登录</a>
+				
+                <div class="index1_9">
+                    <a style="float:right;" href="{:U('User/reg')}">免费注册</a>
+					<a style="float:right; margin-right:10px;" href="javascript:void(0)"  onclick="art.dialog({title:'找回密码',content:document.getElementById('get_pass'),lock:true})">忘记登录密码？</a>
+					<if condition="$qq_setting['qq_isuse']==1">
+				 <a style="float:right; margin-right:20px;" href="{:U('Qlogin/index')}">使用QQ登录<img src="/Public/images/Connect_qq_1.png" /></a>
+				 </if> 
+                </div>
+            </div>
+        </form>
+ <else/>
+<div class="pCont">
+<div class="p_nr">
+<p><a href="__APP__" target="_blank"><img src="{$loginj_adv['pic']}" style="height: 230px"  width="283px" ></a> </p>
+</div>
+</div>
+</if> 
+</div>

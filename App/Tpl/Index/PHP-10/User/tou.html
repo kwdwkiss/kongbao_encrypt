@@ -1,0 +1,31 @@
+<div class="getpass lbox" id="get_change" style="display: none" >
+ <form action="{:U('Cash/deal_change')}" method="POST" name="frmLogin">
+		<table width="100%">
+		       <tr>
+			   <td align="right" width="30%">用户名称：</td>
+		            <td class="pl20">{$user['username']}
+                            </td>
+		       </tr>
+		       <tr>
+		            <td align="right" width="30%">账户余额：</td>
+		            <td class="pl20"><input type="text" disabled="true" class="input_text" style="width:200px" value="{$user['money']}">
+                            </td>
+		       </tr>
+		       <tr>
+		            <td align="right">可用佣金：</td>
+		            <td class="pl20"><input type="text" disabled="true" id="valid_money" class="input_text" style="width:200px" value="{$user['refer_money']}"></td>
+		       </tr>
+		       <tr>
+		            <td align="right">转换佣金：</td>
+		            <td class="pl20"><input type="text" id="money" name="money" class="input_text" style="width:200px" ></td>
+		       </tr>
+		       <tr>
+
+		            <td class="pt10"></td>
+		            <td class="pl20 pt10">
+		             <input type="submit" class="btn_jc" value="提交" onclick="return change_submit()"/></td>
+		       </tr>
+		</table>
+		<input type="hidden" name="id" value="{$user['id']}">
+	</form>
+</div>
